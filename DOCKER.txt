@@ -1,0 +1,202 @@
+là 1 ứng dụng giúp triển khai code đơn giản
+khách hàng có thể bật lên và dùng mà k cần cài đặt nhiều
+tránh lộ thông tin code, mã nguồn
+hữu ích khi dùng nhiều ứng dụng version mà k lo xung đột
+
+
+chạy lệnh đầu tiên đơn giản
+docker run -dp 80:80 docker/getting-started
+
+( LOCAL )
+chaỵ ipconfig lấy id ở  IPv4 Address. . . . . . . . . . . 
+thay id vào :_port
+( điều kiện phải trùng  Subnet Mask . . . . . . . . . . . : 255.255.240.0
+   Default Gateway . . . . . . . . . : 172.16.192.3)
+
+docker ps -a
+docker image ls
+
+BUILD & CHẠY IMAGE ỨNG DỤNG NODE.JS VỚI DOCKER 
+b1 tạo 1 file có tên Dockerfile 
+coppy code sau
+	FROM node:12-alpine
+	# Adding build tools to make yarn install work on Apple silicon / arm64 machines
+	RUN apk add --no-cache python2 g++ make
+	WORKDIR /app
+	COPY . .
+	RUN yarn install --production
+	CMD ["node", "src/index.js"]
+
+b2 chạy lệnh
+docker build -t getting-started .
+docker run -dp 3000:3000 getting-started
+
+CẬP NHẬT ỨNG DỤNG DOCKER - Replace The Old Container
+b1: sửa code
+b2: chạy lệnh: docker build -t getting-started . ( tạo image với tên là getting-started)
+b3: docker run -dp 3000:3000 getting-started
+( <=> tạo 1 postimage mới rồi chạy portimage đó) 
+để dừng port đang chạy
+b1: docker ps ( lấy danh sách post đang chạy)
+b2: docker stop id_port  ( dừng post đang chạy)
+muốn chạy lại chọn: docker run -dp 3000:3000 getting-started
+muốn xóa post ta chọn: docker rm id_port
+muốn xóa và stop post ta chọn: docker rm -f id_port
+
+stop => remove => tạo => chạy
+docker stop id_port
+docker rm id_port
+docker build -t getting-started .
+docker run -dp 3000:3000 getting-started
+
+
+( SERVE )
+CHIA SẺ ỨNG DỤNG DOCKER VỚI DOCKER HUB
+- tạo tài khoản trên docker hub
+- định danh file cần đẩy lên repo
+	docker tag name_file YOUR-USER-NAME/name-repo
+	hoặc  docker tag ID-image YOUR-USER-NAME/name-repo:version1.0
+- đẩy lên
+	docker push YOUR-USER-NAME/name-repo
+
+CHẠY IMAGE DOCKER TỪ DOCKER HUB TRÊN CLOUD
+- truy cập https://labs.play-with-docker.com/
+- nhấn tạo
+- docker run -dp 3000:3000 YOUR-USER-NAME/Name_repo
+
+GHI DATA VỚI VOLUME - PERSIST DATA VỚI CONTAINER DOCKER 
+	docker sẽ tự tạo 1 container là ubuntu và 1 file data.txt, 1 số ngẫu nhiên 1 tới 1000
+chạy lệnh sau
+- docker run -d ubuntu bash -c "shuf -i 1-10000 -n 1 -o /data.txt && tail -f /dev/null"
+trong docker main sẽ lên 1 image có tên ubutu mở teminal của container ubutu
+chayh lênh : cat /data.txt 
+sẽ ra 1 số 
+===>>> lỗi
+
+ TẠO DATA VỚI VOLUME
+vì khi build lại sẽ tại 1 data container mới => muốn phiên sau còn dữ liệu cần sao chép data ra rồi build lại
+tạo volume mới
+docker volume create name_db
+hiên name_bd
+chạy : docker run -dp 3000:3000 -v todo-db:/etc/todos name_container
+xuất hiện -v là nơi lưu
+như vậy, sau khi kết phiên, vào chạy lại docker run -dp 3000:3000 -v todo-db:/etc/todos name_container thì vẫn có data cũ
+=> lưu volume
+
+DEV SERVER VỚI DOCKER BIND MOUNTS - LIVE RELOADING CODE
+là 1 cách khác để lưu dữ liệu data, nhưng ít dùng do nó sẽ lưu trực tiếp data ở dữ liệu, 
+=> chỉ cần f5 lại là dữ liệu chạy trên port đã thay đổi, k cần build lại
+bảo mật thông tin, có thể thay đổi dữ liệu trực tiếp ở docker
+còn ở volume, nơi lưu data và data là do docker quản lý
+
+Multi CONTAINER APPS - QUẢN LÝ NHIỀU ỨNG DỤNG VỚI DOCKER
+mỗi be fe nên ở riêng 1 container
+
+tạo 1 network có tên todo-app
+docker network create todo-app
+
+chạy lệnh để tạo container mới
+docker run -d \
+    --network todo-app --network-alias mysql \
+    -v todo-mysql-data:/var/lib/mysql \
+    -e MYSQL_ROOT_PASSWORD=secret \
+    -e MYSQL_DATABASE=todos \
+    mysql:5.7
+chạy docker ps để tìm id sau đó chạy
+docker exec -it <mysql-container-id> mysql -p
+
+nếu bắt nhập mật khẩu thì chọn secret
+hiện ra myspl> gõ SHOW DATABASES;
+ở cuối sẽ hiện ta todos do lúc trước có taoj  -e MYSQL_DATABASE=todos \
+
+Connecting to MySQL
+=> mở terminal mới 
+chay  docker run -it --network todo-app nicolaka/netshoot
+sau khi chayj xong ấn chạy lệnh : dig mysql để lấy địa chỉ id mysql  (  172.18.0.2 )
+chạy lệnh 
+docker run -dp 3000:3000 \
+  -w /app -v "$(pwd):/app" \
+  --network todo-app \
+  -e MYSQL_HOST=mysql \
+  -e MYSQL_USER=root \
+  -e MYSQL_PASSWORD=secret \
+  -e MYSQL_DB=todos \
+  node:12-alpine \
+  sh -c "yarn install && yarn run dev"
+
+sau đó hiện ra 
+Done in 54.86s.
+yarn run v1.22.19
+$ nodemon src/index.js
+[nodemon] 2.0.13
+[nodemon] to restart at any time, enter `rs`
+[nodemon] watching path(s): *.*
+[nodemon] watching extensions: js,mjs,json
+[nodemon] starting `node src/index.js`
+Using sqlite database at /etc/todos/todo.db
+Listening on port 3000
+
+
+sau đó chạy lệnh 
+docker exec -it <mysql-container-id> mysql -p todos
+
+
+DOCKER COMPOSE
+dung hợp lại các câu lệnh. quản lý docker 1 cách đơng giản
+bthuong có file be fe thì phải có 2 container. nhưng với compose thì chỉ cần đặt dockerfile ở 1 nơi
+kiểm tra có docker compose hay chưa
+docker-compose version
+tạo 1 file docker-compose.yml ở thư mục to nhất
+nội dung trong file như sau
+version: "3.8"
+
+services:
+  app:
+    image: node:12-alpine
+    command: sh -c "yarn install && yarn run dev"
+    ports:
+      - 3000:3000
+    working_dir: /app
+    volumes:
+      - ./:/app
+    environment:
+      MYSQL_HOST: mysql
+      MYSQL_USER: root
+      MYSQL_PASSWORD: secret
+      MYSQL_DB: todos
+
+  mysql:
+    image: mysql:5.7
+    volumes:
+      - todo-mysql-data:/var/lib/mysql
+    environment: 
+      MYSQL_ROOT_PASSWORD: secret
+      MYSQL_DATABASE: todos
+
+volumes:
+  todo-mysql-data:
+
+
+( có thể xoá toàn bộ container trong docker để chạy compose)
+chạy câu lênh
+docker-compose up -d
+sau đó sẽ hiện lên trong docker app ấn mũi tên sẽ hiện ra
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

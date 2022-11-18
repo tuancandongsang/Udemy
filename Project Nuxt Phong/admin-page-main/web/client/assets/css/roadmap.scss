@@ -1,0 +1,29 @@
+@import "./colors.scss";
+#roadmap {
+  background: #fdfdfd;
+  border-bottom: 1px dashed rgba(0, 0, 0, 0.4);
+  .roadmap-deatail {
+    img {
+      max-width: 100%;
+    }
+  }
+}
+.roadmap-title p {
+  color: $text-color;
+  font-size: 38px;
+  font-weight: 700;
+}
+@media (max-width: 1440px) {
+}
+@media (max-width: 1366px) {
+  .roadmap-title p {
+    font-size: 32px;
+  }
+}
+@media (max-width: 768px) {
+  .roadmap-title p {
+    font-size: 22px;
+  }
+}
+@media (max-width: 640px) {
+}

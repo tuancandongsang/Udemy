@@ -1,0 +1,35 @@
+@import "./colors.scss";
+#footer {
+  background: $bg-dark;
+  color: $text-grey;
+  padding: 80px 0 50px 0;
+  .footer-logo {
+    margin-bottom: 20px;
+    span {
+      font-size: 20px;
+      font-weight: 700;
+    }
+  }
+  .footer-socials {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    .v-btn {
+      background-color: #fff;
+      margin-right: 10px;
+    }
+  }
+  .footer-title {
+    font-size: 18px;
+    color: #fff;
+    margin-bottom: 12px;
+  }
+  a {
+    color: $text-grey;
+    padding: 5px 0;
+    display: inline-block;
+    transition: all 0.3s ease-in-out;
+    &:hover {
+      color: $primary-color;
+    }
+  }
+}

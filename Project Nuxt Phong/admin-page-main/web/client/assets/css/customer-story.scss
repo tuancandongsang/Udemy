@@ -1,0 +1,152 @@
+@import "./colors.scss";
+
+#customer-story {
+  padding: 120px 0 !important;
+
+  .customer-story-title {
+    font-size: 38px;
+    font-weight: 700;
+    color: $text-color;
+  }
+
+  .v-image__image.v-image__image--cover {
+    background-size: contain;
+  }
+
+  .customer-story-slider {
+    margin-top: 100px;
+    margin-bottom: 50px;
+
+    .story-dots {
+      bottom: -90px;
+
+      li {
+        width: 45px;
+
+        button {
+          transition: all 0.3s ease-in-out;
+          width: 15px;
+          height: 15px;
+
+          &:before {
+            transition: all 0.3s ease-in-out;
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+            color: transparent;
+            background-color: #dde0e4;
+            opacity: 1;
+          }
+        }
+      }
+
+      .slick-active {
+        margin-right: 30px;
+
+        button {
+          width: 45px;
+
+          &:before {
+            width: 45px;
+            background: $primary-color;
+            border-radius: 20px;
+            color: transparent;
+          }
+        }
+      }
+    }
+
+    .customer-comment {
+      font-size: 32px;
+      color: $text-color;
+
+      &::before {
+        content: url("../svg/icon-quote.svg");
+        display: block;
+        margin-bottom: 34px;
+      }
+    }
+
+    .customer-name {
+      font-size: 24px;
+      color: $primary-color;
+      font-weight: 700;
+    }
+
+    .customer-company {
+      font-size: 24px;
+      color: $text-color;
+      font-weight: 700;
+    }
+
+    .slide-right {
+      margin-left: 20px;
+    }
+
+    .customer-logo {
+      margin-left: 100px;
+
+      img {
+        max-width: 400px;
+        margin-bottom: 40px;
+      }
+    }
+  }
+}
+
+@media (max-width: 1440px) {
+}
+
+@media (max-width: 1366px) {
+  #customer-story {
+    .customer-story-title {
+      font-size: 32px;
+      font-weight: 700;
+      color: $text-color;
+    }
+
+    .customer-story-slider {
+      .customer-logo {
+        margin-left: 0;
+
+        img {
+          max-width: 200px;
+          margin-bottom: 40px;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  #customer-story {
+    .customer-story-title {
+      font-size: 22px;
+    }
+  }
+  .customer-comment {
+    font-size: 22px;
+  }
+  #customer-story {
+    padding: 50px 0 !important;
+
+    .customer-story-slider {
+      margin-top: 40px;
+      margin-bottom: 20px;
+    }
+  }
+}
+
+@media (max-width: 640px) {
+  .customer-comment {
+    font-size: 18px !important;
+  }
+  .customer-name,
+  .customer-company {
+    font-size: 18px !important;
+  }
+  .slide-right {
+    margin-top: 15px;
+    margin-left: 0 !important;
+  }
+}

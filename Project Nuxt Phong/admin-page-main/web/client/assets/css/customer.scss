@@ -1,0 +1,46 @@
+@import "./colors.scss";
+
+#customer {
+  border-bottom: 1px dashed rgba(0, 0, 0, 0.4);
+
+  .customer-title {
+    font-size: 38px;
+    font-weight: 700;
+
+    &:after {
+      content: url("../svg/icon-quote-light.svg");
+      margin-left: 40px;
+    }
+  }
+
+  .customer-slider {
+    margin-top: 100px;
+    margin-bottom: 50px;
+  }
+
+  .v-image__image.v-image__image--cover {
+    background-size: contain !important;
+  }
+}
+
+@media (max-width: 1440px) {
+}
+
+@media (max-width: 1366px) {
+  #customer {
+    .customer-title {
+      font-size: 32px;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  #customer {
+    .customer-title {
+      font-size: 22px;
+    }
+  }
+}
+
+@media (max-width: 640px) {
+}

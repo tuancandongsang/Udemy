@@ -1,0 +1,48 @@
+@import "./colors.scss";
+.contact-info-item {
+  .contact-location {
+    font-size: 18px;
+    font-weight: 700;
+  }
+  margin: 0 20px;
+  margin-bottom: 30px;
+  padding: 50px 20px;
+  align-self: center;
+  width: 340px;
+  height: 470px;
+  border: 2px solid #00bcd4 !important;
+  box-sizing: border-box;
+  border-radius: 16px !important;
+  &:hover {
+    box-shadow: 0px 5px 25px #00bcd4 !important;
+  }
+  p {
+    padding-bottom: 5px;
+    margin-bottom: 0 !important;
+  }
+  .v-btn {
+    margin-top: 40px;
+    background: #00bcd4;
+    border-radius: 16px;
+    height: 50px !important;
+    .v-btn__content {
+      font-size: 16px;
+      .v-icon {
+        position: absolute;
+        left: 0;
+        font-size: 35px;
+      }
+    }
+  }
+}
+@media (max-width: 1440px) {
+}
+@media (max-width: 1366px) {
+}
+@media (max-width: 768px) {
+}
+@media (max-width: 640px) {
+  .v-application .about-intro, .v-application .text-center.about-intro {
+    text-align: justify !important;
+  }
+}

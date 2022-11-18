@@ -1,0 +1,126 @@
+@import "./colors.scss";
+.landing-choose {
+  background: #f3f3f3;
+  padding: 120px 0;
+  .choose-item-content {
+    font-weight: 500;
+  }
+}
+
+.landing-solution {
+  padding: 80px 0;
+  .v-btn {
+    min-width: 240px !important;
+    min-height: 48px !important;
+    margin: 30px 0;
+    position: relative;
+    z-index: 1;
+    box-shadow: 0px 10px 20px 0px #00bcd480 !important;
+    .v-btn__content {
+      font-weight: 700 !important;
+      font-size: 16px;
+    }
+  }
+  p.primary--text {
+    font-size: 24px;
+    margin-top: 10px;
+  }
+}
+.register-box-left {
+  .box-content p {
+    margin-bottom: 5px;
+    font-size: 18px !important;
+  }
+}
+
+// Process
+.process-item {
+  flex: 1;
+  .process-header {
+    margin-bottom: 20px;
+  }
+  margin: 25px;
+  .process-detail {
+    .process-title {
+      color: #333535;
+      font-size: 18px;
+      font-weight: 700;
+    }
+    .process-content {
+      font-style: italic;
+      font-size: 14px;
+      color: #909090;
+    }
+  }
+  .process-step {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    .v-avatar {
+      border: 1px solid $primary-color2;
+      box-shadow: 0px 7px 15px #c1c1c150;
+      span {
+        font-weight: bold;
+        font-size: 50px;
+        display: inline-block;
+        color: $primary-color2;
+      }
+    }
+  }
+}
+// Benefit
+.benefit {
+  flex: 1;
+  margin: 15px;
+
+  .benefit-content {
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+    p {
+      color: #0b132a;
+      font-size: 18px;
+    }
+    .benefit-title {
+      font-size: 24px;
+      font-weight: 700;
+    }
+  }
+  &.outlined {
+    border: 1px solid $primary-color2 !important;
+  }
+  &.bg-primary {
+    p {
+      color: #fff !important;
+    }
+    background-color: $primary-color2 !important;
+  }
+}
+
+@media (max-width: 1440px) {
+  .landing {
+    .landing-base {
+      .section-left {
+        flex: 0 0 65%;
+        p {
+          margin-bottom: 5px;
+        }
+      }
+    }
+  }
+}
+@media (max-width: 1366px) {
+}
+@media (max-width: 768px) {
+  .landing-choose,
+  .landing-solution {
+    padding: 40px 0;
+  }
+}
+@media (max-width: 640px) {
+  .process-item {
+    margin: 0;
+  }
+}

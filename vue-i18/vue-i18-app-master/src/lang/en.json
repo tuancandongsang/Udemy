@@ -1,0 +1,19 @@
+{
+    "common": {
+      "select_lang": "Ngôn ngữ"
+    },
+    "login": {
+      "title": "alo alo",
+      "buttons": {
+        "login": "alo"
+      },
+      "input_text": {
+        "email": " gmail",
+        "password": "passs"
+      },
+      "messages": {
+        "none_account": "nexx",
+        "register": "new"
+      }
+    }
+  }

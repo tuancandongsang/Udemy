@@ -1,0 +1,19 @@
+{
+  "collectionName": "components_profile_object_profiles",
+  "info": {
+    "displayName": "profile",
+    "icon": "address-card"
+  },
+  "options": {},
+  "attributes": {
+    "file_id": {
+      "type": "biginteger"
+    },
+    "file_name": {
+      "type": "string"
+    },
+    "file_path": {
+      "type": "string"
+    }
+  }
+}

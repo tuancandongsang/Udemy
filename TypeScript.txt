@@ -1,0 +1,137 @@
++ Type Inference
+let count: string = "Hoi Dan IT";
+type sẽ tự dong du doan type cho kieu du lieu
+neu muon dinh nghia chinh xac ta ta dung type annotations => let count: string = "Hoi Dan IT";
+các trường hợp type annotations
+	- khai báo 1 biến và gán giá trị cho nó ngay sau đó
+	- khai báo 1 biến => ép kiểu( không muốn được gán tự động)
+	- muốn ép kiểu trả về giá trị mong muốn
+	- lưu ý nên viết thương vd number, string, boolen. Vì viết hoa kieu Number danh cho khai bao 1 bien moi
++ Number Type
++ String Type
+let name22: string = "và \"Hỏi Dân IT\""; => để có thể in ra và "hoi dan it"
+let name2: string = ` và "Hỏi Dân IT"`; => sử dụng `` để có kqua tuong tu
++ Boolean Type
+let check1: boolean = true;
++  Object Type
+let pro1: {
+    name: string,
+    age: number
+} = {
+    name: "Eric", //string
+    age: 25 //age
+}
++ Array Type 
+let arrayName:type[]
+let test: (number | string)[] = ['hoi dan it', 69];
++ Tuple Types
+hoat dong giong nhu Array Type nhung se co 1 vai quy tac bat buoc
+- so phan tu cua tuple can duoc khai bao truoc
+- type cua tung phan tu can duoc khai bao truoc, khong nhat thiet phai giong nhau
+- gioi han phan tu nhap vao
+vd: let skills2: [string, number] = ['Hỏi Dân IT', 25];
+so voi array type : let test: (number | string)[] = ['hoi dan it', 69];
+
+let skills3: [boolean, string, number?];
+skills3 = [true, 'Eric'];
+dấu ? phải đặt cuối, và không truyền vào number cũng đc, nhưng đã truyền giá trị thì phải truyền đúng number
+
++ Enum Types ( liệt kê )
+là 1 nhóm các giá trị hằng số
+- sử dụng keyword enum và tên cho enum
+- định ngĩa các giá trị hằng số
+enum name ( constan1, constan2...)
+
++ TypeScript Any Type
++ TypeScript Void Type
+ áp dụng cho giá trị trả về của function
+
+const sum = (a: number, b: number): number => {
+    return a + b;
+}
+==>> yêu cầu function return giá trị là number
+
+const handleLogs = (message: string): void => {
+    console.log(">>> message: ", message)
+}
+==>> :void thì function trả về giá trị gì cũng được
+
++ TypeScript Data Type - Never
+Never: không bao giờ trả ra giá trị
+Void : không cần trả về dữ liệu thực tế vẫn trả, không cần return
+Any : trả về hoặc nhập vào bất cứ thứ gì
++ TypeScript Union Type
+gián param trong function cho nhiều style
+vd:
+function addNumberOrString(a: number | string | object | boolean, b: number | string) {
+    if (typeof a === 'number' && typeof b === 'number') {
+        return a + b;
+    }
+    if (typeof a === 'string' && typeof b === 'string') {
+        return a.concat(b);
+    }
+    throw new Error('Parameters must be numbers or strings');
+}
+
++ TypeScript Type Aliases
+định danh cho biến 
+vd ở dưới thì ericType chính là aliases của biến
+
+type ericType = number | string | object | boolean;
+function addNumberOrString(a: ericType, b: number | string) {
+    if (typeof a === 'number' && typeof b === 'number') {
+        return a + b;
+    }
+    if (typeof a === 'string' && typeof b === 'string') {
+        return a.concat(b);
+    }
+    throw new Error('Parameters must be numbers or strings');
+}
+
+//loi khi running
+//loi khi compile
+console.log(">>> check: ", addNumberOrString('eric ', "Hoi dan it"))
+
++ TypeScript If else
+xét type cho param, sau đó if else trong điều kiện
+
+let num: number;
+let item = 11
+if(num > 0 && num <=5){
+	item = 10
+}
+
++ TypeScript switch case
+theo dòng, dùng beark để ngắt, nếu các case không hợp lệ thì chạy ra deault
++ TypeScript While Loop
+khong quan tâm điều kiện, cứ chạy, ta ngắt ở trong bằng break
++ TypeScript Do...While
+chạy tối thiểu 1 lần dù điều kiện đó có đúng hay k
++ TypeScript Break
+	nhằm thoát khỏi vòng lặp khi đủ điều kiện
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

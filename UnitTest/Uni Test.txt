@@ -1,0 +1,74 @@
++ Unit test 
+- là 1 loại kiểm thử để kiểm tra xem từng đơn vị code có hoạt động đúng như mong đợi hay không
+
+
+các cấp bậc của testing
+1- Unit Testing: test từng hàm nhỏ trong app người thực hiện là developer
+2- Integration: test nhiều hàm liên quan để ra kết quả cuối cùng, tester làm
+3- System Testing: test từ đầu tới cuối của module, giao diện... tester làm
+4- Acceptance Testing: của khách hàng làm.
+
+lợi ích của unit test
+- đảm bảo code chạy đúng theo những  test cases định nghĩa
+- tự tin hơn khi thay đổi code
+- giúp phát hiện lỗi sớm và giảm thiểu lỗi
+- giúp code dễ hiểu và dễ phát triển
+- giúp phần mềm dễ dàng mở rộng
+- với các chức năng sử dụng nhiều lần
+
+cân nhắc khi dùng unit test
+- không cần viết unitest ở những thư viện có sẵn
+- không nên test ở những function quá đơn giản
+- luôn cập nhật test cases tương ứng khi thay đổi code
+- dự án cần cho dev thêm thời gian để viết test
+- có dự án cần unit test cho fe, chu yếu cho be, vì fe login ít
+- chỉ nên viết cho những dự án login nhiều
+- tốn thêm thời gian và chi phí cho dự án
+
+cách viết unit test
+- mỗi file javascript sẽ có 2 file unit test tương ứng, vs common.js sẽ có unit test là common.test.js
+- hàm được test nên là 1 Pure function
+- liệt kê ra tất cả các tình huống có thể sảy ra trong hàm 
+
++ https://www.youtube.com/watch?v=i4P4x7dIfCs&t=304s sử dụng mocha và chai ....
+= https://www.youtube.com/watch?v=F916J2Qj3vI  jest vs ts
+- https://viblo.asia/p/mot-so-tips-de-viet-unit-testing-vue-components-voi-jest-924lJpk8KPM jest với vue
+- https://www.youtube.com/watch?v=2kj3PUrO6eo&list=PLExTZOT5i5JKwfd0ElXX05DRKPQmOFJLL jest trong vue
+
+cài thư viện
+npm i @vue/cli-plugin-unit-jest
+sau đó cài thêm
+vue add unit-jest 
+hoặc 
+npm install --save-dev @vue/test-utils
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 

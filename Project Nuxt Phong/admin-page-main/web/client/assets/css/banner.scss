@@ -1,0 +1,122 @@
+@import "./colors.scss";
+.banner-bg {
+  height: 640px;
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: top center;
+}
+#about-us-banner {
+  .banner-bg {
+    height: 315px;
+    background-attachment: fixed;
+    background-size: 100% 100%;
+  }
+}
+#policy-banner {
+  .banner-bg {
+    height: 400px;
+    background-attachment: fixed;
+    background-size: 100% 100%;
+  }
+}
+.banner-title {
+  color: #fff;
+  font-size: 40px;
+  font-weight: 700;
+}
+.banner-intro {
+  color: #fff;
+  font-size: 18px;
+  font-weight: 400;
+  max-width: 840px;
+}
+.btn-header {
+  width: 250px;
+  height: 60px !important;
+  .v-btn__content {
+    color: #fff !important;
+    font-weight: 700 !important;
+    font-size: 16px !important;
+  }
+}
+.landing2 {
+  .btn-register {
+    background: $primary-color2 !important;
+    // box-shadow: 0px 30px 50px 0px $primary-color2 !important;
+    box-shadow: none !important;
+    &:hover {
+      background: #fff !important;
+      border: 0.5px solid $primary-color2;
+      // box-shadow: 0px 30px 50px 0px #fff !important;
+      .v-btn__content {
+        color: $primary-color2 !important;
+      }
+    }
+  }
+}
+.btn-register {
+  background: $primary-color !important;
+  // box-shadow: 0px 30px 50px 0px $primary-color !important;
+  // &:hover {
+  //   background: #fff !important;
+  //   border: 0.5px solid $primary-color;
+  //   // box-shadow: 0px 30px 50px 0px #fff !important;
+  //   .v-btn__content {
+  //     color: $primary-color !important;
+  //   }
+  // }
+}
+.btn-contact {
+  background: #fff !important;
+  // box-shadow: 0px 30px 50px 0px #fff !important;
+  .v-btn__content {
+    color: $primary-color !important;
+  }
+  // &:hover {
+  //   background: $primary-color !important;
+  //   // box-shadow: 0px 30px 50px 0px $primary-color !important;
+  //   .v-btn__content {
+  //     color: #fff !important;
+  //   }
+  // }
+}
+@media (max-width: 1440px) {
+}
+@media (max-width: 1366px) {
+  .banner-bg {
+    height: 640px;
+    background-size: cover;
+  }
+  .banner-title {
+    font-size: 32px;
+  }
+}
+@media (max-width: 768px) {
+  .banner-title {
+    font-size: 26px;
+  }
+}
+@media (max-width: 640px) {
+  .v-parallax__content {
+    padding: 0 !important;
+  }
+  .banner-title {
+    font-size: 20px;
+  }
+  #about-us-banner {
+    .banner-bg {
+      height: 150px;
+      background-attachment: fixed;
+      background-size: cover;
+      background-position: top center;
+    }
+  }
+  #policy-banner {
+    .banner-bg {
+      height: 150px;
+      background-attachment: fixed;
+      background-size: cover;
+      background-position: top center;
+    }
+  }
+}

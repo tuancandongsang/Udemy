@@ -1,0 +1,87 @@
+{
+  "langs": {
+    "vn": "Tiếng Việt",
+    "us": "Tiếng Anh"
+  },
+  "menus": {
+    "solutions": "Giải Pháp",
+    "list_products": {
+      "groups": {
+        "dieu_hanh_quan_tri": "Điều hành & Quản Trị",
+        "quan_ly_van_phong": "Quản lý văn phòng",
+        "nhan_su_ke_toan": "Nhân Sự - Kế Toán",
+        "tien_ich": "Tiện ích"
+      },
+      "features": {
+        "ky_so_dien_tu": "Ký điện tử",
+        "dieu_hanh_van_ban": "Điều hành văn bản",
+        "quan_ly_cong_viec": "Quản lý công việc",
+        "quy_trinh_lam_viec": "Quy trình làm việc",
+        "hop_dong_dien_tu": "Hợp đồng điện tử",
+        "tin_tuc_truyen_thong": "Tin tức, truyền thông",
+        "lich_hop_cong_tac": "Lịch họp công tác",
+        "van_phong_pham": "Văn phòng phẩm",
+        "camera_ai": "Camera AI",
+        "tai_lieu_so": "Tài liệu số, thư viện",
+        "quan_ly_tai_san": "Quản lý tài sản",
+        "dang_ky_cong_tac": "Đăng ký đi công tác",
+        "cong_tac_phi": "Công tác phí",
+        "quan_ly_nhan_su": "Quản lý nhân sự",
+        "cham_cong_giam_sat": "Chấm công giám sát",
+        "bang_cong": "Bảng Công/lương",
+        "danh_gia_kpi": "Đánh giá / KPI",
+        "phan_mem_ke_toan": "Phần mềm kế toán",
+        "hoa_don_dien_tu": "Hóa đơn điện tử",
+        "tuong_tac": "Tương tác",
+        "khao_sat": "Khảo sát",
+        "quan_ly_yeu_cau": "Quản lý yêu cầu",
+        "quan_ly_danh_muc": "Quản lý danh mục",
+        "quan_ly_doi_tac": "Quản lý đối tác"
+      }
+    },
+    "company": "Công ty",
+    "contact": "Liên hệ"
+  },
+  "labels": {
+    "contact": "Liên hệ",
+    "register": "Đăng ký",
+    "contact_now": "Liên hệ ngay",
+    "contact_help": "Liên hệ hỗ trợ",
+    "detail": "Chi tiết",
+    "send": "Gửi",
+    "contact_info": "Thông tin liên hệ",
+    "new": "Tin tức",
+    "fullName": "Họ tên",
+    "phone": "Số điện thoại",
+    "email": "Email",
+    "content": "Nội dung",
+    "agree": "Đồng ý",
+    "send_contact_success": "Gửi liên hệ thành công",
+    "subcribe_content": "Nhận Email thông báo về cập nhật ứng dụng và những dòng sản phẩm mới nhất của chúng tôi.",
+    "company_address": "Số 1, Lô 4E, Trung Yên 10B, Yên Hoà, Cầu Giấy, Hà Nội",
+    "compay_name": "Công ty TNHH Phát triển Hệ thống Dịch vụ Công nghệ thông tin",
+    "compay_sologan": "Với mục tiêu “Mang lại giá trị tối ưu cho khách hàng và đối tác”, chúng tôi tạo ra một hệ sinh thái Văn phòng số với đầy đủ phân hệ, chức năng nhằm mục tiêu chuyển đổi số toàn diện các hoạt động văn phòng, tối ưu chi phí & hỗ trợ công tác quản trị, điều hành doanh nghiệp."
+  },
+  "text.san_pham_cau_hinh": "Sản phẩm <b>cấu hình</b> theo <b>doanh nghiệp</b> của bạn",
+  "homePage": {
+    "banner": {
+      "title": "MDO - Nền tảng chuyển đổi số doanh nghiệp<br/>Giải pháp linh hoạt, không giới hạn.",
+      "subtitle": "Được xây dựng trên nền tảng công nghệ mới nhất, phù hợp với xu hướng chuyển đổi số:<br/>Cloud based, Mobility, AI,… Đảm bảo an toàn, bảo mật, toàn vẹn dữ liệu."
+    },
+    "sections": {
+      "features": {
+        "title": "<b>Giúp</b> doanh nghiệp trở nên khác biệt trong <b>Vận Hành,<br>Tối Ưu Nguồn Lực</b> và đạt được <b>Mục Tiêu Kinh Doanh.</b>"
+      },
+      "roadmap": {
+        "title": "Chuyển đổi số để tăng trưởng kinh doanh"
+      },
+      "tools": {
+        "title": "Bộ công cụ quản trị doanh nghiệp",
+        "subTitle": "Giải quyết mọi thách thức trong kinh doanh và quản trị chỉ trong 1 nền tảng duy nhất."
+      },
+      "altSTr": {
+        "alt": "MDO nền tảng quản trị doanh nghiệp 2"
+      }
+    }
+  }
+}

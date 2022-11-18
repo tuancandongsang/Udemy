@@ -1,0 +1,44 @@
+{
+  "kind": "collectionType",
+  "collectionName": "customer_stories",
+  "info": {
+    "singularName": "customer-story",
+    "pluralName": "customer-stories",
+    "displayName": "CustomerStory"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "comment": {
+      "type": "text"
+    },
+    "logoCompany": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": false
+    },
+    "avatar": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": false
+    },
+    "company": {
+      "type": "string"
+    }
+  }
+}

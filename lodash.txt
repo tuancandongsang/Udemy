@@ -1,0 +1,24 @@
+	Lodash là gì?
+Lodash là một thư viện tiện ích JavaScript nhất quán, các modules có hiệu suất cao,
+và quan trọng rất mạnh mẽ bao gồm hầu hết các điểm chức năng logic có thể gặp trong quá trình phát triển front-end. 
+Sử dụng Lodash có thể cải thiện đáng kể hiệu quả phát triển của mỗi dự án. 
+
+cài đặt : npm i --save lodash
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

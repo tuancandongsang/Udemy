@@ -1,0 +1,163 @@
+@import "./colors.scss";
+#register {
+  padding-top: 100px;
+  .v-snack {
+    max-width: 100%;
+  }
+  .register-title {
+    font-size: 38px;
+    font-weight: 700;
+    padding-bottom: 50px;
+    &:before {
+      content: url("../svg/icon-quote-dark.svg");
+      margin-right: 40px;
+      display: inline-block;
+    }
+    &:after {
+      content: url("../svg/icon-quote-dark-right.svg");
+      margin-left: 40px;
+      display: inline-block;
+    }
+  }
+  .v-card {
+    box-shadow: none;
+    border-radius: 16px;
+  }
+  .v-btn__content {
+    font-weight: 700;
+    font-size: 16px;
+  }
+  .register-box-left {
+    font-size: 21px;
+    font-weight: 400;
+    color: $text-color;
+    padding: 20px;
+    padding-right: 40px;
+  }
+  .register-box-right {
+    left: -25px;
+  }
+  .register-box-title {
+    font-weight: 600;
+    font-size: 28px;
+    text-align: center;
+    color: $text-color;
+  }
+  .form-group {
+    margin-right: 15px;
+    label {
+      font-weight: 700;
+      font-size: 14px;
+    }
+    .v-input__control {
+      min-width: 195px;
+      margin-right: 10px;
+      .v-input__slot {
+        box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.15) !important;
+        fieldset {
+          border: none;
+        }
+      }
+    }
+  }
+  .customer-slider {
+    margin-top: 100px;
+    margin-bottom: 50px;
+  }
+  .btn-form-register {
+    height: 68px;
+    border-radius: 50px;
+    box-shadow: none;
+  }
+}
+#contract-register {
+  .btn-contact {
+    width: 250px;
+    margin-top: 15px;
+    height: 60px;
+    border-radius: 10px !important;
+    .v-btn__content {
+      font-size: 24px;
+      font-weight: 700;
+    }
+  }
+}
+.v-dialog {
+  #register {
+    padding-top: 50px;
+    .register-title {
+      padding-bottom: 0;
+    }
+  }
+  .register-box-left {
+    background: #fff !important;
+  }
+}
+.banner-register {
+  .v-btn {
+    margin-top: 50px;
+  }
+}
+@media (max-width: 1440px) {
+}
+@media (max-width: 1366px) {
+  #register {
+    .register-title {
+      font-size: 32px;
+      &:before,
+      &:after {
+        transform: scale(0.5);
+      }
+    }
+    .register-box-left {
+      padding: 0;
+      margin-left: 0 !important;
+      .box-content p {
+        font-size: 16px !important;
+      }
+    }
+    .register-box-right {
+      left: 0;
+    }
+    .form-group {
+      margin-right: 0;
+    }
+  }
+}
+@media (max-width: 768px) {
+  .landing {
+    #register .register-box-title {
+      font-size: 20px !important;
+    }
+  }
+  .v-dialog {
+    #register {
+      padding-top: 50px;
+      .register-title {
+        padding-bottom: 0;
+      }
+    }
+  }
+  #register {
+    padding-top: 10px;
+    img {
+      max-width: 100%;
+    }
+  }
+}
+@media (max-width: 640px) {
+  #register {
+    .register-title {
+      font-size: 30px;
+      padding-bottom: 20px;
+      &:before,
+      &:after {
+        margin: 0;
+        transform: scale(0.4);
+      }
+    }
+    .logo-register {
+      width: 150px;
+    }
+  }
+}

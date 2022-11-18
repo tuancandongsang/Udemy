@@ -1,0 +1,16 @@
+{
+  "names": {
+    "phone": "Số điện thoại",
+    "name": "Họ tên",
+    "fullName": "Họ và tên",
+    "product": "Sản phẩm bạn quan tâm",
+    "company": "Tên công ty",
+    "jobPosition": "Vị trí công việc",
+    "content": "Nội dung",
+    "email": "Email",
+    "dateOfBirth": "Ngày tháng năm sinh",
+    "gender": "Giới tính",
+    "positionName": "Ví trí ứng tuyển",
+    "profile": "CV là bắt buộc"
+  }
+}

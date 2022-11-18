@@ -1,0 +1,193 @@
+{
+  "langs": {
+    "vn": "Vietnamese",
+    "us": "English"
+  },
+  "menus": {
+    "solutions": "Solutions",
+    "list_products": {
+      "groups": {
+        "dieu_hanh_quan_tri": "Operations & Administration",
+        "quan_ly_van_phong": "Office Manager",
+        "nhan_su_ke_toan": "Human Resources-Accounting",
+        "tien_ich": "Utilities"
+      },
+      "features": {
+        "ky_so_dien_tu": "Digital signature",
+        "dieu_hanh_van_ban": "Document Management",
+        "quan_ly_cong_viec": "Task Management",
+        "quy_trinh_lam_viec": "Working Process",
+        "hop_dong_dien_tu": "Smart Contract",
+        "tin_tuc_truyen_thong": "News, media",
+        "lich_hop_cong_tac": "Business meeting schedule",
+        "van_phong_pham": "Stationery",
+        "camera_ai": "Camera AI",
+        "tai_lieu_so": "Digital documents, libraries",
+        "quan_ly_tai_san": "Asset Management",
+        "dang_ky_cong_tac": "Register for a business trip",
+        "cong_tac_phi": "Business fee",
+        "quan_ly_nhan_su": "HRM",
+        "cham_cong_giam_sat": "Supervising timekeeping",
+        "bang_cong": "Salary/Salary Table",
+        "danh_gia_kpi": "assessment / KPI",
+        "phan_mem_ke_toan": "Accounting Software",
+        "hoa_don_dien_tu": "Electronic bill",
+        "tuong_tac": "Interact",
+        "khao_sat": "Survey",
+        "quan_ly_yeu_cau": "Manage requests",
+        "quan_ly_danh_muc": "Manage categories",
+        "quan_ly_doi_tac": "Partner Management"
+      }
+    },
+    "company": "Company",
+    "contact": "Contact"
+  },
+  "labels": {
+    "contact": "Contact",
+    "contact_now": "Contact Now",
+    "contact_help": "Contact help",
+    "detail": "Detail",
+    "send": "Send",
+    "contact_info": "Contact Info",
+    "new": "New",
+    "fullName": "Full name",
+    "phone": "Phone",
+    "email": "Email",
+    "content": "Content",
+    "agree": "Agree",
+    "subcribe_content": "Receive Email notifications about our latest app updates and product lines.",
+    "company_address": "No.1, Lo 4E, Trung Yen 10B, Yen Hoa, Cau Giay, Hanoi",
+    "compay_name": "IInformation Technology Service System Development Co., Ltd",
+    "compay_sologan": "With the goal of \"Bringing optimal value to customers and partners\", we create a digital office ecosystem with full modules and functions aimed at comprehensive digital transformation of office activities. , optimize costs & support business administration and management."
+  },
+  "text.san_pham_cau_hinh": "Products <b>configured</b> according to your <b>business's</b>",
+  "homePage": {
+    "banner": {
+      "title": "Digital office solutions",
+      "subtitle": "A comprehensive digital transformation ecosystem for the Office block. Automate business processes, store information, data, records... on a digital platform."
+    },
+    "sections": {
+      "nen_tang_doanh_nghiep": {
+        "features": {
+          "nen_tang_doanh_nghiep_title": "Platform for business",
+          "nen_tang_doanh_nghiep_desc": "Digital transformation of all office block operations, fully customizable solution. Helping businesses become different in operations, optimizing resources and achieving business goals.",
+          "tiet_kiem_chi_phi_title": "Cost savings",
+          "tiet_kiem_chi_phi_desc": "Minimize office costs such as printing, searching, hardware and software infrastructure investment costs. Shorten the time of document rotation and storage.",
+          "van_hanh_tu_dong_title": "Automatic operation",
+          "van_hanh_tu_dong_desc": "User-customizable operating procedures. Support businesses to operate automatically, independent of space and time.",
+          "tiet_kiem_thong_minh_title": "Smart search",
+          "tiet_kiem_thong_minh_desc": "Provides a powerful, optimized search engine suite. Data is aggregated, layered according to information fields with real time"
+        }
+      },
+      "dieu_hanh_quan_tri": {
+        "title": "Operations & Administration",
+        "subtitle": "Provide a digital platform to support the operation, operation and management of enterprises.",
+        "features": {
+          "ky_so_dien_tu_title": "Digital signature",
+          "ky_so_dien_tu_desc": "Used in electronic transactions, signing anytime, anywhere easily, safely, securely and quickly, ensuring the same legal value as when using traditional signing methods.",
+          "dieu_hanh_van_ban_title": "Document Management",
+          "dieu_hanh_van_ban_desc": "Initialize and update work progress continuously; Easily track, evaluate and manage work performance; There is a reminder mode, automatic warning when processing is due.",
+          "quan_ly_cong_viec_title": "Workflow management",
+          "quan_ly_cong_viec_desc": "Initialize and update work progress continuously; Easily track, evaluate and manage work performance; There is a reminder mode, automatic warning when processing is due.",
+          "quy_trinh_lam_viec_title": "Working Process",
+          "quy_trinh_lam_viec_desc": "Building a synchronous and fast process for all business activities; Solve the problem of inefficient business operation, many errors and cumbersome when there is a lack of standard processes.",
+          "hop_dong_dien_tu_title": "Smart Contract",
+          "hop_dong_dien_tu_desc": "Sign contracts online anytime, anywhere; Meet convenience, speed and transparency when signing contracts remotely; Applicable to all types of electronic contracts/documents/transactions.",
+          "tin_tuc_truyen_thong_title": "News, Media",
+          "tin_tuc_truyen_thong_desc": "Building a centralized internal information channel, conveying the vision and mission of the enterprise to all members of the company; Connecting people and retaining talent.",
+          "lich_hop_cong_tac_title": "Meeting schedule, Business",
+          "lich_hop_cong_tac_desc": "Proactive and flexible in scheduling; Manage and store history, meeting minutes, meeting decisions, from which to use as a basis for implementing other business activities."
+        }
+      },
+      "quan_ly_van_phong": {
+        "title": "Office manager",
+        "subtitle": "Comprehensive support for office management: optimizing office resources, providing a centralized digital library, applying technology to monitor and evaluate office activities.",
+        "features": {
+          "van_phong_pham_title": "Stationery",
+          "van_phong_pham_desc": "Helps to save the maximum cost of stationery; Utilities for users to actively request necessary office supplies.",
+          "camera_ai_title": "Camera AI",
+          "camera_ai_desc": "Cung cấp hệ thống camera thông minh sử dụng trí tuệ nhân tạo, tích hợp chấm công, giám sát bằng nhận diện khuôn mặt.",
+          "tai_lieu_so_title": "Digital documents, libraries",
+          "tai_lieu_so_desc": "Support to store documents and records of enterprises in a centralized manner; Shorten search time. Smart storage, easy sharing.",
+          "quan_ly_tai_san_title": "Asset Management",
+          "quan_ly_tai_san_desc": "Asset management, asset inventory, adjustment of increase, decrease, transfer of assets between departments.",
+          "dang_ky_cong_tac_title": "Register for a business trip",
+          "dang_ky_cong_tac_desc": "Simplify the registration of business trips, advance travel expenses; trip reports. Keep track of all activities related to the schedule before, during and after work.",
+          "cong_tac_phi_title": "Business fee",
+          "cong_tac_phi_desc": "Đề xuất công tác phí một cách dễ dàng, nhanh chóng; Minh bạch trong hạch toán công tác phí, là thước đo chi phí phát sinh của doanh nghiệp."
+        }
+      },
+      "nhan_su_ke_toan": {
+        "title": "Human Resources - Accounting - Salary",
+        "subtitle": "Assist with human resource management tasks such as recruitment, training, and personnel evaluation. Calculating employee salaries, bonuses, and income taxes.",
+        "features": {
+          "quan_ly_nhan_su_title": "HRM",
+          "quan_ly_nhan_su_desc": "Establish the entire recruitment, training, evaluation and development process; Centralize all employees' information; Provide reports and forecast personnel changes.",
+          "cham_cong_title": "Supervising timekeeping",
+          "cham_cong_desc": "Automatically update timekeeping information; Record, exchange and transparently display timekeeping; Integrate with a variety of timekeepers or AI Cameras.",
+          "bang_cong_title": "Table of wages / salary",
+          "bang_cong_desc": "Forecast salary budget, automatically calculate accurate salary, business salary, package salary, product salary.",
+          "danh_gia_KPI_title": "Evaluation / KPI",
+          "danh_gia_KPI_desc": "The management software evaluates KPI accurately, transparently, improving the working productivity of the whole enterprise.",
+          "phan_mem_ke_toan_title": "Accounting Software",
+          "phan_mem_ke_toan_desc": "BSSD's accounting software can handle tax accounting and internal accounting problems.",
+          "hoa_don_dien_tu_title": "Electronic bill",
+          "hoa_don_dien_tu_desc": "Invoice data is secure and integrated with existing accounting software on the market."
+        }
+      },
+      "tien_ich_khac": {
+        "title": "Other facilities",
+        "subtitle": "Provide other add-ons for businesses in branding and enhancing the experience internally and externally.",
+        "features": {
+          "tuong_tac_title": "Interact",
+          "tuong_tac_desc": "Support messaging, calling, commenting, exchanging, ... right on the platform of the business, helping to increase work processing efficiency and record the entire history of interacting with customers, internal interactions .",
+          "quan_ly_yeu_cau_title": "Manage requests",
+          "quan_ly_yeu_cau_desc": "Create and receive requests from all sources; Sort, sort and transfer to required department for quick resolution; Easily monitor the whole process; Update results and evaluate request processing.",
+          "khao_sat_title": "Survey",
+          "khao_sat_desc": "Support businesses to create survey forms for their own units in a simple way, customizing according to the subjects participating in the survey (internal surveys and customer surveys).",
+          "quan_ly_doi_tac_title": "Partner Management",
+          "quan_ly_doi_tac_desc": "Provide partner information management, easy search, classification and tracking of potential customers, thereby having a better customer care plan."
+        }
+      },
+      "khach_hang_chon": {
+        "title": "\"Why do customers choose us\"",
+        "subtitle": "We bring maximum value to customers and partners.",
+        "features": {
+          "nen_tang_cong_nghe_title": "Technology platform",
+          "nen_tang_cong_nghe_desc": "The solution is built on the latest technology platform, in line with the trend of digital transformation: Cloud base, Mobility, AI ... Ensure safety, security, data integrity",
+          "on_dinh_an_toan_title": "Stable and safe",
+          "on_dinh_an_toan_desc": "Solutions for stable operation according to SLA commitments to each business and customer; All data is stored safely, securely and can be accessed anytime, anywhere.",
+          "giao_dien_tuong_thich_title": "Compatible interface",
+          "giao_dien_tuong_thich_desc": "Stable operation on all current popular platforms (Web, Mobile, Tablet). There is an installation version on iOS and Android.",
+          "ho_tro_247_title": "24/7 support",
+          "ho_tro_247_desc": "We have a 24/7 customer support team. In case you have questions about the product, please contact us immediately."
+        }
+      },
+      "text.contract_help": "Contact help"
+    }
+  },
+  "contractPage": {
+    "banner": {
+      "title": "Smart contract",
+      "subtitle": "A comprehensive digital transformation ecosystem for the Office block. Automate business processes, store information, data, records... on a digital platform."
+    },
+    "sections": {
+      "van_de_doanh_nghiep": {
+        "title": "Business problems",
+        "subtitle": "Provide a digital platform to support the operation, operation and management of enterprises.",
+        "features": {
+          "ky_so_dien_tu_title": "Digital signature",
+          "ky_so_dien_tu_desc": "Used in electronic transactions, signing anytime, anywhere easily, safely, securely and quickly, ensuring the same legal value as when using traditional signing methods.",
+          "dieu_hanh_van_ban_title": "Document Management",
+          "dieu_hanh_van_ban_desc": "Initialize and update work progress continuously; Easily track, evaluate and manage work performance; There is a reminder mode, automatic warning when processing is due.",
+          "quy_trinh_lam_viec_title": "Working Process",
+          "quy_trinh_lam_viec_desc": "Building a synchronous and fast process for all business activities; Solve the problem of inefficient business operation, many errors and cumbersome when there is a lack of standard processes.",
+          "hop_dong_dien_tu_title": "Smart Contract",
+          "hop_dong_dien_tu_desc": "Sign contracts online anytime, anywhere; Meet convenience, speed and transparency when signing contracts remotely; Applicable to all types of electronic contracts/documents/transactions.",
+          "tin_tuc_truyen_thong_title": "News, Media",
+          "tin_tuc_truyen_thong_desc": "Xây dựng kênh thông tin nội bộ tập trung, truyền tải tầm nhìn và sứ mệnh của doanh nghiệp đến mọi thành viên trong công ty; Gắn kết con người và giữ chân nhân tài."
+        }
+      }
+    }
+  }
+}
