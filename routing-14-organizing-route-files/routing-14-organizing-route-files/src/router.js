@@ -6,6 +6,7 @@ import TeamMembers from './components/teams/TeamMembers.vue';
 import NotFound from './pages/NotFound.vue';
 import TeamsFooter from './pages/TeamsFooter.vue';
 import UsersFooter from './pages/UsersFooter.vue';
+import notfoundfooter from './pages/notfoundfooter.vue'
 
 const router = createRouter({
   history: createWebHistory(),
@@ -27,6 +28,7 @@ const router = createRouter({
     }, // our-domain.com/teams => TeamsList
     {
       path: '/users',
+      alias: ['/1', '/2'],
       components: {
         default: UsersList,
         footer: UsersFooter
@@ -37,7 +39,15 @@ const router = createRouter({
         next();
       }
     },
-    { path: '/:notFound(.*)', component: NotFound }
+    {
+      path: '/:notFound(.*)',
+      components: {
+        default: NotFound,
+        footer: notfoundfooter,
+        footer1: UsersFooter
+      },
+      props: true
+    }
   ],
   linkActiveClass: 'active',
   scrollBehavior(_, _2, savedPosition) {
@@ -49,7 +59,7 @@ const router = createRouter({
   }
 });
 
-router.beforeEach(function(to, from, next) {
+router.beforeEach(function (to, from, next) {
   console.log('Global beforeEach');
   console.log(to, from);
   if (to.meta.needsAuth) {
@@ -66,7 +76,7 @@ router.beforeEach(function(to, from, next) {
   // next();
 });
 
-router.afterEach(function(to, from) {
+router.afterEach(function (to, from) {
   // sending analytics data
   console.log('Global afterEach');
   console.log(to, from);

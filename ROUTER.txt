@@ -6,7 +6,8 @@
 //   redirect: '/permission/page',  ====>  chuyển hướng từ  '/permission' tới '/permission/page' ...............
 // redirect: noredirect Nếu noredirect, route này sẽ không click được
 
-//   alias: '/home',   ==>> thay thế  từ path: '/permission' thành '/home' nếu truy cập vào .../home' ( chỉ là thay thế tên k phải chuyển hướng nếu cố thay permission bằng home) ( alias tên gọi khác)
+//   alias: '/home',   ==>> thay thế  từ path: '/permission' thành '/home' nếu truy cập vào .../home' 
+( chỉ là thay thế tên k phải chuyển hướng nếu cố thay permission bằng home) ( alias tên gọi khác)
 
 // alwaysShow: true  ==> Khi 1 route cha có nhiều hơn 1 route con, tất cả các route con sẽ hiển thị dưới dạng nested (menu con)
 // Nhưng khi 1 route cha chỉ có 1 route con, thì menu sẽ hiển thị route con thay cho route cha (menu con chỉ có 1 link, thì sẽ thay thế menu cha)

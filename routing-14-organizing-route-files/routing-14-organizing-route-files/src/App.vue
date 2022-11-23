@@ -5,6 +5,7 @@
   </main>
   <footer>
     <router-view name="footer"></router-view>
+    <router-view name="footer1"></router-view>
   </footer>
 </template>
 

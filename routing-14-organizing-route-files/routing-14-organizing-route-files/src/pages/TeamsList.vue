@@ -19,6 +19,9 @@ export default {
     TeamsItem,
   },
   inject: ['teams'],
+  created(){
+    console.log('tuancanTeamsItem', this.teams);
+  }
 };
 </script>
 
