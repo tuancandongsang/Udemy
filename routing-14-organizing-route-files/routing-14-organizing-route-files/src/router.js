@@ -6,7 +6,7 @@ import TeamMembers from './components/teams/TeamMembers.vue';
 import NotFound from './pages/NotFound.vue';
 import TeamsFooter from './pages/TeamsFooter.vue';
 import UsersFooter from './pages/UsersFooter.vue';
-import notfoundfooter from './pages/notfoundfooter.vue'
+import notfoundfooter from './pages/notfoundfooter.vue';
 
 const router = createRouter({
   history: createWebHistory(),
@@ -22,32 +22,32 @@ const router = createRouter({
           name: 'team-members',
           path: ':teamId',
           component: TeamMembers,
-          props: true
-        } // /teams/t1
-      ]
+          props: true,
+        }, // /teams/t1
+      ],
     }, // our-domain.com/teams => TeamsList
     {
       path: '/users',
       alias: ['/1', '/2'],
       components: {
         default: UsersList,
-        footer: UsersFooter
+        footer: UsersFooter,
       },
       beforeEnter(to, from, next) {
         console.log('users beforeEnter');
         console.log(to, from);
         next();
-      }
+      },
     },
     {
       path: '/:notFound(.*)',
       components: {
         default: NotFound,
         footer: notfoundfooter,
-        footer1: UsersFooter
+        footer1: UsersFooter,
       },
-      props: true
-    }
+      props: true,
+    },
   ],
   linkActiveClass: 'active',
   scrollBehavior(_, _2, savedPosition) {
@@ -56,7 +56,7 @@ const router = createRouter({
       return savedPosition;
     }
     return { left: 0, top: 0 };
-  }
+  },
 });
 
 router.beforeEach(function (to, from, next) {
