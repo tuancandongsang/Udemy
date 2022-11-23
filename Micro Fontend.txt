@@ -1,0 +1,13 @@
++ Tại sao cần Micro frontend
+- Ứng dụng càng lúc càng phình ra về quy mô, cũng như độ phức tạp
+- maintain đỡ bị vất vả
+
++ Micro fontend là gì?
+- Chia nhỏ các phần việc, thay vì 1, chúng ta có nhiều codebase, và trên từng codebase chỉ quản lý một tính năng cụ thể mà thôi.
++ cách làm
+- Giảm Tương tác giữa các phần việc
+thay vì trao đổi thông tin với nhau, ta cố gắng trao đổi thông tin với database. hãn hữu mới trao đổi thông tin giữa component
+- Thư viện component dùng chung
+- Styling ( css)
+cố gắng để mỗi module không bị chồng chéo style. có thể tạo mỗi module 1 file css riêng
+- 

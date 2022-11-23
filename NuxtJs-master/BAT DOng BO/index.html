@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.1.3/axios.min.js"
+        integrity="sha512-0qU9M9jfqPw6FKkPafM3gy2CBAvUWnYVOfNPDYKVuRTel1PrciTj+a9P3loJB+j0QmN2Y0JYQmkBBS8W+mbezg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+</head>
+
+<body>
+    <div id="app">
+        <p><b>Hello World!</b></p>
+        <img src="https://miro.medium.com/max/1400/1*StK97OiY5rxG40THoNlHZw.png" alt="">
+        <P>
+            - <b>JavaScript</b> là một <b>ngôn ngữ lập trình đơn luồng</b> => trong 1 thời điểm chỉ làm đc 1 việc ( 1
+            luồng
+            duy nhất) <br>
+            <b>- điểm mạnh</b> : k có các vấn đề tương tranh,
+            <br> vì chạy tuần tự theo đúng nguyên tắc nên sẽ hạn chế mắc phải các lỗi liên quan đến quá trình, nếu bị
+            lỗi thì sẽ dễ dàng tìm ra và khắc phục, dễ quản lý. <br>
+            <b>- điểm yếu</b>: Vì chạy theo thứ tự và phải chờ đợi nhau nên sẽ sinh ra trạng thái chờ, các tác vụ dài sẽ
+            làm chặn luồng chính của tác vụ khác.
+        </P>
+        <div style="margin-top: 100px; margin-left: 20px">
+            <h1><b>CALL STACK</b></h1>
+            <p><b>ví dụ về 1 đoạn code như sau</b></p>
+            <p style="margin-left:50px">
+                function b() { <br>
+                <span style="margin-left: 20px"> console.log(myVar); </span> <br>
+                }; <br>
+                function a() { <br>
+                <span style="margin-left: 20px"> var myVar = 2; </span> <br>
+                <span style="margin-left: 20px">b(); </span> <br>
+                <span style="margin-left: 20px"> console.log(myVar); </span> <br>
+                }; <br>
+                <br>
+                var myVar = 1;<br>
+                console.log(myVar); <br>
+                a(); <br>
+            </p>
+            <p>- thứ tự chạy về call stack sẽ là</p>
+            <img style="width: 500px" src="https://images.viblo.asia/e6a202c0-2dbc-4ec0-af91-0fc89500fb72.png" alt="">
+            <p>
+                ===>>> thứ tự trả ra: <br>
+                <b> => 1</b> <br> <b>=> 1</b> <br> <b>=> 2</b>
+            </p>
+            <p>
+                - <b>Call Stack</b> : như một ngăn xếp với cấu trúc LIFO được sử dụng để lưu trữ tất cả các execution
+                context
+                được tạo ra trong quá trình thực thi code. <br> => JS là ngôn ngữ đơn luồng nên các mục chỉ có thể được
+                thêm hoặc xóa khỏi đầu ngăn xếp LIFO => vào đầu tiên ra cuối cùng ==> dẫn tới việc chặn luồng code khi
+                có 1 tác vụ kéo dài
+            </p>
+
+
+            <h1 style="margin-top: 50px">DOM EVENT</h1>
+            <p>
+                - tuy nhiên sẽ có 1 số hàm bất đồng bộ sẽ chuyển xang <B>WEB APIS</B> như các tác vụ về <b>setTimeout()
+                    , DOM
+                    Events , hàm gọi dữ liệu (Fetch...)</b>
+                và được thực hiện sau khi các tác vụ đồng bộ chạy xong <br>
+            </p>
+            <p><b>- Xem ví dụ về đồng bộ, bất đồng bộ ở file JS</b></p>
+            <p><b>DOM Events </b> : là các sự kiện sảy ra trong DOM như onclick <b id="DOM"
+                    style="padding: 4px 8px; background-color:bisque; cursor: pointer;"> DOM Events</b> , chưa đẩy luôn
+                xuống Message Queue, chỉ đẩy xuống Message Queue khi được gọi qua các sự kiện của Dom Evevts </p>
+            <p><b>setTimeout()</b> : là 1 hàm callback function có thời gian xác định chạy sau khi call stack trống, và
+                được đẩy luôn xuống Message Queue </p>
+            <p><b>hàm gọi dữ liệu (Fetch...)</b> : là các hàm gọi dữ liệu từ serve, được đẩy luôn xuống Message Queue
+            </p>
+
+
+            <H1 style="margin-top: 50px">Message Queue và Evevt Loop</H1>
+
+            <img src="https://neilkillen.files.wordpress.com/2018/07/queue.png" alt="">
+
+            <p> <b>Message Queue</b> - Nơi chứa những thông điệp <b>"nợ"</b> của Wep APIs ( hàng Đợi) và thực thi theo
+                cơ chế <b>LIFO</b> (vào trước ra trước), sau khi call stack hết thì bắt đầu đẩy vào</p>
+
+            <img src="https://topdev.vn/blog/wp-content/uploads/2018/12/event-loop.jpeg" alt="">
+            <p>
+                <b>Evevt Loop</b> - Khi call stack thực hiện hết các tác vụ execution context ( call stack trống) thì
+                các thành phần trong Message Queue sẽ được đẩy vào trong Call stack thống qua vòng lặp Evevt Loop
+            </p>
+
+            <h1>Quá trình chạy chương trình trong file main.js</h1>
+            <p>
+                Đầu tiên chương trình chạy đọc 1 loạt các dòng code. Những câu lệnh đồng bộ sẽ được sử lý luôn và trả về
+                in ra các câu lệnh <br>
+                // alo1 <br>
+                // alo2 <br>
+                những lệnh bất đồng bộ sẽ được chuyển xang <b>Wep Api</b> như <b>setimeOut, onclick, Fetch ... </b> và
+                chạy đồng thời ở <b>WEP APIS</b>
+                , câu lệnh nào chạy xong sẽ được đẩy xuống <b>Message Queue</b> ( trừ DOM EVENT vẫn ở trong WEB APIS)
+                <br>
+                <b>CALL STACK</b> vẫn chạy đồng bộ <br>
+                ==> lúc này chạy song song 2 chương trình ở WEP APIS và CALL STACK <BR>
+                <b>Khi quá trình đồng bộ ở CALLSTACK chạy xong</b>, CALL STACK <B>"trống"</B> vòng lặp <b>event loop</b>
+                sẽ đẩy dữ liệu từ <b>Message Queue</b> vào CALL STACK và chạy tiếp <br>
+
+            </p>
+
+            <h1>Tổng kết</h1>
+            <img src="https://images.viblo.asia/df219cd6-07c8-4968-bf52-5330e1c084d3.png" alt="">
+            <p>
+                - tiết kiệm thời gian chạy chương trình <br>
+                - <b>ví dụ</b> : ở main.js nếu như việc gọi api từ serve là 1s, nếu chương trình chạy đồng bộ ta sẽ mất
+                tổng cộng 2, nhưng với bẩt đồng bộ, ta sẽ mất tổng 1s
+
+            </p>
+        </div>
+    </div>
+    <script src="main.js">
+    </script>
+</body>
+
+</html>

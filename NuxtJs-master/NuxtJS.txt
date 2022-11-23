@@ -1,0 +1,77 @@
+- tạo dự án npm init nuxt-app project-name
+- tại file page, tạo thư mục tên user thì chỉ cần chỉnh link url /user là sẽ chỏ ra màn hình của fiel user.vue mà k cần cấu hình ở router
+- tự động import component có trong file component mà k cần import ở file cha cần nhận ( vì ở trong file nuxt.config.js có component:true). chỉ có ở phiên bản 2.13 trở lên
+- router ở luôn file page mà ta k cần dùng router
+- router id động ở file page luôn
+- console.log của SSR ở luôn brower luôn, không cần hiện ở terminal. ( lọc ra tất cả các key Object.keys(obj_name) , Number(text) kiểm tra xem có phải 1 số hay k )
+- layout trong hiển thị page, đặt lauput trong script của component xem component đó hiển thị trong layout nào
+- middleware chạy trước khi render component, áp dụng cho việc check login, ... tương tự như beforeEach
+	tạo foder midderware , tạo file name, import file name vào nust.config.js 
+	thứ tự chạy : middleware ở forder middleware sẽ chạy trước, rồi mới tới component
+- scrollToTop: true/false là 1 hàm của nuxtJs, dùng để chuyển lên đầu sau mỗi lần chuyển trang trong SPA cuộn lên trên, hoặc để ở layout - các component trong đó sẽ lên đầu
+	còn nếu trong vueJS, khi chuyển xang 1 component mới - muốn chuyển lên top. ta dùng window.scrollTo(x-coord, y-coord)
+- plugins vd gắn vue-notification
+- thẻ meta trong head(), 
+
+	có 3 cách. c1 gắn ở global trong nuxt.config.js. 
+	c2: gắn ở component ở thông qua head:.  làm cho mỗi component có 1 head khác nhau ( render trước data)
+	c3: dùng như 1 hàm ( tittle sẽ được render sau data)
+	chèn link front chữ, icon... trong head ở nuxt.config.js
+trong head() có các thuộc tính tittle, meta, script
+
+sơ đồ 1 thẻ head trong 1 component
+  head() {
+    return {
+      title: this.title, // có thể lấy từ data xuống
+      meta: [
+        {
+          hid: 'description',   // h-id của component
+          name: 'alo',       // name của 
+          content: 'user page description',       // content
+        }
+      ],
+      link: [   //// gắn thẻ link ở đầu head vd link bootrap css
+        {
+          href: "https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css",
+          rel: "stylesheet",
+          integrity: "sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC",
+          crossorigin: "anonymous",
+        }
+      ],
+      script: [     /// gắn file script vs gắn JS bootrap
+        {
+          body: true,   /// đặt script này ở vị trí header hay cuối thẻ body : true
+          src: 'https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js',
+          integrity: "sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM",
+          crossorigin: "anonymous"
+        }
+      ]
+    }
+  }
+
+- Custom Loading Pages : loading khi chuyển component, mặc định hoặc tự tạo
+	vào file nuxt.config.js sửa loading các thuộc tính của thanh loading
+    loading: {
+    	color: 'blue',   // màu thanh loadunbg
+   	height: '5px',  // chiều cao thanh loading
+   	failedColor: 'red', /// màu khi lỗi
+  	css: true, // css true: sử dụng css của loading. false thì sẽ là dùng của dev tạo
+    	rtl: true, /// cấu trúc đoạn văn từ trái qua phải, false là phải qua trái ( arap, japan )
+  		}
+
+	Hàm giả lập gọi api thành công
+	asyncData({isDev, route, store, env, params, query, req, res, redirect, error}) {
+    return new Promise((resolve, redirect) => {
+        setTimeout(function(){
+            // resolve({})
+            redirect({error: 'co loi say ra'})
+
+        }, 2000)
+    })
+- vuex trong nuxt
+	modul
+	chia file
+	mapAction, mapState, mapMutation
+
+
+

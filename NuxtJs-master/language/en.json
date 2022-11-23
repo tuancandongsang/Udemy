@@ -1,0 +1,29 @@
+
+{
+    "common": {
+      "welcome": "Welcome!",
+      "language": "Language",
+      "head":"Header",
+      "footer":"Footer",
+      "sider":"Sider"
+    },
+    "header":{
+      "home":"Home",
+      "shop": "Shop",
+      "collections":"Collections",
+      "blogs":"Blogs",
+      "contactus":"Contactus"
+    },
+    "login": {
+      "login": "Login",
+      "register": "Register",
+      "logout": "Logout",
+      "signin": "Sign in",
+      "email": "Email",
+      "password":"Password",
+      "fullname": "Full Name",
+      "confirmpassword": "Confirm Password",
+      "hide": "Hide",
+      "show": "Show"
+    }
+  }

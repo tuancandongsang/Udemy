@@ -1,0 +1,29 @@
+
+{
+    "common": {
+      "welcome": "Xin Chao!",
+      "language": "Ngôn ngữ",
+      "head":"Tiêu đề trên",
+      "footer":"Tiêu đề dưới",
+      "sider":"Thanh menu"
+    },
+    "header":{
+      "home":"Trang Chủ",
+      "shop": "Shop",
+      "collections":"Bộ Sưu Tập",
+      "blogs":"Blogs",
+      "contactus":"Liên Hệ"
+    },
+    "login": {
+      "login": "Đăng nhập",
+      "register": "Đăng ký",
+      "logout": "Đăng xuất",
+      "signin": "Chấp nhận",
+      "email": "Email",
+      "password":"Mật hhẩu",
+      "fullname": "Tên đăng nhập",
+      "confirmpassword": "Nhập lại mật khẩu",
+      "hide": "Ẩn",
+      "show": "Hiện"
+    }
+  }
