@@ -1,0 +1,76 @@
+.search {
+  padding: 100px 0 110px;
+  &__title {
+    margin: 0 0 15px;
+    padding: 10px 0;
+    font-size: 22px;
+    font-weight: 700;
+    line-height: 30px;
+    text-align: center;
+    color: var(--vela-text-color-secondary);
+  }
+  &-group {
+    max-width: 600px;
+    margin: 2px auto 30px;
+    box-shadow: 0 0 3px var(--vela-notfound-txtcolor);
+    border-radius: 5px;
+    overflow: hidden;
+    width: 100%;
+    display: table;
+    border-collapse: separate;
+    &__input {
+      height: 48px;
+      border: 0;
+      padding: 9px 50px 9px 20px;
+      color: var(--vela-text-color-secondary);
+      position: relative;
+      z-index: 2;
+      float: left;
+      margin-bottom: 0;
+    }
+    &-addon {
+      font-weight: 400;
+      line-height: 1;
+      color: var(--vela-text-color-primary);
+      text-align: center;
+      background-color: var(--vela-body-bg);
+      border: var(--vela-border-main);
+      border-radius: 3px;
+      & img {
+        display: inline-block;
+        width: 20px;
+        height: auto;
+        top: -2px;
+      }
+      &__btn {
+        transition: all 0.35s ease;
+        width: 50px;
+        border: 0;
+        position: absolute;
+        right: 0;
+        top: 8px;
+        padding: 0;
+        border-radius: 0;
+        line-height: 32px;
+        border-left: 1px solid var(--btn-searchproduct-bordercolor);
+        z-index: 3;
+        font-size: 18px;
+        color: var(--vela-text-color-secondary);
+        background-color: transparent;
+        &:hover {
+          opacity: 0.6;
+        }
+        &:focus {
+          box-shadow: 0 0 0 0.25rem rgb(13 110 253 / 0%);
+        }
+      }
+    }
+  }
+  &-list {
+    flex-flow: row wrap;
+    &-item {
+      position: relative;
+      padding-bottom: 30px;
+    }
+  }
+}

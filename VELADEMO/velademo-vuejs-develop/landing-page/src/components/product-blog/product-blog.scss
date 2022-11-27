@@ -1,0 +1,120 @@
+.blog {
+  &-body {
+    display: contents;
+  }
+  &__title {
+    width: 21%;
+    display: inline-block;
+    background-color: var(--vela-color-primary);
+    border-radius: 3px;
+    color: #fff;
+    font-size: 12px;
+    padding: 0 10px;
+    text-transform: uppercase;
+    font-weight: 700;
+    margin-top: 30px;
+  }
+  &-article {
+    margin-top: 15px;
+    font-size: 14px;
+    color: #666;
+    &__author {
+      color: var(--vela-text-color-secondary);
+      font-weight: 700;
+      margin-right: 5px;
+    }
+    & span {
+      font-family: var(--vela-font-family-secondary);
+    }
+  }
+  &__text {
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 26px;
+    margin: 10px 0 20px;
+    font-family: var(--vela-font-family-secondary);
+    color: var(--vela-text-color-secondary);
+    &:hover {
+      cursor: pointer;
+      color: var(--vela-color-primary);
+    }
+  }
+  &-btn {
+    color: var(--vela-text-color-secondary);
+    font-weight: 700;
+    font-size: calc(var(--vela-font-size) - 2px);
+    border: 2px solid var(--vela-border-color);
+    transition: all 0.2s ease-in;
+    border-radius: 5px;
+    padding: 13px 30px;
+    margin-top: 25px;
+    width: 40%;
+    display: inline-block;
+    &:hover {
+      border-color: var(--vela-color-primary);
+      color: var(--vela-color-primary);
+    }
+    & span {
+      position: relative;
+      bottom: -2px;
+      font-size: 14px;
+      margin-left: 10px;
+      font-family: simple-line-icons;
+      speak: none;
+      font-style: normal;
+      font-weight: 400;
+      font-variant: normal;
+      text-transform: none;
+      line-height: 1;
+    }
+  }
+}
+.card {
+  border: none;
+  margin-bottom: 40px;
+  width: 50%;
+  padding: 0 10px;
+  & img {
+    height: 270px;
+  }
+}
+@media screen and (max-width: 1200px) {
+  .blog {
+    &__title {
+      width: 35%;
+    }
+    &-btn {
+      width: 65%;
+    }
+  }
+}
+@media screen and (max-width: 768px) {
+  .blog {
+    &__title {
+      width: 30%;
+    }
+    &-btn {
+      width: 60%;
+    }
+  }
+  .card {
+    & img {
+      height: 200px;
+    }
+  }
+}
+@media screen and (max-width: 560px) {
+  .blog {
+    &__title {
+      width: 17%;
+    }
+    &-btn {
+      width: 32%;
+    }
+  }
+  .card {
+    & img {
+      height: 270px;
+    }
+  }
+}

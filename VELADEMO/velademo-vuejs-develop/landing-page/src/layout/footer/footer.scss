@@ -1,0 +1,98 @@
+footer {
+  background: var(--vela-footer_top-textcolor);
+
+  .menus {
+    padding: 70px 0 40px;
+
+    .item {
+      .logo {
+        width: 130px;
+        margin: 0 0 30px 0;
+      }
+
+      .social {
+        ul {
+          li {
+            display: inline-block;
+
+            a {
+              display: block;
+              margin: 0 10px 0 10px;
+            }
+          }
+        }
+      }
+
+      h5 {
+        color: var(--vela-footer-titlecolor);
+        margin: 0 0 20px 0;
+      }
+
+      .info {
+        margin: 0 0 30px 0;
+        color: var(--vela-breadcrumb-textcolor);
+
+        h6 {
+          color: var(--vela-footer-titlecolor);
+          margin: 0 0 20px 0;
+          font-family: RedHatBold;
+        }
+
+        .phone {
+          display: inline-flex;
+          align-items: flex-start;
+
+          .icon {
+            margin: 5px 10px 0 0;
+          }
+        }
+      }
+
+      .address {
+        color: var(--vela-breadcrumb-textcolor);
+
+        h6 {
+          color: var(--vela-footer-titlecolor);
+          font-family: RedHatBold;
+          margin: 0 0 20px 0;
+        }
+
+        .body {
+          display: inline-flex;
+          align-items: flex-start;
+
+          .icon {
+            margin: 5px 10px 0 0;
+          }
+        }
+      }
+    }
+  }
+
+  .copyright {
+    border-top: 1px solid var(--vela-topbar-textcolor);
+    padding: 30px 0;
+    font-size: 17px;
+    color: var(--vela-breadcrumb-textcolor);
+
+    span {
+      color: var(--vela-breadcrumb-textcolor);
+    }
+  }
+}
+
+@media screen and (max-width: 575px) {
+  footer {
+    .menus {
+      .item {
+        text-align: center;
+        .logo {
+          margin: 0 auto 30px auto;
+        }
+        .social {
+          margin: 0 0 50px 0;
+        }
+      }
+    }
+  }
+}

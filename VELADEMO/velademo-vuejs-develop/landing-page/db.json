@@ -1,0 +1,108 @@
+{
+  "products": [
+    {
+      "id": 1,
+      "displayName": "Arctander Chair",
+      "description": "Most of us are familiar with the iconic design of the egg shaped chair floating in the air. The Hanging Egg Chair is a critically acclaimed design that has enjoyed praise worldwide ever since the distinctive sculptural shape was created.",
+      "price": 56,
+      "images": [
+        "https://cdn.shopify.com/s/files/1/0376/9440/6700/products/21_2_360x.jpg?v=1598253084",
+        "../src/assets/images/products/product_2.jpg",
+        "../src/assets/images/products/product_3.jpg",
+        "../src/assets/images/products/product_4.jpg"
+      ],
+      "categories": ["Chair", "Furniture", "Sofa", "Decor Art"]
+    },
+    {
+      "id": 2,
+      "displayName": "Stainless steel Teapot",
+      "description": "Chiacchera Desk Chair by Casprini is characterized by a modern Italian design. Its solid and graceful shape makes it ideal for working or studying. Chiacchera Desk Chair features a polypropylene shell and a swivel metal base adjustable in height thru gas piston. Chiacchera Desk Chair is ideal to add an extra touch of vivacity to every modern home office.",
+      "price": 85,
+      "images": [
+        "https://cdn.shopify.com/s/files/1/0376/9440/6700/products/28_360x.jpg?v=1586316960",
+        "../src/assets/images/products/product_3.jpg",
+        "../src/assets/images/products/product_1.jpg",
+        "../src/assets/images/products/product_4.jpg"
+      ],
+      "categories": ["Chair", "Furniture"]
+    },
+    {
+      "id": 3,
+      "displayName": "Beoplay A1",
+      "description": "Chiacchera Barstool by Casprini is characterized by a modern Italian design. The solid and graceful shape of this stool makes it ideal for conversation. Chiacchera Barstool, suitable both for indoor and outdoor, features a polypropylene shell and metal legs.",
+      "price": 57,
+      "images": [
+        "https://cdn.shopify.com/s/files/1/0376/9440/6700/products/29_2_360x.jpg?v=1586316900",
+        "../src/assets/images/products/product_1.jpg",
+        "../src/assets/images/products/product_2.jpg",
+        "../src/assets/images/products/product_4.jpg"
+      ],
+      "categories": ["Furniture", "Sofa", "Decor Art"]
+    },
+    {
+      "id": 4,
+      "displayName": "Turning Table",
+      "description": "Easy Barstool by Casprini features a modern Italian design. The idea behind this essential seating comes from the movement of soft lines that seem to float freely in the ambience. Easy Barstool is characterized by a shell made of curved multilayer wood available in different finishes and metal legs.",
+      "price": 44,
+      "images": [
+        "https://cdn.shopify.com/s/files/1/0376/9440/6700/products/30_1_360x.jpg?v=1586316781",
+        "../src/assets/images/products/product_3.jpg",
+        "../src/assets/images/products/product_1.jpg",
+        "../src/assets/images/products/product_2.jpg"
+      ],
+      "categories": ["Chair", "Decor Art"]
+    },
+    {
+      "id": 5,
+      "displayName": "Side Table",
+      "description": "Casquet Chaise Longue by D3CO features a modern Italian design. This harmonious and elegant chaise longue is characterized by a fold-up back cushion to enjoy moments of authentic relaxation. Available in a selection of luxury upholsteries, Casquet is enriched with contrasting piping.",
+      "price": 11,
+      "images": [
+        "https://cdn.shopify.com/s/files/1/0376/9440/6700/products/3_2_360x.jpg?v=1586316386",
+        "../src/assets/images/products/product_4.jpg",
+        "../src/assets/images/products/product_3.jpg",
+        "../src/assets/images/products/product_1.jpg"
+      ],
+      "categories": ["Furniture", "Sofa"]
+    },
+    {
+      "id": 6,
+      "displayName": "Pia Chair",
+      "description": "Altana P Lounge Chair by Chairs & More features a modern Italian design. It is characterized by generous and enveloping dimensions and by a decoration with marine rope that lightens and covers the entire seat. The shapes and the design of Altana P take up and reinterpret the colonial style of the outdoor seats, according to the interpretation of the designer Antonio De Marco.",
+      "price": 149,
+      "images": [
+        "https://cdn.shopify.com/s/files/1/0376/9440/6700/products/20_2_360x.jpg?v=1586314636",
+        "../src/assets/images/products/product_4.jpg",
+        "../src/assets/images/products/product_3.jpg",
+        "../src/assets/images/products/product_1.jpg"
+      ],
+      "categories": ["Furniture", "Sofa", "Decor Art"]
+    },
+    {
+      "id": 7,
+      "displayName": "Iconic Rocking Horse",
+      "description": "Millie SP Chair by Chairs & More is characterized by a modern Italian design. A light multi-striped effect created by thin cords is the decorative theme of the Millie collection. Designed by the Pastina Studio, the chair is inspired by the 70s, from which it takes some details and the colors palette. With its elegant design.",
+      "price": 159,
+      "images": [
+        "https://cdn.shopify.com/s/files/1/0376/9440/6700/products/15_2_360x.jpg?v=1586245185",
+        "../src/assets/images/products/product_4.jpg",
+        "../src/assets/images/products/product_3.jpg",
+        "../src/assets/images/products/product_1.jpg"
+      ],
+      "categories": ["Chair", "Furniture", "Decor Art"]
+    },
+    {
+      "id": 8,
+      "displayName": "Outdoor Dining Table",
+      "description": "Anic is an armchair with bold and elegant lines. With its low backrest and its charming details, Anic is the perfect piece to enrich every refined interior.",
+      "price": 200,
+      "images": [
+        "http://127.0.0.1:5173/src/assets/images/products/product_8.jpg",
+        "../src/assets/images/products/product_4.jpg",
+        "../src/assets/images/products/product_3.jpg",
+        "../src/assets/images/products/product_1.jpg"
+      ],
+      "categories": ["Chair", "Furniture"]
+    }
+  ]
+}

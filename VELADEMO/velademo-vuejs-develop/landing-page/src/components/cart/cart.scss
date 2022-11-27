@@ -1,0 +1,89 @@
+#view-cart {
+    .products {
+      .item {
+        display: flex;
+        justify-content: space-between;
+        padding: 20px 0;
+        border-bottom: 1px solid var(--vela-btn-bordercolor);
+        .info {
+          display: flex;
+
+          .img {
+            margin: 0 10px 0 0;
+            a {
+              display: inline-flex;
+              width: 90px;
+              height: 112px;
+              min-height: 112px;
+              overflow: hidden;
+            }
+          }
+          .order {
+            padding: 5px 0 0 0;
+            h5 {
+              font-size: 16px;
+              color: var(--vela-header-textcolor);
+            }
+            p {
+              color: var(--vela-topbar-textcolor);
+              margin: 0 0 10px 0;
+            }
+            .action {
+              display: inline-flex;
+              align-items: center;
+              justify-content: space-around;
+              border: 1px solid var(--vela-btn-bordercolor);
+              width: 100px;
+              height: 30px;
+              padding-left: 5px;
+              padding-right: 5px;
+              font-size: 1rem;
+              .btn {
+                padding: 0;
+                font-size: 20px;
+                font-weight: 600;
+              }
+              .quantity{
+                margin: 0;
+              }
+            }
+          }
+        }
+        .btn-remove {
+          display: inline-flex;
+        }
+      }
+    }
+    .total-price {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-family: RedHatBold;
+      margin: 20px 0;
+      p {
+        font-size: 20px;
+      }
+    }
+    .privacy {
+      font-size: 15px;
+    }
+    .btn-view-cart {
+      display: block;
+      border: 2px solid var(--vela-btn-bordercolor);
+      width: 100%;
+      margin: 30px 0;
+      height: 40px;
+      font-family: RedHatBold;
+      border-radius: 5px;
+      color: var(  --addtocart_txtcolor);
+      background-color: var( --button_one_bgcolor);
+
+      &:hover{
+        color: var(  --button_one_bgcolor);
+        background-color: var(  --addtocart_bordercolor_hover);
+        transition: ease 0.5s ;
+      }
+    }
+  }
+
+  

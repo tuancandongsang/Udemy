@@ -1,0 +1,76 @@
+#product-detail {
+  width: calc(95vw - 256px);
+  height: 87.5vh;
+  padding: 20px;
+  margin: 0 auto;
+  border-radius: 5px;
+  background: var(--vela-body-bg);
+
+  h4,
+  h5 {
+    color: var(--productdetail-txtcolor);
+    font-family: var(--vela-font-family);
+  }
+
+  .title-desc {
+    font-family: RedHatBold;
+    & + p {
+      font-size: 16px;
+    }
+  }
+
+  .fs-15 {
+    font-size: 15px !important;
+  }
+
+  .vr {
+    align-self: stretch;
+    width: 1px;
+    background-color: currentColor;
+    opacity: 0.25;
+  }
+
+  .fw-medium {
+    font-weight: 500;
+    font-family: var(--vela-font-family);
+  }
+
+  .avatar-sm {
+    height: 48px;
+    width: 48px;
+  }
+
+  .avatar-title {
+    align-items: center;
+    display: flex;
+    height: 100%;
+    justify-content: center;
+  }
+
+  .hstack {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    align-self: stretch;
+  }
+
+  .border-dashed {
+    border-style: dashed !important;
+  }
+
+  .text-muted {
+    font-size: 13px;
+    color: var(--productdetail-txtmute) !important;
+    font-family: var(--vela-font-family);
+  }
+
+  .list-unstyled {
+    list-style: inside;
+    font-size: 13px;
+    color: var(--productdetail-txtlist);
+  }
+
+  .text-list {
+    font-family: var(--vela-font-family);
+  }
+}

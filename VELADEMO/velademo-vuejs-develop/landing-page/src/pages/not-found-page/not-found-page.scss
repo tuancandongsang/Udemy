@@ -1,0 +1,46 @@
+#not-found-page {
+  .box {
+    background-color: var(--vela-notfound-bgcolor);
+    min-height: 100vh;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    h3 {
+      margin: 0 0 50px;
+      font-size: 170px;
+      font-weight: 600;
+      color: var(--vela-notfound-txtcolor);
+      line-height: 110px;
+    }
+    p {
+      font-size: 28px;
+      margin: 0 0 15px 0;
+      color: var(--vela-text-color-primary);
+      padding: 0 20px;
+      text-align: center;
+      &.desc {
+        margin-bottom: 20px;
+        font-size: 14px;
+      }
+    }
+    .btn-submit {
+      padding: 9px 20px;
+      border-radius: 5px;
+      &:hover {
+        color: var(--button_one_txtcolor_hover);
+        background-color: var(--button_one_bgcolor_hover);
+        border-color: var(--button_one_bordercolor_hover);
+      }
+      &:focus,
+      &:active,
+      &:active:focus {
+        border-color: var(--btn-notfound-bordercolor);
+        background-color: var(--btn-notfound-bgcolor);
+        color: var(--button_one_txtcolor_hover);
+        box-shadow: 0 0 0 0.25rem rgba(25 25 25 / 0%);
+      }
+    }
+  }
+}

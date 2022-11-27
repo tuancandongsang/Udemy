@@ -1,0 +1,113 @@
+#table-record {
+  position: relative;
+  height: 74vh;
+  .ant-table-wrapper {
+    .ant-spin-nested-loading > div:first-child {
+      width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        min-height: 100%;
+        position: static;
+        .ant-spin{
+          max-height: 100%;
+        }
+    }
+  }
+  .ant-table-container {
+    .ant-table-thead {
+      tr {
+        th {
+          font-family: RedHatBold;
+          background: var(--table-list-bgcolor);
+          text-transform: uppercase;
+          font-size: 13px;
+          &::before {
+            display: none;
+          }
+        }
+      }
+    }
+    .ant-table-tbody {
+      tr {
+        td {
+          .actions {
+            display: inline-flex;
+            align-items: center;
+            opacity: 0.6;
+            p {
+              margin: 0 10px 0 0;
+            }
+          }
+        }
+      }
+    }
+  }
+  .paginate {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    display: flex;
+    justify-content: space-between;
+    margin: 30px 0 0 0;
+    padding: 0 20px 0 16px;
+    p {
+      color: var(--parag-txtcolor);
+      font-size: 14px;
+    }
+    .ant-pagination {
+      .ant-pagination-prev,
+      .ant-pagination-next {
+        &:hover {
+          .ant-pagination-item-link {
+            background: var(--vela-parag-purple);
+            border-color: var(--vela-parag-purple);
+            color: var(--velamenu-bgcolor);
+          }
+        }
+        .ant-pagination-item-link {
+          border-radius: 50%;
+        }
+      }
+      .ant-pagination-prev {
+        &:hover {
+          .ant-pagination-item-link {
+            background: var(--vela-parag-purple);
+            border-color: var(--vela-parag-purple);
+            color: var(--velamenu-bgcolor);
+          }
+        }
+      }
+      .ant-pagination-item {
+        border-radius: 50%;
+        &-active {
+          background: var(--vela-parag-purple);
+          border-color: var(--vela-parag-purple);
+          a {
+            color: var(--velamenu-bgcolor);
+          }
+        }
+        &:hover {
+          background: var(--vela-parag-purple);
+          border-color: var(--vela-parag-purple);
+          a {
+            color: var(--velamenu-bgcolor);
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 768px) {
+  #table-record {
+    .paginate {
+      flex-direction: column;
+      p {
+        margin: 0 0 20px 0;
+      }
+    }
+  }
+}

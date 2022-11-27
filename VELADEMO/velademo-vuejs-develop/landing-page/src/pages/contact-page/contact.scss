@@ -1,0 +1,64 @@
+.contact {
+  &-map {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    &__content {
+      width: 100vw;
+      height: 60vh;
+    }
+  }
+
+  &-info {
+    margin: 100px 0 100px 0;
+    &-control {
+      &-left {
+        padding: 0 20px;
+        & p {
+          margin: 0 0 12px;
+        }
+      }
+      &-right {
+        &__control {
+          height: 48px;
+          border-radius: 3px;
+          color: var(--vela-text-color-primary);
+          border: 1px solid var(--vela-border-color);
+          &:focus {
+            border-color: var(--vela-border-color);
+            box-shadow: 0 0 0 0.25rem rgb(255 255 255 / 0%);
+          }
+        }
+        & textarea {
+          height: auto;
+        }
+        &-button {
+          &__message {
+            background-color: var(--vela-body-bg);
+            padding: 13px 30px;
+            width: 100%;
+            border: 1px solid var(--vela-border-color);
+            color: var(--vela-text-color-banner);
+            text-transform: uppercase;
+            font-size: 16px;
+            text-align: center;
+            min-width: 270px;
+            transition: all 0.3s ease-in-out 0s;
+            &:hover {
+              color: var(--vela-color-primary);
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  .contact-info-control-left {
+    margin: 0 0 30px 0;
+    padding: 0;
+  }
+}

@@ -1,0 +1,99 @@
+.collection-body-filter {
+  &-categories {
+    border-bottom: 1px solid var(--vela-border-color);
+    padding-bottom: 40px;
+    margin-bottom: 40px;
+    &-title {
+      font-family: var(--vela-font-family-secondary);
+      font-size: calc(var(--vela-font-size) + 2px);
+      line-height: calc(var(--vela-font-size) + 6px);
+      margin: 0 0 15px;
+      padding: 0px 0 10px;
+      position: relative;
+      color: var(--vela-heading-color);
+      font-weight: 700;
+    }
+    &-list {
+      &__item {
+        margin-bottom: 5px;
+        margin-top: 5px;
+        cursor: pointer;
+        transition: all 1s ease;
+        span {
+          color: var(--vela-text-color-primary);
+          font-size: var(--vela-font-size);
+          line-height: 26px;
+          margin-right: 2px;
+        }
+      }
+    }
+  }
+  &-price {
+    border-bottom: 1px solid var(--vela-border-color);
+    padding-bottom: 40px;
+  }
+  &-bestSeller {
+    padding-bottom: 40px;
+    &-title {
+      font-family: var(--vela-font-family-secondary);
+      font-size: calc(var(--vela-font-size) + 2px);
+      line-height: calc(var(--vela-font-size) + 6px);
+      margin: 0 0 15px;
+      padding: 40px 0 10px;
+      position: relative;
+      color: var(--vela-heading-color);
+      font-weight: 700;
+    }
+    &-item {
+      display: flex;
+      align-items: center;
+      padding: 10px 0;
+      img {
+        width: 55px;
+        height: 75px;
+        margin-right: 15px;
+      }
+      &__info {
+        p {
+          margin: 0 0 5px;
+          font-size: calc(var(--vela-font-size) - 2px);
+          color: var(--vela-text-color-secondary);
+          font-family: var(--vela-font-family-secondary);
+          font-weight: 700;
+          line-height: 1.1;
+          transition: all ease 0.35s;
+        }
+      }
+    }
+  }
+}
+.primary-color {
+  color: var(--vela-color-primary);
+}
+
+.ticked {
+  display: none;
+  transition: all ease 0.5s;
+}
+
+.collection-body-filter-categories-list__item:hover {
+  color: var(--vela-color-primary);
+}
+.collection-body-filter-categories-list__item:hover .ticked {
+  display: inline-block;
+  color: var(--vela-color-primary);
+}
+.collection-body-filter-categories-list__item:hover .not-tick {
+  display: none;
+}
+.collection-body-filter-bestSeller-item:hover p {
+  color: var(--vela-color-primary);
+}
+.collection-body-filter-categories-list__item input {
+  cursor: pointer;
+  margin-right: 5px;
+}
+.collection-body-filter-categories-list__item label {
+  cursor: pointer;
+}
+

@@ -1,0 +1,61 @@
+.info-detail {
+  .product-title {
+    color: #333;
+    font-weight: 700;
+    transition: all ease 0.35s;
+    &:hover {
+      color: var(--vela-color-primary);
+    }
+  }
+  .price {
+    font-size: 25px;
+    font-weight: 600;
+    color: var(--vela-color-primary);
+    margin: 20px 0;
+  }
+  .add-cart {
+    display: flex;
+    .quantity {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: var(--vela-border-color);
+      border-radius: 5px;
+      button {
+        width: 50px;
+        height: 50px;
+        font-size: 25px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all ease 0.35s;
+        &:hover {
+          color: var(--vela-color-primary);
+        }
+      }
+      p {
+        font-size: 20px;
+        font-weight: 600;
+      }
+    }
+    .btn-add-to-cart {
+      margin-left: 30px;
+      height: 50px;
+      font-weight: 600;
+      color: var(--button_one_txtcolor);
+      background-color: #333;
+      border-radius: 5px;
+      padding: 0 30px;
+      transition: all ease 0.35s;
+      &:hover {
+        background-color: var(--vela-color-primary);
+      }
+    }
+  }
+  .availability {
+    margin-top: 20px;
+    font-weight: 600;
+    span {
+      color: #5cb85c;
+    }
+  }
+}

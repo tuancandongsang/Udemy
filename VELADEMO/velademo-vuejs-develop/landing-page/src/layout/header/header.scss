@@ -1,0 +1,285 @@
+.top-bar {
+  background-color: var(--vela-topbar-bgcolor);
+
+  &-body {
+    width: calc(100% - 120px);
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 0;
+
+    &_info {
+      display: flex;
+      align-items: center;
+      font-size: var(--velasubmenu-fontsize);
+      opacity: 0.9;
+    }
+
+    &_sale {
+      font-size: 14px;
+      color: var(--vela-topbar-textcolor);
+
+      a[href="/products"] {
+        display: inline-flex;
+        margin: 0 8px;
+        color: var(--vela-body-bg);
+        padding: 0 10px;
+        border-radius: 3px;
+        background-color: var(--vela-color-primary);
+      }
+    }
+
+    &_social {
+      ul {
+        display: inline-flex;
+        align-items: center;
+
+        .item {
+          margin: 0 6px;
+          opacity: 0.5;
+        }
+      }
+    }
+  }
+}
+
+.navigator {
+  display: flex;
+  align-items: center;
+  position: relative;
+  justify-content: space-between;
+  padding: 20px 60px;
+  background: var(--header-transparent-bgcolor);
+  .btn-burger {
+    display: none;
+  }
+  .logo {
+    width: 130px;
+  }
+
+  .menus {
+    display: inline-flex;
+    align-items: center;
+
+    li[class="menu"] {
+      a {
+        font-size: 16px;
+        display: inline-flex;
+        padding: 15px 20px;
+        color: var(--btnpro_txtcolor);
+
+        &:hover {
+          color: var(--velamenu-linkcolor-hover);
+        }
+      }
+
+      &:nth-child(2),
+      &:nth-child(3) {
+        a {
+          &::after {
+            display: inline-block;
+            content: "\f107";
+            font-family: var(--vela-font-icon);
+            font-size: 10px;
+            margin-left: 5px;
+          }
+        }
+      }
+    }
+  }
+
+  .user {
+    display: inline-flex;
+    align-items: center;
+
+    .profile {
+      display: inline-flex;
+      align-items: center;
+
+      p {
+        margin: 0 5px;
+
+        &.link {
+          button{
+            margin-left: 5px;
+          }
+          a {
+            color: var(--vela-header-textcolor);
+
+            &:hover {
+              color: var(--velamenu-linkcolor-hover);
+            }
+          }
+        }
+      }
+    }
+
+    .btn-search {
+      margin: 0 10px;
+      border: none;
+    }
+
+    .btn-shop-bag {
+      position: relative;
+      margin: 0 10px;
+      border: none;
+
+      small {
+        position: absolute;
+        top: -17px;
+        font-size: 20px;
+        right: -11px;
+      }
+    }
+  }
+  // input search
+  .search-top {
+    position: absolute;
+    transition: all 0.35s ease;
+    right: 60px;
+    z-index: 10;
+    width: 400px;
+    border-radius: 3px;
+    box-shadow: 0 0 5px var(--vela-notfound-txtcolor);
+    top: 0;
+    opacity: 0;
+    &.active {
+      top: 70px;
+      opacity: 1;
+    }
+    &-group {
+      max-width: 600px;
+      position: relative;
+      box-shadow: 0 0 3px var(--vela-notfound-txtcolor);
+      border-radius: 5px;
+      overflow: hidden;
+      &__input {
+        min-height: 45px;
+        border: 0;
+        padding: 9px 50px 9px 20px;
+        color: var(--vela-header-textcolor);
+        position: relative;
+        float: left;
+        font-size: 14px;
+        margin-bottom: 0;
+        &::placeholder {
+          font-size: 14px;
+        }
+      }
+      .btn-search {
+        transition: all 0.35s ease;
+        display: inline-flex;
+        border: 0;
+        position: absolute;
+        right: 20px;
+        top: 50%;
+        padding: 0;
+        border-radius: 0;
+        transform: translate(0, -50%);
+        z-index: 3;
+        color: var(--button_one_bgcolor);
+        background-color: transparent;
+        &:focus {
+          box-shadow: 0 0 0 0.25rem rgb(13 110 253 / 0%);
+        }
+        &:hover {
+          opacity: 0.6;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 1200px) {
+  .top-bar {
+    &-body {
+      justify-content: center;
+      &_info,
+      &_social {
+        display: none;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  .navigator {
+    padding: 30px 30px;
+    .btn-burger {
+      display: inline-flex;
+    }
+    .menus {
+      display: none;
+    }
+    .user {
+      .profile {
+        .link {
+          display: none;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .top-bar {
+    &-body {
+      &_sale {
+        text-align: center;
+      }
+    }
+  }
+  .navigator {
+    padding: 30px 15px;
+  }
+}
+
+.ant-drawer-left {
+  &.menu-drawer {
+    .ant-drawer-header {
+      border: none;
+      .ant-drawer-header-title {
+        flex-direction: row-reverse;
+        .ant-drawer-close {
+          margin: 0;
+        }
+        .ant-drawer-title {
+          font-family: RedHatBold;
+          font-size: 20px;
+        }
+      }
+    }
+    .ant-drawer-body {
+      #menu-mobile {
+        .body {
+          .item {
+            p {
+              color: var(--vela-text-color-primary);
+              margin: 0 0 15px 0;
+            }
+            .ant-collapse {
+              &-item {
+                border: none;
+                .ant-collapse-header {
+                  display: flex;
+                  justify-content: space-between;
+                  align-items: center;
+                  flex-direction: row-reverse;
+                  padding: 0;
+                  & + div {
+                    display: inline-flex;
+                    .ant-collapse-arrow {
+                      display: inline-flex;
+                      margin: 0;
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

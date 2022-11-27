@@ -1,0 +1,246 @@
+#authen-page {
+  padding: 100px 0;
+  .account {
+    margin: 0 auto;
+    max-width: 600px;
+    border-radius: 3px;
+    box-shadow: 0 2px 2px #00000024, 0 1px 5px #0000001f, 0 3px 1px -2px #0003;
+
+    &-nav {
+      display: flex;
+      width: 100%;
+      height: 60px;
+      margin-bottom: 30px;
+
+      &-login {
+        flex: 1;
+        cursor: pointer;
+
+        &__title {
+          padding: 20px 0;
+          color: var(--vela-text-color-primary);
+          background-color: #ebebeb;
+          line-height: 20px;
+          text-align: center;
+          font-size: calc(var(--vela-font-size) + 2px);
+          transition: all 0.35s ease;
+          font-weight: 700;
+
+          &--active {
+            background-color: var(--vela-body-bg) !important;
+          }
+        }
+      }
+
+      &-create {
+        flex: 1;
+        cursor: pointer;
+
+        &__title {
+          padding: 20px 0;
+          color: var(--vela-text-color-primary);
+          background-color: #ebebeb;
+          line-height: 20px;
+          text-align: center;
+          font-size: calc(var(--vela-font-size) + 2px);
+          transition: all 0.35s ease;
+          font-weight: 700;
+
+          &--active {
+            background-color: var(--vela-body-bg) !important;
+          }
+        }
+      }
+    }
+
+    &-main {
+      padding: 0 30px 30px 30px;
+
+      .account-content {
+        &--active {
+          display: block;
+        }
+      }
+      .register-content {
+        &--active {
+          display: block;
+        }
+      }
+    }
+  }
+}
+
+.login-alert {
+  display: none;
+
+  p {
+    color: var(--vela-footer-titlecolor);
+    margin: 0;
+    padding: 8px 10px;
+  }
+}
+
+.register-alert {
+  display: none;
+
+  p {
+    color: var(--vela-footer-titlecolor);
+    margin: 0;
+    padding: 8px 10px;
+  }
+}
+
+.alert-error {
+  margin-bottom: 30px;
+  background-color: #e26868;
+  display: block;
+}
+
+.alert-success {
+  margin-bottom: 30px;
+  background-color: #5cb85c;
+  display: block;
+}
+
+.account-email {
+  margin-top: 30px;
+  margin-bottom: 30px;
+  border: 1px solid var(--vela-border-color);
+  border-radius: 3px;
+
+  &-control {
+    border: none !important;
+  }
+}
+
+.account-password {
+  margin-bottom: 30px;
+  display: flex;
+  border: 1px solid var(--vela-border-color);
+  border-radius: 3px;
+
+  &-control {
+    border: none !important;
+    font: small-caption;
+    font-size: 16px;
+  }
+  &__showbtn {
+    cursor: pointer;
+  }
+}
+
+.form-control {
+  padding-left: 8px;
+  &:focus {
+    box-shadow: 0 0 0 0.25rem rgb(13 110 253 / 0%) !important;
+  }
+}
+
+.showbtn {
+  display: block;
+  margin: 5px 0px 5px 5px;
+  border-left: 1px solid var(--vela-border-color);
+  width: 65px;
+  text-align: center;
+}
+
+.signin-btn {
+  width: 100%;
+  height: 46px;
+  padding: 10px 30px;
+  border-radius: 3px;
+  text-align: center;
+  display: inline-block;
+  padding: 8px 30px;
+  color: var(--button_one_txtcolor);
+  background-color: var(--button_one_bgcolor);
+  border: 0px solid var(--button_one_bordercolor);
+  font-size: calc(var(--vela-font-size) - 2px);
+  font-weight: 700;
+  line-height: 24px;
+  border-radius: 3px;
+  transition: all 0.35s ease;
+
+  &:hover {
+    background-color: var(--vela-color-primary);
+  }
+}
+
+.register-name {
+  display: flex;
+  margin-bottom: 30px;
+
+  .register-name-control {
+    border: 1px solid var(--vela-border-color) !important;
+    border-radius: 3px !important;
+  }
+}
+
+.register-email {
+  margin-top: 30px;
+  margin-bottom: 30px;
+  border: 1px solid var(--vela-border-color);
+  border-radius: 3px;
+
+  &-control {
+    border: none !important;
+  }
+}
+
+.register-password {
+  margin-bottom: 30px;
+  display: flex;
+  border: 1px solid var(--vela-border-color);
+  border-radius: 3px;
+
+  &-control {
+    border: none !important;
+  }
+  &__showbtn {
+    cursor: pointer;
+  }
+}
+
+.register-confirm-password {
+  margin-bottom: 30px;
+  display: flex;
+  border: 1px solid var(--vela-border-color);
+  border-radius: 3px;
+
+  &-control {
+    border: none !important;
+  }
+}
+
+.create-account-btn {
+  width: 100%;
+  height: 46px;
+  padding: 10px 30px;
+  border-radius: 3px;
+  text-align: center;
+  display: inline-block;
+  padding: 8px 30px;
+  color: var(--button_one_txtcolor);
+  background-color: var(--button_one_bgcolor);
+  border: 0px solid var(--button_one_bordercolor);
+  font-size: calc(var(--vela-font-size) - 2px);
+  font-weight: 700;
+  line-height: 24px;
+  border-radius: 3px;
+  transition: all 0.35s ease;
+
+  &:hover {
+    background-color: var(--vela-color-primary);
+  }
+}
+
+::placeholder {
+  font-family: var(--vela-font-family);
+  color: rgb(168, 168, 168) !important;
+}
+
+@media (max-width: 576px) {
+  ::placeholder {
+    font-size: 14px;
+  }
+}

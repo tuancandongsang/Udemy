@@ -1,0 +1,241 @@
+.collections-header {
+  height: 335px;
+  background-color: #eaebef;
+  position: relative;
+  margin-bottom: 60px;
+  &-img {
+    width: 100%;
+    height: 100%;
+    img {
+      width: 100%;
+      height: 100%;
+    }
+  }
+  &-title {
+    position: absolute;
+    position: absolute;
+    top: 45%;
+    left: 12%;
+    &__text {
+      margin: 0 0 15px;
+      position: relative;
+      font-size: 48px;
+      line-height: 56px;
+      font-family: var(--vela-font-family-secondary);
+      color: var(--vela-breadcrumb-headingcolor);
+      font-weight: 700;
+    }
+  }
+}
+
+.collections-body {
+}
+
+.collection-body-product {
+  &-sorting {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+    &-select {
+      width: auto;
+      padding: 10px 30px 10px 20px;
+      cursor: pointer;
+      font-size: 15px;
+      background-color: #f5f5f5;
+      border: 0;
+      color: #333;
+      display: inline-block;
+      vertical-align: middle;
+      appearance: none;
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      -webkit-box-shadow: none;
+      box-shadow: none;
+      height: 40px;
+      border: none;
+      border-radius: 3px;
+      line-height: 1.45;
+      margin-right: 24px;
+    }
+    button {
+      margin-left: 23px;
+      visibility: hidden;
+    }
+    span {
+      cursor: pointer;
+      transition: all ease 0.5s;
+    }
+  }
+  &-list {
+    min-height: 1050px;
+  }
+  &-pagination {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 50px;
+    padding-left: 14px;
+    padding-right: 27px;
+    &-box {
+      button {
+        width: 40px;
+        height: 40px;
+        border: 1px solid var(--vela-border-color);
+        transition: all ease 0.5s;
+        cursor: pointer;
+      }
+    }
+    span {
+      font-size: 14px;
+      line-height: 24px;
+    }
+  }
+}
+
+.collection-body-product-sorting-layout {
+  margin-left: 24px;
+  span {
+    margin-right: 10px;
+  }
+}
+
+.layout-active {
+  color: var(--vela-color-primary);
+}
+
+.collection-body-product-sorting-layout span:hover {
+  color: var(--vela-color-primary);
+}
+
+.collection-body-product-sorting button span:hover {
+  color: var(--vela-color-primary);
+}
+
+.collection-body-product-pagination-box button:hover,
+.collection-body-product-pagination-box li:hover {
+  background-color: var(--vela-color-primary);
+  border: none;
+}
+.ant-pagination-item-active {
+  border: none;
+  background-color: var(--vela-color-primary);
+}
+
+.page--active {
+  background-color: var(--vela-color-primary);
+}
+
+select:focus {
+  outline: none;
+}
+.hiding {
+  display: none;
+}
+
+.list-block {
+  padding-bottom: 30px;
+  &-item {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    &-image {
+      width: 90%;
+      height: 90%;
+      cursor: pointer;
+      transition: all ease 0.35s;
+      img {
+        width: 100%;
+        height: 100%;
+      }
+    }
+    &-content {
+      margin-top: 10px;
+      &__title {
+        font-size: calc(var(--vela-font-size) + 8px);
+        margin-bottom: 20px;
+        font-weight: 700;
+        transition: all ease 0.35s;
+        cursor: pointer;
+      }
+      &__price {
+        font-size: calc(var(--vela-font-size) + 4px);
+        font-weight: 400;
+      }
+      &__description {
+        padding: 20px 0 0;
+        line-height: 24px;
+        color: #868686;
+      }
+    }
+  }
+}
+
+.rating-block {
+  margin-top: 50%;
+}
+
+.list-block-item-image:hover {
+  transform: scale(1.05);
+}
+
+.list-block-item-content__title:hover {
+  color: var(--vela-color-primary);
+}
+
+@media only screen and (max-width: 992px) {
+  .display-none {
+    display: none;
+  }
+
+  .full-width {
+    width: 100%;
+  }
+  .collection-body-product-sorting button {
+    visibility: visible;
+  }
+  .collection-body-product-sorting-layout {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .rating-block {
+    margin-top: 10px;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .list-block-item-image {
+    width: 100%;
+  }
+  .list-block-item-image img {
+    width: 100%;
+  }
+}
+
+.back-to-top-fade-enter-form {
+  opacity: 0;
+  transform: scale(0.6);
+}
+
+.back-to-top-fade-enter-to {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.back-to-top-fade-enter-active {
+  transition: all 0.4s ease;
+}
+
+.back-to-top-fade-leave-form {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.back-to-top-fade-leave-to {
+  opacity: 0;
+  transform: scale(0.6);
+}
+
+.back-to-top-fade-leave-active {
+  transition: all 0.4s ease;
+}

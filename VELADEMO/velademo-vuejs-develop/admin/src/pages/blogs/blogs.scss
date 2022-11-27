@@ -1,0 +1,77 @@
+#add-product {
+    width: calc(100% - 300px);
+    margin: 0 auto;
+    .container {
+      padding: 30px;
+      .message {
+        color: white;
+        background: #67a10e;
+        padding: 5px 10px;
+        margin: 0 0 10px 0;
+        border-radius: 5px;
+      }
+      .ant-form-item {
+        margin: 0 0 15px 0;
+        .ant-form-item-control {
+          .ant-form-item-control-input {
+            .ant-form-item-control-input-content {
+              .dragger-item {
+                .ant-upload-btn {
+                  padding: 40px 0;
+                  display: flex;
+                  align-items: center;
+                  flex-flow: column wrap;
+                  justify-content: center;
+                  .upload-img {
+                    margin: 0 0 20px 0;
+                  }
+                }
+              }
+              .btn-create-product {
+                border-radius: 5px;
+                background: #7367f0;
+                border-color: #7367f0;
+                margin: 30px 0 0 0;
+                display: inline-flex;
+                align-items: center;
+              }
+            }
+          }
+        }
+      }
+      .avatar-uploader {
+        .ant-upload {
+          width: 100%;
+          .upload-file {
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            align-items: center;
+            border: 1px dashed #80808036;
+            padding: 30px;
+            background: #e1e1e18c;
+            border-radius: 5px;
+            .img {
+              margin: 0 0 20px 0;
+            }
+            p {
+              text-align: center;
+              font-size: 17px;
+            }
+          }
+        }
+      }
+    }
+  }
+  
+  @media screen and (max-width: 1200px) {
+    #add-product {
+      width: calc(100% - 100px);
+    }
+  }
+  @media screen and (max-width: 768px) {
+    #add-product {
+      width: calc(100% - 50px);
+    }
+  }
+  

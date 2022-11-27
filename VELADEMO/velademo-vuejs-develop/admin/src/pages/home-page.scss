@@ -1,0 +1,73 @@
+#home-page {
+  padding: 0 20px;
+  .table-list {
+    background: var(--addtocart_txtcolor_hover);
+    padding: 20px 0;
+    box-shadow: 0 4px 24px 0 rgb(34 41 47 / 10%);
+    border-radius: 5px;
+
+    .header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 20px 20px 30px 20px;
+      .left-side {
+        display: inline-flex;
+        align-items: center;
+        p {
+          font-size: 15px;
+          margin: 0 10px 0 0;
+          display: inline-block;
+        }
+        .select-page-size {
+          .ant-select {
+            .ant-select-selector {
+              display: flex;
+              height: 100%;
+              align-items: center;
+              border-radius: 5px;
+            }
+          }
+        }
+        a {
+          background-color: var(--vela-parag-purple);
+          color: var(--velasubmenu-bgcolor);
+          border-radius: 5px;
+          padding: 8px 15px;
+          font-size: 15px;
+          margin: 0 0 0 10px;
+        }
+      }
+      .right-side {
+        .input-search {
+          min-width: 500px;
+          border-radius: 5px;
+          &::placeholder {
+            font-size: 14px;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 992px) {
+  #home-page {
+    .table-list {
+      .header {
+        flex-direction: column;
+        align-items: flex-start;
+        .left-side {
+          margin: 0 0 20px 0;
+        }
+        .right-side {
+          width: 100%;
+          .input-search {
+            width: 100%;
+            min-width: auto;
+          }
+        }
+      }
+    }
+  }
+}
