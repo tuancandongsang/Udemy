@@ -212,6 +212,88 @@
 
 
 
+TOOTLE
+ => theo dõi sự thay đổi của 1 biến params ta có cách sau
+C1:
+  created() {
+    this.$watch(
+      () => this.$route.params,
+      (toParams, previousParams) => {
+        // react to route changes...
+	  // vd: this.qty=0
+      }
+    )
+  },
+
+OR
+this.$watch(
+      () => this.$route.params.id,
+      async (value, _) => {
+        const response = await ProductService.getProductDetail(value);
+        this.productDetail = response;
+        this.quantity = 1;
+        reloadWindowOne()
+      }
+    );
+
+do mỗi khi click params id khác nhưng comp không chuyển nên sẽ k reload lại comp nên các thông số vd:qty sẽ k load lại
+=> theo dõi param để chỉnh các thông số của comp đó
+
+C2: 
+  beforeRouteUpdate(to, from, next) {
+    console.log('tuancandongsang from', from);
+    console.log('tuancandongsang to', to);
+    const userWantsToLeave = confirm(
+      `==> thay doi .../users/:ID === ${this.teamId} !`
+    );
+    next(userWantsToLeave);
+  },
+
+hàm beforeRouteUpdate() cùng cấp với hàm created(), cũng theo dõi sự update của router, khi có thay đổi về params sẽ thay đổi dữ liệu của comp
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
