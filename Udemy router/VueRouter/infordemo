@@ -1,7 +1,7 @@
 ==>> thư mục TeamMembers.vue
 - beforeRouteEnter: không thể truy cập this
     - nếu next() thì cho qua
-    - nếu next(false) thì sẽ không click vào đc router
+    - nếu next(false) thì sẽ không click vào đc router (==>> UserList.vue)
     - nếu next('/') hoặc next({path:'/'}) ....: chuyển hướng đến vị trí khác
     - nếu next(error): nếu đối số truyền tới next là 1 đối tượng error thì điều hướng sẽ được bỏ qua và lỗi sẽ được truyền tới callback đã được đăng kú thông qua router.onError()
     - Nhớ là luôn gọi next(), nếu không hoock không được duyệt
@@ -11,7 +11,8 @@
 - theo dõi sự thay đổi của params:
     - SỬ DỤNG watch ĐỂ THAY ĐỔI DATA KHI PARAMS THAY ĐỔI
     - SỬ DỤNG beforeRouteUpdate ĐỂ THAY ĐỔI DATA KHI PARAMS THAY ĐỔI
-    - SỬ DỤNG WATCH ĐỂ THAY ĐỔI DATA KHI PARAMS THAY ĐỔI
+    - SỬ DỤNG WATCH ĐỂ THAY ĐỔI DATA KHI PARAMS THAY ĐỔI\
+    - dùng hàm reload
 
 ==>> thư mục main.js
 - beforeEnter: được đặt ở trong routes. được gọi khi route chuyển hướng
