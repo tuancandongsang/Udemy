@@ -22,36 +22,19 @@ export default {
   data() {
     return { changesSaved: false };
   },
+  beforeRouteEnter(to, from, next) {
+    next(false);
+  },
   methods: {
     confirmInput() {
-      // do something
       this.$router.push('/teams');
     },
     saveChanges() {
       this.changesSaved = true;
     },
   },
-  beforeRouteEnter(to, from, next) {
-    console.log(to, from);
-    const userWantsToLeave = confirm(
-      '==> truy cap vao http://localhost:8080/users!'
-    );
-    next(userWantsToLeave);
-  },
-  beforeRouteLeave(to, from, next) {
-    console.log(to, from);
-
-    if (this.changesSaved) {
-      next();
-    } else {
-      const userWantsToLeave = confirm(
-        '==> roi khoi http://localhost:8080/users!'
-      );
-      next(userWantsToLeave);
-    }
-  },
   unmounted() {
-    console.log('unmounted');
+    // console.log('unmounted');
   },
 };
 </script>

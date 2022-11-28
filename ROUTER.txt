@@ -104,6 +104,11 @@
 // to: Chứa các thuộc tính của một Router và người dùng hướng đến (dùng chính thuộc tính ở đây để phân quyền).
 // from: Chứa các thuộc tính của một Router, cho biết bạn đang ở router nào trước khi bạn chuyển hướng đi.
 // next: Đây là một Function bắt buộc các bạn phải gọi để xác định chuyển hướng.
+//    - nếu next() thì cho qua
+//    - nếu next(false) thì sẽ không click vào đc router
+//    - nếu next('/') hoặc next({path:'/'}) ....: chuyển hướng đến vị trí khác
+//    - nếu next(error): nếu đối số truyền tới next là 1 đối tượng error thì điều hướng sẽ được bỏ qua và lỗi sẽ được truyền tới callback đã được đăng kú thông qua router.onError()
+//    - Nhớ là luôn gọi next(), nếu không hoock không được duyệt
 // beforeResolve: Được gọi tới trước khi mà sự điều hướng của chúng ta được xác nhận. 
 // Cũng bao gồm 3 tham số như beforeEach
 // afterEach: Được gọi khi mà tất cả các logic, xử lý của chúng ta đã xong. 
@@ -130,7 +135,6 @@
 // Cả beforeRouteEnter, beforeRouteUpdate, beforeRouteLeave đều có 3 tham số là to, from, next. 
 // Như vậy chúng ta đều có thể chuyển hướng component tại thời điểm này. 
 // Tuy nhiên thì 3 hook này sẽ được gọi ở các thời điểm khác nhau:
-
 // beforeRouteEnter: Được gọi trước khi mà điều hướng được xác nhận. 
 // Ở đây bạn không thể truy cập vào con trỏ this của Vue, vì nó được chạy trước khi mà component được khởi tạo.
 // beforeRouteUpdate: Được gọi khi mà router đã được thay đổi và chúng ta sẻ dụng lại Component chúng ta định nghĩa ra beforeRouteUpdate.

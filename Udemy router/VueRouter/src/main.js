@@ -28,18 +28,21 @@ const router = createRouter({
     },
     {
       path: '/users',
+      name: 'users',
       components: {
         default: UsersList,
         footer: UsersFooter,
       },
-      beforeEnter(to, from, next) {
-        // console.log('users beforeEnter');
-        if (to & from) {
-          next();
-        }
-        // console.log(to, from);
-        next();
-      },
+      // beforeEnter(to, from, next) {
+      //   console.log("beforeEnter to: ", to);
+      //   console.log("beforeEnter from: ", from);
+      //     const userWantsToLeave = confirm(
+      //       '`==> truy cap vao beforeEnter  .../userList.vue `'
+      //     );
+      //     next(userWantsToLeave);
+      // // // nêu next(false): thì component đó không truy cập được
+      //     // next(false)
+      // },
     },
     { path: '/:notFound(.*)', component: NotFound },
   ],
@@ -53,21 +56,33 @@ const router = createRouter({
   },
 });
 
-router.beforeEach(function (to, from, next) {
-  // console.log('Global beforeEach');
-  // console.log(to, from);
-  // if (to.name === 'team-members') {
-  //   next();
-  // } else {
-  //   next({ name: 'team-members', params: { teamId: 't2' } });
-  // }
-  next();
-});
 
-// router.afterEach(function (to, from) {
-// sending analytics data
-// console.log('Global afterEach');
-// console.log(to, from);
+// router.beforeEach((to, from, next) => {
+//   console.log("beforeEach to: ", to);
+//   console.log("beforeEach from: ", from);
+//  //check vào to ở params
+//   // if (to.name === 'users') {
+//   //   const userWantsToLeave = confirm(
+//   //     '`==> truy cap vao beforeEach  .../userList.vue GLOBAL `'
+//   //   );
+//   //   next(userWantsToLeave);
+//   //   return next(false);
+//   // }
+//   const userWantsToLeave = confirm(
+//     '`==> truy cap vao beforeEach  .../App.vue GLOBAL `'
+//   );
+//   next(userWantsToLeave);
+// });
+
+
+
+// router.afterEach(function (to, from, next) {
+//   console.log("afterEach to: ", to);
+//   console.log("afterEach from: ", from);
+//     const userWantsToLeave = confirm(
+//     '`==> rời khỏi afterEach  .../App.vue GLOBAL `'
+//   );
+//   next(userWantsToLeave);
 // });
 
 const app = createApp(App);

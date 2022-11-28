@@ -1,21 +1,22 @@
 <template>
   <section>
     <h2>{{ teamName }}</h2>
+    <div>
+      <button @click="handleAdd">+</button>
+      <input class="input" type="text" v-model="text">
+      <button @click="handleInscre">-</button>
+    </div>
     <ul>
-      <user-item
-        v-for="member in members"
-        :key="member.id"
-        :name="member.fullName"
-        :role="member.role"
-      ></user-item>
+      <user-item v-for="member in members" :key="member.id" :name="member.fullName" :role="member.role"></user-item>
     </ul>
     <router-link to="/teams/t2">Go to Team 2</router-link>
   </section>
 </template>
 
+ <!-- BỘ 3 COMPONENT ROUTER -->
+  <!-- SỬ DỤNG watch ĐỂ THAY ĐỔI DATA KHI PARAMS THAY ĐỔI -->
 <script>
 import UserItem from '../users/UserItem.vue';
-
 export default {
   inject: ['users', 'teams'],
   props: ['teamId'],
@@ -26,9 +27,16 @@ export default {
     return {
       teamName: '',
       members: [],
+      text: 1
     };
   },
   methods: {
+    handleAdd() {
+      this.text++
+    },
+    handleInscre() {
+      this.text--
+    },
     loadTeamMembers(teamId) {
       const selectedTeam = this.teams.find((team) => team.id === teamId);
       const members = selectedTeam.members;
@@ -43,40 +51,198 @@ export default {
   },
   created() {
     this.loadTeamMembers(this.teamId);
-    console.log('this.$route: ', this.$route);
-    console.log('this.$routes: ', this.$routes);
   },
-  beforeRouteUpdate(to, from, next) {
-    console.log('tuancandongsang from', from);
-    console.log('tuancandongsang to', to);
-    // this.loadTeamMembers(to.params.teamId);
+  beforeRouteEnter(to, from, next) {
     const userWantsToLeave = confirm(
-      `==> thay doi .../users/:ID === ${this.teamId} !`
+      '`==> truy cap vao beforeRouteEnter  .../users/:ID : ${this.teamId}!`'
     );
     next(userWantsToLeave);
   },
-  beforeRouteEnter(to, from, next) {
-    // console.log(to, from);
+  beforeRouteUpdate(to, from, next) {
+    this.text=1
     const userWantsToLeave = confirm(
-      '`==> truy cap vao  .../users/:ID : ${this.teamId}!`'
+      `==> thay doi beforeRouteUpdate .../users/:ID === ${this.teamId} !`
     );
     next(userWantsToLeave);
   },
   beforeRouteLeave(to, from, next) {
-    // console.log(to, from);
-
     const userWantsToLeave = confirm(
-      `==> roi khoi  .../users/:ID : ${this.teamId} !`
+      `==> roi khoi beforeRouteLeave  .../users/:ID : ${this.teamId} !`
     );
     next(userWantsToLeave);
   },
   watch: {
     teamId(newId) {
       this.loadTeamMembers(newId);
+      // this.text = 1
     },
   },
 };
 </script>
+
+<!-- SỬ DỤNG beforeRouteUpdate ĐỂ THAY ĐỔI DATA KHI PARAMS THAY ĐỔI -->
+<!-- <script>
+import UserItem from '../users/UserItem.vue';
+export default {
+  inject: ['users', 'teams'],
+  props: ['teamId'],
+  components: {
+    UserItem,
+  },
+  data() {
+    return {
+      teamName: '',
+      members: [],
+      text: 1
+    };
+  },
+  methods: {
+    handleAdd() {
+      this.text++
+    },
+    handleInscre() {
+      this.text--
+    },
+    loadTeamMembers(teamId) {
+      const selectedTeam = this.teams.find((team) => team.id === teamId);
+      const members = selectedTeam.members;
+      const selectedMembers = [];
+      for (const member of members) {
+        const selectedUser = this.users.find((user) => user.id === member);
+        selectedMembers.push(selectedUser);
+      }
+      this.members = selectedMembers;
+      this.teamName = selectedTeam.name;
+    },
+  },
+  created() {
+    this.loadTeamMembers(this.teamId);
+  },
+  beforeRouteUpdate(to, from, next) {
+    this.text=1
+    const userWantsToLeave = confirm(
+      `==> thay doi beforeRouteUpdate .../users/:ID === ${this.teamId} !`
+    );
+    next(userWantsToLeave);
+  },
+}
+</script> -->
+
+<!-- SỬ DỤNG WATCH ĐỂ THAY ĐỔI DATA KHI PARAMS THAY ĐỔI -->
+<!-- <script>
+import UserItem from '../users/UserItem.vue';
+export default {
+  inject: ['users', 'teams'],
+  props: ['teamId'],
+  components: {
+    UserItem,
+  },
+  data() {
+    return {
+      teamName: '',
+      members: [],
+      text: 1
+    };
+  },
+  methods: {
+    handleAdd() {
+      this.text++
+    },
+    handleInscre() {
+      this.text--
+    },
+    loadTeamMembers(teamId) {
+      const selectedTeam = this.teams.find((team) => team.id === teamId);
+      const members = selectedTeam.members;
+      const selectedMembers = [];
+      for (const member of members) {
+        const selectedUser = this.users.find((user) => user.id === member);
+        selectedMembers.push(selectedUser);
+      }
+      this.members = selectedMembers;
+      this.teamName = selectedTeam.name;
+    },
+  },
+  created() {
+    this.loadTeamMembers(this.teamId);
+    console.log(this.$route.params.teamId);
+    this.$watch(
+      () => this.$route.params.teamId,
+      (toParams, previousParams, next) => {
+        // console.log(previousParams);
+        // console.log(toParams);
+        this.text = 1
+        next()
+      }
+    )
+  },
+ 
+};
+</script> -->
+
+<!-- SỬ DỤNG HÀM RELOAD ĐỂ THAY ĐỔI DATA KHI PARAMS THAY ĐỔI -->
+<!-- <script>
+import UserItem from '../users/UserItem.vue';
+export default {
+  inject: ['users', 'teams'],
+  props: ['teamId'],
+  components: {
+    UserItem,
+  },
+  data() {
+    return {
+      teamName: '',
+      members: [],
+      text: 1
+    };
+  },
+  watch:{
+    teamId(){
+      this.reloadWindowOne()
+    }
+  },
+  methods: {
+    reloadWindowOne() {
+      if (!window.location.hash) {
+        window.location.reload();
+      }
+    },
+    handleAdd() {
+      this.text++
+    },
+    handleInscre() {
+      this.text--
+    },
+    loadTeamMembers(teamId) {
+      const selectedTeam = this.teams.find((team) => team.id === teamId);
+      const members = selectedTeam.members;
+      const selectedMembers = [];
+      for (const member of members) {
+        const selectedUser = this.users.find((user) => user.id === member);
+        selectedMembers.push(selectedUser);
+      }
+      this.members = selectedMembers;
+      this.teamName = selectedTeam.name;
+    },
+  },
+  created() {
+    this.loadTeamMembers(this.teamId);
+    console.log(this.$route.params.teamId);
+    this.$watch(
+      () => this.$route.params.teamId,
+      (toParams, previousParams, next) => {
+        // console.log(previousParams);
+        // console.log(toParams);
+        this.text = 1
+        next()
+      }
+    )
+  },
+
+};
+</script> -->
+
+
 
 <style scoped>
 section {
@@ -95,5 +261,22 @@ ul {
   list-style: none;
   margin: 0;
   padding: 0;
+}
+
+button {
+  font-size: 1rem;
+  padding: 8px 12px;
+  border-radius: 5px;
+  border: none;
+}
+
+input {
+  width: 40px;
+  outline: none;
+  border: none;
+  padding: 8px 12px;
+  font-size: 1rem;
+  background-color: antiquewhite;
+  text-align: center;
 }
 </style>
