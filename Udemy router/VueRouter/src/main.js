@@ -2,16 +2,16 @@ import { createApp } from 'vue';
 import { createRouter, createWebHistory } from 'vue-router';
 
 import App from './App.vue';
-import store from './store/index.js'
+import store from './store/index.js';
 import TeamsList from './components/teams/TeamsList.vue';
 import UsersList from './components/users/UsersList.vue';
 import TeamMembers from './components/teams/TeamMembers.vue';
 import NotFound from './components/nav/NotFound.vue';
 import TeamsFooter from './components/teams/TeamsFooter.vue';
 import UsersFooter from './components/users/UsersFooter.vue';
-import login from "./components/login/login.vue"
-import Antd from "ant-design-vue";
-import "ant-design-vue/dist/antd.css"; // or 'ant-design-vue/dist/antd.less'
+import login from './components/login/login.vue';
+import Antd from 'ant-design-vue';
+import 'ant-design-vue/dist/antd.css'; // or 'ant-design-vue/dist/antd.less'
 
 const router = createRouter({
   history: createWebHistory(),
@@ -69,7 +69,6 @@ const router = createRouter({
   },
 });
 
-
 // router.beforeEach((to, from, next) => {
 //   console.log("beforeEach to: ", to);
 //   console.log("beforeEach from: ", from);
@@ -86,7 +85,6 @@ const router = createRouter({
 //   );
 //   next(userWantsToLeave);
 // });
-
 
 // //   BEFORERESOLVE
 // router.beforeResolve((to, from, next) => {
@@ -106,7 +104,6 @@ const router = createRouter({
 //   next(userWantsToLeave);
 // });
 
-
 // //  AFTEREACH
 // router.afterEach(function (to, from, next) {
 //   console.log("afterEach to: ", to);
@@ -120,6 +117,6 @@ const router = createRouter({
 const app = createApp(App);
 
 app.use(router);
-app.use(store)
+app.use(store);
 app.use(Antd);
 app.mount('#app');
