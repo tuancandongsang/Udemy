@@ -8,10 +8,39 @@
         <li>
           <router-link to="/users">Users</router-link>
         </li>
+        <li>
+          <router-link to="/login" v-if="login">Login</router-link>
+          <router-link to="/login" @click="TOGGLE_LOGIN" v-else >LogOut</router-link>
+        </li>
       </ul>
     </nav>
   </header>
 </template>
+<script>
+import {mapGetters, mapMutations} from 'vuex'
+
+export default {
+  data() {
+    return {
+
+    }
+  },
+  watch:{
+    login(newlogin,oldlogin) {
+       if(newlogin){
+        console.log('newlogin', this.login);
+      } else{
+        console.log("oldlogin", oldlogin, this.login);
+      }
+    }
+  },
+  computed: mapGetters(['login']),
+  methods: mapMutations(['TOGGLE_LOGIN']),
+  created(){
+    console.log("login",this.login);
+  }
+}
+</script>
 
 <style scoped>
 header {

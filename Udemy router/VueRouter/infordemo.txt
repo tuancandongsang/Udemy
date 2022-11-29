@@ -8,11 +8,13 @@
 - beforeRouteUpdate: được gọi khi thay đổi url: truy cập đc this
 - beforeRouteLeave: đc gọi khi rời khỏi component: truy cập đc this
 
+==>> thư mục TeamMembers.vue
 - theo dõi sự thay đổi của params:
     - SỬ DỤNG watch ĐỂ THAY ĐỔI DATA KHI PARAMS THAY ĐỔI
     - SỬ DỤNG beforeRouteUpdate ĐỂ THAY ĐỔI DATA KHI PARAMS THAY ĐỔI
-    - SỬ DỤNG WATCH ĐỂ THAY ĐỔI DATA KHI PARAMS THAY ĐỔI\
+    - SỬ DỤNG this.$watch ĐỂ THAY ĐỔI DATA KHI PARAMS THAY ĐỔI\
     - dùng hàm reload
+- props để lấy giá trị của params
 
 ==>> thư mục main.js
 - beforeEnter: được đặt ở trong routes. được gọi khi route chuyển hướng
@@ -20,3 +22,18 @@
 - beforeEach: gọi tới khi mà bất kì router nào của các bạn được người dùng kích hoạt ở cấp độ global
 - beforeResolve: gọi khi mà các điều hướng đc xác nhận, vd: các component bất đồng bộ được giải quyết
 - afterEach:  gọi mỗi khi có 1 router bị đóng cấp độ global
+
+==>> thư mục UserList.vue
+- sử dụng biến query string
+    - dùng để lưu dữ liệu lên url vd gửi link tìm kiếm đúng sản phẩm
+    - kiểm soát query string ở this.$watch
+- NEXT(FALSE): dùng để chặn truy cập
+
+==>> thư mục login.vue
+-   created(){
+    console.log("this.$router - router lớn",this.$router);
+    console.log("this.$route - route con",this.$route);
+  } 
+  để xem router và route có những gì
+- sử dụng this.$router.go(-1) để đăng nhập xong quay về url trước đó 
+- 

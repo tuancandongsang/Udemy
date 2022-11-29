@@ -5,12 +5,7 @@
       <input type="text" v-model="search" placeholder="search for fullName" />
     </div>
     <ul>
-      <user-item
-        v-for="user in users"
-        :key="user.id"
-        :name="user.fullName"
-        :role="user.role"
-      ></user-item>
+      <user-item v-for="user in users1" :key="user.id" :name="user.fullName" :role="user.role"></user-item>
     </ul>
   </div>
 </template>
@@ -22,25 +17,18 @@ export default {
   components: {
     UserItem,
   },
-  // inject: ['users'],
+  inject: ['users'],
   data() {
     return {
-      search: this.$route.query.search,
-      users: [
-        { id: 'u1', fullName: 'Max Schwarz', role: 'Engineer' },
-        { id: 'u2', fullName: 'Praveen Kumar', role: 'Engineer' },
-        { id: 'u3', fullName: 'Julie Jones', role: 'Engineer' },
-        { id: 'u4', fullName: 'Alex Blackfield', role: 'Consultant' },
-        { id: 'u5', fullName: 'Marie Smith', role: 'Consultant' },
-      ],
+      search: " ",
     };
   },
   methods: {},
-  computeds: {
-    users() {
+  computed: {
+    users1() {
       if (this.search) {
-        return this.users.filter((user) =>
-          user.fullName.toLowerCase().includes(this.search.toLowerCase())
+        return this.users.filter((item) =>
+          item.fullName.toLowerCase().includes(this.search.toLowerCase())
         );
       } else {
         return this.users;
@@ -49,28 +37,38 @@ export default {
   },
   watch: {
     search(value, _) {
-      console.log(_);
+      console.log("alo", _);
       if (value) {
         this.$router.push({
           query: {
-            search: this.search.trim(),
+            search: this.search.trim().replace(/ /g, "%"),
           },
         });
-        console.log(this.$route.query.search);
       }
     },
   },
   created() {
-    console.log(this.users);
-    this.$watch(
-      () => this.$route.query.search,
-      (value, _) => {
-        this.search = value;
-        console.log(_);
-      }
-    );
+    if (this.$route.query.search) {
+      this.search = this.$route.query.search.replace(/%/g, " ")
+    }
+
+    // //  KIEM SOAT QUERY STRING O this.$watch
+    // this.$watch(
+    //   () => this.$route.query.search,
+    //   (value) => {
+    //     if (value.length > 10) {
+    //     confirm(
+    //         `==> khong duoc tim kiem qua 10 ky tu `
+    //       );
+    //     }
+    //   }
+    // );
+
+    console.log("this.$router - router lớn", this.$router);
+    console.log("this.$route - router con", this.$route);
   },
   // beforeRouteEnter(to, from, next) {
+  // // NEXT(FALSE) DÙNG ĐỂ CHẶN TRUY CẬP
   //   next(false);
   // },
 };
@@ -82,15 +80,18 @@ export default {
   flex-direction: column;
   align-items: center;
 }
+
 .form {
   background-color: aquamarine;
   margin: 20px;
 }
-.form > input {
+
+.form>input {
   outline: none;
   padding: 4px 8px;
   font-size: 1.5rem;
 }
+
 ul {
   list-style: none;
   margin: 2rem auto;

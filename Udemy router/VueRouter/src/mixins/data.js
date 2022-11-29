@@ -7,11 +7,11 @@ export default {
         { id: 't3', name: 'Client Consulting', members: ['u4', 'u5'] },
       ],
       users: [
-        { id: 'u1', fullName: 'Max Schwarz', role: 'Engineer' },
-        { id: 'u2', fullName: 'Praveen Kumar', role: 'Engineer' },
-        { id: 'u3', fullName: 'Julie Jones', role: 'Engineer' },
-        { id: 'u4', fullName: 'Alex Blackfield', role: 'Consultant' },
-        { id: 'u5', fullName: 'Marie Smith', role: 'Consultant' },
+        { id: 'u1', fullName: 'Nguyen Anh Tuan', role: 'Developer' },
+        { id: 'u2', fullName: 'Duong Van Hiep', role: 'Developer' },
+        { id: 'u3', fullName: 'Nguyen Van Ha', role: 'Developer' },
+        { id: 'u4', fullName: 'Ngo Duy Anh', role: 'Manager' },
+        { id: 'u5', fullName: 'Ngo Thi Khanh', role: 'Manager' },
       ],
     };
   },

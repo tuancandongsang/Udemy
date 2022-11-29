@@ -2,12 +2,16 @@ import { createApp } from 'vue';
 import { createRouter, createWebHistory } from 'vue-router';
 
 import App from './App.vue';
+import store from './store/index.js'
 import TeamsList from './components/teams/TeamsList.vue';
 import UsersList from './components/users/UsersList.vue';
 import TeamMembers from './components/teams/TeamMembers.vue';
 import NotFound from './components/nav/NotFound.vue';
 import TeamsFooter from './components/teams/TeamsFooter.vue';
 import UsersFooter from './components/users/UsersFooter.vue';
+import login from "./components/login/login.vue"
+import Antd from "ant-design-vue";
+import "ant-design-vue/dist/antd.css"; // or 'ant-design-vue/dist/antd.less'
 
 const router = createRouter({
   history: createWebHistory(),
@@ -33,6 +37,7 @@ const router = createRouter({
         default: UsersList,
         footer: UsersFooter,
       },
+      // // BEFOREENTER
       // beforeEnter(to, from, next) {
       //   console.log("beforeEnter to: ", to);
       //   console.log("beforeEnter from: ", from);
@@ -43,6 +48,14 @@ const router = createRouter({
       // // // nêu next(false): thì component đó không truy cập được
       //     // next(false)
       // },
+    },
+    {
+      path: '/login',
+      name: 'login',
+      components: {
+        default: login,
+        footer: UsersFooter,
+      },
     },
     { path: '/:notFound(.*)', component: NotFound },
   ],
@@ -75,7 +88,26 @@ const router = createRouter({
 // });
 
 
+// //   BEFORERESOLVE
+// router.beforeResolve((to, from, next) => {
+//   console.log("beforeResolve to: ", to);
+//   console.log("beforeResolve from: ", from);
+//  //check vào to ở params
+//   // if (to.name === 'users') {
+//   //   const userWantsToLeave = confirm(
+//   //     '`==> truy cap vao beforeResolve  .../userList.vue GLOBAL `'
+//   //   );
+//   //   next(userWantsToLeave);
+//   //   return next(false);
+//   // }
+//   const userWantsToLeave = confirm(
+//     '`==> truy cap vao beforeResolve  .../App.vue GLOBAL `'
+//   );
+//   next(userWantsToLeave);
+// });
 
+
+// //  AFTEREACH
 // router.afterEach(function (to, from, next) {
 //   console.log("afterEach to: ", to);
 //   console.log("afterEach from: ", from);
@@ -88,5 +120,6 @@ const router = createRouter({
 const app = createApp(App);
 
 app.use(router);
-
+app.use(store)
+app.use(Antd);
 app.mount('#app');

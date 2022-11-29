@@ -51,14 +51,18 @@ export default {
   },
   created() {
     this.loadTeamMembers(this.teamId);
+    //   // LAY GIA TRI CUA PARAMS QUA PROPS
+    // console.log("teamId: ", this.teamId);
   },
   beforeRouteEnter(to, from, next) {
+    // KHONG THE TRUY CAP DUOC DATA = this.teamId
     const userWantsToLeave = confirm(
       '`==> truy cap vao beforeRouteEnter  .../users/:ID : ${this.teamId}!`'
     );
     next(userWantsToLeave);
   },
   beforeRouteUpdate(to, from, next) {
+    // TRUY CAP DUOC DATA
     this.text=1
     const userWantsToLeave = confirm(
       `==> thay doi beforeRouteUpdate .../users/:ID === ${this.teamId} !`
@@ -66,6 +70,7 @@ export default {
     next(userWantsToLeave);
   },
   beforeRouteLeave(to, from, next) {
+    // TRUY CAP DUOC DATA
     const userWantsToLeave = confirm(
       `==> roi khoi beforeRouteLeave  .../users/:ID : ${this.teamId} !`
     );
@@ -74,6 +79,7 @@ export default {
   watch: {
     teamId(newId) {
       this.loadTeamMembers(newId);
+      // // SỬ DỤNG watch ĐỂ THAY ĐỔI DATA KHI PARAMS THAY ĐỔI
       // this.text = 1
     },
   },
@@ -128,7 +134,7 @@ export default {
 }
 </script> -->
 
-<!-- SỬ DỤNG WATCH ĐỂ THAY ĐỔI DATA KHI PARAMS THAY ĐỔI -->
+<!-- SỬ DỤNG this.$watch ĐỂ THAY ĐỔI DATA KHI PARAMS THAY ĐỔI -->
 <!-- <script>
 import UserItem from '../users/UserItem.vue';
 export default {
