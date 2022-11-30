@@ -88,10 +88,9 @@ const router = createRouter({
           path: 'img1',
           name: 'img1',
           component: img1,
-
         },
         {
-          path: 'img23',
+          path: 'img21',
           name: 'img21',
           components: {
             default: img2,
