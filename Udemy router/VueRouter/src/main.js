@@ -9,9 +9,15 @@ import TeamMembers from './components/teams/TeamMembers.vue';
 import NotFound from './components/nav/NotFound.vue';
 import TeamsFooter from './components/teams/TeamsFooter.vue';
 import UsersFooter from './components/users/UsersFooter.vue';
+import nested from './components/nested/nested.vue'
 import login from './components/login/login.vue';
 import Antd from 'ant-design-vue';
 import 'ant-design-vue/dist/antd.css'; // or 'ant-design-vue/dist/antd.less'
+import img1 from './components/nested/footer1/Footer.vue'
+import img2 from './components/nested/footer2/Footer.vue'
+import img3 from './components/nested/footer3/Footer.vue'
+
+
 
 const router = createRouter({
   history: createWebHistory(),
@@ -39,8 +45,8 @@ const router = createRouter({
       },
       // // BEFOREENTER
       // beforeEnter(to, from, next) {
-      //   console.log("beforeEnter to: ", to);
-      //   console.log("beforeEnter from: ", from);
+      //   // console.log("beforeEnter to: ", to);
+      //   // console.log("beforeEnter from: ", from);
       //     const userWantsToLeave = confirm(
       //       '`==> truy cap vao beforeEnter  .../userList.vue `'
       //     );
@@ -57,6 +63,51 @@ const router = createRouter({
         footer: UsersFooter,
       },
     },
+    {
+      path: '/nested',
+      // // SỬ DỤNG redirect ĐỂ CHUYỂN HƯỚNG KHI CÓ NHIỀU ROUTER CON
+      redirect: '/nested/all',
+      // // SỬ DỤNG alias ĐỂ LÀM TÊN BÍ DANH
+      alias: '/home',
+      // // SỬ DỤNG name  THAY CHO VIỆC DÙNG PATH 
+      name: 'nested',
+
+      components: { default: nested },
+      children: [
+        {
+          path: 'all',
+          name: 'allimg',
+          components: {
+            default: img1,
+            a: img2,
+            b: img3,
+            d: img1,
+          },
+        },
+        {
+          path: 'img1',
+          name: 'img1',
+          component: img1,
+
+        },
+        {
+          path: 'img23',
+          name: 'img21',
+          components: {
+            default: img2,
+            a: img1,
+          },
+        },
+        {
+          name: 'img32',
+          path: 'img32',
+          components: {
+            default: img3,
+            b: img2
+          },
+        }
+      ],
+    },
     { path: '/:notFound(.*)', component: NotFound },
   ],
   linkActiveClass: 'active',
@@ -70,20 +121,17 @@ const router = createRouter({
 });
 
 // router.beforeEach((to, from, next) => {
-//   console.log("beforeEach to: ", to);
-//   console.log("beforeEach from: ", from);
-//  //check vào to ở params
+//   // console.log("beforeEach to: ", to);
+//   // console.log("beforeEach from: ", from);
+//   // //  check vào to ở params
 //   // if (to.name === 'users') {
-//   //   const userWantsToLeave = confirm(
-//   //     '`==> truy cap vao beforeEach  .../userList.vue GLOBAL `'
-//   //   );
-//   //   next(userWantsToLeave);
 //   //   return next(false);
 //   // }
 //   const userWantsToLeave = confirm(
 //     '`==> truy cap vao beforeEach  .../App.vue GLOBAL `'
 //   );
 //   next(userWantsToLeave);
+//   // next()
 // });
 
 // //   BEFORERESOLVE

@@ -36,8 +36,7 @@ export default {
     },
   },
   watch: {
-    search(value, _) {
-      console.log("alo", _);
+    search(value) {
       if (value) {
         this.$router.push({
           query: {
@@ -64,8 +63,8 @@ export default {
     //   }
     // );
 
-    console.log("this.$router - router lớn", this.$router);
-    console.log("this.$route - router con", this.$route);
+    // console.log("this.$router - router lớn", this.$router);
+    // console.log("this.$route - router con", this.$route);
   },
   // beforeRouteEnter(to, from, next) {
   // // NEXT(FALSE) DÙNG ĐỂ CHẶN TRUY CẬP

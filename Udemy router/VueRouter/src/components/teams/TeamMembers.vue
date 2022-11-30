@@ -49,21 +49,19 @@ export default {
       this.teamName = selectedTeam.name;
     },
   },
-  created() {
-    this.loadTeamMembers(this.teamId);
-    //   // LAY GIA TRI CUA PARAMS QUA PROPS
-    // console.log("teamId: ", this.teamId);
-  },
+
   beforeRouteEnter(to, from, next) {
-    // KHONG THE TRUY CAP DUOC DATA = this.teamId
+    //  // KHONG THE TRUY CAP DUOC DATA = this.teamId
+    // console.log("to: ", to);
+    // console.log('from', from);
     const userWantsToLeave = confirm(
-      '`==> truy cap vao beforeRouteEnter  .../users/:ID : ${this.teamId}!`'
+      "`==> truy cap vao beforeRouteEnter  .../users/:ID : ${this.teamId}!`"
     );
     next(userWantsToLeave);
   },
   beforeRouteUpdate(to, from, next) {
     // TRUY CAP DUOC DATA
-    this.text=1
+    // this.text=1
     const userWantsToLeave = confirm(
       `==> thay doi beforeRouteUpdate .../users/:ID === ${this.teamId} !`
     );
@@ -82,6 +80,11 @@ export default {
       // // SỬ DỤNG watch ĐỂ THAY ĐỔI DATA KHI PARAMS THAY ĐỔI
       // this.text = 1
     },
+  },
+  created() {
+    this.loadTeamMembers(this.teamId);
+    //   // LAY GIA TRI CUA PARAMS QUA PROPS
+    // console.log("teamId: ", this.teamId);
   },
 };
 </script>
