@@ -16,7 +16,7 @@ import 'ant-design-vue/dist/antd.css'; // or 'ant-design-vue/dist/antd.less'
 import img1 from './components/nested/footer1/Footer.vue'
 import img2 from './components/nested/footer2/Footer.vue'
 import img3 from './components/nested/footer3/Footer.vue'
-
+import icon from './components/nested/icon/index.vue'
 
 
 const router = createRouter({
@@ -104,7 +104,14 @@ const router = createRouter({
             default: img3,
             b: img2
           },
-        }
+        },
+        {
+          path: 'icon',
+          name: 'icon',
+          components: {
+            default: icon,
+          },
+        },
       ],
     },
     { path: '/:notFound(.*)', component: NotFound },

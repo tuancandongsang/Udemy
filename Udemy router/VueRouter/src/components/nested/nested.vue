@@ -7,6 +7,7 @@
           <li><router-link to="/nested/img1">img1</router-link></li>
           <li><router-link to="/nested/img21">img2+1</router-link></li>
           <li><router-link to="/nested/img32">img3+2</router-link></li>
+          <li><router-link to="/nested/icon">Icon</router-link></li>
 
           <!-- SỬ DỤNG NAME Ở ROUTER LINK -->
           

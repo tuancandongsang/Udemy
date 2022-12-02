@@ -50,7 +50,6 @@ export default {
     if (this.$route.query.search) {
       this.search = this.$route.query.search.replace(/%/g, " ")
     }
-
     // //  KIEM SOAT QUERY STRING O this.$watch
     // this.$watch(
     //   () => this.$route.query.search,

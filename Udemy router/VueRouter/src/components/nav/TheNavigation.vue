@@ -9,18 +9,26 @@
           <router-link to="/users">Users</router-link>
         </li>
         <li>
-          <router-link to="/nested">Nested Named Views </router-link> 
+          <router-link to="/nested">Nested Named Views </router-link>
         </li>
         <li>
           <router-link to="/login" v-if="login">Login</router-link>
-          <router-link to="/login" @click="TOGGLE_LOGIN" v-else >LogOut</router-link>
+          <!-- <router-link to="/login" @click="TOGGLE_LOGIN" v-else>LogOut</router-link> -->
+
+          <a-popconfirm v-else title="Are you sure delete this task?" ok-text="Yes" cancel-text="No" @confirm="confirm"
+            @cancel="cancel">
+            <span>Logout</span>
+          </a-popconfirm>
+
         </li>
       </ul>
     </nav>
+
   </header>
 </template>
 <script>
-import {mapGetters, mapMutations} from 'vuex'
+import { mapGetters, mapMutations } from 'vuex'
+import { message } from 'ant-design-vue';
 export default {
   // watch:{
   //   login(newlogin,oldlogin) {
@@ -32,13 +40,32 @@ export default {
   //   }
   // },
   computed: mapGetters(['login']),
-  methods: mapMutations(['TOGGLE_LOGIN']),
+  methods: {
+    ...mapMutations(['TOGGLE_LOGIN']),
+    confirm(e) {
+      console.log(e);
+      message.success('Click on Yes');
+      this.$router.push('/login')
+      this.TOGGLE_LOGIN()
+    },
+    cancel(e) {
+      console.log(e);
+      message.error('Click on No');
+    }
+  },
   // created(){
   //   console.log("login",this.login);
   // }
 }
 </script>
 <style scoped>
+span{
+  color: #fff;
+}
+span:hover{
+  cursor: pointer;
+  border: #f1a80a 2ps solid;
+}
 header {
   width: 100%;
   height: 5rem;
