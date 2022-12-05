@@ -17,6 +17,8 @@ import img1 from './components/nested/footer1/Footer.vue'
 import img2 from './components/nested/footer2/Footer.vue'
 import img3 from './components/nested/footer3/Footer.vue'
 import icon from './components/nested/icon/index.vue'
+import editor from './components/nested/editor/index.vue'
+
 
 
 const router = createRouter({
@@ -110,6 +112,13 @@ const router = createRouter({
           name: 'icon',
           components: {
             default: icon,
+          },
+        },
+        {
+          path: 'editor',
+          name: 'editor',
+          components: {
+            default: editor,
           },
         },
       ],
