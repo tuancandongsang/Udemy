@@ -129,7 +129,6 @@ export const constantRoutes = [
  * the routes that need to be dynamically loaded based on user roles
  */
 export const asyncRoutes = [
-  
 
   {
     path: '/icon',
@@ -346,7 +345,6 @@ export const asyncRoutes = [
   // 404 page must be placed at the end !!!
   { path: '*', redirect: '/404', hidden: true },
 
-  
   {
     path: '/permission',
     alias: ['/home', 'list'],
@@ -388,7 +386,7 @@ export const asyncRoutes = [
         }
       }
     ]
-  },
+  }
 ]
 
 const createRouter = () => new Router({
@@ -403,8 +401,6 @@ export function resetRouter() {
   router.matcher = newRouter.matcher // reset router
 }
 export default router
-
-
 
 //   path: '/permission',
 
@@ -477,7 +473,6 @@ export default router
 //   }
 // scrollBehavior  ==>> giúp bảo lưu vị trí scoll trình duyệt
 
-
 // const router = new VueRouter({
 //   routes: [
 //     {
@@ -489,12 +484,10 @@ export default router
 //     }
 //   ]
 // })
-// Ở đây chúng ta sẽ định nghĩa thêm beforeEnter trong cấu trúc của Router. 
-// Việc định nghĩa này nói chúng ta biết rằng là beforeEnter sẽ được gọi tới trước khi 
+// Ở đây chúng ta sẽ định nghĩa thêm beforeEnter trong cấu trúc của Router.
+// Việc định nghĩa này nói chúng ta biết rằng là beforeEnter sẽ được gọi tới trước khi
 // router được chuyển hướng. Tham số truyền vào của beforeEnter bao gồm 3 tham số: to, from và next.
 //  Đồng nghĩa với việc các bạn có thể hoàn toàn điều hướng router ở đây.
-
-
 
 // const router = new VueRouter({ … });
 // router.beforeEach((to, from, next) => {
@@ -510,12 +503,11 @@ export default router
 // to: Chứa các thuộc tính của một Router và người dùng hướng đến (dùng chính thuộc tính ở đây để phân quyền).
 // from: Chứa các thuộc tính của một Router, cho biết bạn đang ở router nào trước khi bạn chuyển hướng đi.
 // next: Đây là một Function bắt buộc các bạn phải gọi để xác định chuyển hướng.
-// beforeResolve: Được gọi tới trước khi mà sự điều hướng của chúng ta được xác nhận. 
+// beforeResolve: Được gọi tới trước khi mà sự điều hướng của chúng ta được xác nhận.
 // Cũng bao gồm 3 tham số như beforeEach
-// afterEach: Được gọi khi mà tất cả các logic, xử lý của chúng ta đã xong. 
-// Ở afterEach, chúng ta chỉ có 2 tham số là to và from chính vì vậy mà không thể 
+// afterEach: Được gọi khi mà tất cả các logic, xử lý của chúng ta đã xong.
+// Ở afterEach, chúng ta chỉ có 2 tham số là to và from chính vì vậy mà không thể
 // điều hướng sang một router khác ở thời điểm này.
-
 
 // Component Guards – Can thiệp vào từng component trong VueJS
 // Đây là mức độ nhỏ nhất cho việc các bạn can thiệp vào Router – đó là Component.
@@ -533,11 +525,11 @@ export default router
 
 //    }
 //  }
-// Cả beforeRouteEnter, beforeRouteUpdate, beforeRouteLeave đều có 3 tham số là to, from, next. 
-// Như vậy chúng ta đều có thể chuyển hướng component tại thời điểm này. 
+// Cả beforeRouteEnter, beforeRouteUpdate, beforeRouteLeave đều có 3 tham số là to, from, next.
+// Như vậy chúng ta đều có thể chuyển hướng component tại thời điểm này.
 // Tuy nhiên thì 3 hook này sẽ được gọi ở các thời điểm khác nhau:
 
-// beforeRouteEnter: Được gọi trước khi mà điều hướng được xác nhận. 
+// beforeRouteEnter: Được gọi trước khi mà điều hướng được xác nhận.
 // Ở đây bạn không thể truy cập vào con trỏ this của Vue, vì nó được chạy trước khi mà component được khởi tạo.
 // beforeRouteUpdate: Được gọi khi mà router đã được thay đổi và chúng ta sẻ dụng lại Component chúng ta định nghĩa ra beforeRouteUpdate.
 // beforeRouteLeave: Được gọi trước khi mà chúng ra chuyển hướng ra khỏi component tới một Route khác.
@@ -615,6 +607,4 @@ export default router
 // })
 
 // export default router;
-
-
 

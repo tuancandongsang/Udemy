@@ -29,7 +29,7 @@ export default {
   },
   created() {
     this.getBreadcrumb()
-    console.log(this.$route.matched[0]);
+    console.log(this.$route.matched[0])
   },
   methods: {
     getBreadcrumb() {
