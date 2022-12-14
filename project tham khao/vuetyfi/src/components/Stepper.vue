@@ -52,7 +52,7 @@
       <v-stepper-content step="2">
         <v-form>
           <h2> Form Wizard </h2>
-          <p>Nostrud exercitation commodo consequat.</p>
+          <p>Nostrud exercitation  .</p>
           <v-container>
             <v-layout flex wrap row>
               <v-flex d-flex lg6>

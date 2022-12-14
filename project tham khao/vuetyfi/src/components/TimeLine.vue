@@ -120,7 +120,7 @@
 export default {
   data() {
     return {
-      avatarIcon: 'https://avataaars.io/?avatarStyle=Transparent&topType=ShortHairDreads01&accessoriesType=Prescription02&hairColor=Brown&facialHairType=BeardLight&facialHairColor=Blonde&clotheType=GraphicShirt&clotheColor=Heather&graphicType=SkullOutline&eyeType=Happy&eyebrowType=RaisedExcited&mouthType=Twinkle&skinColor=Yellow'
+      avatarIcon: 'https://hatvan.vn/wp-content/uploads/2019/11/FB_IMG_1574061582582.jpg'
     }
   },
 
