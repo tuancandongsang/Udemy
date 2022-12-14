@@ -1,0 +1,3 @@
+cài đặt redux-toolkit va react-redux
+cau hinh file store
+sua lai code trong index.js
