@@ -1,0 +1,60 @@
+version: '3'
+services:
+
+  app:
+    build: .
+    image: craterapp/crater
+    restart: unless-stopped
+    volumes:
+      - ./:/var/www:z
+    labels:
+      ofelia.enabled: "true"
+      ofelia.job-exec.somecron.schedule: "@every 60s"
+      ofelia.job-exec.somecron.command: "php artisan schedule:run"
+    networks:
+      - crater
+
+  db:
+    image: mariadb
+    restart: unless-stopped
+    volumes:
+      - db:/var/lib/mysql
+      # If you want to persist data on the host, comment the line above this one...
+      # and uncomment the line under this one.
+      #- ./docker-compose/db/data:/var/lib/mysql:rw,delegated
+    environment:
+      MYSQL_USER: crater
+      MYSQL_PASSWORD: crater
+      MYSQL_DATABASE: crater
+      MYSQL_ROOT_PASSWORD: crater
+    ports:
+      - '33006:3306'
+    networks:
+      - crater
+
+  nginx:
+    image: nginx:1.17-alpine
+    restart: unless-stopped
+    ports:
+      - 80:80
+    volumes:
+      - ./:/var/www:z
+      - ./docker-compose/nginx/nginx.conf:/etc/nginx/conf.d/default.conf
+    networks:
+      - crater
+
+  ofelia:
+    image: mcuadros/ofelia
+    restart: unless-stopped
+    command: daemon --docker
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+    depends_on:
+      - app
+
+volumes:
+  db:
+
+networks:
+  crater:
+    driver: bridge
