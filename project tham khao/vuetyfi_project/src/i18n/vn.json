@@ -1,0 +1,24 @@
+{
+    "dashboard": "Tiêu đề",
+    "search": "Tìm kiếm",
+    "calendar": "Lịch",
+    "mailbox": "Thư điện tử",
+    "widgets": "Widgets",
+    "social": "Mạng xã hội",
+    "charts": "Biểu đồ",
+    "media": "Ứng dụng",
+    "overlays": "Overlays",
+    "snackbar": "Snackbar",
+    "authorization": "Authorization",
+    "login": "Đăng nhập",
+    "users": "Người dùng",
+    "widgetTodaysVisit": "Today's Visit",
+    "widgetTodaysSale": "Today's Sales",
+    "widgetUniqueVisits": "% Unique Visits",
+    "widgetBounceRate": "Bounce Rate",
+    "widgetHigherYesterday": "{0} higher yesterday",
+    "widgetBeforeTax": "{0} before tax",
+    "widgetAverageDuration": "{0} average duration",
+    "widgetAverageTime": "{0}  on average time"
+  }
+  

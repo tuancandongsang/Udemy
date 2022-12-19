@@ -3,23 +3,10 @@
     <v-toolbar-title>
       <v-toolbar-side-icon @click="toggleNavigationBar"></v-toolbar-side-icon>
     </v-toolbar-title>
-    <v-text-field
-      autofocus="true"
-      flat
-      solo-inverted
-      append-icon="search"
-      :label="$t('search')"
-    >
+    <v-text-field autofocus="true" flat solo-inverted append-icon="search" :label="$t('search')">
     </v-text-field>
     <v-spacer></v-spacer>
-    <v-rating
-      v-model="rating"
-      background-color="white"
-      medium
-      :ripple="false"
-      color="white"
-      dense
-    />
+    <v-rating v-model="rating" background-color="white" medium :ripple="false" color="white" dense />
 
     <v-dialog v-model="dialog" width="500">
       <v-btn icon slot="activator">
@@ -55,14 +42,8 @@
 
         <v-card-text>
           Choose theme color ?
-          <swatches
-            v-model="$root.themeColor"
-            inline
-            colors="material-dark"
-            :exceptions="['#FFFFFF']"
-            shapes="circles"
-            show-border
-          ></swatches>
+          <swatches v-model="$root.themeColor" inline colors="material-dark" :exceptions="['#FFFFFF']" shapes="circles"
+            show-border></swatches>
         </v-card-text>
 
         <v-card-text>
@@ -71,53 +52,31 @@
             <v-container>
               <v-layout row wrap>
                 <v-flex xs12 xs6 md11>
-                  <v-text-field
-                    v-model="userEmail"
-                    label="User Email"
-                    hint="Set user email"
-                  />
+                  <v-text-field v-model="userEmail" label="User Email" hint="Set user email" />
                 </v-flex>
 
                 <v-flex xs12 xs6 md1 />
 
                 <v-flex xs12 sm6 md11>
-                  <v-text-field
-                    v-model="password"
-                    :append-icon="
-                      showPassword ? 'visibility_off' : 'visibility'
-                    "
-                    :type="showPassword ? 'text' : 'password'"
-                    label="New Password"
-                    hint="Please choose a complex one.."
-                    :error="error"
-                    @click:append="showPassword = !showPassword"
-                  />
+                  <v-text-field v-model="password" :append-icon="
+                    showPassword ? 'visibility_off' : 'visibility'
+                  " :type="showPassword ? 'text' : 'password'" label="New Password"
+                    hint="Please choose a complex one.." :error="error" @click:append="showPassword = !showPassword" />
                 </v-flex>
 
                 <v-flex xs12 sm6 md1 />
 
                 <v-flex xs12 sm6 md11>
-                  <v-text-field
-                    v-model="passwordConfirm"
-                    :append-icon="
-                      showPasswordConfirm ? 'visibility_off' : 'visibility'
-                    "
-                    :type="showPasswordConfirm ? 'text' : 'password'"
-                    label="Confirm New Password"
-                    hint="and confirm it."
-                    :error="error"
-                    @click:append="showPasswordConfirm = !showPasswordConfirm"
-                  />
+                  <v-text-field v-model="passwordConfirm" :append-icon="
+                    showPasswordConfirm ? 'visibility_off' : 'visibility'
+                  " :type="showPasswordConfirm ? 'text' : 'password'" label="Confirm New Password"
+                    hint="and confirm it." :error="error" @click:append="showPasswordConfirm = !showPasswordConfirm" />
                 </v-flex>
 
                 <v-flex xs12 sm6 md1 />
 
                 <v-flex xs12 xs6 md11>
-                  <v-switch
-                    label="Email Notification"
-                    color="success"
-                    v-model="switchEmailNotification"
-                  />
+                  <v-switch label="Email Notification" color="success" v-model="switchEmailNotification" />
                 </v-flex>
 
                 <v-flex xs12 xs6 md1 />
@@ -144,24 +103,10 @@
     <v-btn icon href="https://github.com/fatihunlu" :ripple="false">
       <v-icon medium>fab fa-github</v-icon>
     </v-btn>
-    <v-menu
-      class="toolbar-menu-item"
-      offset-y
-      origin="center center"
-      :nudge-bottom="10"
-      transition="scale-transition"
-    >
-      <v-btn
-        icon
-        flat
-        slot="activator"
-        @click="notifications.map((x) => (x.isActive = false))"
-      >
+    <v-menu class="toolbar-menu-item" offset-y origin="center center" :nudge-bottom="10" transition="scale-transition">
+      <v-btn icon flat slot="activator" @click="notifications.map((x) => (x.isActive = false))">
         <v-badge color="green" overlap>
-          <span
-            slot="badge"
-            v-if="notifications.filter((x) => x.isActive).length > 0"
-          >
+          <span slot="badge" v-if="notifications.filter((x) => x.isActive).length > 0">
             {{ notifications.filter((x) => x.isActive).length }}
           </span>
           <v-icon medium>notifications</v-icon>
@@ -170,28 +115,22 @@
 
       <v-card class="elevation-0">
         <v-toolbar card dense color="transparent">
-          <v-toolbar-title
-            ><h5>
+          <v-toolbar-title>
+            <h5>
               You have {{ notifications.length }} new notification(s)
-            </h5></v-toolbar-title
-          >
+            </h5>
+          </v-toolbar-title>
         </v-toolbar>
         <v-card-text class="pa-0">
           <v-list two-line class="pa-0">
             <template v-for="(item, index) in notifications">
               <v-divider :key="index" />
-              <v-list-tile
-                avatar
-                :key="item.title"
-                @click.parent="item.onClick"
-              >
+              <v-list-tile avatar :key="item.title" @click.parent="item.onClick">
                 <v-list-tile-avatar :color="item.color">
                   <v-icon dark>{{ item.icon }}</v-icon>
                 </v-list-tile-avatar>
                 <v-list-tile-content>
-                  <v-list-tile-sub-title
-                    v-html="item.title"
-                  ></v-list-tile-sub-title>
+                  <v-list-tile-sub-title v-html="item.title"></v-list-tile-sub-title>
                 </v-list-tile-content>
                 <v-list-tile-action class="caption">
                   {{ item.actionAt }}
@@ -205,24 +144,14 @@
         </v-card-text>
       </v-card>
     </v-menu>
-    <v-menu
-      class="toolbar-menu-item"
-      offset-y
-      origin="center center"
-      :nudge-bottom="10"
-      transition="scale-transition"
-      content-class="language-menu"
-    >
+    <v-menu class="toolbar-menu-item" offset-y origin="center center" :nudge-bottom="10" transition="scale-transition"
+      content-class="language-menu">
       <v-btn icon large flat slot="activator" :ripple="false">
         <img :src="selectedLanguageFlag" class="selected-language-flag" />
       </v-btn>
       <v-list class="languages-list">
-        <v-list-tile
-          v-for="(language, index) in languages"
-          @click="selectLanguage(language.languageCode)"
-          :key="index"
-          class="languages-list-item"
-        >
+        <v-list-tile v-for="(language, index) in languages" @click="selectLanguage(language.languageCode)" :key="index"
+          class="languages-list-item">
           <v-list-tile-action v-if="language.path">
             <img :src="language.path" class="language-flag" />
           </v-list-tile-action>
@@ -233,31 +162,16 @@
       </v-list>
     </v-menu>
 
-    <v-menu
-      class="toolbar-menu-item"
-      offset-y
-      origin="center center"
-      :nudge-bottom="10"
-      transition="scale-transition"
-    >
+    <v-menu class="toolbar-menu-item" offset-y origin="center center" :nudge-bottom="10" transition="scale-transition">
       <v-btn icon large flat slot="activator" :ripple="false">
         <v-avatar size="42px">
           <img
-            src="https://avataaars.io/?avatarStyle=Circle&topType=ShortHairShortFlat&accessoriesType=Sunglasses&hairColor=Black&facialHairType=Blank&clotheType=CollarSweater&clotheColor=Black&eyeType=Default&eyebrowType=Default&mouthType=Smile&skinColor=Light"
-          />
+            src="https://avataaars.io/?avatarStyle=Circle&topType=ShortHairShortFlat&accessoriesType=Sunglasses&hairColor=Black&facialHairType=Blank&clotheType=CollarSweater&clotheColor=Black&eyeType=Default&eyebrowType=Default&mouthType=Smile&skinColor=Light" />
         </v-avatar>
       </v-btn>
       <v-list>
-        <v-list-tile
-          v-for="(item, index) in items"
-          :key="index"
-          :to="!item.href ? { name: item.name } : null"
-          :href="item.href"
-          ripple="ripple"
-          :disabled="item.disabled"
-          :target="item.target"
-          @click="item.click"
-        >
+        <v-list-tile v-for="(item, index) in items" :key="index" :to="!item.href ? { name: item.name } : null"
+          :href="item.href" ripple="ripple" :disabled="item.disabled" :target="item.target" @click="item.click">
           <v-list-tile-action v-if="item.icon">
             <v-icon>{{ item.icon }}</v-icon>
           </v-list-tile-action>
@@ -290,7 +204,7 @@ export default {
           icon: "account_circle",
           href: "#",
           title: "Profile",
-          click: (e) => {},
+          click: (e) => { },
         },
         {
           icon: "settings",
@@ -382,6 +296,11 @@ export default {
           languageCode: "ch",
           path: require("../../assets/flags/ch.png"),
         },
+        {
+          name: "Viet Nam",
+          languageCode: "vn",
+          path: require("../../assets/flags/vn.png"),
+        },
       ],
     };
   },
@@ -403,6 +322,8 @@ export default {
           return require("../../assets/flags/ja.png");
         case "ch":
           return require("../../assets/flags/ch.png");
+        case "vn":
+          return require("../../assets/flags/vn.png");
       }
     },
   },
@@ -479,6 +400,7 @@ export default {
   color: #41b883;
   font-weight: bold;
 }
+
 .language-menu {
   border-radius: 25px;
   width: 235px;

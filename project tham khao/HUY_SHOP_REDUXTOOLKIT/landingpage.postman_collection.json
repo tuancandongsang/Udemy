@@ -1,0 +1,77 @@
+{
+	"info": {
+		"_postman_id": "062b7fc6-a50d-4c4c-b594-9352af424e7e",
+		"name": "landingpage",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Blogs search",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxMjNAZ21haWwuY29tIiwicm9sZXMiOlsiVVNFUiJdLCJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjgwODEvYXBpL2xvZ2luIiwiZXhwIjoxNjY1NTQxMjQ5fQ.vFIQonFgchFmdojI8A9BtkduVUWrAQb9C3uGwZ8mtx4"
+					}
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8081/api/blogs?page=1&size=10&title=t",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"api",
+						"blogs"
+					],
+					"query": [
+						{
+							"key": "page",
+							"value": "1"
+						},
+						{
+							"key": "size",
+							"value": "10"
+						},
+						{
+							"key": "title",
+							"value": "t"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "login",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"username\": \"123@gmail.com\",\r\n  \"password\": \"123\"\r\n}"
+				},
+				"url": "http://localhost:8081/api/login"
+			},
+			"response": []
+		},
+		{
+			"name": "product search",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": "http://localhost:8081/api/product/2"
+			},
+			"response": []
+		}
+	]
+}

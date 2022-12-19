@@ -33,7 +33,7 @@
     "yup": "^0.32.11"
   },
   "scripts": {
-    "start": "set BROWSER=none && set PORT=4200 && react-scripts start",
+    "start": "set PORT=4150 && react-scripts start",
     "build": "react-scripts build --output public"
   },
   "resolutions": {

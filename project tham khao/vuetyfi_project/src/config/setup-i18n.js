@@ -21,6 +21,8 @@ export function setupAndGetI18n(Vue, isProduction) {
     i18n.setLocaleMessage('de', require('../../src/i18n/de.json'));
     i18n.setLocaleMessage('ja', require('../../src/i18n/ja.json'));
     i18n.setLocaleMessage('ch', require('../../src/i18n/ch.json'));
+    i18n.setLocaleMessage('vn', require('../../src/i18n/vn.json'));
+
 
     return i18n;
 }

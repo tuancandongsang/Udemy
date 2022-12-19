@@ -11,7 +11,8 @@ export class Http {
     return {
       Authorization: `Bearer ${localStorage.getItem(LOCALSTORAGE.TOKEN) || ""}`,
     };
-  }
+  };
+
   static get = (endPoint, params) => {
     const options = {
       headers: this._getHeader(),
@@ -21,6 +22,7 @@ export class Http {
     }
     return axios.get(BASE_URL + endPoint, options);
   };
+
   static post = (endPoint, payload) => {
     return axios.post(BASE_URL + endPoint, payload, {
       headers: this._getHeader(),
@@ -45,3 +47,4 @@ export class Http {
     });
   };
 }
+
