@@ -5,13 +5,12 @@ import App from './App.vue';
 import store from './store/index.js';
 import Antd from 'ant-design-vue';
 import 'ant-design-vue/dist/antd.css';
-import router1 from './router'
+import { router } from './router';
+import '../src/style/style.scss'; // global css
 
-
-
-const router = createRouter({
+const routerApp = createRouter({
   history: createWebHistory(),
-  routes: router1,
+  routes: router,
   linkActiveClass: 'active',
   scrollBehavior(_, _2, savedPosition) {
     if (savedPosition) {
@@ -21,10 +20,9 @@ const router = createRouter({
   },
 });
 
-
 const app = createApp(App);
 
-app.use(router);
+app.use(routerApp);
 app.use(store);
 app.use(Antd);
 app.mount('#app');

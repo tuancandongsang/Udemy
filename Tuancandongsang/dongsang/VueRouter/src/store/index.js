@@ -1,14 +1,13 @@
-
 import { createStore } from 'vuex';
 
-import login from './modules/login'
-import todos from './modules/todos'
+import sidebar from './modules/sidebar';
+import todos from './modules/todos';
 
 const store = createStore({
-	modules: {
-		login,
-		todos
-	}
-})
+  modules: {
+    sidebar,
+    todos,
+  },
+});
 
-export default store
+export default store;
