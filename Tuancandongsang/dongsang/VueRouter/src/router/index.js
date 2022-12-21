@@ -1,7 +1,7 @@
-import Vue from 'vue'
-import Router from 'vue-router'
+// import Vue from 'vue'
+// import Router from 'vue-router'
 
-Vue.use(Router)
+// Vue.use(Router)
 
 import Layout from '../layout/index'
 
@@ -10,7 +10,7 @@ import Layout from '../layout/index'
 // import tableRouter from './modules/table'
 // import nestedRouter from './modules/nested'
 
-export const constantRoutes = [
+export const router = [
   // {
   //   path: '/redirect',
   //   component: Layout,
@@ -361,13 +361,13 @@ export const constantRoutes = [
 //   }
 ]
 
-const createRouter = () => new Router({
-  scrollBehavior: () => ({ y: 0 }),
-  routes: constantRoutes
-})
-const router = createRouter()
-export function resetRouter() {
-  const newRouter = createRouter()
-  router.matcher = newRouter.matcher 
-}
+// const createRouter = () => new Router({
+//   scrollBehavior: () => ({ y: 0 }),
+//   routes: constantRoutes
+// })
+// const router = createRouter()
+// export function resetRouter() {
+//   const newRouter = createRouter()
+//   router.matcher = newRouter.matcher 
+// }
 export default router

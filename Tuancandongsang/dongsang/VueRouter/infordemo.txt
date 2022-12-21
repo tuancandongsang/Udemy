@@ -1,0 +1,59 @@
+ 3 HÀM COMPONENT ROUTER
+==>> thư mục TeamMembers.vue
+- beforeRouteEnter: không thể truy cập this
+    - kiểm tra các tham số to , from, next
+    - nếu next() thì cho qua
+    - nếu next(false) thì sẽ không click vào đc router (==>> UserList.vue)
+    - nếu next('/') hoặc next({path:'/'}) ....: chuyển hướng đến vị trí khác
+    - nếu next(error): nếu đối số truyền tới next là 1 đối tượng error thì điều hướng sẽ được bỏ qua và lỗi sẽ được truyền tới callback đã được đăng kú thông qua router.onError()
+    - Nhớ là luôn gọi next(), nếu không hoock không được duyệt
+- beforeRouteUpdate: được gọi khi thay đổi url: truy cập đc this
+- beforeRouteLeave: đc gọi khi rời khỏi component: truy cập đc this
+
+
+3 HÀM GLOBAL ROUTER
+==>> thư mục main.js
+- beforeEnter: được đặt ở trong route con. được gọi khi route chuyển hướng
+    - có thể check 1 số mục như author, xác nhận truy câp ở cấp độ component... vd khi truy cập vào UserList.vue
+- beforeEach: gọi tới khi mà bất kì router nào của các bạn được người dùng kích hoạt ở cấp độ global
+- beforeResolve: gọi khi mà các điều hướng đc xác nhận, vd: các component bất đồng bộ được giải quyết
+- afterEach:  gọi mỗi khi có 1 router bị đóng cấp độ global
+
+
+BÀI TOÁN CHUYỂN LINK :PARAMS CÓ THỂ THAY ĐỔI DATA
+==>> thư mục TeamMembers.vue
+- theo dõi sự thay đổi của params:
+    - SỬ DỤNG watch ĐỂ THAY ĐỔI DATA KHI PARAMS THAY ĐỔI
+    - SỬ DỤNG beforeRouteUpdate ĐỂ THAY ĐỔI DATA KHI PARAMS THAY ĐỔI
+    - SỬ DỤNG this.$watch ĐỂ THAY ĐỔI DATA KHI PARAMS THAY ĐỔI\
+    - dùng hàm reload
+- props để lấy giá trị của params
+
+
+SỬ DỤNG QUERY STRING ĐỂ LƯU DỮ LIỆU
+==>> thư mục UserList.vue
+- sử dụng biến query string
+    - dùng để lưu dữ liệu lên url vd gửi link tìm kiếm đúng sản phẩm
+    - kiểm soát query string ở this.$watch
+- NEXT(FALSE): dùng để chặn truy cập
+
+
+CÁC HÀM CỦA ROUTER LỚN VÀ ROUTER NHỎ
+==>> thư mục login.vue
+-   created(){
+    console.log("this.$router - router lớn",this.$router);
+    console.log("this.$route - route con",this.$route);
+  } 
+  để xem router và route có những gì
+- sử dụng this.$router.go(-1) để đăng nhập xong quay về url trước đó 
+
+
+ROUTER LỒNG NHAU VÀ CHILDREN, NAME ROUTER
+- ===>>> thư mục nested.vue + main.js
+    - Named Views: để phân biệt các  <router-view name="" /> với nhau ở nested.vue
+    - children: lập các component cần được hiển thị vị trí nào ở main.js
+    - vòng đời hiển thị của các component con img3
+
+    - các lợi ích khi dử dụng name Router
+    - Name Routes ở router link ( thư mục ==>> nested.vue )
+    - Named Routes: ( thư mục ===>> login.vue dòng 94)
