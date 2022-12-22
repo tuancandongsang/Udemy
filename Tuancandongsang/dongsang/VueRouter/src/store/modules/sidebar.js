@@ -1,12 +1,18 @@
 import { router } from '../../router/index';
 const state = {
   router: [],
-  hindenSibebar: true,
+  state: {
+    collapsed: false,
+    selectedKeys: ['1'],
+    openKeys: ['sub1'],
+    preOpenKeys: ['sub1'],
+    theme: 'dark',
+  },
 };
 
 const getters = {
   router: (state) => state.router,
-  hindenSibebar: (state) => state.hindenSibebar,
+  state: (state) => state.state,
 };
 
 const actions = {};
@@ -15,9 +21,9 @@ const mutations = {
   SET_ROUTES: (state) => {
     state.router = router;
   },
-  TONGGLE_HINDEN:(state, hinden) =>{
-    state.hindenSibebar = !hinden;
-  }
+  // HANDLE_SIDEBAR:(state, hinden) =>{
+  //   state.hindenSibebar = !hinden;
+  // }
 };
 
 export default {
