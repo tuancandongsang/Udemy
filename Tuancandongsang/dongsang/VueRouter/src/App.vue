@@ -1,13 +1,5 @@
 <template>
-  <div>
-    <h1>alo</h1>
-    <main>
-    <router-view></router-view>
-  </main>
-  <footer>
-    <router-view name="footer"></router-view>
-  </footer>
-  </div>
+      <router-view></router-view>
 </template>
 
 <script>
@@ -24,7 +16,7 @@ export default {
       users: this.users,
     };
   },
-  created() {},
+  created() { },
 };
 </script>
 

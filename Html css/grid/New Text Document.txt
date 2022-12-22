@@ -1,0 +1,115 @@
+de display: grid
+grid-template-colums: 1fs 1fs 1fs 1fs; chon so cot mong muon theo lauout, co the 30% 30% hoac 300px 300px
+// hoac  grid-template-columns: repeat(4, 1fr); 
+grid-template-rows: 200px 200px; cho so hang mong muong muon theo layout.
+grid-column-gap: 30px khoang cach giua cac hang
+grid-row-gap: 30px khoang cach giua cac cot
+grid-gap: 30px 30px khoag cach giua cot va hang, la tong hop cua 2 gap tren
+.item:frist-child {
+    grid-column: 1/3;
+    grid-row: 1/2;
+} phan tu dau tien, height 1 cot, width 2 cot
+.item:nth-child(2),
+.item:nth-child(3) {
+    grid-row: 1/3;
+} pha tu 2 3. width 1 cot, height 2 cot
+.... hoac dung SPAN de quan sat chieu rong va cao
+.item:frist-child {
+    grid-column: 1/ span 2;
+    grid-row: 1/ span 1;
+} phan tu dau tien, height 1 cot, width 2 cot
+
+- dung grid-template-arear: ( cho container ) de chia bo cung cua layout
+	grid-area: cho item con
+vd
+.layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 350px 100px 350px;
+    grid-gap: 20px;
+    padding: 30px;
+    grid-template-areas:
+        "h1 h1 h2 h3"
+        "h4 h5 h2 h3"
+        "h4 h5 h6 h6";
+}
+
+.item:first-child {
+    grid-area: h1;
+}
+
+.item:nth-child(2) {
+    grid-area: h2;
+}
+
+.item:nth-child(3) {
+    grid-area: h3;
+}
+
+- REPONSIVE voi grid
+	- cach lam thong thuong
+.layout{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 30px;
+}
+
+@media screen and (max-width: 1279px) {
+    .layout{
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-gap: 30px;
+    }
+}
+@media screen and (max-width: 999px) {
+    .layout{
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-gap: 30px;
+    }
+}
+@media screen and (max-width: 499px) {
+    .layout{
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+        grid-gap: 30px;
+    }
+}
+
+===  dung auto-fit: lap day khoang trong . auto-fill: du cot . value= minmax(200px, 1fr): toi thieu 200px va toi da la 1fr
+.layout{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, value);
+    grid-gap: 30px;
+}
+
+=== scroll-snap khi dung voi mobile
+khi o che do mobile, muon chuyen ve dang scoll ngang
+
+.layout{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(293px, 1fr));
+    grid-gap: 30px;
+}
+
+/* mobile */
+@media screen and (max-width: 499px) {
+    .layout{
+        display: grid;
+        grid-auto-flow: column;  // tran theo colum
+        grid-auto-columns: 80%;  // do rong moi item
+        grid-gap: 30px;
+        overflow-x: auto;  // tao thanh scroll
+        scroll-padding-top: always; 
+        scroll-snap-type: x mandatory; // x : chieu ngang , mandatory: ten kieu
+        grid-template-columns: unset;
+	  scroll-padding: 25px ; // item cach le 25px
+    }
+    .item{
+        scroll-snap-align: start;  // diem hien thi cua item khi keo
+        /* scroll-snap-align: center; */
+        /* scroll-snap-align: end; */
+
+    }
+}
+

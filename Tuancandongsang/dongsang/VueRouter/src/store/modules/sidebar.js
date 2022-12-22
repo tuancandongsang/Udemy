@@ -1,20 +1,23 @@
 import { router } from '../../router/index';
 const state = {
-  routes: [],
-  addRoutes: [],
+  router: [],
+  hindenSibebar: true,
 };
 
 const getters = {
-  routes: (state) => state.sidebar.routes,
+  router: (state) => state.router,
+  hindenSibebar: (state) => state.hindenSibebar,
 };
 
 const actions = {};
 
 const mutations = {
-  SET_ROUTES: (state, routes) => {
-    state.addRoutes = routes;
-    state.routes = router.concat(routes);
+  SET_ROUTES: (state) => {
+    state.router = router;
   },
+  TONGGLE_HINDEN:(state, hinden) =>{
+    state.hindenSibebar = !hinden;
+  }
 };
 
 export default {

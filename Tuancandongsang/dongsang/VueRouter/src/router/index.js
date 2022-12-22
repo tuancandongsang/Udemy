@@ -45,41 +45,42 @@ export const router = [
   {
     path: '/',
     component: Layout,
-    // redirect: '/dashboard',
-    // children: [
-    //   {
-    //     path: 'dashboard',
-    //     component: () => import('@/views/dashboard/index'),
-    //     name: 'Dashboard',
-    //     meta: { title: 'Dashboard', icon: 'dashboard', affix: true }
-    //   }
-    // ]
+    redirect: '/dashboard',
+    children: [
+      {
+        path: 'dashboard',
+        component: () => import('../views/dashboard'),
+        name: 'Dashboard',
+        meta: { title: 'Dashboard', icon: 'dashboard', affix: true }
+      }
+    ]
   },
   {
     path: '/documentation',
     component: Layout,
-    //     children: [
-    //       {
-    //         path: 'index',
-    //         component: () => import('@/views/documentation/index'),
-    //         name: 'Documentation',
-    //         meta: { title: 'Documentation', icon: 'documentation', affix: true }
-    //       }
-    //     ]
+    redirect: '/documentation/index',
+    children: [
+      {
+        path: 'index',
+        component: () => import('../views/documentation'),
+        name: 'Documentation',
+        meta: { title: 'Documentation', icon: 'documentation', affix: true }
+      }
+    ]
   },
-  //   {
-  //     path: '/guide',
-  //     component: Layout,
-  //     redirect: '/guide/index',
-  //     children: [
-  //       {
-  //         path: 'index',
-  //         component: () => import('@/views/guide/index'),
-  //         name: 'Guide',
-  //         meta: { title: 'Guide', icon: 'guide', noCache: true }
-  //       }
-  //     ]
-  //   },
+  {
+    path: '/guide',
+    component: Layout,
+    redirect: '/guide/index',
+    children: [
+      {
+        path: 'index',
+        component: () => import('@/views/guide/index'),
+        name: 'Guide',
+        meta: { title: 'Guide', icon: 'guide', noCache: true }
+      }
+    ]
+  },
   //   {
   //     path: '/profile',
   //     component: Layout,
@@ -121,37 +122,37 @@ export const router = [
   //   nestedRouter,
   //   tableRouter,
 
-  //   {
-  //     path: '/example',
-  //     component: Layout,
-  //     redirect: '/example/list',
-  //     name: 'Example',
-  //     meta: {
-  //       title: 'Example',
-  //       icon: 'el-icon-s-help'
-  //     },
-  //     children: [
-  //       {
-  //         path: 'create',
-  //         component: () => import('@/views/example/create'),
-  //         name: 'CreateArticle',
-  //         meta: { title: 'Create Article', icon: 'edit' }
-  //       },
-  //       {
-  //         path: 'edit/:id(\\d+)',
-  //         component: () => import('@/views/example/edit'),
-  //         name: 'EditArticle',
-  //         meta: { title: 'Edit Article', noCache: true, activeMenu: '/example/list' },
-  //         hidden: true
-  //       },
-  //       {
-  //         path: 'list',
-  //         component: () => import('@/views/example/list'),
-  //         name: 'ArticleList',
-  //         meta: { title: 'Article List', icon: 'list' }
-  //       }
-  //     ]
-  //   },
+  {
+    path: '/example',
+    component: Layout,
+    redirect: '/example/list',
+    name: 'Example',
+    meta: {
+      title: 'Example',
+      icon: 'el-icon-s-help'
+    },
+    children: [
+      {
+        path: 'create',
+        component: () => import('../views/example/create'),
+        name: 'CreateArticle',
+        meta: { title: 'Create Article', icon: 'edit' }
+      },
+      {
+        path: 'edit/:id(\\d+)',
+        component: () => import('@/views/example/edit'),
+        name: 'EditArticle',
+        meta: { title: 'Edit Article', noCache: true, activeMenu: '/example/list' },
+        hidden: true
+      },
+      {
+        path: 'list',
+        component: () => import('@/views/example/list'),
+        name: 'ArticleList',
+        meta: { title: 'Article List', icon: 'list' }
+      }
+    ]
+  },
 
   //   {
   //     path: '/tab',
@@ -370,4 +371,4 @@ export const router = [
 //   const newRouter = createRouter()
 //   router.matcher = newRouter.matcher
 // }
-export default router;
+// export default router;

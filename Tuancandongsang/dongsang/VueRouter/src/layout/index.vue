@@ -1,9 +1,9 @@
 <template>
-  <div>
+  <div class="container">
     <!-- hiển thị menu sidebar bên trái  -->
-    <sidebar class="sidebar-container" />
+    <sidebar class="sidebar-container"/>
     <!-- hiển thị cả màn hình bên phải -->
-    <div>
+    <div class="container-right">
       <div>
         <!-- hiển thị thanh nav bên trên  -->
         <navbar />
@@ -34,8 +34,4 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-// @import "../style/mixin.scss";
-.sidebar {
-  // @include btn;
-}
 </style>
