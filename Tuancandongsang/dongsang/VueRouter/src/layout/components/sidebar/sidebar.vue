@@ -1,5 +1,5 @@
 <template>
-  <div :class="hinden ? 'sidebarWidth' : '100px'">
+  <div :class="hinden ? 'sidebarWidth' : ''">
     <a-switch :checked="theme === 'dark'" checked-children="Dark" un-checked-children="Light" @change="changeTheme" />
     <a-menu v-model:openKeys="openKeys" v-model:selectedKeys="selectedKeys" mode="inline"
       :inline-collapsed="state.collapsed" :theme="theme">

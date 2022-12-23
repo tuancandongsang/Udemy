@@ -1,0 +1,30 @@
+footer {
+  background: var(--foote-textcolor);
+
+  .copyright {
+    border-top: 1px solid var(--textcolor);
+    padding: 30px 0;
+    font-size: 17px;
+    color: var(--breadcrumb-textcolor);
+
+    span {
+      color: var(--breadcrumb-textcolor);
+    }
+  }
+}
+
+@media screen and (max-width: 575px) {
+  footer {
+    .menus {
+      .item {
+        text-align: center;
+        .logo {
+          margin: 0 auto 30px auto;
+        }
+        .social {
+          margin: 0 0 50px 0;
+        }
+      }
+    }
+  }
+}

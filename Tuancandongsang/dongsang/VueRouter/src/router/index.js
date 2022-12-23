@@ -45,13 +45,13 @@ export const router = [
   {
     path: '/',
     component: Layout,
-    redirect: '/dashboard',
+    redirect: '/grid-layout',
     children: [
       {
-        path: 'dashboard',
-        component: () => import('../views/dashboard'),
-        name: 'Dashboard',
-        meta: { title: 'Dashboard', icon: 'dashboard', affix: true }
+        path: 'grid-layout',
+        component: () => import('../views/gridlayout'),
+        name: 'grid-layout',
+        meta: { title: 'Grid-Layout', icon: 'grid-layout', affix: true }
       }
     ]
   },

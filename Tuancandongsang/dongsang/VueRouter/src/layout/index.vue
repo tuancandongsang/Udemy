@@ -15,12 +15,14 @@
       <appmain />
       <!-- hiển thị cài đặt -->
       <settings />
+      <Footer />
     </div>
   </div>
 </template>
 
 <script>
 import {
+  Footer,
   appmain,
   settings,
   navbar,
@@ -29,7 +31,7 @@ import {
 } from './components/index';
 export default {
   name: 'Layout',
-  components: { appmain, settings, navbar, tagsview, sidebar },
+  components: { appmain, settings, navbar, tagsview, sidebar, Footer },
 };
 </script>
 

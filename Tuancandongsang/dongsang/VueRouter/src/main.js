@@ -7,6 +7,7 @@ import Antd from 'ant-design-vue';
 import 'ant-design-vue/dist/antd.css';
 import { router } from './router';
 import '../src/style/style.scss'; // global css
+import "./assets/main.css";
 
 const routerApp = createRouter({
   history: createWebHistory(),
