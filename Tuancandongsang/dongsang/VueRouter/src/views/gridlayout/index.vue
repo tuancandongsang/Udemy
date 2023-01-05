@@ -1,39 +1,25 @@
 <template>
-  <div class="layout-grid">
-    <div class="item-grid1 "><img src="https://i.pinimg.com/736x/70/5c/8b/705c8b2364417b341216d075ede4b158.jpg" alt="">
+  <div>
+    <div class="layout-grid">
+      <div class="item-grid" v-for="img in imgs" :key="img"> <img :src="img" alt="" /></div>
     </div>
-    <div class="item-grid2 "><img src="https://c1.staticflickr.com/9/8112/8477434985_5f637b7d84_z.jpg" alt="">
+    <div>
+      <div class="layout-grid-mobile">
+        <div class="item-grid-mobile" v-for="img in imgs" :key="img"> <img :src="img" alt="" /></div>
+      </div>
     </div>
-    <div class="item-grid3 "><img src="https://c1.staticflickr.com/9/8112/8477434985_5f637b7d84_z.jpg" alt="">
-    </div>
-    <div class="item-grid4 "><img src="https://c1.staticflickr.com/9/8112/8477434985_5f637b7d84_z.jpg" alt="">
-    </div>
-    <div class="item-grid5 "><img src="https://i.pinimg.com/736x/70/5c/8b/705c8b2364417b341216d075ede4b158.jpg" alt="">
-    </div>
-    <div class="item-grid6 "><img src="https://c1.staticflickr.com/9/8112/8477434985_5f637b7d84_z.jpg" alt="">
-    </div>
-    <div class="item-grid7 "><img src="https://i.pinimg.com/736x/70/5c/8b/705c8b2364417b341216d075ede4b158.jpg" alt="">
-    </div>
-    <div class="item-grid8 "><img
-        src="https://images.pexels.com/photos/14420090/pexels-photo-14420090.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
-        alt=""></div>
-    <div class="item-grid9 "><img src="https://c1.staticflickr.com/9/8112/8477434985_5f637b7d84_z.jpg" alt="">
-    </div>
-    <div class="item-grida "><img src="https://c1.staticflickr.com/9/8112/8477434985_5f637b7d84_z.jpg" alt="">
-    </div>
-    <div class="item-gridb "><img src="https://c1.staticflickr.com/9/8112/8477434985_5f637b7d84_z.jpg" alt="">
-    </div>
-    <div class="item-gridc"><img src="https://c1.staticflickr.com/9/8112/8477434985_5f637b7d84_z.jpg" alt="">
-    </div>
-    <!-- <div class="item-grid"><img src="https://i.pinimg.com/736x/70/5c/8b/705c8b2364417b341216d075ede4b158.jpg" alt="">
-    </div> -->
-
   </div>
+
 </template>
 
 <script>
+import data from '../../mixins/data';
 export default {
   name: 'Dashboard',
+  mixins: [data],
+  created() {
+    console.log(this.imgs);
+  }
 }
 </script>
 
@@ -43,6 +29,10 @@ img {
   height: 100%;
   border-radius: 5px;
 
+}
+
+.layout-grid-mobile {
+  display: none;
 }
 
 .layout-grid {
@@ -126,6 +116,22 @@ img {
   }
 }
 
+@media screen and (max-width: 1440px) {
+  .layout-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: repeat(4, 200px);
+    grid-template-areas:
+      "h1 h1 h2 h3 h4"
+      "h6 h6 h7 h7 h8 "
+      "h6 h6 h11 h12 h8 "
+      "h10 h5 h5 h9 h13"
+    ;
+    grid-gap: 20px;
+    padding: 20px;
+  }
+}
+
 @media screen and (max-width: 768px) {
   .layout-grid {
     display: grid;
@@ -144,11 +150,20 @@ img {
   }
 }
 
-@media screen and (max-width: 425px) {
+@media screen and (max-width: 500px) {
 
   .layout-grid {
-    grid-template-rows: 300px;
-    grid-template-areas: none;
+    display: none;
+  }
+
+  .item-grid-mobile {
+    scroll-snap-align: start;
+    /* scroll-snap-align: center; */
+    /* scroll-snap-align: end; */
+
+  }
+
+  .layout-grid-mobile {
     display: grid;
     grid-auto-flow: column;
     grid-auto-columns: 80%;
@@ -158,13 +173,6 @@ img {
     scroll-snap-type: x mandatory;
     grid-template-columns: unset;
     scroll-padding: 25px;
-  }
-
-  .item-grid {
-    grid-area: none !important;
-    /* scroll-snap-align: start; */
-    /* scroll-snap-align: center; */
-    /* scroll-snap-align: end; */
   }
 }
 </style>
