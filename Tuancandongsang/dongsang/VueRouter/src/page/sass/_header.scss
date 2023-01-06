@@ -1,0 +1,65 @@
+@import './mixin';
+
+.header {
+    background-color: $yellow;
+    max-width: 1920px;
+    clip-path: ellipse(100% 100% at top);
+    overflow: hidden;
+    margin-bottom: 100px;
+    padding-bottom: 200px;
+
+    &-container {
+        max-width: 1725px;
+        margin-left: auto;
+        margin-right: auto;
+        padding: 0 15px;
+    }
+
+    &-top {
+        @include align-item;
+        justify-content: space-between;
+        padding-top: 60px;
+
+        &-logo {
+            width: 100px;
+            height: 100x;
+        }
+
+        &-menu {
+            @include align-item;
+            gap: 80px;
+
+            &-item {
+                width: 67px;
+                height: 33px;
+                font-family: 'Poppins';
+                font-style: normal;
+                font-weight: 400;
+                font-size: 22px;
+                line-height: 33px;
+                letter-spacing: 0.02em;
+                color: #252641;
+            }
+        }
+
+        &-btn {
+            @include align-item;
+            gap: 34px;
+
+            &_click {
+                padding: 14px 37px;
+                border-radius: 80px;
+                width: 160px;
+                height: 60px;
+                font-family: 'Poppins';
+                font-style: normal;
+                font-weight: 500;
+                font-size: 22px;
+                line-height: 33px;
+                letter-spacing: 0.02em;
+
+
+            }
+        }
+    }
+}

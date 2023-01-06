@@ -4,6 +4,7 @@
 // Vue.use(Router)
 
 import Layout from '../layout/index';
+import design from "../page/design.vue"
 
 // import componentsRouter from './modules/components'
 // import chartsRouter from './modules/charts'
@@ -56,17 +57,8 @@ export const router = [
     ]
   },
   {
-    path: '/documentation',
-    component: Layout,
-    redirect: '/documentation/index',
-    children: [
-      {
-        path: 'index',
-        component: () => import('../views/documentation'),
-        name: 'Documentation',
-        meta: { title: 'Documentation', icon: 'documentation', affix: true }
-      }
-    ]
+    path: '/design',
+    component: design,
   },
   {
     path: '/guide',

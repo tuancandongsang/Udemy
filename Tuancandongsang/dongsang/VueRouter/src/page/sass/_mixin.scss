@@ -1,0 +1,12 @@
+@import "./variables";
+@mixin btn--orange{
+    background-color: $btn--orange;
+}
+@mixin align-item{
+    display: flex;
+    align-items: center;
+}
+@mixin btn--default{
+    background-color: $btn--default;
+    color: $gray-light;
+}

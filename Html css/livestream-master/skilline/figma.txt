@@ -1,2 +1,4 @@
 https://www.figma.com/community/file/1029023791566203786
 https://www.figma.com/file/X7OZvd9vh2vthyh3zaoA4A/Online-Learning-Landing-Page-(Community)?node-id=1%3A3&t=ph3Yq5DVMom7Aqxm-0
+
+clip-path: ellipse(100% 100% at top);
