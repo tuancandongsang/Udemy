@@ -4,7 +4,8 @@
 // Vue.use(Router)
 
 import Layout from '../layout/index';
-import design from "../page/design.vue"
+import skilline from "../page/skilline/skilline.vue";
+import trafalgar from "../page/trafalgar/trafalgar.vue";
 
 // import componentsRouter from './modules/components'
 // import chartsRouter from './modules/charts'
@@ -57,8 +58,8 @@ export const router = [
     ]
   },
   {
-    path: '/design',
-    component: design,
+    path: '/skilline',
+    component: skilline,
   },
   {
     path: '/guide',
@@ -73,20 +74,10 @@ export const router = [
       }
     ]
   },
-  //   {
-  //     path: '/profile',
-  //     component: Layout,
-  //     redirect: '/profile/index',
-  //     hidden: true,
-  //     children: [
-  //       {
-  //         path: 'index',
-  //         component: () => import('@/views/profile/index'),
-  //         name: 'Profile',
-  //         meta: { title: 'Profile', icon: 'user', noCache: true }
-  //       }
-  //     ]
-  //   }
+  {
+    path: '/trafalgar',
+    component: trafalgar,
+  },
   // ]
 
   // /**
