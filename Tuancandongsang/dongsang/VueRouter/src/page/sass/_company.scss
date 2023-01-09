@@ -1,0 +1,23 @@
+// @import './mixin';
+.company {
+    margin-top: 100px;
+
+    &-heading {
+        color: #696984;
+        text-align: center;
+        margin-bottom: 32px;
+        font-family: 'Poppins';
+        font-style: normal;
+        font-weight: 500;
+        font-size: 28px;
+        line-height: 160%;
+    }
+
+    &-logos {
+        @include align-item;
+        justify-content: center;
+        gap: 0 75px;
+
+        &-img {}
+    }
+}

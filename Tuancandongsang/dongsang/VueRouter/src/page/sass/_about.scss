@@ -1,0 +1,87 @@
+.about {
+    width: 1300px;
+    margin: 160px auto 0;
+
+    &-header {
+
+        &-heading {
+            font-family: 'Poppins';
+            font-style: normal;
+            font-weight: 600;
+            font-size: 44px;
+            line-height: 180%;
+            text-align: center;
+            color: #2F327D;
+
+            span {
+                font-family: 'Poppins';
+                font-style: normal;
+                font-weight: 600;
+                font-size: 44px;
+                line-height: 180%;
+                text-align: center;
+                color: #F48C06;
+            }
+        }
+
+        &-text {
+            margin: 20px auto 0;
+            color: #696984;
+            font-size: 24px;
+            line-height: 43.2px;
+            text-align: center;
+            font-family: 'Poppins';
+            display: block;
+            width: 1100px;
+            height: 130px;
+            font-weight: 400;
+        }
+    }
+
+    &-list {
+        @include space-between;
+        margin-top: 80px;
+        gap: 0 100px;
+
+        &-item {
+            width: 600px;
+            height: 400px;
+            border-radius: 20px;
+            position: relative;
+
+            &-image {}
+
+            &-content {
+                position: absolute;
+                top: 40%;
+                left: 50%;
+                transform: translate(-50%, 0);
+
+                &-title {
+                    font-family: 'Poppins';
+                    font-style: normal;
+                    font-weight: 600;
+                    font-size: 32px;
+                    line-height: 48px;
+                    padding-bottom: 17px;
+                    text-align: center;
+                    color: #FFFFFF;
+                }
+
+                a {
+                    font-family: 'Poppins';
+                    font-style: normal;
+                    font-weight: 500;
+                    font-size: 22px;
+                    line-height: 33px;
+                    text-align: center;
+                    color: #FFFFFF;
+                    background: rgba(35, 189, 238, 0.9);
+                    border-radius: 80px;
+                    padding: 25px 40px;
+
+                }
+            }
+        }
+    }
+}
