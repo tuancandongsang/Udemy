@@ -12,7 +12,6 @@
                         <li class="menu-item">
                             <a href="#!" class="menu-link">Home</a>
                         </li>
-
                         <li class="menu-item">
                             <a href="#!" class="menu-link">Find a doctor</a>
                         </li>
