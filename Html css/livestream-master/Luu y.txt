@@ -1,0 +1,73 @@
+tạo chữ 2 dòng, nếu thừa sẽ tạo ... ở cuối
+p{
+    text-align: justify;
+    line-height: 1.8rem;
+    height: 3.6rem;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+}
+
+1 dòng khi quá width sẽ hiện ...
+.header_cart-product>p {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+khi hover vào item sẽ dịch lên trên 2px, đổ bóng có transition: 
+.product-item{
+    position: relative;
+}
+.product-item:hover{
+    top: -2px;
+    box-shadow: 0 1px 20px rgba(0, 0, 0, 0.5);
+    cursor: pointer;
+    transition: top linear 0.1s;
+}
+
+tạo dòng kẻ ngang lên chữ
+.product-item-price-old{
+    text-decoration: line-through;
+}
+
+Khi hover vào navbar-notification thì  navbar-notification-history 
+được hiện ra với scale ở vị trí 90% top từ opacity 0 tới 1. trong 0,2s
+.navbar-notification:hover .navbar-notification-history {
+    display: block;
+    animation: scale ease-in 0.2s;
+    transform-origin: calc(90%) top;
+}
+.navbar-notification-history {
+    position: absolute;
+    right: 0;
+    top: 25px;  
+    display: none;
+}
+@keyframes scale {
+    from {
+        transform: scale(0);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+Tạo tam giá chổng lên
+.notification::before {
+    content: "";
+    display: block;
+    border-color: transparent transparent var(--primary-color) transparent;
+    border-width: 0 10px 10px;
+    border-style: solid;
+}
+
+khi focus vào search_input thì search_history hiện ra
+.search_input:focus~.search_history {
+    display: block;
+}
+
+
