@@ -10,7 +10,7 @@
                     <div class="menu-bg"></div>
                     <ul class="menu">
                         <li class="menu-item">
-                            <a href="#!" class="menu-link">Design</a>
+                            <a href="#!" class="menu-link">Design Design Design</a>
                         </li>
                         <li class="menu-item">
                             <a href="#!" class="menu-link">Find a doctor</a>
