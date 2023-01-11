@@ -116,20 +116,6 @@ FILE .gitignore
     xóa 1 file khỏi nhánh 
 git rm test2.html // xóa test2.html khỏi branch ( có thề làm bằng tay rồi git add .)
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 vào nhánh chính (master) pull code về
 tạo nhánh mới cần phát triển
 code xong đẩy push lên nhánh đó
