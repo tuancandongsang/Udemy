@@ -1,0 +1,78 @@
+git init  // khởi tạo 1 filegit
+
+GIT ADD
+git add index.html about.html // Đưa vào staging file index.html và file about.html
+git add css // Đưa thư mục css (và file, thư mục con) vào staging
+git add --all  // đưa toàn bộ file thay đổi vào staging
+git add . // đưa toàn bộ file thay đổi vào staging
+git reset  // hủy git add gần nhất 
+git reset -- _fileName // hủy _fileName của git add trước đó
+
+GIT STATUS
+git status // xem trạng thái đầu đủ của các commit
+git status -s // xem thông tin ngắn gọn 
+
+GIT COMMIT 
+git commit -m "Ghi chú về commit" // commit 
+git commit -a -m "Ghi chú về commit"  // kết hợp git add . và git commit
+git commit --amend -m "Thông tin về commit" // thay thế commit cuối cùng gần nhất rồi gộp lại làm 1
+git reset --soft HEAD~2  // hủy 2 commit cuối cùng
+git reset --hard HEAD~2 // hủy 2 commit cuối cùng, code của commit 1 gần nhất bị hủy bỏ hoàn toàn
+
+GIT LOG
+git log // xem lịch sử commit
+git log -2 // hiển thị 2 commit gần nhất
+git log -p -2 // hiển thị chi tiết 2 commit gần nhất
+git log --stat -5 // hiển thị thống kê ngắn gọn của 5 commit gần nhất
+git log --oneline // hiển thị thông tin mã id, hasd của commit
+git log --stat -10 --oneline // hiển thị thông tin mã id, hasd của 10 commit gần nhất
+git log --after="2019-1-1" --before="2019-12-31" // lọc commit theo ngày
+git log --oneline --author="XuanThuLab" // lọc commit theo username
+git log --oneline --grep="ghi chu" '// lọc theo ghi chú của commit
+git log --oneline -- src/OAuth.php // lọc theo file cụ thể
+git log --oneline --shortstat -S"sendmail" // lọc theo nội dung cần tìm
+
+GIT DIFF
+git diff // Kiểm tra sự thay đổi thư mục làm việc với commit cuối
+git diff --staged // Kiểm tra sự thay đổi của index (staging) với commit cuối
+git diff hash-commit1 hash-commit2 // Kiểm tra thay đổi giữa hai commit
+git diff branch1 branch2 // Kiểm tra sự thay đổi của hai nhánh
+
+GIT CLONE
+git remote -v // kiểm tra remote, url liên kết
+git branch --remote // kiểm tra Remote 
+
+GIT CHECKOUT
+git checkout master // chuyển sang nhánh master
+git checkout HASH index.html // hồi phục file index.html về phiên bản commit có mã HASH
+git checkout index.html // hồi phục file index.html về phiên bản commit cuối
+git checkout -- *.html // hồi phục tất cả các file có đuôi .html từ phiên bản commit cuối
+git checkout -- .  //  hồi phục tất cả các file từ phiên bản commit cuối
+git checkout HASH // trở về hẳn 1 commit có mã HASH, code xong thì dùng lênh 
+    git switch -c ten-nhanh-moi để lưu code vào nhánh có tên ten-nhanh-moi , sau đó meger vào branch chính sau
+
+GIT BRANCH 
+git branch alpha // tạo nhánh alpha
+git checkout alpha // chuyển xang nhánh alpha
+git checkout -b develop // tạo nhánh develop và chuyển xang nhánh develop
+git branch -d develop // xóa nhánh develop ( đứng ở nhánh khách để xóa develop)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
