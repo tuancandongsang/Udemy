@@ -1,0 +1,28 @@
+.TestCovid{
+    .table td{
+        border:1px solid #333
+    }
+    .table th{
+        border: 1px solid #333;
+    }
+    .covid-id{
+        position: relative;
+        right: 150px;
+        padding: 0;
+    }
+    .XN{
+        
+    }
+    .SN{
+        width: 100mm;
+    }
+    .logo1{
+        position: absolute;
+        opacity: 0.1;
+        bottom: 90mm;
+        left: 30mm;
+    }
+    b{
+        font-size: 75%;
+    }
+}

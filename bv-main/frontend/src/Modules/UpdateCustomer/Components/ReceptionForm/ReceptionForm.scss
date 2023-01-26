@@ -1,0 +1,172 @@
+@import "../MedicalHistory/PrintHistory/PrintMedicalHistory.scss";
+.receptionFromContainer{
+padding: 0px 35px;
+}
+.MedicalHistoryTable{
+    .historyMedical{
+        .nameCm{
+            width: 15%;
+        }
+        .testDay{
+            width: 8%;
+        }
+        .optionHistory{
+            width: 10%;
+        }
+    }
+}
+.mb-2{
+    margin-bottom: 0.5em!important;
+}
+.search-form{
+    position: relative;
+    bottom: 40px;
+}
+.title-search{
+    position: relative;
+    bottom: 10px;
+    left: 7px;
+}
+
+.title-search{
+    position: relative;
+    bottom: 10px;
+    left: 7px;
+}
+.receptionFromContainer .position-absolute {
+    z-index: 1;
+    background-color: #fff;
+    border: $border;
+    border-radius: $border-radius;
+    width: 100%;
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+    margin-top: 5px;
+    left: 0px;
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+.info-Form{
+    position: relative;
+    bottom: 30px;
+    margin-bottom: 10px!important;
+}
+
+
+.receptionFromContainer .row {
+    margin-left: 0px;
+}
+
+.serviceExamTd{
+    display: flex;
+    flex-direction: column;
+}
+.inputAc{
+    position: relative;
+    left: 1.7rem;
+}
+
+.contactForm{
+    padding-right: 0px;
+}
+
+.medicalHistoryForm{
+    display: flex;
+    flex-wrap: wrap;
+}
+.modal-dialog{
+    max-width: 1500px;
+}
+.mr-3{
+    padding: 1rem;
+}
+.p-0{
+   display: flex;
+   flex-direction: row;
+   
+}
+.order-code{
+    position: relative;
+    
+}
+.service-form{
+    position: relative;
+    top: 7px;
+    height: 10rem;
+}
+.position-relative{
+    bottom: 0.5rem;
+}
+
+.accounting-form{
+    position: relative;
+}
+
+.background{
+    position: relative;
+    .mb-1{
+        margin-top: 15px;
+    }
+}
+
+.services-form{
+    position: relative;
+    bottom: 1rem;
+    .selectService{
+        padding: 3px 0px;
+    }
+}
+.cities{
+    margin-left: -15px;
+}
+
+.wards{
+    padding-right: 0px;
+}
+.address-form{
+    position: relative;
+    bottom: 10px;
+}
+.serviceForm-container{
+    padding-top: 2rem;
+    padding-bottom: 1.5rem;
+}
+.customerForm{
+width: 49%;}
+.contactForm{
+    width: 49%;
+    position: relative;
+    left: 2%;
+}
+.form-service{
+    position: relative;
+    bottom: 20px;
+    
+}
+.title-service{
+    position: relative;
+    bottom: 30px;
+    left: 6px;
+}
+.title-selectService{
+    padding-bottom: 10px;
+}
+.input-serivce{
+    height: 45px !important;
+}
+.search-1{
+    margin-top: 20px;
+}
+#service_id{
+    margin-bottom: 1rem;
+}
+.btn-del{
+    background-color: #b55e5e !important;
+}
+.all-services{
+    width: 50px;
+}
+.modal-accounting{
+    position: relative;
+    bottom: 20px;
+}

@@ -1,0 +1,148 @@
+@import '../../Styles/variables';
+.Inventory{
+        .managerTable {
+            // display: block;
+            empty-cells: show;
+            border-spacing: 0;
+            border: $border;       
+        }
+    }
+    .addNew{
+        margin-bottom: 20px;
+    }
+.MedicineForm{  
+    font-size: 14px;
+    .row{
+        padding: 0;
+        margin: 0;
+    } 
+    .col-4{
+        padding: 5px;
+    }
+    .col-8{
+        padding: 5px;
+    }
+    .col-2{
+        padding: 5px;
+    }
+    .warehouse_parts{
+         padding: 5px 4px;     
+        .searchBox{
+            width: 200px;
+        }
+    }
+    .btnControl{
+        float: right;
+        padding-right: 15px;
+        .controlRemove{
+            background: red;
+            margin-right: 15px;
+            border: none;
+        }
+        .controlUpdate{
+            margin-right: 30px;
+        }
+    }
+}
+
+.producerCreateControl{
+    float: right;
+    margin-right: 23px;
+}
+.ProducerForm{ 
+
+    .btnCon{
+        float: right;
+        margin-right: 30px;
+    }
+}
+.ProducerForm h1{
+    margin: 20px 0 20px 0;
+}
+.ProducerForm textarea{
+    text-indent: 17px;
+    border-radius: 3px;
+    border: solid 1px #c3c3c3;
+    &:focus {
+        outline-color: #007bff ;
+    }
+}
+.transaction{
+    padding-top: 50px;
+    .transactionTable {
+        // display: block;
+        empty-cells: show;
+        border-spacing: 0;
+        border: $border; 
+    }
+    .btnAdd{
+        margin-bottom: 20px;
+    }
+    button{
+        margin-right: 20px;
+    }
+    .btnOptions{
+        text-align: right;
+    }
+    .menu {
+        width: 100%;
+        position: relative;
+        background-color: $c-secondary;
+        color: white;
+        top: 0px;
+        left: 0;
+        z-index: 1000;
+        >*{
+            cursor: pointer;
+            border-bottom: 1px solid white;
+            padding: 5px;
+        }
+        >*:hover {
+            background-color: $c-secondary-hover;
+        }
+    }
+}
+.FormLot{
+    .btnControlLot{
+        float: right;
+        padding-top: 20px;
+    }
+
+    .menu {
+        width: 100%;
+        position: relative;
+        background-color: $c-secondary;
+        color: white;
+        top: 0px;
+        left: 0;
+        z-index: 1000;
+        >*{
+            cursor: pointer;
+            border-bottom: 1px solid white;
+            padding: 5px;
+        }
+        >*:hover {
+            background-color: $c-secondary-hover;
+        }
+    }
+}
+.auto-form-control{
+    div{
+        width: 100%;
+        input{
+            width: 100%;
+            height: calc(1.5em + .75rem + 2px);
+            padding: .375rem .75rem;
+            font-size: 1rem;
+            font-weight: 400;
+            line-height: 1.5;
+            color: #495057;
+            background-color: #fff;
+            background-clip: padding-box;
+            border: 1px solid #ced4da;
+            border-radius: .25rem;
+            transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+        } 
+    }
+}
+

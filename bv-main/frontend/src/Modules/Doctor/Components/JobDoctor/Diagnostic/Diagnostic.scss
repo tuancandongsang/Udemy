@@ -1,0 +1,32 @@
+@import "./PrinDiagnostic.scss";
+@import "../../../../Exam/Components/ExamResultPaper/ExamResultPaper.scss";
+.modalBodyScroll {
+    overflow-y: auto;
+}
+.Diagnostic {
+    padding: 10px;
+    .list-diag{
+        height: 43vh;
+    }
+    // .modalPrint{
+    //     width: 80vh;
+    //     height: 700px;
+    // }
+    @media (min-width: 1400px) {
+        .list-diag{
+            height: 29vh;
+        }
+        .table.table-head-fixed thead tr:nth-child(1) th {
+            position: unset;
+        }
+        .table>:not(:last-child)>:last-child>* {
+            border-bottom: none;
+        }
+    }
+    .notiResult {
+        background-color: $c-table-row-selected;
+    }
+    .haveBackground {
+        background-color:  red;
+    }
+}

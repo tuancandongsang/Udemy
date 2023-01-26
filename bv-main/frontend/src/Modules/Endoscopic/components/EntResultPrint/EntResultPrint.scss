@@ -1,0 +1,32 @@
+.printEntResult{
+        padding-left: 5px;
+        width: 21cm;
+        position: absolute;
+        .cusInfo{
+            margin: 0px;
+        }
+        .conclusion{
+            margin-left: 20px;
+            margin-right: 20px;
+        }
+        .resultFile{
+            height: 140px;
+            width: 175px;
+        }
+        .imageEnt{
+            position: absolute;
+            opacity: 0.1;
+            margin-top: 100px;
+            margin-left: 100px;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+        .imageEntReprint{
+            position: absolute;
+            opacity: 0.1;
+            margin-top: -60px; 
+            margin-left: 100px;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+}

@@ -1,0 +1,20 @@
+{
+    "name": "bv",
+    "scripts": {
+        "pushdev": "gcloud app deploy .app.dev.yaml",
+        "install": "npm install pnpm; PATH=$PATH:./node_modules/.bin; cd backend && pnpm install; cd ../frontend && pnpm install",
+        "build": "cd backend && npm run build; cd ../frontend && npm run build",
+        "gcp-build": "npm run install && npm run build",
+        "start": "cd backend && npm run prod"
+    },
+    "dependencies": {
+        "@fortawesome/fontawesome-free": "^5.15.3",
+        "bootstrap": "^4.6.0",
+        "pnpm": "^6.2.3",
+        "react-bootstrap": "^1.6.0",
+        "react-number-format": "^4.5.5",
+        "react-table": "^7.7.0",
+        "recharts": "^2.0.9",
+        "websocket": "^1.0.34"
+    }
+}

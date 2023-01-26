@@ -1,0 +1,25 @@
+.patientInfo {
+  h3 {
+    text-align: center;
+
+    text-transform: uppercase;
+    font-size: 40px;
+  }
+  h5 {
+    margin: 20px 0;
+
+    text-align: center;
+
+    font-style: italic;
+  }
+  p {
+    font-weight: bold;
+  }
+  // input {
+  //   margin-left: -30px;
+  // }
+
+  .row {
+    align-items: center;
+  }
+}

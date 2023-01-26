@@ -1,0 +1,46 @@
+.printUltraResult{
+    padding-left: 5px;
+    width: 21cm;
+    position: absolute;
+    .cusInfo{
+        margin: 0px;
+    }
+    canvas{
+        height: 50px;
+        width:  170px;
+    }
+    .conclusion{
+        margin-left: 20px;
+        margin-right: 20px;
+    }
+    .foooter_ultra{
+        .imgULtrasound{
+            width: 350px;
+            .resultFile{
+                height: 175px;
+                width: 200px;
+            }
+        }
+        
+        .foooter_ultra_right{
+            width: 350px;
+        }
+    }
+    .imageUltra{
+        position: absolute;
+        opacity: 0.1;
+        margin-top: 100px;
+        margin-left: 100px;
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+    .imageUltraReprint{
+        position: absolute;
+        opacity: 0.1;
+        margin-top: -100px; 
+        margin-left: 100px;
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+    
+}

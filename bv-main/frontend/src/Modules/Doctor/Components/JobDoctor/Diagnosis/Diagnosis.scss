@@ -1,0 +1,22 @@
+.Diagnosis{
+    width: 100%;
+    .symptom{
+        min-height: 200px;
+    }
+    .diag{
+        min-height: 70px;
+    }
+    .list-exam{
+        min-height: 165px;
+    }
+    textarea{
+        resize: none;
+    }
+    .allergy{
+        .value_allergy{
+            color: red; 
+            min-height: 40px;
+        }
+        
+    }
+}

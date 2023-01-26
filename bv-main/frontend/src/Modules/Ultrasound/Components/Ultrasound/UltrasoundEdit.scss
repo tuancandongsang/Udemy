@@ -1,0 +1,47 @@
+@import "../PaperResultUltrasound/PaperResultUltrasound.scss";
+@import "../ResultUltrasound/ResultUltrasound.scss";
+@import "../../../../Shared/Components/HeaderPrint/HeaderPrint.scss";
+
+.UltrasoundEdit {
+  .select-office {
+        display: inline;
+        text-decoration: underline;
+        font-weight: normal;
+        margin: 0px 20px;
+    }
+  .select-office:hover {
+      cursor: pointer;
+      color: $c-secondary;
+  }
+  .content-left{
+    .info-customer{
+      .PreExaminations, .CustomerForm{
+        min-height: 100px;
+        padding: 0px;
+      }     
+    }
+    .from-ExamResult{
+      height: 60vh;
+      min-height: 300px;
+      .patientResult {
+        width: 100%;
+        height: 60vh;
+      }
+    }
+  }
+  .content-right{
+    padding-left: 0px;  
+    .CusList{
+      height: 75vh ;
+      min-height: 430px;
+      .title-card{
+        margin-bottom: 15px;
+      }
+    }    
+  }
+  @media (min-width: 1400px) {
+    .CusList {
+      max-height: calc(76vh + 55px);
+  }
+}
+}

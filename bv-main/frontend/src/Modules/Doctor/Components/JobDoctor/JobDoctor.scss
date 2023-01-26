@@ -1,0 +1,155 @@
+@import "./Diagnostic/Diagnostic.scss";
+@import "./PreExamination/PreExamination.scss";
+@import "./Prescriptions/Prescriptions.scss";
+@import "./Diagnosis/Diagnosis.scss";
+@import "./Prescriptions/printPrescription.scss";
+@import "../../../../Shared/Components/CustomerForm/CustomerForm.scss";
+@import "../../../../Shared/Components/HeaderPrint/HeaderPrint.scss";
+@import "./ResultExam/ResultsExam.scss";
+@import "./Prescriptions/PrintPre.scss";
+@import "../../../../Shared/Components/LineDoctor/Line.scss";
+
+.JobDoctor {
+    font-size: $s-text;
+    .row {
+        margin: 0px;
+        padding: 0px;
+        .col-sm-5 {
+            padding: 0px;
+        }
+        .col-sm-7 {
+            padding: 0px;
+        }
+    }
+    .select-office {
+        display: inline;
+        text-decoration: underline;
+        font-weight: normal;
+        margin: 0px 20px;
+    }
+    .select-office:hover {
+        cursor: pointer;
+        color: $c-secondary;
+    }
+    .customerForm_container{
+        margin-left: 0px;
+    }
+    .infoCustomerCard{
+        padding: 0px;
+    }
+    .nav-button{
+        position: absolute;
+        top: 0px;
+        right: 0px;
+        height: 100vh;
+        z-index: 100;
+        .group-btn{
+            position: absolute;
+            top: 17vh;
+            right: 34px;
+            .btn-circle{
+                display: block;
+                text-align: center;
+                height: 50px;
+                width: 50px;
+                border-radius: 50%;
+                border: none;
+                outline: none;
+                background-color: $c-background-head;
+                span{
+                    padding-top: 5px;
+                    font-size: 2rem;
+                    color: $c-text-head;
+                }
+                sup{
+                    left: 3.5em;
+                    top: -4.5em;
+                    div {
+                        width: 20px;
+                        border-radius: 50%;
+                        padding-top: 9px;
+                        height: 20px;
+                        background-color: red;
+                        color: white;
+                        font-weight: bold;
+                    }
+                }
+                &:hover{
+                    background-color: $c-background-head-hover;
+                }
+            }
+            .flaticon-icons{
+                stroke-width: 20px;
+                stroke: $c-text-head;
+                width: 2rem;
+            }
+        }
+        .content{
+            display: block;
+            position: relative;
+            top: 0px;
+            right: -990px;
+            width: 100%;
+            transition: 800ms;            
+            .patientList{
+                position: absolute;
+                height: calc(100vh - 50px);
+                z-index: 2;
+                background-color: white;
+                padding: 10px;
+                margin-top: 35px;
+                width: calc(100% - 10px);
+            }
+            .selectTabs{
+                cursor: pointer;
+                z-index: 10;
+                margin-left: 10px;
+                margin-top: 7px;
+                position: absolute;
+                .titleTabs{
+                    background-color: #b2b2b2;
+                }
+            }
+            .Diagnostic{
+                position: absolute;
+                z-index: 2;
+            }
+            .doctor-opacity{
+                position: fixed;
+                width: 100vw;
+                height: 100vh;
+                top: 0;
+                left: 0;
+                opacity: 0.6;
+                background-color: rgb(70, 68, 68);
+                z-index: 1;
+            }
+        }
+    }
+    .nav-active{
+        @extend .nav-button;
+        width: 55rem;
+        transition: 800ms;
+        .content{
+            right: 0px;
+            .display {
+                width: 0;
+                height: 0;
+            }
+            .tab-content {
+                padding: 0;
+            }
+            .tab-pane, .customCard, .active {
+                background: none;
+            }
+        }
+    }
+    .nav-disable{
+        @extend .nav-button;
+        width: 0rem;
+        transition: 800ms;
+    }
+    .content-left{
+        height: 100%;
+    }
+}

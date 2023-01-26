@@ -1,0 +1,38 @@
+.printExamResult{
+    padding-left: 5px;
+    width: 21cm;
+    position: absolute;
+    top: 0;
+    left: 0;
+    .cusInfo{
+        margin: 0px;
+    }
+    .resultDevice{
+        height: auto !important;
+        page-break-before: always;
+    }
+}
+
+.examPrint{
+    padding: 1px !important;
+}
+.background{
+}
+.images{
+position: absolute;
+opacity: 0.1;
+margin-top: 100px;
+background-repeat: no-repeat;
+background-size: cover;
+}
+.pkvd{
+    color: #25935b
+}
+// .headers{
+//     display: none !important;
+// }
+
+
+
+
+

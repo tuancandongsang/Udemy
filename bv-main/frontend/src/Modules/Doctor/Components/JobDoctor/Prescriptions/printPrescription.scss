@@ -1,0 +1,39 @@
+.printPrescription{
+    display: none;
+    .order-product {
+        min-height: 600px;
+    }
+    .medPrintId{
+        width: 21cm;
+        position: absolute;
+        .show{
+            display: block;
+        }
+        .unShow{
+            display: none;
+        }
+        .PrintEtc{
+            height: 305mm;  
+            padding: 2px; 
+            margin: 2px;  
+            .footer-pres{
+                height: 120px  ;
+            }   
+        }
+        .PrintOtc{       
+            height: 286mm;   
+            padding: 2px;  
+            margin: 2px; 
+          
+                 
+        }
+        * {
+            box-sizing: border-box;
+            -moz-box-sizing: border-box;
+          }
+        .info-Cus{
+        padding: 0px;
+        margin: 0px;
+        }
+    }
+}

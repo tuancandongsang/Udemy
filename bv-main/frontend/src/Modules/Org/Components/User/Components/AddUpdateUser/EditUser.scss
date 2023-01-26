@@ -1,0 +1,23 @@
+
+.addUpdate{
+    background-color: white;
+    margin: 0 auto;
+    height: auto;
+    width: 60em;
+    box-shadow: 3px 6px 6px #c3c3c3;
+    padding: 40px 0px!important;
+    .addControl {
+        float: right;
+        margin-right: 0px !important;
+        margin-top: 15px !important;
+        button{
+            // width: 120px;
+            :first-child{
+                width: 120px !important;
+            }
+            :last-child{
+                width: 60px !important;
+            }
+        }
+    }
+}

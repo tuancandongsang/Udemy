@@ -1,0 +1,108 @@
+.PrintPre {
+    > * {
+        font-size: 13px;
+        padding: 0;
+        margin: 0;
+    }
+    .row{
+        padding: 0;
+        margin: 0;
+    }
+    .HeaderPrint {
+        padding-left: 0;
+        margin-left: 0;
+        line-height: 1.8;
+        font-size: 11.5px;
+    }
+    .header-print {
+        padding-left: 0;
+        margin-left: 0;
+        div {
+            margin-left: 0;
+            padding-left: 0;
+        }
+    }
+    .print-title {
+        font-weight: bold;
+        font-size: 37px;
+    }
+    .info-cus {
+        display: flex;
+        font-size: 17px;
+        align-items: center;
+    }
+    .print-w-50 {
+        width: 50%;
+    }
+    .print-w-60 {
+        width: 65%;
+    }
+    .print-w-40 {
+        width: 35%;
+    }
+    .print-mw-30 {
+        min-width: 30%;
+    }
+    .item-product {
+        padding: 0;
+        margin: 0;
+        font-size: 20px;
+        .title-product {
+            padding-bottom: 1;
+            margin-bottom: 1;
+        }
+    }
+    .title-order {
+        padding: 0;
+        margin: 0;
+        font-size: 20px;
+    }
+    .order-product {
+        min-height: 120mm;
+        font-size: 14px;
+        margin-left: 10px;
+    }
+    .phone-print {
+        width: 25%;
+    }
+    .address-print {
+        width: 75%;
+    }
+    .gender-print {
+        width: 12%;
+    }
+    .weight-print {
+        width: 17%;
+    }
+    .birthday-print {
+        width: 15%;
+    }
+    .name-print {
+        width: 56%;
+        padding: 5px 0;
+    }
+    #PrintEtc {
+        height: 209mm;
+    }
+    #PrintOtc {
+        padding-top: 30px;
+    }
+    .notice{
+        position: absolute;
+        top: 2100px;
+    }
+    .signature{
+        position: absolute;
+        top: 2150px;
+        right: 80px;
+    }
+    .signFix{
+        position: absolute;
+        top: 1000px;
+        right: 80px;
+    }
+    .noticeFix{
+        position: absolute;
+        top: 970px;
+    }
+}

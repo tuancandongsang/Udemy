@@ -1,0 +1,55 @@
+.historyMedicalPrint {
+    .receiptFromPrint{
+        width: 713px;
+        // height: 525px;
+        height: 143mm;
+        padding: 20px;
+    }
+    h5{
+        margin: 0px;
+    }
+}
+.historyMedicalPrint .absolute {
+    position: absolute;
+    right: 45px;
+}
+.historyMedicalPrint .logo {
+   display: flex;
+    .image {
+        width: 80px;
+        height: 60px;
+    }
+
+    .address {
+        width: 350px;
+        margin: 0px;
+    }
+    // .nameHospital{
+    //     width: 250px;
+    //     height: 20px;
+    // }
+}
+.examRxamination-modal .modal-content {
+    width: 830px;
+    margin: auto;
+}
+.sizeDiv{
+    width: 794px;
+}
+
+.nt{
+  position: absolute;
+  left: 5rem;  
+}
+.tt{
+ position: absolute;
+ right: 5rem
+}
+
+.make-bill{
+    position: relative;
+    right: 40rem
+}
+.mr-33{
+    margin-left: -1rem;
+}

@@ -1,0 +1,42 @@
+@import "../CustomerBasic/CustomerBasic";
+@import "../CustomerContact/CustomerContact";
+@import "../CustomerResult/CustomerResult";
+
+.customer {
+    max-width: 1000px;
+    padding: 20px 40px;
+    margin: auto;
+    margin-top: 50px;
+    border: solid 1px #c3c3c3;
+    border-radius: 3px;
+    box-shadow: 3px 3px 5px #c3c3c3;
+
+    h2 {
+        text-align: center;
+        margin-bottom: 30px;
+    }
+
+    .cancel-btn {
+        margin-right: 8px;
+    }
+
+    .row {
+        margin: 0;
+        margin-bottom: 20px;
+    }
+
+    .col {
+        padding-right: 0;
+    }
+
+    &-button-area {
+        display: flex;
+        justify-content: flex-end;
+    }
+
+    &-footer {
+        text-align: end;
+    }
+}
+
+

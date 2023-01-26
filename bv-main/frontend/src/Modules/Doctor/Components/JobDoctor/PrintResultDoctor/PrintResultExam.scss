@@ -1,0 +1,37 @@
+.PrintResultExam{
+    .print_Result{
+        width: 775px;
+        height: auto;
+        page-break-before: always;
+        padding: 10px;
+        .header-from{     
+            .logo{
+                display: flex;
+                .image{
+                    height: 60px;
+                    width: 80px;
+                }
+                .address {
+                    width: 350px;
+                    margin: 0px;
+                }
+            }
+            .absolute {
+                position: absolute;
+                right: 45px;
+            }
+            
+        }
+        .cusInfo{
+            margin: 0px;
+        }
+        .footer-print{
+            .left-footer{
+                width: 250px;
+            }
+            .right-footer{
+                width: 275px;
+            }
+        }
+    }
+}

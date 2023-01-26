@@ -1,0 +1,10 @@
+/tmp
+/data
+/loadtest
+/backup
+.DS_Store
+
+node_modules
+.app.dev.yaml
+*.log
+.env

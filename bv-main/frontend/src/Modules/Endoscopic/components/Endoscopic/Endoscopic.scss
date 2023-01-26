@@ -1,0 +1,49 @@
+@import "../EntResult/EntResult.scss";
+@import "../EntResultPrint/EntResultPrint.scss";
+@import "../../../../Shared/Components/HeaderPrint/HeaderPrint.scss";
+.EntEdit{
+    .select-office {
+          display: inline;
+          text-decoration: underline;
+          font-weight: normal;
+          margin: 0px 20px;
+      }
+    .select-office:hover {
+        cursor: pointer;
+        color: $c-secondary;
+    }
+    .content-left{
+      .info-customer{
+        .PreExaminations, .CustomerForm{
+          height: 14vh;
+          min-height: 100px;
+          padding: 0px;
+        }     
+      }
+      .from-XrayResult{
+        height: 60vh;
+        min-height: 300px;
+        .XrayResult{
+          width: 100%;
+          height: 100%;
+        }
+      }
+    }
+    .content-right{
+      padding-left: 0px;
+      font-size: 13px;
+      position: relative;
+      .CusList{
+        height: calc(72vh + 22px);
+        min-height: 430px;
+        .title-card{
+          margin-bottom: 15px;
+        }
+      }
+    }
+    // @media (min-width: 1400px) {
+    //   .CusList {
+    //     max-height: calc(74vh + 38px);
+    // }
+    // }
+  }

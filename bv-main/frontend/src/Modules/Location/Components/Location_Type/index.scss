@@ -1,0 +1,46 @@
+.tableManager {
+    .addLocation {
+        margin-bottom: 15px;
+        float: right;
+        .titleAddNew {
+            font-size: 22px
+            }
+        }
+                .table th,.table td {
+                    text-align: center;
+                    font-size: 22px;
+                     .btnControl {
+                        display: flex;
+                        justify-content: center;
+                         .btnPrimary {
+                            margin: 0 15px 0 15px ;
+                             .btnDanger {
+                                margin-right: 15px;
+                            }
+                        }
+                    }
+                }
+}
+
+.titleLocation {
+    padding: 15px 0 15px 0;
+}
+
+
+
+
+//AddLocation
+.location{
+    padding-top: 50px;
+    .location_form{
+        padding-top: 50px;
+        .form-group{
+            label{
+                font-size: 1.3em;
+                font-weight:  bold;
+            }
+        }
+    }
+}
+
+

@@ -1,0 +1,39 @@
+# This workflow will do a clean install of node dependencies, build the source code and run tests across different versions of node
+# For more information see: https://help.github.com/actions/language-and-framework-guides/using-nodejs-with-github-actions
+# https://github.com/google-github-actions/deploy-appengine/tree/main/example-app
+
+name: Node.js CI
+
+on:
+  push:
+    branches: [ demo ]
+    paths:
+      - 'backend/**'
+      - '.github/workflows/**'
+
+defaults:
+  run:
+    working-directory: backend
+
+jobs:
+  build-api:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+    - name: prepare .app.dev.yaml
+      env:
+        DB_URL: ${{ secrets.DEV_DB_URL }}
+        DB_NAME: ${{ secrets.DEV_DB_NAME }}
+      run:
+        ls -la && envsubst < app.yaml > .app.dev.yaml
+
+    - name: Deploy to App Engine
+      id: deploy
+      uses: google-github-actions/deploy-appengine@v0.2.0
+      with:
+        deliverables: ./backend/.app.dev.yaml
+        project_id: ${{ secrets.GCP_PROJECT }}
+        credentials: ${{ secrets.GCP_SA_KEY }}
+    - name: Show Output
+      run: echo ${{ steps.deploy.outputs.url }}

@@ -1,0 +1,62 @@
+.PrintDiagnostic{
+    // display: none;
+    .print-diag{
+        width: 775px;
+        .header-from{     
+            .logo{
+                display: flex;
+                .image{
+                    height: 60px;
+                    width: 80px;
+                }
+                .address {
+                    width: 350px;
+                    margin: 0px;
+                }
+            }
+            .absolute {
+                position: absolute;
+                right: 45px;
+            }
+            
+        }
+        .infoCus{
+            padding: 0px 10px;
+            display: block;
+        }
+        .tableService{
+            margin-bottom: 5px;
+            .headExam{
+                
+                .indexExam{
+                    width: 3%;
+                    padding: 10px 2px;
+                }
+                .examName{
+                    width: 53%;
+                    padding: 10px 0px;
+                }
+                .examRoom{
+                    width: 26%;
+                    padding: 10px 0px;
+                }
+                .examTotal{
+                    width: 9%;
+                    padding: 10px 0px;
+                }
+                .examPrice-origin{
+                    width: 9%;
+                    padding: 10px 0px;
+                }
+            }
+        }
+        .footer-print{
+            .left-footer{
+                width: 250px;
+            }
+            .right-footer{
+                width: 275px;
+            }
+        }
+    }
+}

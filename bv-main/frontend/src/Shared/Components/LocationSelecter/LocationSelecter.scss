@@ -1,0 +1,54 @@
+.locationSelecterContainer{
+    .header{
+        margin-bottom: 40px;
+    }
+    .item{
+        margin-bottom: 20px;
+        button {
+            width: 100%;
+            height: 15vh;
+        }
+        
+    }
+    .header{
+        margin-bottom: 40px;
+        font-weight: 700;
+        text-align: center;
+        font-size: 40px;
+        font-family: Hack, sans-serif;
+        text-transform: uppercase;
+        background: linear-gradient(90deg, #000, #fff, #000);
+        letter-spacing: 5px;
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-repeat: no-repeat;
+        background-size: 80%;
+        animation: shine 7s linear infinite;
+        position: relative;
+    }
+    .item{
+        margin-bottom: 20px;
+        button {
+            width: 100%;
+            height: 15vh;
+            align-items: center;
+            box-shadow: 
+                12px 12px 20px 0 rgba(255, 255, 255, 0.3) inset,
+                -8px -8px 12px 0 rgba(0, 0, 0, .25) inset;
+            border-radius: 20px;
+            display: flex;
+            justify-content: center;
+            margin-right: 4rem;
+        }
+    }
+
+    @keyframes shine {
+        0% {
+          background-position-x: -500%;
+        }
+        100% {
+          background-position-x: 500%;
+        }
+    }
+}

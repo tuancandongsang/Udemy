@@ -1,0 +1,101 @@
+
+.Prescriptions {
+    width: 100%;
+    .search-product{
+        padding: 0;
+        .filter {
+            position: relative;
+            .pattern-product{
+                position: absolute;
+                z-index: 13;
+                width: 100%;
+                padding: 0;
+                height: 41px;
+    
+            }
+            .pharmacy-opacity {
+                position: fixed;
+                width: 100vw;
+                height: 100vh;
+                top: 0;
+                left: 0;
+                opacity: 0.6;
+                background-color: gray;
+                z-index: 11;
+            }
+            .list-prescription {
+                position: absolute;
+                top: -41px;
+                left: 574px;
+                width: 937px;
+                transform: translate(-50%, 0%);
+                z-index: 13;
+                border: solid 1px #c3c3c3;
+                border-radius: 3px;
+                td,th,tr{
+                    padding-left: 20px;
+                }
+            }
+        }
+    }
+    .product-table{
+        .product-index{ width: 3%}
+        .product-name{ width: 10%}
+        .product-part{ width: 15%}
+        .product-unit{ 
+            width: 7%;
+            padding: 10px 2px;
+        }
+        .product-price{ width: 7%}
+        .product-total{ width: 8%}
+        .product-quantity{ 
+            width: 7%;
+            padding: 10px 2px;
+            input { height: 40px}
+        }
+        .product-item-quantity { padding: 0 }
+        .product-item-instruction{ padding: 0}
+        .product-options{ width: 3%}
+    }
+  
+    .panel-heading {
+        height: 3em;
+        z-index: 1;
+        margin-bottom: 0px;
+        p:first-child {
+            float: left;
+            margin: 0 15px 0px -15px;
+        }
+        p { 
+            cursor: pointer;
+        }
+        .active_tab {
+            font-weight: bold;
+            text-decoration: underline;
+        }
+        .filter div:first-child{
+            padding-right: 0px; 
+            padding-left: 0px;
+        }
+        .col-sm-9{
+            padding-right: 0px; 
+            padding-left: 0px;
+        }
+    }
+    .fromSearch{
+        z-index: 40;
+    }
+    
+    .SubMedArr{
+        .searchCus{
+            z-index: 40;
+        }
+        .CusFromInfo{
+            z-index: 10;
+        }
+    }
+}
+
+.txtBtn{
+    font-size:12px
+}

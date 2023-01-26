@@ -1,0 +1,14 @@
+.customer-result {
+    border: 1px solid grey;
+    background-color: #c2d6d6;
+    padding: 5px;
+
+    p {
+        margin: 0;
+    }
+
+    &-footer {
+        display: flex;
+        justify-content: flex-end;
+    }
+}

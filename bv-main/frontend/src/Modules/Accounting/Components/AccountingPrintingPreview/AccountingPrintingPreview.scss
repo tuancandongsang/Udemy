@@ -1,0 +1,106 @@
+.AccountingPrintingPreview {
+    .receiptFromPrint{
+        width: 713px;
+        height: 700px;
+        padding: 20px;
+    }
+    h5{
+        margin: 0px;
+    }
+}
+.AccountingPrintingPreview .absolute {
+    position: absolute;
+    right: 45px;
+}
+.AccountingPrintingPreview .logo {
+   display: flex;
+    .image {
+        width: 80px;
+        height: 60px;
+    }
+
+    .address {
+        width: 350px;
+        margin: 0px;
+    }
+    // .nameHospital{
+    //     width: 250px;
+    //     height: 20px;
+    // }
+}
+.examRxamination-modal .modal-content {
+    width: 830px;
+    margin: auto;
+}
+.sizeDiv{
+    width: 794px;
+}
+
+.nt{
+  position: absolute;
+  left: 5rem;  
+}
+.tt{
+ position: absolute;
+ right: 5rem
+}
+
+.make-bill{
+    position: relative;
+    right: 40rem
+}
+.mr-33{
+    margin-left: -1rem;
+}
+.signatureAcc{
+    position: absolute;
+    top:1850px;
+    left:30px;
+}
+.signatureAccAbsolute{
+    position: absolute;
+    top:850px;
+    left:30px
+}
+.receptionAcc{
+    position: absolute;
+    top:1850px;
+    right:80px;
+}
+.receptionAccAbsolute{
+    position: absolute;
+    top:850px;
+    right:80px;
+}
+.heightPaperA5{
+    height:2020px !important
+}
+.heightPaperAbsolute{
+    height:1000px !important
+}
+.heightPaperA5Acc{
+    height:2030px !important
+}
+.heightPaperAccAbsolute{
+    height:1010px !important
+}
+.signatureAccTab2{
+    position: absolute;
+    top:3860px;
+    left:30px;
+}
+.receptionAccTab2{
+    position: absolute;
+    top:3860px;
+    right:80px;
+}
+.signatureAccTab2Absolute{
+    position: absolute;
+    top:1895px;
+    left:30px
+}
+.receptionAccTab2Absolute{
+    position: absolute;
+    top:1895px;
+    right:80px;
+}

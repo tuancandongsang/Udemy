@@ -1,0 +1,180 @@
+@import "./Components/AccountingPrintingPreview/AccountingPrintingPreview.scss";
+.SearchReceipt{
+  height: 100%;
+}
+body{
+  font-size: 100%;
+}
+
+.Transaction {
+  // height: calc(100vh - 100px);
+  .nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link {
+    color: $c-secondary;
+  }
+  .nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active {
+    font-weight: bold;
+    border-color: $c-secondary $c-secondary white
+  }
+  .tab-content {
+    .table-container {
+      border-radius: 0;
+      border-left: 1px solid;
+    }
+  }
+  .navAcc {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+  .inputAcc {
+    border: 1px solid #ced4da;
+  }
+  
+  .form-group {
+    padding: 1rem;
+  }
+  .p-1r{
+    padding: 0 1rem 
+  }
+  .customerInfo {
+    margin-top: 1rem;
+  }
+  .checkSum{
+    display: flex;
+    text-transform: uppercase;
+  }
+  
+  .totalAll{
+    position: relative;
+    left: 120px;
+  }
+  .totalCash{
+    position: relative;
+    left: 150px;
+  }
+  .totalOther{
+    position: relative;
+    left: 180px;
+  }
+}
+// .divNull{
+//   display: block;
+//   width: 300px;
+//   height: 300px;
+// }
+.info-form{
+  position: relative;
+  top: 20px;
+}
+.margin-title{
+  margin: 0px 0px 0px 10px;
+}
+.money-form{
+  position: relative;
+  top: 40px;
+}
+.dflex-center{
+  display: flex;
+  align-items: center;
+}
+.info-form{
+  min-height: 450px;
+  position: relative;
+}
+.library-book{
+  display: flex;
+  flex-direction: row;
+}
+.input-code{
+  width: 60%;
+}
+.check-sum{
+  position: relative;
+  flex: 1 1 auto;
+  padding: 1.5rem;
+  .table-sum{
+    border-radius: 5px;
+    overflow: hidden;
+    padding: 5px;
+  }
+}
+  
+.transaction-btn-cancel:hover {
+  color: $c-secondary-hover;
+  font-weight: bold;
+}
+.accouting-total {
+  font-size: 1.2rem;
+}
+.Transaction-Form {
+  // .w-input{
+  //   width: 70%;
+  // }
+  .username {
+    margin-left: 35px;
+    input {
+      height: 100%;
+    } 
+    >div {
+      position: relative;
+      z-index: 999 !important;
+    }
+  }
+  .transaction-filter {
+    margin: 0;
+    padding-bottom: 0; 
+  }
+  .transaction-table {
+    font-size: 15px;
+  }
+}
+.w-80{
+  width: 80px;
+}
+.position-trans-table{
+  position: absolute;
+  top: 145px;
+  left: 0;
+  padding-left: 25px;
+}
+.itemTransaction{
+  border-radius: 10px;
+  background-color: #1ccb6e;
+  margin-bottom: 20px;
+  width: 49%;
+  color: white;
+  font-size: 25px;
+  cursor: pointer;
+  box-shadow: 
+    12px 12px 20px 0 rgba(255, 255, 255, 0.3) inset,
+    -8px -8px 12px 0 rgba(0, 0, 0, .25) inset;
+  :hover{
+    background-color: #0d944c;
+  }
+  .mixCen{
+    height: 130px;
+    align-items: center;
+    .border-right{
+      border-right: 2px solid white;
+      border-left: 2px solid white;
+      border-radius: 10px;
+      
+    }
+    .widthEqual{
+      width: 140px;
+    }
+    span{
+      width: 50px;
+    }
+  }
+  
+}
+.letrungyeucau{
+  margin-top: 36px;
+  margin-left: 45px;
+}
+.leTrungMargin{
+  margin-left: 19px;
+  margin-top: 20px;
+
+}

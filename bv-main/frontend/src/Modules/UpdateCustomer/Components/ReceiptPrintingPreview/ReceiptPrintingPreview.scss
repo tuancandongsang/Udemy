@@ -1,0 +1,71 @@
+.examReceiptContainer {
+    font-family: "Times New Roman", Times, serif;
+    .receiptFromPrint{
+        width: 710px;
+        // min-height: 130mm;
+        height: 143mm;
+        padding: 20px;
+    }
+    h5{
+        margin: 0px;
+    }
+}
+.d-flex-column-reverse{
+    display: flex;
+    flex-direction: column-reverse;
+}
+.examReceiptContainer .absolute {
+    position: absolute;
+    right: 45px;
+}
+.examReceiptContainer .logo {
+   display: flex;
+    .image {
+        width: 80px;
+        height: 60px;
+    }
+
+    .address {
+        width: 350px;
+        margin: 0px;
+    }
+}
+.examRxamination-modal .modal-content {
+    width: 830px;
+    margin: auto;
+}
+.sizeDiv{
+    width: 794px;
+}
+
+.nt{
+  position: absolute;
+  left: 5rem;  
+}
+.tt{
+ position: absolute;
+ right: 5rem
+}
+
+.make-bill{
+    position: relative;
+    right: 40rem
+}
+.mr-33{
+    margin-left: -1rem;
+}
+.text-left-print{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-height: 80px;
+}
+.date-pos{
+    border: 1px solid #333;
+    padding: 5px;
+    font-size: 120%;
+    height: 70%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}

@@ -1,0 +1,24 @@
+.PreExamination{
+    >p{
+        font-weight: bold;
+        margin-bottom: 0.5em;
+    }
+    .info{
+        .col-sm-4{
+            padding:0px;
+            // margin-left: 10px;
+        }
+        input{
+            margin-bottom: 3px;
+            margin-right: 0px;
+            height: 1.5em;
+            line-height: 1rem;
+            width: 5.25em;
+            padding: 0px;
+        }
+    }
+    .allergy{
+        color: red; 
+        min-height: 40px;
+    }
+}

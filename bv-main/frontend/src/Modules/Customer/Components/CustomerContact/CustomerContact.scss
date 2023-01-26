@@ -1,0 +1,11 @@
+.customer-contact {
+    p {
+        font-style: italic;
+    }
+
+    &-important {
+        color: red;
+    }
+
+    padding-right: 0;
+}

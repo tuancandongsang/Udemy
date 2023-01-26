@@ -1,0 +1,23 @@
+@import"../../../../Styles/variables";
+.Product{
+    .addNew{
+        margin-bottom: 15px;
+    }
+    
+    
+    div.title-item-parts.row{
+        padding-top: 20px;
+        font-size: 1.2rem;
+        font-weight: bold;
+        div.col{
+            padding-left: 35px;
+        }
+    }
+    div.itemPart.row{
+        padding-bottom: 10px;
+    } 
+    .placeholder-product{
+        color: gray;
+        font-size: 0.9rem;
+    }  
+}

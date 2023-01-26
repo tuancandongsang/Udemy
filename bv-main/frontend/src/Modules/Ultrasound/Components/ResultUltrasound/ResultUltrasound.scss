@@ -1,0 +1,31 @@
+.UltralResult{
+    .result-Ultra-Description{
+        // max-height: 240px ;
+        // min-height: 240px;
+        height: 290px;
+        width: 100%;
+        border: 1px solid #dee2e6;
+    }
+    .result-Ultra{
+        // max-height: 200px;
+        // min-height: 200px;
+        height: 240px;
+        width: 100%;
+        border: 1px solid #dee2e6;
+    }
+    .inputSelectImg{
+        height: 235px;
+        width: 100%;
+        // background-color: gray;  
+        .resultFile{
+            outline: none;
+            border: none;
+            border: 0px;
+            height: 215px;
+            width: 250px;
+        }
+    }
+    .input-fromService{
+        width: 250px;
+    }
+}

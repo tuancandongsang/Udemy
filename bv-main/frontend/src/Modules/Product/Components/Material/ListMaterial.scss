@@ -1,0 +1,28 @@
+.material-form{
+    width: 1500px;
+    height: auto;
+    margin: 0 auto;
+    background-color: white;
+    box-shadow: 3px 6px 6px;
+    padding: 20px 50px 60px 50px;
+    .title-material{
+        text-align: center;
+        margin-bottom: 20px;
+    }
+    .button-action{
+        float: right;
+        margin-right: 325px!important;
+        button{
+            width: 120px;
+        }
+    }
+    .btnControlM{
+        display: flex;
+        justify-content: center;
+        .action-btnM{
+            padding: 5px 20px!important;
+        }
+
+    }
+    
+}

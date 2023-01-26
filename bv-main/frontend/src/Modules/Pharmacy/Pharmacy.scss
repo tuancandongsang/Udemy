@@ -1,0 +1,102 @@
+@import "../../Styles/variables";
+@import "../../Styles/shared";
+@import "./Components//FormPharmacy/PrintPharmacy.scss";
+@import "../../Shared/Components/HeaderPrint/HeaderPrint.scss";
+.Pharmacy {
+    .info {
+        .pharmacy-table{
+            max-height: 45vh;
+            overflow: scroll;
+            .quantity{
+                width: 100px;
+            }
+            .instruction {
+                padding: 0px;
+                textarea {
+                    min-height: 60px;
+                }
+            }
+        }
+    }
+    .tab-content {
+        .customCard{
+            padding-left: 0;
+            .infoCustomer {
+                padding-top: 0;
+                div.row {
+                    padding-top: 5px;
+                }
+            }
+            .doctor_info {
+                div.row {
+                    padding-top: 5px;
+                }
+            }
+         }
+    }
+    .filter {
+        position: relative;
+        .pattern-product{
+            position: absolute;
+            z-index: 3;
+        }
+        .pharmacy-opacity {
+            position: fixed;
+            width: 100vw;
+            height: 100vh;
+            top: 0;
+            left: 0;
+            opacity: 0.6;
+            background-color: gray;
+            z-index: 1;
+        }
+        .list-prescription {
+            position: absolute;
+            top: 35px;
+            left: 50%;
+            transform: translate(-50%, 0%);
+            z-index: 3;
+            border: solid 1px #c3c3c3;
+            border-radius: 3px;
+            td,th,tr{
+                padding-left: 20px;
+            }
+        }
+    }
+    
+    .nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active{
+        color: $c-secondary;
+        font-size: 1rem;
+        font-weight: bold;
+        line-height: 1.2;
+    }
+    a.nav-link{
+        color: $c-text;
+    }
+    .options-pharmacy{
+        width: 100%;
+        text-align: right;
+    }
+    .searchCode{
+        input{
+            height: 100%;
+        }
+        button{
+            width: 80px;
+            height: 100%;
+        }
+    }
+    .pharmar-form{
+        margin: 10px auto;
+        padding: 0px;
+    } 
+    .list-prescription{
+        background-color: #ffffff;
+    }
+}
+.pharmacy-list-order{
+    max-width: 80vw;
+}
+.onBlur > *:not(.not-blur) {
+    -webkit-filter: blur(4px);
+}
