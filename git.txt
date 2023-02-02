@@ -81,16 +81,11 @@ git push origin _nameBranch // đẩy lên serve
 git checkout master // chuyển xang branch master
 git rebase develop // hợp branch, cũng cần sử lý xung đột như git meger
 
-
-
-
 GIT MERGE 
 đang có 2 nhánh là develop và master, muốn meger code từ develop vào master 
 sau khi push code vào branch develop
 git checkout master // chuyển xang branch master
 git merge develop // hợp code từ develop vào master + kiêm luôn hợp commit
-
-
 
 GIT REMOTE 
 git remote // liệt kê các liên kết sử dụng lệnh
@@ -109,6 +104,10 @@ git push --force origin master // ghi đè toàn nhánh master ở remote, giố
 
 GIT FETCH 
 git fetch origin // kéo code về nếu local chưa commit cũng k bị mất code như git pull 
+hiển thị hết các nhánh ở local
+    git fetch
+    git branch
+    sau đó checkout vào nhánh cần truy cập
 
 FILE .gitignore
     nội dung file sẽ là các file hoặc forder sẽ k đc đẩy lên serve
