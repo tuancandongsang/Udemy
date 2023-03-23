@@ -25,6 +25,10 @@ export const login = createAsyncThunk(
   }
 );
 
+// spring.datasource.url=jdbc:postgresql://localhost:5433/timesheet
+// spring.datasource.username=du6user
+// spring.datasource.password=123a@
+
 const userSlice = createSlice({
   name: "user",
   initialState: {

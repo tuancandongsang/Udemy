@@ -1,0 +1,22 @@
+{
+  "name": "host-micro-fe",
+  "version": "1",
+  "main": "index.js",
+  "author": "duynd",
+  "license": "MIT",
+  "scripts": {
+    "serve": "node tasks/serve.js",
+    "build": "node tasks/build.js"
+  },
+  "dependencies": {
+    "chalk": "4",
+    "rxjs": "^7.8.0"
+  },
+  "devDependencies": {
+    "cli-progress": "^3.11.2",
+    "concurrently": "^7.6.0",
+    "execa": "^6.1.0",
+    "inquirer": "8.2.5",
+    "listr": "^0.14.3"
+  }
+}
