@@ -1,0 +1,44 @@
+@import "@/styles/index.scss";
+.header {
+  @include flexBetween;
+  font-size: 1.5rem;
+  padding: 10px;
+  max-height: 10vh;
+
+  &-noty {
+    display: flex;
+    gap: 10px;
+
+    &-bell {
+      position: relative;
+
+      &-qty {
+        position: absolute;
+        top: -10%;
+        right: -30%;
+        border-radius: 50%;
+        background-color: $bg-noti;
+        color: $btn-text;
+        font-weight: 500;
+        padding: 0 6px;
+        font-size: 0.8rem;
+      }
+    }
+  }
+}
+
+.drawer {
+  position: relative;
+  &-logout {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    width: 75%;
+    transform: translate(-50%, 0%);
+    button{
+      &:hover {
+        background-color: $btn-error;
+    }
+    }
+  }
+}

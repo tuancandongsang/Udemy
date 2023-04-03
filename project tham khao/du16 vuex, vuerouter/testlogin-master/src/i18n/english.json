@@ -1,0 +1,9 @@
+{
+  "login": "LOGIN",
+  "user": "User",
+  "password":"Password",
+  "successLogin":"Login Success...",
+  "errorLogin":"Please Check...",
+  "backtologin":"Back to Login",
+  "pagenotfound":"PAGE NOT FOUND"
+}

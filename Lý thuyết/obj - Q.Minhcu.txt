@@ -1,0 +1,58 @@
+api giao thúc giữa be và fe
+rest : chuẩn api, ( giao thức )
+restfull api : cũng là 1 chuẩn viết api, thông gia giao thức http như:
+	GET, POST, PUT, DELETE
+Strict Mode : là 1 chế động nghiêm ngặt, trong 1 số trường hợp sẽ giúp tránh 1 số lỗi khi sơ ý để sảy ra
+	ra mắt từ phiên bản ÉS6. vd gán 1 biến trong 1 hàm mà k có từ khoá khai báo, log ở bên ngoài vẫn có thể lấy giá trị
+	điều này gây dò rỉ bộ nhớ, và từ biến func blok thành global blog
+	có 3 cách dùng strict mode. 
+	thêm từ khoá "use strict"; vào đầu file js (trước đó k có dòng code nào)
+	thêm từ khoá "use strict"; vào trong hàm nếu muốn chỉ strict hàm đó
+	thêm từ khoá "use strict"; vào đầu tiền thẻ <script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

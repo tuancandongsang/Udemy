@@ -1,0 +1,22 @@
+@import "@/styles/index.scss";
+
+.home {
+    padding: 10px;
+    height: 100%;
+  
+    .calendar {
+      display: flex;
+      justify-content: end;
+      margin: 15px 0;
+    }
+  
+    .pagination {
+      font-weight: 500;
+      position: absolute;
+      bottom: 10px;
+      right: 50%;
+      transform: translate(50%, 0);
+      width: 70%;
+      @include flexCenter;
+    }
+  }

@@ -1,0 +1,103 @@
+Vue2 và vue 3
+pinia vue3, polaris component, 
+
+Ref, reactive : ref, reactive là các hook được sử dụng trong Composition API để định nghĩa các data, giống như việc chúng ta định nghĩa các data ở trong option data
+	Ref :
+
+vue3 	- tổ chức code tốt hơn, có thể nhóm gọn 1 logic ở trong 1 khoảng
+	- Sharing/reusing the code - có thể chia sẻ dung lại được ở nhiều nơi
+	- tất cả những gì về composition API đều chỉ viết trong setup()
+Multiple root elements - thẻ template của vue 2 thì cần 1 thẻ div bao bên ngoài, còn vue3 thì không cần
+Suspense -  tạm dừng render component chính của chúng ta (#default), thay vào đó hiển thị 1 nội dung khác (#fallback), và cho tới khi nào component chính hiển thị
+	ngoài ra còn có onErrorCaptured để hiển thị khi #default có lỗi
+	<Suspense>  ... </Suspense>
+Multiple v-models : ở vue2 chỉ truyền 1 v-model cho 1 comp. còn vue 3 thì truyền đc nhiều v-model
+Better reactivity - khả năng theo dõi phản ứng tốt hơn
+
+watch : theo dõi sự thay đổi vd validate input
+computed : tính toán lại sự thay đổi, case lại dữ liệu khi các giá trị phụ thuộc thay đổi
+watcher: là 1 đối tượng theo dõi các biểu thức phức tạp và phản ứng với các thay đổi của chúng
+watcher theo dõi đc object deep, nhưng sẽ cồng kềnh và làm giảm hiệu suất
+	vd theo dõi phần tử name trong obj project, thì watcher sẽ theo dõi toàn bộ obj đó
+	thay vào đó sử dụng Vue.set hoặc this.$set, đặt tại đúng vị trí name của obj thì
+	sẽ chỉ theo dõi sự thay đổi của name thay vì toàn obj
+
+tối ưu hóa performance vue
+	- v-show thay vì v-if với các phần tử không lắng nghe và tính toán nhiều, tạo xóa liên tục ở dom
+	- tối ưu computed thay vì methods với các trường hợp cần tính toán
+	- Vue.js Devtools , seoquere extention
+	- tối ưu call api, sử dụng caching, hạn chế yêu cầu gửi máy chủ k cần thiết
+	- lazy loading khi cần thiết tải dữ liệu
+	- Virtual DOM
+	- loại bỏ các tệp và các thư viện k cần thiết. vd dùng antdv icon thì chỉ tải phần icon
+	- phân tách component hợp lý, component chung giảm số lượng code
+	- Lodash  tối ưu thao tác dữ liệu
+	- v-model.lazy để cập nhật dữ liệu khi tìm kiếm ...
+	- dùng computed thay vì dùng watch  nhiều
+	- dùng key trong vòng lặp for.
+
+
+
+api giao thúc giữa be và fe
+rest : chuẩn api, ( giao thức )
+restfull api : cũng là 1 chuẩn viết api, thông gia giao thức http như:
+	GET, POST, PUT, DELETE
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 

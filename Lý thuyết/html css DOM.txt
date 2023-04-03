@@ -1,0 +1,4 @@
+sass, scss, less, critical, cross-broser compatibility, 
+
+Thẻ Meta : là 1 thẻ ở header html, thẻ meta giúp công cụ tìm kiếm nhânh chóng đọc và biết được nội dung của trang web
+

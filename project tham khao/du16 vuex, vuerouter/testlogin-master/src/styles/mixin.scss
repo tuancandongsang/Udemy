@@ -1,0 +1,26 @@
+@mixin flexBetween {
+  display: flex;
+  justify-content: space-between;
+}
+
+@mixin flexCenter {
+  display: flex;
+  justify-content: center;
+}
+
+@mixin borderDefault {
+  border: 1px solid #999;
+}
+
+@mixin btn($btn-bg, $btn-text) {
+  width: 100%;
+  height: 100%;
+  padding: 4px 12px;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  background-color: $btn-bg;
+  color: $btn-text;
+  cursor: pointer;
+}

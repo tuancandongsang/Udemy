@@ -1,0 +1,23 @@
+Service worker, cache, webrtc, Websockets, RESTfull api, Firebase, qui trinh Agile, tool jira, Linux, firestore, graphQL, 
+
+	Sự khác nhau giữa Long-polling, Websockets và Server-sent Events là gì?
+Long-polling: Khi mở yêu cầu HTTP và sẽ mở cho đến khi nhận được bản cập nhật. Khi nhận được bản cập nhật, yêu cầu mới sẽ được mở ra ngay lập tức khi đang chờ 
+bản cập nhật tiếp theo.
+Websocket: Cho phép giao tiếp liên tục hai chiều giữa máy chủ và máy khách.
+Server-Sent Event: Sự kiện do máy chủ gửi dựa trên kết nối HTTP lâu dài nơi các bản cập nhật liên tục được gửi đến máy khách.
+
+	Service worker là gì? (sw)
+là một tệp chương trình viết bằng javascript được browser chạy ngầm và tách biệt khỏi trang web,  ví dụ: đồng bộ ngầm và push notifications... khi k còn chạy
+ứng dụng nhưng vẫn kết nối mạng. hoặc mất mạng sẽ trả thông báo
+đặc điểm : 
+- là một file javascript không can thiệp trực tiếp vào DOM của website. mà giao tiếp bằng một giao diện đặc biệt (postMessage),
+- SW là proxy mạng có thể lập trình được, tức nó cho phép ta điều khiển cách mà các request được xử lý.
+- Nó tắt khi không được dùng đến và sẽ khởi động lại khi cần đến.
+- SW sự dụng rộng rãi khái niệm Promises.
+Vòng đời của sw.
+Một sw có vòng đời tách biệt khỏi trang web.
+
+
+
+
+ 

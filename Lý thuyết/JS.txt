@@ -1,0 +1,93 @@
+JS
+
+map() trả về 1 mảng mới với các phần tử theo hành động
+foreach() không tạo mảng mời mà chỉ lặp qua phần tử của ảng để thực hiện 1 hàng động nào đó
+
+các phương thức của object:
+Object.assign() Sao chép các gía trị của tất cả các thuộc tính riêng từ một hoặc nhiều object vào một object khác.
+	nếu trùng key thì sẽ bị ghi đè ở obj đứng sau
+	 const obj1 = {
+   		 firstName: 'Hieu',
+   		 lastName: 'Bui'
+	};
+	const obj2 = { age: 23 };
+	const obj3 = { school: 'HUST' };
+
+	const obj = Object.assign( obj1, obj2, obj3);
+
+	console.log(obj); // { firstName: 'Hieu', lastName: 'Bui', age: 23, school: 'HUST' }
+
+Object.entries() Trả về mảng thuộc tính đếm được của các cặp [key, value] với object đã cho, tương tự như dùng vặp lặp for...in.
+	const obj = {
+    		firstName: 'Hieu',
+   		lastName: 'Bui'
+	};
+	console.log(Object.entries(obj)); // [ [ 'firstName', 'Hieu' ], [ 'lastName', 'Bui' ] ]
+
+Object.keys() Trả về một mảng các tên thuộc tính đếm được của một object đã cho.
+	var arr = ['a', 'b', 'c'];
+	console.log(Object.keys(arr)); // ['0', '1', '2']
+
+	var obj = { 0: 'a', 1: 'b', 2: 'c' };
+	console.log(Object.keys(obj)); // ['0', '1', '2']
+
+Object.values() Trả về một mảng các giá trị của những thuộc tính đếm được trong object đã cho.
+	const obj = {
+   	 	firstName: 'Hieu',
+    		lastName: 'Bui'
+	};
+	console.log(Object.values(obj)); // [ 'Hieu', 'Bui' ]
+
+Object.freeze() dùng để ngăn chặn một hành vi sử đổi thuộc tính giá trị của một object, ngoài ra cũng có thể ngăn chặn một hành vi như xoá or add thêm thuộc tính.
+	const user = {
+    		username: 'AzureDiamond',
+    		password: 'hunter2'
+	};
+
+	const newUser = Object.freeze(user);
+
+	newUser.password = '*******';
+	newUser.active = true;
+
+	console.log(newUser); // {username: "AzureDiamond", password: "hunter2"}
+
+Object.seal() dùng để ngăn chặn hành vi add thêm một new properties nhưng lại cho phép modification những thuộc tính đã tồn tại trước đó
+
+có 3 cách coppy 1 obj
+	c1 : 	const obj = {a:1,b:2,c:3};
+		const clone = Object.assign({},obj); ( shallow copy )
+	c2 : 	const obj = {a:1,b:2,c:3};
+		const clone = {...obj}; (shallow copy)
+	c3 : 	const obj = {a:1,b:2,c:{d:3}};
+		const clone = JSON.parse(JSON.stringify(obj)); ( deep coppy )
+shallow copy => chỉ coppy 1 tầng trong obj các tầng sau vẫn giữ những giá trị reference của object gốc
+deep coppy => coppy nhiều tầng trong obj không giữ những giá trị reference của object gốc
+	nhược điểm của deep coppy : 1 số key có value là nan, undefine sẽ bị biến mất
+
+Strict Mode : là 1 chế động nghiêm ngặt, trong 1 số trường hợp sẽ giúp tránh 1 số lỗi khi sơ ý để sảy ra
+	ra mắt từ phiên bản ÉS6. vd gán 1 biến trong 1 hàm mà k có từ khoá khai báo, log ở bên ngoài vẫn có thể lấy giá trị
+	điều này gây dò rỉ bộ nhớ, và từ biến func blok thành global blog
+	có 3 cách dùng strict mode. 
+	thêm từ khoá "use strict"; vào đầu file js (trước đó k có dòng code nào)
+	thêm từ khoá "use strict"; vào trong hàm nếu muốn chỉ strict hàm đó
+	thêm từ khoá "use strict"; vào đầu tiền thẻ <script>
+
+event.preventDefault() : ngăn sự kiện mặc định vd click vào thẻ a, sẽ k bắn trang mới
+event.stopPropagation() : ngăn chặn sự kiện nổi bọt, click vào con mà k làm ảnh hưởng tới cha
+return false : kết hợp cả 2 hàm trên
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

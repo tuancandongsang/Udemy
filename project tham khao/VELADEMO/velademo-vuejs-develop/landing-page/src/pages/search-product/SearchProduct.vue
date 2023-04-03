@@ -37,7 +37,6 @@ export default {
       const response = await ProductService.getSearch(1, 8, this.$route.query.q)
       this.searchResult = response.voList
       console.log('tuancan', response);
-
     }
 
     this.$watch(
