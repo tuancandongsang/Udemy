@@ -17,7 +17,25 @@ là một tệp chương trình viết bằng javascript được browser chạy
 Vòng đời của sw.
 Một sw có vòng đời tách biệt khỏi trang web.
 
+bộ nhớ cache 
+Bộ nhớ cache là một loại bộ nhớ tạm thời được sử dụng để lưu trữ các dữ liệu mà máy tính hoặc trình duyệt thường xuyên truy cập. 
+Bộ nhớ cache được thiết kế để tăng tốc độ truy cập dữ liệu bằng cách lưu trữ các dữ liệu này tại một vị trí gần hơn với trình duyệt hoặc ứng dụng.
+
+Trong trình duyệt web, bộ nhớ cache thường được sử dụng để lưu trữ các tài nguyên như tệp HTML, CSS, JavaScript, hình ảnh và các tài nguyên đa phương tiện khác. 
+Khi bạn truy cập một trang web, trình duyệt sẽ tải các tài nguyên này và lưu trữ chúng trong bộ nhớ cache của bạn. Khi bạn truy cập lại trang web đó, 
+trình duyệt sẽ sử dụng bộ nhớ cache để tải các tài nguyên này thay vì tải lại chúng từ máy chủ, điều này giúp giảm thiểu thời gian tải trang và tăng tốc độ truy cập của bạn.
+
+Tuy nhiên, việc sử dụng bộ nhớ cache cũng có thể dẫn đến các vấn đề như việc trang web không cập nhật dữ liệu mới nhất hoặc khó để theo dõi sự thay đổi của trang web. 
+Do đó, trong một số trường hợp, bạn có thể muốn xóa bộ nhớ cache của trình duyệt của mình để đảm bảo rằng bạn đang truy cập các dữ liệu mới nhất.
 
 
+ WebRTC là một công nghệ cho phép các ứng dụng web truyền tải âm thanh, video và dữ liệu trực tiếp giữa các trình duyệt web khác nhau mà không cần sử dụng phần mềm 
+hoặc plugin bên ngoài. Nó cung cấp một cách để truyền tải dữ liệu trực tiếp giữa hai hoặc nhiều trình duyệt web và tạo ra các kết nối P2P (peer-to-peer) giữa các 
+trình duyệt mà không cần thông qua một máy chủ trung gian.
 
- 
+WebRTC sử dụng các giao thức mã hóa và giải mã âm thanh và video để bảo mật dữ liệu và đảm bảo rằng nó chỉ được chia sẻ giữa các ứng dụng hoặc thiết bị được cho phép. 
+WebRTC hỗ trợ các tính năng như chia sẻ màn hình, phát trực tiếp và trò chuyện video, và nó có thể được sử dụng cho các ứng dụng web như trò chơi trực tuyến, 
+hội thảo trực tuyến, hoặc các ứng dụng đào tạo trực tuyến.
+
+WebRTC là một công nghệ mã nguồn mở, được phát triển bởi Google và được hỗ trợ bởi các trình duyệt web như Google Chrome, Mozilla Firefox và Opera. 
+Nó đã được triển khai rộng rãi và được sử dụng trong các ứng dụng web thực tế.

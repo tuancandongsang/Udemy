@@ -4,7 +4,8 @@ pinia vue3, polaris component,
 Ref, reactive : ref, reactive là các hook được sử dụng trong Composition API để định nghĩa các data, giống như việc chúng ta định nghĩa các data ở trong option data
 	Ref :
 
-vue3 	- tổ chức code tốt hơn, có thể nhóm gọn 1 logic ở trong 1 khoảng
+vue3 	
+	- tổ chức code tốt hơn, có thể nhóm gọn 1 logic ở trong 1 khoảng
 	- Sharing/reusing the code - có thể chia sẻ dung lại được ở nhiều nơi
 	- tất cả những gì về composition API đều chỉ viết trong setup()
 Multiple root elements - thẻ template của vue 2 thì cần 1 thẻ div bao bên ngoài, còn vue3 thì không cần
