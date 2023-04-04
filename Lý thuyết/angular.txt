@@ -1,0 +1,72 @@
+ng g c name_component  // tao 1 componment
+
+tao ra file name_component,
+import vao file parent
+ta dung <app-name_comoponent> <app-name_comoponent/>
+
+css cho file text
+
+module trong file app
+
+binding data tu file .ts xang html
+
+two way binding tu html xang .ts
+
+in .ts  name = tuancan
+
+<h1> chao ban {{name}} <h2/>
+<input [value]="name" />
+or
+<input value="{{name}}" />
+or
+<input [value]="name" [title]=" 'day la' + name " />
+
+if dieu kien 
+  public age = 25;
+
+  <h2 *ngIf="age > 18">Bạn quá già rồi !</h2>
+  <h2 *ngIf="age <= 18">Bạn còn trẻ lắm !</h2>
+
+two way binding
+  <input type="text" [(ngModel)]="name" />
+  <h2>Chào bạn {{ name }}</h2>
+
+truyen ham vao html
+
+
+if else ng-template
+  <input type="text" [(ngModel)]="age" />
+  <h3>Tuổi bạn là {{ age }}</h3>
+  <!-- <h2 *ngIf="age <= 18">Bạn còn trẻ quá !</h2>
+  <h2 *ngIf="age > 18">Bạn đã già rồi !</h2> -->
+
+  <div *ngIf="age <= 18; then tre; else gia"></div>
+  <ng-template #tre><h2>Bạn còn trẻ quá !</h2></ng-template>
+  <ng-template #gia><h2>Bạn đã già rồi !</h2></ng-template>
+
+ngFor 
+
+  public traiCay = ['Táo', 'Nho', 'Cam', 'Quít', 'Ổi'];
+
+  <div *ngFor="let trai of traiCay; let i = index">
+    <li>{{ i + 1 }}. {{ trai }}</li>
+  </div> 
+
+*ngFor (phần tử là Object).
+
+ngClass
+ <span [ngClass]="{ 'so-am': trai.gia < 0 }">{{ trai.gia }}</span>  // class
+
+Pipe // syntact, install modull
+
+      <td>{{ trai.ten | lowercase }}</td>  // viet thuong
+
+
+
+
+
+
+
+
+
+

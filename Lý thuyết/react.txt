@@ -1,0 +1,203 @@
+Clean code
+- tránh nhiều vòng lặp lồng nhau
+- đặt tên biến phải có ý nghĩa
+- ít viết comment code, phải làm code dễ hiểu dễ đọc, ngắn gọn nhất có thể thì sẽ k cần cmt
+- tránh viết 1 function quá dài, có thể thách nhỏ function
+- tránh lặp code
+- có comment code thì phải ngắn gọn
+- đặt tên fc, boolen, biến thì nên độngtừ_ phía trước getUserID
+- viết hoa các giá trị cố định vd đường Link, const trong .env
+
+nodejs javascript runtime, tạo 1 môi trường độc lập với trình duyệt để thực thi code js, pt bởi gg chome v8
+- tạo 1 máy chủ wep để code vd localhot, 
+- tại nodemodul, để cài các thư viện thay vì dùng link cdn ( kết hợp npm),
+- tạo dự án react-creat-app sẽ cài sẵn bable, react, reactrouter, 
+	wepback ( kết hợp các file giống nhau lại vd .css) làm giảm dung lượng, tăng hiệu năng
+
+react là one way binding, sử dụng usestate, onchange, gán lại value để sét thành dữ liệu 2 chiều trong input
+inpit radio tạo state chứa value, onchane ở ô input và truyền setstate(id), lưu thay đổi ở checked === id
+input checkbõ, thay state bằng mảng, sd inclue để check xem có chưa giá trị đó k.
+	bỏ đã check dùng hàm filerl để lọc những cái đã có check rồi
+
+
+HOC ôm cả 1 function
+hoock là các hàm đc viết sẵn ở react, và viết trong fc comp.
+Hooks là các hàm mà cho phép bạn “hook into (móc vào)”
+	trạng thái của React và các tính năng vòng đời từ các hàm components. 
+
+setState sử dụng === , nên chỉ khi có sự thay đổi mới render lại ( vd toàn true thì k render lại vd scollY)
+
+useEffect có 3 trường hợp, không có dependenci => chạy usefect mỗi khi có thay đổi element
+	có dependenci = [] , chỉ chạy 1 lần duy nhất
+	có dependenci =[state], chạy lại usefect khi state thay đổi
+1 useffect chỉ nên chưa 1 login ( hàm callback)
+hàm clear up function dọn dẹp khu com bị gỡ bỏ return () => {fc...login) trong usefect
+	lần đầu tiên mount thì đc gọi sau login useffect và trước unmount
+	từ lần thứ 2 render thì clear up function được gọi trước login useffect và trước unmount
+	( TRÁNH GÂY RÒ GỈ BỘ NHỚ)
+useffect thứ tự thực hiện
+- cập nhật state
+- cập nhật DOM
+- render ui
+- gọi clenup nếu desp thay đổi
+- gọi usefect callback
+
+useLayoutEffect() gần giống usefect, nhưng chạy login usefect trước rồi mới render
+- cập nhật state
+- cập nhật DOM
+- gọi clenup nếu desp thay đổi
+- gọi usefect callback
+- render ui
+
+useRef() hook lưu lại giá trị tham chiếu trước đó ref.current
+	tạo giá trị là object
+	ngoài ra đặt 1 comp con bằng <comp ref={alo} />
+	ở comp cha phía trên ta đặt const alo = useRef()
+	log(alo.current.... có thể truy cập vào comp con lấy toàn bộ giá trị) tựa refs trong vue
+
+React.memo() lưu lại state để xem xét xem comp có nên đc rendẻ k ( sử dung ===) 
+ở file comp con dùng 
+	import {memo} from 'react"
+		export default memo(compcon)  
+	khi ốp memo vào comp cha, ban đầu dữ liệu được chạy luôn, lần render thứ 2 nếu k thay đổi prop sẽ k chạy
+
+memo sẽ check các props ở comp con có thay đổi k ( ít nhất 1 props), nếu k thay đổi sẽ k render lại
+
+useCallback() hook vd copm cha chuyền props là 1 hàm xuống comp con, khi ấn click vào comp cha, du bọc memo
+thì comp con vẫn render dù props k thay đổi gì.
+=> gán cont handelinparent = useCallback( ()=> { logic }, [] )
+	useCallback sẽ giữ lại 1 tham chiếu mới,nếu despen = [] thì sẽ gán lại tham chiếu đó thay vì tạo 1 tham chiếu
+	khác làm chạy lại comp
+	nếu desp = [aa] thì khi aa thay đổi, comp mới chạy lại
+	thường sử dụng khi truyền props hàm cho copm con và dùng ở comp cha	
+
+useMemo() hook  
+memo : tránh rendẻ 1 copm k cần thiết
+useMemo() : tránh thực hiện lại 1 logic k cần thiết ở 
+vd tính tổng dãy số khi nhập vào input dùng onchange value
+=> biến total luôn đc chạy => gán useMemo vào làm cho hàm chỉ tính 1 lần khi render, des tựa với useCallback
+=> gán cont total = useMemo( ()=> { logic }, [] )
+
+useReducer() hook 
+	vơi nhung dữ liệu state phức tạp obj hay arr nhiều cấp ta có thể sd useReducer()
+	khai báo const [count, dispatch ] = useReducer( reduser, initstate)
+
+tao hàm  reduser (state, action) => { chạy hàm swish case....)
+khi dispast sẽ gửi lên sự kiện palyload, lích hoạt redus
+const [count, dispatch ] = useReducer( reduser, initstate)
+dispatch : là hàm thay vì setstate, dispatch(payload) gửi paylod lên reduser 
+useReducer( reduser, initstate) => nhận 2 tham số là 1 hàm reduser, 1 initstate
+reduser (state, action) => { chạy hàm swish case....) => 2 tham số là state, action là payloat mà dispass gửi lên
+
+useContext() hook
+- tạo create context
+- Provider
+-consumer
+
+ở app cha
+impỏt createContext() hook
+export const alo = createContext()
+bọc return app cha vào hàm
+<alo.Provider value={state}>
+div ....
+<alo.Provider/>
+
+ở comp con
+impỏt useContext() hook
+
+const state = useContext(alo)
+sau đó có thể lấy ra state mà dùng
+
+
+CSS trong react
+nên chia nhỏ file css ở mỗi comp con để khi k dùng comp con đó sẽ k bị thừa file css
+
+
+React Router V6 
+
+Routes, Route , link 
+	Routes : cha, bao quanh route
+	link thay cho thẻ a
+
+VONG DOI CUA 1 COMP REACT
+
+constructor(props)
+Được gọi khi một thể hiện của component được tạo ra.
+Có thể dùng để khởi tạo state cho component.
+Cũng có thể dùng để "bind" các hàm của component.
+Nếu phải cài đặt hàm này thì phải khai báo 1 tham số props cho nó và phải gọi super(props) đầu tiên.
+Nếu không làm gì thì không phải cài đặt hàm này.
+
+componentWillMount()
+Được gọi trước khi render().
+Dùng để đăng ký các sự kiện toàn cục.
+Dựa vào các props để tính toán và set lại state
+
+render()
+Hàm này bắt buộc phải có trong component().
+Trả về 1 đối tượng JSX (có thể lồng các đối tượng với nhau nhưng phải có 1 đối tượng gói 
+tất cả các đối tượng lại) để hiển thị hoặc null / false nếu không muốn hiển thị gì.
+Không được gọi setState() trong hàm này (cũng như trong các hàm mà hàm này gọi đến), 
+bởi khi gọi setState() thì hàm render sẽ được gọi => gây ra lặp vô hạn.
+
+componentDidMount()
+Ngay sau khi hàm render được gọi đến lần đầu tiên chạy xong thì hàm này sẽ được chạy.
+Thường dùng để fetch dữ liệu từ server và sau đó setState để render dữ liệu ra.
+Đến đây thì các phần tử đã được sinh ra rồi, và có thể tương tác với DOM bằng JS trong hàm này.
+
+componentWillReceiveProps(nextProps)
+Hàm này được chạy khi mà props của component đã được sinh ra có sự thay đổi.
+Phải gọi setState() nếu muốn render lại.
+
+shouldComponentUpdate(nextProps, nextState)
+Được gọi trước render.
+Trả về true / false. Nếu false thì sẽ không render lại. Mặc định là true.
+
+componentWillUpdate(nextProps, nextState)
+Được gọi ngay sau shouldComponentUpdate() nếu hàm này trả về true.
+Không gọi setState() trong hàm này bởi hàm này là để chuẩn bị update 
+cho đối tượng chứ không phải tạo ra 1 update mới, sẽ tạo ra lặp vô hạn.
+Hàm render sẽ được gọi ngay sau hàm này.
+
+componentDidUpdate(prevProps, prevState)
+Được gọi ngay sau render() từ lần render thứ 2 trở đi.
+Đây cũng là 1 cơ hội để thao tác với các phần tử DOM bằng JS.
+
+componentWillUnmount()
+Được gọi khi 1 component được loại bỏ khỏi DOM.
+Thực hiện các thao tác dọn dẹp như huỷ các timer, loại bỏ các phần tử thừa, ...
+
+
+
+
+Reducers ở Redux là gì? Reducers là các function nguyên thủy chúng lấy state hiện tại của app,
+	 thực hiện một action và trả về một state mới
+
+Redux Middlewares là gì? middleware là lớp nằm giữa Reducers và Dispatch Actions.
+	 Vị trí mà Middleware hoạt động là trước khi Reducers nhận được Actions và 
+	sau khi 1 Action được dispatch().
+forwardRef là gì?  forwardRef là một method cho phép các components cha truyền các 
+	refs (tham chiếu) xuống các component con của chúng
+Redux có những thành phần nào?  Actions  Reducers  Store
+React có mấy loại components?    3 loại components bao gồm: 
+	Functional stateless component, Component và Pure component
+Khái niệm hook? Hooks là các hàm mà cho phép bạn “hook into (móc vào)” trạng thái của React 
+	và các tính năng vòng đời từ các hàm components.
+PropTypes trong React làm nhiệm vụ gì? PropTypes dùng để định nghĩa kiểu dữ liệu được truyền vào cho component. 
+Fragment trong React là gì?  Fragment là một common pattern được giới thiệu kể từ khi React 16 ra đời. 
+	Nó cho phép bạn return nhiều element từ một component mà không làm sinh ra những 
+	DOM element ko cần thiết.
+Sự khác nhau giữa Element và Component trong React? React Element ám chỉ những gì thấy trên màn hình. 
+	React component là một function hoặc class có hoặc không có input và sẽ trả về một React element
+++i va i++ ? 	++i tăng giá trị của i lên 1 và trả về giá trị mới đó.
+		i++ cũng tương tự nhưng giá trị trả về là giá trị ban đầu của i trước khi được tăng lên 1.
+
+Higher-order component (HOC) là một kỹ thuật nâng cao trong React được sử dụng trong việc sử dụng lại 
+	các component.
+
+
+
+
+
+
+
