@@ -109,6 +109,37 @@ khong quan tâm điều kiện, cứ chạy, ta ngắt ở trong bằng break
 chạy tối thiểu 1 lần dù điều kiện đó có đúng hay k
 + TypeScript Break
 	nhằm thoát khỏi vòng lặp khi đủ điều kiện
++ TypeScript Continue
+    bỏ qua điều kiện và lặp lại từ đầu
+
++  TypeScript Function
+    const sum (x: number , y : number) : number => {
+        return x + y 
+    }
+    console.log( sum( 6 , 4))  // ép kiểu function trả về
++   TypeScript Optional Parameters
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
