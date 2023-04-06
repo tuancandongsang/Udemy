@@ -19,6 +19,10 @@ inpit radio tạo state chứa value, onchane ở ô input và truyền setstate
 input checkbõ, thay state bằng mảng, sd inclue để check xem có chưa giá trị đó k.
 	bỏ đã check dùng hàm filerl để lọc những cái đã có check rồi
 
+HOC     
+Hooks
+Render props
+
 
 HOC ôm cả 1 function
 hoock là các hàm đc viết sẵn ở react, và viết trong fc comp.
@@ -55,6 +59,7 @@ useRef() hook lưu lại giá trị tham chiếu trước đó ref.current
 	ở comp cha phía trên ta đặt const alo = useRef()
 	log(alo.current.... có thể truy cập vào comp con lấy toàn bộ giá trị) tựa refs trong vue
 
+HOC :  higher-order component
 React.memo() lưu lại state để xem xét xem comp có nên đc rendẻ k ( sử dung ===) 
 ở file comp con dùng 
 	import {memo} from 'react"
