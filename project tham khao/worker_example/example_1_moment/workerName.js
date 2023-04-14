@@ -1,1 +1,1 @@
-self.postMessage("tuancandongsang")
+self.postMessage("tuancandongsang name");

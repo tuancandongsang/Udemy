@@ -1,5 +1,4 @@
 if ("Worker" in window) {
-
   // time cdn
   const worker = new Worker("worker.js");
   worker.onmessage = function (event) {
@@ -22,7 +21,7 @@ if ("Worker" in window) {
   }, 1000);
 
   // ajax call api
-  const json = new Worker("workerApi.js")
+  const json = new Worker("workerApi.js");
   json.onmessage = function (event) {
     const message = event.data;
     const callApi = document.getElementById("json");
@@ -30,7 +29,7 @@ if ("Worker" in window) {
   };
 
   // text
-  const name = new Worker("workerName.js")
+  const name = new Worker("workerName.js");
   name.onmessage = function (event) {
     const message = event.data;
     const name = document.getElementById("name");
@@ -39,7 +38,7 @@ if ("Worker" in window) {
 
   // call api img
 
-  const img = new Worker("workerImg.js")
+  const img = new Worker("workerImg.js");
   img.onmessage = function (event) {
     const message = event.data;
     var image = document.createElement("IMG");
@@ -50,7 +49,6 @@ if ("Worker" in window) {
     document.body.appendChild(image);
     console.log("message", image);
   };
-
 } else {
   console.log("not Support Worker");
 }
