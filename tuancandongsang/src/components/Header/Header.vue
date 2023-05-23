@@ -1,0 +1,47 @@
+<template>
+  <div class="header">
+    <ul class="header-ul">
+      <li>
+        <router-link to="/input-keyboard-valid"
+          >input keyboard valid</router-link
+        >
+      </li>
+      <li>validate input</li>
+      <li>validate input</li>
+      <li>validate input</li>
+      <li>validate input</li>
+      <li>validate input</li>
+      <li>validate input</li>
+      <li>validate input</li>
+      <li>validate input</li>
+      <li>validate input</li>
+      <li>validate input</li>
+    </ul>
+  </div>
+</template>
+
+<script>
+export default {};
+</script>
+<style scoped>
+.header {
+  background-color: #999;
+  width: 300px;
+  margin-right: 10px;
+}
+.header-ul {
+  padding: 20px 10px;
+  list-style-type: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+li {
+  cursor: pointer;
+  font-size: 20px;
+  font-weight: 500;
+}
+li:hover {
+  opacity: 0.5;
+}
+</style>
