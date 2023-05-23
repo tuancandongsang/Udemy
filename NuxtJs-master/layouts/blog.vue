@@ -6,22 +6,28 @@
         <NuxtAside />
       </aside>
       <nuxt />
-
     </div>
     <button
-            style=" padding: 8px 12px; background-color: antiquewhite; border: none; border-radius: 4px; cursor: pointer;"
-            v-on:click="() => handleBack(this.$router.go(-1))">BACK</button>
+      style="
+        padding: 8px 12px;
+        background-color: antiquewhite;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+      "
+      v-on:click="() => handleBack(this.$router.go(-1))"
+    >
+      BACK
+    </button>
     <footer class="footer">footer blogs</footer>
   </div>
 </template>
 
 <script>
-export default {
-
-}
+export default {};
 </script>
 
-<style scoped >
+<style scoped>
 .container {
   display: flex;
 }
