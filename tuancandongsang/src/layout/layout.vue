@@ -18,6 +18,6 @@ export default {
   display: flex;
 }
 .container{
-  
+    padding: 20px 0;
 }
 </style>
