@@ -5,7 +5,7 @@ import multer from 'multer';
 let getHomepage = async (req, res) => {
     const [rows, fields] = await pool.execute('SELECT * FROM users');
 
-    return res.render('index.ejs', { dataUser: rows, test: 'abc string test' })
+    return res.render('index.ejs', { dataUser: rows, test: fields })
 }
 
 let getDetailPage = async (req, res) => {
