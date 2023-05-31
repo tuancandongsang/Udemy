@@ -9,6 +9,11 @@ class CourseController {
                 res.render('courses/show', {
                     course: mongooseToObject(course),
                 }),
+
+                // // render json db
+                // res.json({
+                //     course: mongooseToObject(course),
+                // }),
             )
             .catch(next);
     }
