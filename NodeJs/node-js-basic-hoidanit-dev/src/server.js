@@ -1,7 +1,9 @@
 import express from 'express';
+import cors from 'cors';
 import configViewEngine from './configs/viewEngine';
 import initWebRoute from './route/web';
 import initAPIRoute from './route/api';
+
 // import connection from './configs/connectDB';
 
 require('dotenv').config();
@@ -11,6 +13,7 @@ var morgan = require('morgan')
 
 const app = express();
 const port = process.env.PORT || 8080;
+app.use(cors())
 
 app.use((req, res, next) => {
     //check => return res.send()
