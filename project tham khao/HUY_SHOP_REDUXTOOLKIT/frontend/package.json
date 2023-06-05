@@ -30,7 +30,8 @@
     "react-select": "^5.3.0",
     "reactstrap": "^9.0.2",
     "web-vitals": "^1.1.2",
-    "yup": "^0.32.11"
+    "yup": "^0.32.11",
+    "node":"16.15.1"
   },
   "scripts": {
     "start": "set PORT=4150 && react-scripts start",
