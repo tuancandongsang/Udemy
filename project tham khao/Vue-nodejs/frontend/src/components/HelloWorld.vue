@@ -84,7 +84,7 @@ export default {
     async saveEditUser() {
       try {
         await axios.put(
-          `http://localhost:8080/api/v1/update-user`,
+          `http://localhost:8080/api/v1/update-user/${this.formEdit.id}`,
           this.formEdit
         );
         const data = await axios.get(" http://localhost:8080/api/v1/users/");
