@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE = edge,chrome = 1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Address Book</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    />
+  </head>
+
+  <body>
+    <header class="bs-header">
+      <div class="container text-center my-4">
+        <h1>List of Employees</h1>
+      </div>
+    </header>
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-12 main-container"></div>
+      </div>
+    </div>
+
+    <!-- Display list of employees -->
+    <script type="text/template" id="tpl-contacts">
+      <p class="text-center">
+        <a href="#employees/new" class="btn btn-lg btn-success" role="button">Add Employee</a>
+      </p>
+      <ul class="media-list row contacts-container"></ul>
+    </script>
+
+    <script type="text/template" id="tpl-contact">
+      <div class="media-heading">
+        <h3>
+          <%- name %>
+            <a href="#employees/edit/<%- id %>" class="ml-4 btn btn-primary btn-sm" role="button">Edit</a>
+            <!-- <a href="#employees/delete/<%- id %>" class="ml-4 btn btn-warning btn-sm" role="button">Delete</a> -->
+
+        </h3>
+      </div>
+      <div class="media-body">
+        <dl>
+          <dt>Phone Number:</dt>
+          <dd><%- tel %></dd>
+          <dt>Email:</dt>
+          <dd><%- email %></dd>
+        </dl>
+      </div>
+      <hr>
+    </script>
+
+    <script type="text/template" id="tpl-new-contact">
+      <h2 class="page-header text-center"><%= isNew ? 'Create' : 'Edit' %> Employee </h2>
+      <form role="form" class="form-horizontal employee-form">
+        <div class="form-group">
+          <label class="col-sm-4 control-label">Full name:</label>
+          <div class="col-sm-6">
+            <input type="text" class="form-control employee-name-input mb-4" value="<%- name %>" required>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-sm-4 control-label">Email address:</label>
+          <div class="col-sm-6">
+            <input type="email" class="form-control employee-email-input mb-4" value="<%- email %>" required>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-sm-4 control-label">Telephone number:</label>
+          <div class="col-sm-6">
+            <input type="tel" class="form-control employee-tel-input mb-4" value="<%- tel %>" required>
+          </div>
+        </div>
+        <div class="form-group row">
+          <div class="col-sm-offset-4 col-sm-3">
+            <button type="submit" class="btn btn-outline-secondary btn-block" role="button">Submit</button>
+          </div>
+          <div class="col-sm-3">
+            <a href="#employees" class="btn btn-outline-danger btn-block" role="button">Cancel</a>
+          </div>
+        </div>
+      </form>
+    </script>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.js"
+      integrity="sha512-n/4gHW3atM3QqRcbCn6ewmpxcLAHGaDjpEBu4xZd47N0W2oQ+6q7oc3PXstrJYXcbNU1OHdQ1T7pAP+gi5Yu8g=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.13.2/underscore-min.js"
+      integrity="sha512-anTuWy6G+usqNI0z/BduDtGWMZLGieuJffU89wUU7zwY/JhmDzFrfIZFA3PY7CEX4qxmn3QXRoXysk6NBh5muQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/backbone.js/1.4.1/backbone-min.min.js"
+      integrity="sha512-leWnfKgG2W/LF5Nc7oxQgNf6QK0mmoFMxQdMKu0AvOrXSk0o+joysv/R0mU9NPe2PaVdultMIotUTIB4Hs51ig=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/auth0-js/9.19.0/auth0.min.js"
+      integrity="sha512-lvELmOSrtyjAY1NNXrysipF7nUeUQjnkwstz+DRW4ICjwftDLsZzaWscrSpyhxeczhUFPIcI3wtW3LFE+8tJkw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+
+    <script src="app/js/app.js"></script>
+    <script src="app/js/models/employee.js"></script>
+    <script src="app/js/collections/employees.js"></script>
+    <script src="app/js/views/employee.js"></script>
+    <script src="app/js/views/employees.js"></script>
+    <script src="app/js/views/employeeForm.js"></script>
+    <script src="app/js/router.js"></script>
+
+    <script>
+      $(function () {
+        EmployeeManager.start({
+          employees: [
+            {
+              id: 1,
+              name: "Christian Nwamba",
+              avatar: "11.svg",
+              tel: "651-603-1723",
+              email: "chris@scotch.io",
+            },
+            {
+              id: 2,
+              name: "Bukola Ayodeji",
+              avatar: "20.svg",
+              tel: "513-307-5859",
+              email: "bukolayodeji@nairabet.com",
+            },
+            {
+              id: 3,
+              name: "Rick Ross",
+              avatar: "17.svg",
+              tel: "918-774-0199",
+              email: "ross@auth0.com",
+            },
+            {
+              id: 4,
+              name: "Godson Ukpere",
+              avatar: "19.svg",
+              tel: "702-989-5145",
+              email: "g.ukpe@gigstar.co",
+            },
+            {
+              id: 5,
+              name: "John I. Wilson",
+              avatar: "01.svg",
+              tel: "318-292-6700",
+              email: "JohnIWilson@dayrep.com",
+            },
+            {
+              id: 6,
+              name: "Goodnes Tejufona",
+              avatar: "05.svg",
+              tel: "803-557-9815",
+              email: "goodness.teju@kudiai.com",
+            },
+          ],
+        });
+      });
+    </script>
+  </body>
+</html>
