@@ -1,0 +1,361 @@
+web worker có kết hợp được với vuejs không
+
+Dưới đây là một ví dụ cơ bản về cách sử dụng Web Worker trong Vue.js
+ để tính toán số nguyên tố. Chúng ta sẽ tạo một worker riêng để tính toán
+ các số nguyên tố, và sử dụng Vue.js để hiển thị kết quả trên giao diện người dùng.
+
+Trong file HTML, chúng ta cần tạo một phần tử để hiển thị kết quả:
+
+php
+Copy code
+<div id="app">
+  <h2>Primes:</h2>
+  <ul>
+    <li v-for="prime in primes">{{ prime }}</li>
+  </ul>
+</div>
+Trong file JavaScript, chúng ta sẽ tạo một Vue instance, đăng ký một
+ component để tính toán số nguyên tố, và tạo một worker để thực hiện tính toán:
+
+javascript
+Copy code
+Vue.component('primes', {
+  template: '<div>{{ primes }}</div>',
+  data: function () {
+    return {
+      primes: []
+    }
+  },
+  mounted: function () {
+    var worker = new Worker('worker.js')
+    worker.onmessage = (event) => {
+      this.primes = event.data
+    }
+  }
+})
+
+new Vue({
+  el: '#app'
+})
+Trong file worker.js, chúng ta sẽ tạo một worker để tính toán các số nguyên tố,
+ và gửi kết quả trở lại cho Vue instance:
+
+php
+Copy code
+function isPrime(n) {
+  if (n <= 1) {
+    return false
+  }
+  for (var i = 2; i <= Math.sqrt(n); i++) {
+    if (n % i === 0) {
+      return false
+    }
+  }
+  return true
+}
+
+function findPrimes(start, end) {
+  var primes = []
+  for (var i = start; i <= end; i++) {
+    if (isPrime(i)) {
+      primes.push(i)
+    }
+  }
+  return primes
+}
+
+self.onmessage = function(event) {
+  var start = event.data.start
+  var end = event.data.end
+  var primes = findPrimes(start, end)
+  self.postMessage(primes)
+}
+Trong ví dụ này, chúng ta sử dụng Worker API để tạo một worker mới trong
+ component primes. Trong phương thức mounted, chúng ta đăng ký một 
+onmessage event handler để lắng nghe kết quả từ worker. Khi worker 
+hoàn thành tính toán, nó sẽ gửi kết quả trở lại bằng cách sử dụng postMessage
+ API, và Vue instance sẽ cập nhật dữ liệu và hiển thị kết quả trên giao diện người dùng.
+
+Chú ý rằng, để sử dụng Web Worker, bạn cần phải tạo một file JavaScript
+ riêng cho worker, như worker.js trong ví dụ trên. Bạn cũng cần cẩn thận
+ khi truy cập và sử dụng các biến và đối tượng trong worker, để tránh các
+ lỗi đồng bộ hóa dữ liệu
+
+
+
+
+ví dụ code về web worker và web sockit dùng để call api thông báo 
+
+Dưới đây là một ví dụ về cách sử dụng Web Worker và Web Socket để gọi API thông báo:
+
+Trong file HTML, chúng ta sẽ tạo một nút để kích hoạt việc gọi API thông báo:
+
+php
+Copy code
+<button onclick="startWorker()">Start Worker</button>
+Trong file JavaScript, chúng ta sẽ tạo một Web Worker để gọi API thông báo,
+ và một Web Socket để nhận kết quả trả về từ server:
+
+csharp
+Copy code
+// Khởi tạo Web Worker
+var worker = new Worker('worker.js');
+
+function startWorker() {
+  // Gửi message đến worker để bắt đầu gọi API
+  worker.postMessage('start');
+}
+
+// Khởi tạo Web Socket để nhận thông báo từ server
+var socket = new WebSocket('wss://api.example.com/notification');
+
+socket.onmessage = function(event) {
+  // Hiển thị thông báo trên giao diện người dùng
+  alert(event.data);
+};
+Trong file worker.js, chúng ta sẽ định nghĩa logic để gọi API thông báo,
+ và gửi kết quả trở lại cho trang web thông qua postMessage API:
+
+scss
+Copy code
+function callApi() {
+  // Gọi API thông báo
+  fetch('https://api.example.com/notification')
+    .then(response => response.json())
+    .then(data => {
+      // Gửi kết quả trở lại cho trang web thông qua postMessage API
+      self.postMessage(data.notification);
+    });
+}
+
+// Lắng nghe message từ trang web để bắt đầu gọi API thông báo
+self.onmessage = function(event) {
+  if (event.data === 'start') {
+    callApi();
+  }
+};
+Trong ví dụ này, chúng ta sử dụng Web Worker để gọi API thông báo một
+ cách bất đồng bộ, và sử dụng Web Socket để nhận kết quả trả về từ server
+ một cách thời gian thực. Khi người dùng nhấn vào nút "Start Worker",
+ chúng ta sẽ gửi một message đến worker để bắt đầu gọi API thông báo.
+ Sau khi worker hoàn thành việc gọi API và nhận kết quả trở lại,
+ nó sẽ gửi kết quả trở lại cho trang web thông qua postMessage API.
+ Trong khi đó, chúng ta sẽ sử dụng Web Socket để nhận thông báo từ
+ server và hiển thị trên giao diện người dùng.
+
+
+
+ví dụ code về vuejs và web sockit dùng để call api trong web worker thông báo 
+
+Dưới đây là một ví dụ về cách sử dụng Vue.js và Web Socket để gọi API thông báo trong Web Worker:
+
+Trong file HTML, chúng ta sẽ tạo một nút để kích hoạt việc gọi API thông báo:
+
+php
+Copy code
+<div id="app">
+  <button @click="startWorker()">Start Worker</button>
+</div>
+Trong file JavaScript, chúng ta sẽ tạo một Vue instance để quản lý state của ứng dụng,
+ và sử dụng Web Socket để nhận thông báo từ server:
+
+javascript
+Copy code
+const app = new Vue({
+  el: '#app',
+  data: {
+    notification: ''
+  },
+  methods: {
+    startWorker() {
+      // Khởi tạo Web Worker
+      const worker = new Worker('worker.js');
+
+      // Lắng nghe message từ worker để hiển thị kết quả
+      worker.onmessage = (event) => {
+        this.notification = event.data;
+      };
+
+      // Gửi message đến worker để bắt đầu gọi API
+      worker.postMessage('start');
+    }
+  }
+});
+
+// Khởi tạo Web Socket để nhận thông báo từ server
+const socket = new WebSocket('wss://api.example.com/notification');
+
+socket.onmessage = function(event) {
+  // Gửi thông báo đến worker để xử lý
+  app.notification = event.data;
+};
+Trong file worker.js, chúng ta sẽ định nghĩa logic để gọi API thông báo,
+ và gửi kết quả trở lại cho trang web thông qua postMessage API:
+
+scss
+Copy code
+function callApi() {
+  // Gọi API thông báo
+  fetch('https://api.example.com/notification')
+    .then(response => response.json())
+    .then(data => {
+      // Gửi kết quả trở lại cho trang web thông qua postMessage API
+      self.postMessage(data.notification);
+    });
+}
+
+// Lắng nghe message từ trang web để bắt đầu gọi API thông báo
+self.onmessage = function(event) {
+  if (event.data === 'start') {
+    callApi();
+  }
+};
+Trong ví dụ này, chúng ta sử dụng Vue.js để quản lý state của ứng dụng 
+và hiển thị thông báo trên giao diện người dùng. Khi người dùng nhấn vào
+ nút "Start Worker", chúng ta sẽ tạo một Web Worker để gọi API thông báo.
+ Sau khi worker hoàn thành việc gọi API và nhận kết quả trở lại,
+nó sẽ gửi kết quả trở lại cho trang web thông qua postMessage API. 
+Trong khi đó, chúng ta sẽ sử dụng Web Socket để nhận thông báo từ server 
+và hiển thị trên giao diện người dùng. Khi có thông báo mới từ server,
+chúng ta sẽ gửi thông báo đến worker để xử lý.
+
+
+onmessage  và postMessage trong wep worker hoạt động như thế nào
+onmessage và postMessage là hai phương thức quan trọng trong Web Worker
+ để trao đổi thông tin giữa main thread và worker thread.
+
+onmessage: là một phương thức được gọi khi một message được gửi đến từ 
+main thread hoặc từ một worker khác. Phương thức này sẽ nhận một đối tượng 
+MessageEvent chứa thông tin về message được gửi. Bên trong phương thức onmessage,
+ chúng ta có thể truy cập vào nội dung của message bằng cách sử dụng thuộc 
+tính data của đối tượng MessageEvent.
+
+postMessage: là một phương thức được gọi từ worker thread để gửi một 
+message đến main thread hoặc một worker khác. Phương thức này nhận một 
+đối tượng bất kỳ và gửi nó đến các thread khác. Trong phương thức postMessage,
+ chúng ta có thể chỉ định một danh sách các đối tượng khác nhau (tùy chọn) 
+để giới hạn danh sách các đối tượng có thể truy cập message được gửi.
+
+Ví dụ, trong worker thread, chúng ta có thể định nghĩa một hàm để gửi
+message đến main thread như sau:
+
+scss
+Copy code
+function sendMessageToMainThread(data) {
+  postMessage(data);
+}
+Ở phía main thread, chúng ta có thể sử dụng phương thức onmessage để 
+lắng nghe các message được gửi từ worker thread:
+
+javascript
+Copy code
+worker.onmessage = function(event) {
+  console.log('Received message from worker:', event.data);
+}
+Khi worker thread gọi phương thức postMessage, main thread sẽ nhận 
+được một đối tượng MessageEvent trong phương thức onmessage, 
+và có thể truy cập vào nội dung của message thông qua thuộc tính data.
+
+
+
+
+gọi api từ web worker lưu vào LocalStorage, dùng vuejs lấy dữ 
+liệu ở LocalStorage rồi hiển thị bằng vuejs
+Để gọi API từ Web Worker và lưu dữ liệu vào Local Storage,
+ và sau đó sử dụng Vue.js để hiển thị dữ liệu đã lưu vào Local Storage,
+ chúng ta có thể thực hiện các bước sau:
+
+Trong worker thread, chúng ta sẽ viết code để gọi API và lưu dữ 
+liệu vào Local Storage:
+
+javascript
+Copy code
+function fetchData() {
+  fetch('https://api.example.com/data')
+    .then(response => response.json())
+    .then(data => {
+      localStorage.setItem('myData', JSON.stringify(data));
+      self.postMessage('Data saved successfully');
+    })
+    .catch(error => {
+      console.error('Error fetching data:', error);
+      self.postMessage('Error fetching data');
+    });
+}
+
+self.onmessage = function(event) {
+  var command = event.data.command;
+
+  switch(command) {
+    case 'fetchData':
+      fetchData();
+      break;
+    // other commands go here
+  }
+}
+Ở phía Vue.js, chúng ta sẽ sử dụng phương thức localStorage.getItem 
+để lấy dữ liệu từ Local Storage và hiển thị nó:
+
+php
+Copy code
+<template>
+  <div>
+    <ul>
+      <li v-for="item in items" :key="item.id">{{ item.title }}</li>
+    </ul>
+    <button @click="fetchData">Fetch Data</button>
+  </div>
+</template>
+
+<script>
+export default {
+  data() {
+    return {
+      items: []
+    }
+  },
+  methods: {
+    fetchData() {
+      var worker = new Worker('worker.js');
+      worker.postMessage({ command: 'fetchData' });
+
+      worker.onmessage = (event) => {
+        if (event.data === 'Data saved successfully') {
+          var data = JSON.parse(localStorage.getItem('myData'));
+          this.items = data;
+        } else {
+          console.error('Error fetching data');
+        }
+      };
+    }
+  }
+};
+</script>
+Trong ví dụ này, chúng ta sử dụng một button để kích hoạt phương 
+thức fetchData. Khi button được nhấn, chúng ta tạo một worker mới 
+và gửi một message yêu cầu worker thread gọi API và lưu dữ liệu vào 
+Local Storage. Khi dữ liệu được lưu trữ thành công, worker thread 
+sẽ gửi một message trả về main thread để báo cáo rằng dữ liệu đã 
+được lưu trữ thành công. Ở phía main thread, chúng ta sử dụng 
+phương thức localStorage.getItem để lấy dữ liệu từ Local Storage 
+và gán nó cho thuộc tính items của Vue instance. Sau đó, chúng ta 
+sử dụng v-for để hiển thị danh sách các item đã được lưu trữ.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
