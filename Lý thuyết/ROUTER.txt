@@ -135,7 +135,13 @@
 // Cả beforeRouteEnter, beforeRouteUpdate, beforeRouteLeave đều có 3 tham số là to, from, next. 
 // Như vậy chúng ta đều có thể chuyển hướng component tại thời điểm này. 
 // Tuy nhiên thì 3 hook này sẽ được gọi ở các thời điểm khác nhau:
-// beforeRouteEnter: Được gọi trước khi mà điều hướng được xác nhận. 
+// beforeRouteEnter: beforeRouteEnter là một hàm middleware của Vue Router, được gọi trước khi component của route mới được tạo. 
+Điều này có nghĩa là hàm này được gọi trước khi component của route được khởi tạo và gắn kết vào DOM.
+Hàm beforeRouteEnter có một số đặc điểm quan trọng:
+Nó không được có truy cập vào instance component hiện tại (this) trong lúc được gọi.
+Điều này đồng nghĩa với việc bạn không thể truy cập vào data, computed properties, hoặc methods của component từ beforeRouteEnter.
+Nếu bạn muốn truy cập vào instance component, bạn có thể sử dụng một callback được truyền vào hàm next. Callback này sẽ được gọi 
+khi component đã được tạo và gắn kết vào DOM.
 // Ở đây bạn không thể truy cập vào con trỏ this của Vue, vì nó được chạy trước khi mà component được khởi tạo.
 // beforeRouteUpdate: Được gọi khi mà router đã được thay đổi và chúng ta sẻ dụng lại Component chúng ta định nghĩa ra beforeRouteUpdate.
 // beforeRouteLeave: Được gọi trước khi mà chúng ra chuyển hướng ra khỏi component tới một Route khác.
@@ -214,6 +220,9 @@
 
 // export default router;
 
+cấp global có 3 cái : beforeEach  beforeResolve  afterEach
+ở cấp object router có 1 cái: beforeEnter
+ở cấp component có 3 cái :  beforeRouteEnter  beforeRouteUpdate  beforeRouteLeave
 
 
 TOOTLE
