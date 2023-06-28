@@ -4,7 +4,21 @@ let getAllUsers = async (req, res) => {
   //http
   // 404 501
   // json/xml => object
+  // const [rows, fields] = await pool.execute("SELECT * FROM users WHERE address > 50");
+  // const [rows, fields] = await pool.execute("SELECT * FROM users limit 2, 2");
   const [rows, fields] = await pool.execute("SELECT * FROM users");
+
+  return res.json({
+    message: "ok",
+    data: rows,
+  });
+};
+
+let getPanigationData = async (req, res) => {
+  let { pageNumber, pageSize } = req.body;
+  const [rows, fields] = await pool.execute(
+    `SELECT * FROM users limit ${pageNumber}, ${pageSize}`
+  );
 
   return res.json({
     message: "ok",
@@ -66,6 +80,7 @@ let deleteUser = async (req, res) => {
 
 module.exports = {
   getAllUsers,
+  getPanigationData,
   createNewUser,
   updateUser,
   deleteUser,

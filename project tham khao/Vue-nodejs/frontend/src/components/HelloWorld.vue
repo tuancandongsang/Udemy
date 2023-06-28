@@ -32,6 +32,22 @@
         </td>
       </tr>
     </table>
+    <div class="panigation">
+      <h4>
+        Panigation: <label for="pageSize">page size:</label>
+        <select v-model="panigation.pageSize">
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="5">5</option>
+          <option value="10">10</option>
+        </select>
+      </h4>
+      <div>
+        <button @click="previewPage">Preview</button>
+        <span class="pageNumber">{{ pageNumber }}</span>
+        <button @click="nextPage">Next</button>
+      </div>
+    </div>
     <div>
       <h1>add item</h1>
       <div>
@@ -61,14 +77,15 @@
 <script>
 import axios from "axios";
 export default {
-  async created() {
-    try {
-      const data = await axios.get(" http://localhost:8080/api/v1/users/");
-      this.users = data.data.data;
-    } catch (error) {}
+  created() {
+    this.getAllData();
   },
   data() {
     return {
+      panigation: {
+        pageNumber: 1,
+        pageSize: 5,
+      },
       isShowEditUser: false,
       users: undefined,
       form: {
@@ -80,15 +97,52 @@ export default {
       formEdit: {},
     };
   },
+  watch: {
+    panigation: {
+      handler(newValue, _oldValue) {
+        this.getpanigationData(this.panigation);
+      },
+      deep: true,
+    },
+  },
+  computed: {
+    pageNumber() {
+      return this.panigation.pageNumber;
+    },
+  },
   methods: {
+    nextPage() {
+      this.panigation.pageNumber += 1;
+      this.getpanigationData(this.panigation);
+    },
+    previewPage() {
+      if (this.panigation.pageNumber === 1) return;
+      this.panigation.pageNumber = this.panigation.pageNumber - 1;
+      this.getpanigationData(this.panigation)
+    },
+    async getpanigationData(panigation) {
+      try {
+        const data = await axios.post(
+          " http://localhost:8080/api/v1/users/p",
+          panigation
+        );
+        this.users = data.data.data;
+      } catch (error) {}
+    },
+
+    async getAllData() {
+      try {
+        const data = await axios.get(" http://localhost:8080/api/v1/users/");
+        this.users = data.data.data;
+      } catch (error) {}
+    },
     async saveEditUser() {
       try {
         await axios.put(
           `http://localhost:8080/api/v1/update-user/${this.formEdit.id}`,
           this.formEdit
         );
-        const data = await axios.get(" http://localhost:8080/api/v1/users/");
-        this.users = data.data.data;
+        this.getAllData();
       } catch (error) {}
       this.isShowEditUser = false;
     },
@@ -112,8 +166,7 @@ export default {
           " http://localhost:8080/api/v1/create-user",
           this.form
         );
-        const data = await axios.get(" http://localhost:8080/api/v1/users/");
-        this.users = data.data.data;
+        this.getAllData();
       } catch (error) {}
       this.form = {
         email: "",
@@ -125,8 +178,7 @@ export default {
     async removeEmail(id) {
       try {
         await axios.delete(`http://localhost:8080/api/v1/delete-user/${id}`);
-        const data = await axios.get(" http://localhost:8080/api/v1/users/");
-        this.users = data.data.data;
+        this.getAllData();
       } catch (error) {
         console.log(error);
       }
@@ -136,6 +188,27 @@ export default {
 </script>
 
 <style>
+.panigation {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  padding-right: 60px;
+  margin-top: 20px;
+}
+.panigation h4 {
+  margin: 0 30px 10px 0;
+}
+.panigation button {
+  border: 0;
+  cursor: pointer;
+  padding: 4px 12px;
+  background-color: #dddddd;
+  border-radius: 4px;
+}
+.pageNumber {
+  margin: 4px 8px;
+  font-weight: 700;
+}
 table {
   font-family: arial, sans-serif;
   border-collapse: collapse;
