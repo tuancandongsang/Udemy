@@ -1,6 +1,9 @@
 <template>
   <div>
-    <h1>data from xampp</h1>
+    <div class="header">
+      <h1>data from xampp</h1>
+      <button @click="refresh" :class="hinden ? 'hinden' : ''">refresh data</button>
+    </div>
     <div v-if="isShowEditUser">
       <p><b>edit user</b></p>
       <input type="text" placeholder="email" v-model="formEdit.email" /> <br />
@@ -12,6 +15,18 @@
       <br />
       <button @click="saveEditUser">save</button>
       <button @click="canelEditUser">canel</button>
+    </div>
+    <div v-if="!isShowEditUser">
+      <label for="">Search</label>
+      <input
+        type="text"
+        placeholder="Search..."
+        v-model="keyword"
+        @keydown.enter="getUserList"
+      />
+      <button @click="getUserList">
+        Search
+      </button>
     </div>
     <table>
       <tr>
@@ -32,10 +47,10 @@
         </td>
       </tr>
     </table>
-    <div class="panigation">
+    <div class="pagination">
       <h4>
         Panigation: <label for="pageSize">page size:</label>
-        <select v-model="panigation.pageSize">
+        <select v-model="pagination.pageSize">
           <option value="2">2</option>
           <option value="3">3</option>
           <option value="5">5</option>
@@ -78,14 +93,10 @@
 import axios from "axios";
 export default {
   created() {
-    this.getAllData();
+    this.getUserList();
   },
   data() {
     return {
-      panigation: {
-        pageNumber: 1,
-        pageSize: 5,
-      },
       isShowEditUser: false,
       users: undefined,
       form: {
@@ -95,44 +106,62 @@ export default {
         address: "",
       },
       formEdit: {},
+      pagination: {
+        pageNumber: 1,
+        pageSize: 5,
+      },
+      keyword: "",
+      timeOut: null,
+      hinden: false,
     };
   },
   watch: {
-    panigation: {
+    pagination: {
       handler(newValue, _oldValue) {
-        this.getpanigationData(this.panigation);
+        this.getUserList();
       },
       deep: true,
     },
   },
   computed: {
     pageNumber() {
-      return this.panigation.pageNumber;
+      return this.pagination.pageNumber;
     },
   },
   methods: {
+    refresh() {
+      this.debounce(this.getUserList, 2000);
+    },
+    debounce(fn, delay) {
+      this.hinden = true;
+      clearTimeout(this.timeOut);
+      this.timeOut = setTimeout(() => {
+        this.hinden = false;
+        fn();
+      }, delay);
+    },
     nextPage() {
-      this.panigation.pageNumber += 1;
-      this.getpanigationData(this.panigation);
+      this.pagination.pageNumber += 1;
+      this.getUserList();
     },
     previewPage() {
-      if (this.panigation.pageNumber === 1) return;
-      this.panigation.pageNumber = this.panigation.pageNumber - 1;
-      this.getpanigationData(this.panigation)
+      if (this.pagination.pageNumber === 1) return;
+      this.pagination.pageNumber = this.pagination.pageNumber - 1;
+      this.getUserList();
     },
-    async getpanigationData(panigation) {
+    async getUserList() {
+      console.log(" data duoc tai");
+      const params = {
+        page: this.pagination.pageNumber,
+        limit: this.pagination.pageSize,
+      };
+      if (this.keyword.trim()) {
+        params.keyword = this.keyword.trim();
+      }
       try {
-        const data = await axios.post(
-          " http://localhost:8080/api/v1/users/p",
-          panigation
-        );
-        this.users = data.data.data;
-      } catch (error) {}
-    },
-
-    async getAllData() {
-      try {
-        const data = await axios.get(" http://localhost:8080/api/v1/users/");
+        const data = await axios.get(" http://localhost:8080/api/v1/users/", {
+          params,
+        });
         this.users = data.data.data;
       } catch (error) {}
     },
@@ -142,7 +171,7 @@ export default {
           `http://localhost:8080/api/v1/update-user/${this.formEdit.id}`,
           this.formEdit
         );
-        this.getAllData();
+        this.getUserList();
       } catch (error) {}
       this.isShowEditUser = false;
     },
@@ -166,7 +195,7 @@ export default {
           " http://localhost:8080/api/v1/create-user",
           this.form
         );
-        this.getAllData();
+        this.getUserList();
       } catch (error) {}
       this.form = {
         email: "",
@@ -178,7 +207,7 @@ export default {
     async removeEmail(id) {
       try {
         await axios.delete(`http://localhost:8080/api/v1/delete-user/${id}`);
-        this.getAllData();
+        this.getUserList();
       } catch (error) {
         console.log(error);
       }
@@ -188,17 +217,34 @@ export default {
 </script>
 
 <style>
-.panigation {
+.hinden {
+  opacity: 0.5;
+  cursor: default !important; 
+  background-color: red;
+}
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.header button {
+  border: 1ps solid #dddddd;
+  margin-right: 50px;
+  height: 2rem;
+  border-radius: 8px;
+  cursor: pointer;
+}
+.pagination {
   display: flex;
   flex-direction: column;
   align-items: flex-end;
   padding-right: 60px;
   margin-top: 20px;
 }
-.panigation h4 {
+.pagination h4 {
   margin: 0 30px 10px 0;
 }
-.panigation button {
+.pagination button {
   border: 0;
   cursor: pointer;
   padding: 4px 12px;
