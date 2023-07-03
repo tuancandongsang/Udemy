@@ -76,10 +76,32 @@ let deleteUser = async (req, res) => {
     message: "ok",
   });
 };
+// INSERT INTO `description` (`description`) VALUES ('tuacandongsang');
+let createDescription = async (req, res) => {
+  // console.log("req", req.body);
+  const { description } = req.body;
+  await pool.execute(
+    `update description set description= ? where 1`,
+    [description]
+  );
+  return res.status(200).json({
+    message: "ok",
+  });
+};
+let getDescription = async (req, res) => {
+
+  const [rows, fields] = await pool.execute("SELECT * FROM `description` WHERE 1");
+  return res.json({
+    message: "ok",
+    data: rows,
+  });
+}
 
 module.exports = {
   getAllUsers,
   createNewUser,
   updateUser,
   deleteUser,
+  getDescription,
+  createDescription,
 };

@@ -2,7 +2,9 @@
   <div>
     <div class="header">
       <h1>data from xampp</h1>
-      <button @click="refresh" :class="hinden ? 'hinden' : ''">refresh data</button>
+      <button @click="refresh" :class="hinden ? 'hinden' : ''">
+        refresh data
+      </button>
     </div>
     <div v-if="isShowEditUser">
       <p><b>edit user</b></p>
@@ -24,9 +26,7 @@
         v-model="keyword"
         @keydown.enter="getUserList"
       />
-      <button @click="getUserList">
-        Search
-      </button>
+      <button @click="getUserList">Search</button>
     </div>
     <table>
       <tr>
@@ -64,6 +64,20 @@
       </div>
     </div>
     <div>
+      <div>
+        <label for="">Description</label>
+        <input
+          type="text"
+          placeholder="description,,,"
+          v-model="description"
+          @input="throttleSaveData"
+        />
+      </div>
+      <div>
+        <h3>{{ description }}</h3>
+      </div>
+    </div>
+    <div>
       <h1>add item</h1>
       <div>
         <input type="text" placeholder="email...." v-model="form.email" />
@@ -92,9 +106,6 @@
 <script>
 import axios from "axios";
 export default {
-  created() {
-    this.getUserList();
-  },
   data() {
     return {
       isShowEditUser: false,
@@ -113,6 +124,8 @@ export default {
       keyword: "",
       timeOut: null,
       hinden: false,
+      description: "abc",
+      last: 0,
     };
   },
   watch: {
@@ -123,12 +136,52 @@ export default {
       deep: true,
     },
   },
+  created() {
+    this.getUserList();
+    this.getDescription();
+  },
   computed: {
     pageNumber() {
       return this.pagination.pageNumber;
     },
   },
   methods: {
+    throttleSaveData() {
+      this.throttle(this.saveDecscription(this.description), 3000)
+    },
+    throttle(fn, delay = 0) {
+      console.log('delay throttle');
+      let last = 0;
+      return () => {
+        const now = new Date().getTime();
+        if (now - last < delay) {
+          return;
+        }
+        last = now;
+        fn();
+      };
+    },
+    async getDescription() {
+      try {
+        const data = await axios.get(
+          " http://localhost:8080/api/v1/get-description"
+        );
+        this.description = data.data.data[0].description;
+      } catch (error) {}
+    },
+    async saveDecscription(description) {
+      console.log('description duoc goi');
+      if (description.trim()) {
+        try {
+          const data = await axios.put(
+            " http://localhost:8080/api/v1/description",
+            { description: description }
+          );
+        } catch (error) {
+          console.log("khong goi duoc api", error);
+        }
+      }
+    },
     refresh() {
       this.debounce(this.getUserList, 2000);
     },
@@ -150,7 +203,6 @@ export default {
       this.getUserList();
     },
     async getUserList() {
-      console.log(" data duoc tai");
       const params = {
         page: this.pagination.pageNumber,
         limit: this.pagination.pageSize,
@@ -219,7 +271,7 @@ export default {
 <style>
 .hinden {
   opacity: 0.5;
-  cursor: default !important; 
+  cursor: default !important;
   background-color: red;
 }
 .header {
