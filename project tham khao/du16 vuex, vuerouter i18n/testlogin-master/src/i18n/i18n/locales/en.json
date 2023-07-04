@@ -1,0 +1,74 @@
+{
+  "test": "HI",
+  "system": {
+    "commonMsg": {
+      "successMsg": "Success",
+      "failMsg": "Fail"
+    },
+    "tooltipMsg": {
+      "maxStrMsg": "Maximum Characters:",
+      "maxNumMsg": "Maximum Value:",
+      "minNumMsg": "Maximum Value:"
+    },
+    "sysConfig": {
+      "sysInfo": {
+        "operSubTitle": "System Information",
+        "operModelTitle": "Model",
+        "operMachineTitle": "Device",
+        "operSWTitle": "S/W Version",
+        "operRealseTitle": "Release",
+        "operRunTimeTitle": "Uptime",
+        "operHAModeTitle": "HA Mode",
+        "operLicenseTitle": "License Period",
+        "operHWSerialTitle": "H/W Serial Number",
+        "operOSVersionTitle": "OS Version",
+        "machineSubTitle": "Device Settings",
+        "machineNameTitle": "Device Name",
+        "machineLocateTitle": "Device Location",
+        "machineDescTitle": "Description",
+        "sysTimeSubTitle": "System Time Settings",
+        "sysTimeManualTitle": "Manual Setting",
+        "sysTimeRefreshTitle": "Refresh",
+        "sysTimeNtpTitle": "NTP Settings",
+        "sysTimeNtpSrv01": "NTP Server 1",
+        "sysTimeNtpSrv02": "NTP Server 2",
+        "sysTimeUpdateTitle": "Update Interval (sec)",
+        "sysTimeModeTitle": "Operating Mode",
+        "sysTimezoneTitle": "Timezone Settings",
+        "sysTimezoneAreaTitle": "Zone/City",
+        "sysTimezoneOffsetTitle": "Offset",
+        "sysTimezoneOffTitle": "Offset",
+        "sysTimezoneHourTitle": "Hour",
+        "sysTimezoneMinTitle": "Min",
+        "sysTimezoneSecTitle": "Sec"
+      },
+      "sysChkTool": {
+        "checkTargetTitle": "Check List",
+        "checkResultTitle": "Result",
+        "checkTargetSelect": "Select Item",
+        "checkTargetOption": "Check Target",
+        "checkRunBtnLabel": "Execute",
+        "checkStopBtnLabel": "Stop",
+        "checkIpAddress": "IP Address",
+        "checkHostName": "Host Name",
+        "checkDataIntegrity": "Data Integrity",
+        "checkDnsQuery": "DNS Query"
+      }
+    },
+    "sysChkTool": {
+      "": ""
+    }
+  },
+  "required": "Required fields can not be empty.",
+  "trustedHosts": "Single IPv4 Comma(,) Separated by multiple",
+  "isMinimum": "The value entered is less than the minimum value.",
+  "isMaximum": "The value entered is greater then the maximum value.",
+  "isChanged": "There is a changed value.",
+  "isValidId": "The ID must be between 4 and 20 characters long and consist of alphabetic characters.",
+  "isValidIPv4": "Invalid IPv4 format.",
+  "isValidPasswd": "The password must be between 8 and 20 characters, alphabetic characters, and special characters.",
+  "isValidPasswdRepeat": "The password does not match.",
+  "basicSetting": "Basic Settings",
+  "advancedSetting": "Advanced Settings",
+  "otherSetting": "Other Settings"
+}

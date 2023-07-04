@@ -1,0 +1,73 @@
+{
+  "test": "하이",
+  "commonMsg": {
+    "successMsg": "성공",
+    "failMsg": "실패"
+  },
+  "commonBtnLabel": {
+    "addBtn": "추가",
+    "editBtn": "편집",
+    "deleteBtn": "삭제",
+    "modifyBtn": "변경"
+  },
+  "commonPagination": {
+    "total": "총",
+    "count": "개"
+  },
+  "commonLabel": {
+    "addr": "주소"
+  },
+  "commonOptions": {
+    "action": {
+      "block": "차단",
+      "detect": "탐지"
+    }
+  },
+  "tooltipMsg": {
+    "maxStrMsg": "최대 문자:",
+    "maxNumMsg": "최댓값:",
+    "minNumMsg": "최솟값:",
+    "defNumMsg": "기본값:",
+    "passwordMsg": "자 이하의 영문, 숫자, 특수문자 조합",
+    "pwdNotiMsg": "사용 가능한 특수문자: ~, !, @, #, $, %, &, *, (, ), -, +, _"
+  },
+  "securityPolicy": {
+    "firwall": {
+      "twoLayerDefense": {
+        "arpSubTitle": "ARP Cache Poisoning 방어",
+        "macSubTitle": "정적 MAC 주소 방어",
+        "popUpInfo": {
+          "fixTitle": "MAC 주소 고정"
+        }
+      }
+    }
+  },
+  "required": "필수 입력 필드입니다.",
+  "trustedHosts": "Single IPv4 쉼표( , )로 다중 입력 가능",
+  "isMinimum": "입력된 값이 최솟값보다 작습니다.",
+  "isMaximum": "입력된 값이 최댓값보다 큽니다.",
+  "isChanged": "변경된 값이 있습니다.",
+  "isValidId": "ID는 4자 이상 20자 이하의 영문, 숫자로 이루어져야 합니다.",
+  "isValidIPv4": "IPv4 형식에 맞지 않습니다.",
+  "isValidPasswd": "비밀번호는 8자 이상 20자 이하의 영문, 숫자, 특수문자로 이루어져야 합니다.",
+  "isValidPasswdRepeat": "비밀번호가 일치하지 않습니다.",
+  "basicSetting": "기본 설정",
+  "advancedSetting": "고급 설정",
+  "otherSetting": "기타 설정",
+  "name": "이름",
+  "password": "비밀번호",
+  "passwordRepeat": "비밀번호 확인",
+  "passwordLimit": "비밀번호 제한 기간 (일)",
+  "accessLevel": "접근 등급",
+  "depart": "부서",
+  "tel": "연락처",
+  "email": "이메일",
+  "trustedHost": "허용 호스트 주소",
+  "add": "추가",
+  "edit": "수정",
+  "del": "삭제",
+  "desc": "설명",
+  "setting": "설정",
+  "no": "아니오",
+  "isDelConfirm": "선택한 항목을 삭제하시겠습니까?"
+}
