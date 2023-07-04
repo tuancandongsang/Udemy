@@ -72,6 +72,12 @@
           v-model="description"
           @input="throttleSaveData"
         />
+        <input
+          type="text"
+          placeholder="description,,,"
+          v-model="description"
+          @input="test1"
+        />
       </div>
       <div>
         <h3>{{ description }}</h3>
@@ -104,6 +110,7 @@
 </template>
 
 <script>
+// import throttle from "lodash/throttle";
 import axios from "axios";
 export default {
   data() {
@@ -123,6 +130,7 @@ export default {
       },
       keyword: "",
       timeOut: null,
+      lastCall: Date.now(),
       hinden: false,
       description: "abc",
       last: 0,
@@ -139,6 +147,8 @@ export default {
   created() {
     this.getUserList();
     this.getDescription();
+    this.throttleSaveData = this.throttle(this.saveDecscription, 3000);
+    this.test1 = this.test();
   },
   computed: {
     pageNumber() {
@@ -146,20 +156,34 @@ export default {
     },
   },
   methods: {
-    throttleSaveData() {
-      this.throttle(this.saveDecscription(this.description), 3000)
+    test() {
+      console.log("chi chay 1 lan")
+      return () => console.log("tuancandongsang");
     },
-    throttle(fn, delay = 0) {
-      console.log('delay throttle');
-      let last = 0;
-      return () => {
-        const now = new Date().getTime();
-        if (now - last < delay) {
-          return;
+    // throttleSaveData() {
+    //   this.throttle(this.saveDecscription, 2000);
+    // },
+    throttle(callback, timeout = 0) {
+      let waiting = false;
+      console.log("run");
+      return (...args) => {
+        if (!waiting) {
+          callback(...args);
+          waiting = true;
+          setTimeout(() => {
+            waiting = false;
+          }, timeout);
         }
-        last = now;
-        fn();
       };
+
+      // const now = Date.now();
+      // console.log(now, this.lastCall, now - this.lastCall, timeout);
+      // if (now - this.lastCall < timeout) {
+      //   return;
+      // }
+
+      // this.debounce(callback, 2000);
+      // this.lastCall = now;
     },
     async getDescription() {
       try {
@@ -169,13 +193,13 @@ export default {
         this.description = data.data.data[0].description;
       } catch (error) {}
     },
-    async saveDecscription(description) {
-      console.log('description duoc goi');
-      if (description.trim()) {
+    async saveDecscription() {
+      console.log("description duoc goi", this);
+      if (this.description.trim()) {
         try {
           const data = await axios.put(
             " http://localhost:8080/api/v1/description",
-            { description: description }
+            { description: this.description }
           );
         } catch (error) {
           console.log("khong goi duoc api", error);
@@ -187,7 +211,7 @@ export default {
     },
     debounce(fn, delay) {
       this.hinden = true;
-      clearTimeout(this.timeOut);
+      this.timeOut && clearTimeout(this.timeOut);
       this.timeOut = setTimeout(() => {
         this.hinden = false;
         fn();
