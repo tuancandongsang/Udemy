@@ -11,7 +11,7 @@
       </li>
       <li><router-link to="import-excel">import-excel</router-link></li>
       <li><router-link to="refresh">refresh of time</router-link></li>
-      <li>validate input</li>
+      <li><router-link to="css">CSS</router-link></li>
       <li>validate input</li>
       <li>validate input</li>
       <li>validate input</li>

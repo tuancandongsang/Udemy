@@ -5,6 +5,7 @@ import Input from "../page/input-keyboard-valid.vue"
 import ExcelExport from '../page/excelExport.vue'
 import ImportExcel from '../page/importExcel.vue'
 import Refresh from '../page/refresh_time.vue'
+import Css from '../page/css.vue'
 
 export const router = createRouter({
   history: createWebHistory(),
@@ -33,6 +34,11 @@ export const router = createRouter({
           path: "/refresh",
           component: Refresh,
           name: "Refresh",
+        },
+        {
+          path: "/css",
+          component: Css,
+          name: "css",
         },
       ],
     },

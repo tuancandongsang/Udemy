@@ -157,15 +157,16 @@ export default {
   },
   methods: {
     test() {
-      console.log("chi chay 1 lan")
+      // console.log("chi chay 1 lan tuancandongsang")
       return () => console.log("tuancandongsang");
     },
     // throttleSaveData() {
     //   this.throttle(this.saveDecscription, 2000);
     // },
     throttle(callback, timeout = 0) {
+
       let waiting = false;
-      console.log("run");
+      // console.log("chi chay 1 lan")
       return (...args) => {
         if (!waiting) {
           callback(...args);
@@ -194,7 +195,7 @@ export default {
       } catch (error) {}
     },
     async saveDecscription() {
-      console.log("description duoc goi", this);
+      // console.log("description duoc goi", this);
       if (this.description.trim()) {
         try {
           const data = await axios.put(
