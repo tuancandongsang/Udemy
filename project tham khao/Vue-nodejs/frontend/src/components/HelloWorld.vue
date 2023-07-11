@@ -147,7 +147,7 @@ export default {
   created() {
     this.getUserList();
     this.getDescription();
-    this.throttleSaveData = this.throttle(this.saveDecscription, 3000);
+    this.throttleSaveData = this.throttle(this.saveDecscription, 2000);
     this.test1 = this.test();
   },
   computed: {
@@ -164,21 +164,20 @@ export default {
     //   this.throttle(this.saveDecscription, 2000);
     // },
     throttle(callback, timeout = 0) {
-
       let waiting = false;
       // console.log("chi chay 1 lan")
       return (...args) => {
         if (!waiting) {
-          callback(...args);
           waiting = true;
           setTimeout(() => {
             waiting = false;
+            callback(...args);
           }, timeout);
         }
       };
 
       // const now = Date.now();
-      // console.log(now, this.lastCall, now - this.lastCall, timeout);
+      // // console.log(now, this.lastCall, now - this.lastCall, timeout);
       // if (now - this.lastCall < timeout) {
       //   return;
       // }
@@ -195,7 +194,7 @@ export default {
       } catch (error) {}
     },
     async saveDecscription() {
-      // console.log("description duoc goi", this);
+      console.log("description duoc goi", this);
       if (this.description.trim()) {
         try {
           const data = await axios.put(

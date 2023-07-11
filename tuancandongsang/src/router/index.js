@@ -6,6 +6,7 @@ import ExcelExport from '../page/excelExport.vue'
 import ImportExcel from '../page/importExcel.vue'
 import Refresh from '../page/refresh_time.vue'
 import Css from '../page/css.vue'
+import Debounce from '../page/debounce.vue'
 
 export const router = createRouter({
   history: createWebHistory(),
@@ -40,6 +41,11 @@ export const router = createRouter({
           component: Css,
           name: "css",
         },
+        {
+          path: '/Debounce',
+          component: Debounce,
+          name: 'Debounce'
+        }
       ],
     },
     { path: "/:notFound(.*)", component: NotFound, name: "NotFound" },
