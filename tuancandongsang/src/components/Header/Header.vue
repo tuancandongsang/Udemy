@@ -13,7 +13,7 @@
       <li><router-link to="refresh">refresh of time</router-link></li>
       <li><router-link to="css">CSS</router-link></li>
       <li> <router-link to="debounce" > debounce & throttle </router-link> </li>
-      <li>validate input</li>
+      <li><router-link to="createNamespacedHelpers">createNamespacedHelpers vuex</router-link></li>
       <li>validate input</li>
       <li>validate input</li>
       <li>validate input</li>

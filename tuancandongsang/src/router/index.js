@@ -7,6 +7,7 @@ import ImportExcel from '../page/importExcel.vue'
 import Refresh from '../page/refresh_time.vue'
 import Css from '../page/css.vue'
 import Debounce from '../page/debounce.vue'
+import CreateNamespacedHelpers from '../page/CreateNamespacedHelpers.vue'
 
 export const router = createRouter({
   history: createWebHistory(),
@@ -45,6 +46,11 @@ export const router = createRouter({
           path: '/Debounce',
           component: Debounce,
           name: 'Debounce'
+        },
+        {
+          path: '/createNamespacedHelpers',
+          component: CreateNamespacedHelpers,
+          name: 'createNamespacedHelpers'
         }
       ],
     },
