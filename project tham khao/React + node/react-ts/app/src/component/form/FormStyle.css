@@ -1,0 +1,25 @@
+.form-container{
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+.form-group{
+    display: flex;
+}
+.form-group label{
+    width: 300px;
+    text-shadow: #fc0 1px 0 10px;
+    color: #fc0;
+}
+.confirm{
+    margin-top: 20px;
+    display: flex;
+    justify-content: end;
+    gap: 12px;
+}
+.confirm button{
+    display: inline-block;
+    width: 100px;
+    border-radius: 20px;
+    font-weight: 600;
+}

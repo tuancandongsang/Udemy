@@ -1,0 +1,102 @@
+/* #root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+.logo {
+  height: 6em;
+  padding: 1.5em;
+  will-change: filter;
+  transition: filter 300ms;
+}
+.logo:hover {
+  filter: drop-shadow(0 0 2em #646cffaa);
+}
+.logo.react:hover {
+  filter: drop-shadow(0 0 2em #61dafbaa);
+}
+
+@keyframes logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  a:nth-of-type(2) .logo {
+    animation: logo-spin infinite 20s linear;
+  }
+}
+
+.card {
+  padding: 2em;
+}
+
+.read-the-docs {
+  color: #888;
+} */
+
+.logo {
+  height: 6em;
+  padding: 1.5em;
+  will-change: filter;
+  transition: filter 300ms;
+}
+
+.inputItem {
+  padding-left: 16px;
+  flex: 3;
+  font-size: 1.2rem;
+  outline: none;
+  border: none;
+  overflow: hidden;
+  background-color: transparent;
+  /* opacity: 0.2; */
+  color: #fff;
+  border-radius: 20px;
+  box-shadow: rgba(255, 204, 0, 0.5) 1px 0 10px;
+}
+.inputItem:focus {
+  background-color: #50545c;
+  opacity: 1;
+  color: #fff;
+  box-shadow: azure 1px 0 10px;
+  outline: none;
+  border: none;
+}
+.button {
+  padding: 0.6em 1.2em;
+  background-color: #6e0260;
+  cursor: pointer;
+  border: none;
+  outline: none;
+  margin: 2px;
+  border-radius: 48px;
+  font-size: 1.2rem;
+  overflow: hidden;
+  color: aliceblue;
+  text-shadow: #fc0 1px 0 10px;
+}
+.list-todo {
+  background-color: transparent;
+  text-shadow: #fc0 1px 0 10px;
+  color: #fc0;
+  border: 1px solid rgba(255, 204, 0, 0.1);
+}
+.button-item {
+  background-color: transparent;
+  color: #fc0;
+  text-shadow: #fc0 1px 0 10px;
+  border: none;
+}
+.button-item:hover {
+  background-color: transparent;
+  text-shadow: #fc0 2px 0 10px;
+  opacity: 0.5;
+}
+

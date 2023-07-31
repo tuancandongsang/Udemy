@@ -1,0 +1,15 @@
+async callAPI() {
+      const response = [1, 2, 0, 3, -1, 4].map((id)
+ =>
+        this.$axios.get(`https://jsonplaceholder.typicode.com/todos/${id}`),
+      );
+
+      for (const todo of response) {
+        try {
+          const t = await todo;
+          console.log('success::: ', t.data.id);
+        } catch (e) {
+          console.log('fail::: ', e.response.status);
+        }
+      }
+    },

@@ -1,0 +1,7 @@
+.box-logo{
+    display: flex;
+    justify-content: center;
+}
+.box-logo a {
+    display: inline-block;
+}
