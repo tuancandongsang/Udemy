@@ -1,0 +1,129 @@
+#home {
+  position: relative;
+  background-color: black;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  top: 0;
+  left: 0;
+
+  .background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0.2;
+    background-size: cover;
+    background-repeat: no-repeat;
+    // background-image: url("https://photo2.tinhte.vn/data/attachment-files/2021/12/5772625_F28D1000-ACC7-4C74-B135-37F81662B199.jpg");
+    background-image: url("https://symbols.vn/wp-content/uploads/2023/02/Tai-Khoan-Zing-Mp3.jpg");
+  }
+
+  .container {
+    color: aliceblue;
+    width: 600px;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    height: 100%;
+    position: relative;
+    margin: 0 auto;
+
+    h1 {
+      margin: 0;
+      padding: 32px;
+      text-align: center;
+      font-size: 40px;
+      text-shadow: #fc0 1px 0 10px;
+    }
+
+    .search {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+
+      .submit {
+        width: 60%;
+        background-color: #fff;
+        display: flex;
+        border-radius: 50px;
+        overflow: hidden;
+        height: 50px;
+      }
+
+      input {
+        padding-left: 16px;
+        flex: 3;
+        font-size: 1.2rem;
+        outline: none;
+        border: none;
+        overflow: hidden;
+        background-color: #fff;
+      }
+
+      button {
+        padding: 0.6em 1.2em;
+        background-color: #6e0260;
+        cursor: pointer;
+        border: none;
+        outline: none;
+        margin: 2px;
+        border-radius: 48px;
+        font-size: 1.2rem;
+        overflow: hidden;
+        color: aliceblue;
+        text-shadow: #fc0 1px 0 10px;
+
+        &:hover {
+          opacity: 0.8;
+        }
+      }
+    }
+
+    .list {
+      display: flex;
+      margin-top: 32px;
+      padding: 12px 20px;
+      gap: 30px;
+      margin: 30px 150px;
+      justify-content: center;
+      background-color: rgba(149, 157, 165, 0.2);
+      border-radius: 50px;
+      font-weight: bold;
+
+      .item {
+        cursor: pointer;
+      }
+    }
+
+    .main-home {
+      width: 100%;
+      height: 55%;
+    }
+
+    .footer {
+      display: flex;
+      justify-content: space-evenly;
+      padding: 12px 20px;
+      background-color: rgba(149, 157, 165, 0.2);
+      border-radius: 50px;
+      margin: 0 30px;
+
+      span {
+        font-weight: bold;
+        display: block;
+        font-size: 2rem;
+        color: antiquewhite;
+        cursor: pointer;
+
+        &:hover {
+          color: #fc0;
+        }
+      }
+    }
+  }
+
+  .shadow {
+    text-shadow: #fc0 1px 0 16px;
+    color: #fc0;
+  }
+}
