@@ -12,7 +12,7 @@ var morgan = require('morgan')
 
 
 const app = express();
-const port = process.env.PORT || 8080;
+const port = process.env.PORT || 2020;
 app.use(cors())
 
 app.use((req, res, next) => {

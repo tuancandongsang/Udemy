@@ -188,9 +188,9 @@ export default {
     async getDescription() {
       try {
         const data = await axios.get(
-          " http://localhost:8080/api/v1/get-description"
+          " http://localhost:2020/api/v1/get-description"
         );
-        this.description = data.data.data[0].description;
+        this.description = data.data?.data[0]?.description;
       } catch (error) {}
     },
     async saveDecscription() {
@@ -198,7 +198,7 @@ export default {
       if (this.description.trim()) {
         try {
           const data = await axios.put(
-            " http://localhost:8080/api/v1/description",
+            " http://localhost:2020/api/v1/description",
             { description: this.description }
           );
         } catch (error) {
@@ -235,7 +235,7 @@ export default {
         params.keyword = this.keyword.trim();
       }
       try {
-        const data = await axios.get(" http://localhost:8080/api/v1/users/", {
+        const data = await axios.get(" http://localhost:2020/api/v1/users/", {
           params,
         });
         this.users = data.data.data;
@@ -244,7 +244,7 @@ export default {
     async saveEditUser() {
       try {
         await axios.put(
-          `http://localhost:8080/api/v1/update-user/${this.formEdit.id}`,
+          `http://localhost:2020/api/v1/update-user/${this.formEdit.id}`,
           this.formEdit
         );
         this.getUserList();
@@ -268,7 +268,7 @@ export default {
     async addItem() {
       try {
         await axios.post(
-          " http://localhost:8080/api/v1/create-user",
+          " http://localhost:2020/api/v1/create-user",
           this.form
         );
         this.getUserList();
@@ -282,7 +282,7 @@ export default {
     },
     async removeEmail(id) {
       try {
-        await axios.delete(`http://localhost:8080/api/v1/delete-user/${id}`);
+        await axios.delete(`http://localhost:2020/api/v1/delete-user/${id}`);
         this.getUserList();
       } catch (error) {
         console.log(error);

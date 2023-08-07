@@ -33,5 +33,11 @@ export class Todo {
 }
 export interface StateItem {
   status: string;
-  id:number;
+  id: number;
+}
+
+export interface NotiType{
+  type: string;
+  message: string;
+  description: string;
 }

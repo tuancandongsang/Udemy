@@ -2,7 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App";
 import "./index.css";
-import { BrowserRouter } from "react-router-dom";
+import { BrowserRouter as Router } from "react-router-dom";
 import { Provider as StoreProvider } from "react-redux";
 import { store } from "./app/store";
 import { ConfigProvider } from "antd";
@@ -13,13 +13,13 @@ ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
       <ConfigProvider
         theme={{
           token: {
-            // colorPrimary: '#00b96b',
+            colorPrimary: '#00b96b',
           },
         }}
       >
-        <BrowserRouter>
+        <Router>
           <App />
-        </BrowserRouter>
+        </Router>
       </ConfigProvider>
     </React.StrictMode>
   </StoreProvider>

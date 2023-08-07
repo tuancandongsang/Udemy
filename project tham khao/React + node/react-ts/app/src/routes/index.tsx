@@ -2,6 +2,9 @@ import loadable from "@loadable/component";
 const Home = loadable(() => import("../page/home/index.jsx"));
 const Detail = loadable(() => import("../page/detail/index.jsx"));
 const NotFound = loadable(() => import("../page/notFound/notFound.jsx"));
+const Login = loadable(() => import("../page/login/index.jsx"))
+const CheckLogin = loadable(() => import("../page/login/CheckLogin.jsx"))
+const AppLayout = loadable(() => import("../component/Layout/AppLayout.jsx"))
 
 const routes = [
   {
@@ -22,6 +25,25 @@ const routes = [
 
 export const AllPages = () => {
   return [
-    ...routes
+    // ...routes
+
+    {
+      element: <CheckLogin />,
+      children: [
+        {
+          element: <AppLayout />,
+          children: [...routes]
+        },
+        // {
+        //   path: "/",
+        //   element: <Home />
+        // }
+      ]
+    },
+    {
+      path: "/login",
+      name: "Login",
+      element: <Login />
+    }
   ];
 };

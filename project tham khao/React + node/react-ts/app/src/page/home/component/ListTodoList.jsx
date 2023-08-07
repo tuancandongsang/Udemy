@@ -1,9 +1,9 @@
 import React from "react";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchPosts, changeToPageDetail } from "./todoReducer.ts";
+import { fetchPosts, changeToPageDetail } from "../../../app/todoReducer.ts";
 import { NavLink } from "react-router-dom";
-import Popconfirm from "./popconfirm";
+import Popconfirm from "../../../component/popconfirm.jsx";
 
 function ListTodoList() {
   const dispatch = useDispatch();

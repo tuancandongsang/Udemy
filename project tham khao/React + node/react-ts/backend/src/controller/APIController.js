@@ -27,11 +27,10 @@ let getAllUsers = async (req, res) => {
 
 let createNewUser = async (req, res) => {
   let { firstName, lastName, email, address } = req.body;
-  // console.log("req.body", req.body);
 
   if (!firstName || !lastName || !email || !address) {
     return res.status(200).json({
-      message: "missing required params",
+      message: "Missing required information",
     });
   }
 
@@ -48,11 +47,11 @@ let createNewUser = async (req, res) => {
 let updateUser = async (req, res) => {
   let userId = req.params.id;
   let { firstName, lastName, email, address } = req.body;
-  // if (!firstName || !lastName || !email || !address) {
-  //     return res.status(200).json({
-  //         message: 'missing required params'
-  //     })
-  // }
+  if (!firstName || !lastName || !email || !address) {
+      return res.status(200).json({
+          message: 'Missing required information'
+      })
+  }
 
   await pool.execute(
     `update users set firstName= ?, lastName = ? , email = ? , address= ? where id = ${userId}`,
@@ -76,9 +75,7 @@ let deleteUser = async (req, res) => {
     message: "ok",
   });
 };
-// INSERT INTO `description` (`description`) VALUES ('tuacandongsang');
 let createDescription = async (req, res) => {
-  // console.log("req", req.body);
   const { description } = req.body;
   await pool.execute(
     `update description set description= ? where 1`,

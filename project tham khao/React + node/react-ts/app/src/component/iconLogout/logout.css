@@ -1,0 +1,11 @@
+.Icon-Logout{
+    display: inline-block;
+    font-size: 2rem;
+    margin: 8px 0;
+    color: #fc0;
+  }
+  .Icon-Logout:hover{
+    cursor: pointer;
+    opacity: 0.5;
+  }
+  

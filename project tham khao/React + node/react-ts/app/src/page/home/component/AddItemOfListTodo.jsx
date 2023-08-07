@@ -1,7 +1,7 @@
-import { useState, useRef } from "react";
+import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { NavLink } from "react-router-dom";
-import { fetchPosts, changeToPageDetail } from "./todoReducer.ts";
+import { fetchPosts, changeToPageDetail } from "../../../app/todoReducer.ts";
 
 function AddItemOfListTodo() {
   const dispatch = useDispatch();

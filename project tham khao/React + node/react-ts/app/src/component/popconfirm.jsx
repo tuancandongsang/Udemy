@@ -1,7 +1,7 @@
 import { Button, message, Popconfirm } from "antd";
 import React from "react";
 import { useDispatch } from "react-redux";
-import { removeItem } from "./todoReducer.ts";
+import { removeItem } from "../app/todoReducer.ts";
 
 function Popcon(props) {
   const { id, firstName } = props;

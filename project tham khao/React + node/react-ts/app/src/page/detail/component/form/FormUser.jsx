@@ -1,12 +1,12 @@
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import "./FormStyle.css";
 import { useState } from "react";
-import { updateItem, addItem } from "../todoReducer.ts";
+import { updateItem, addItem } from "../../../../app/todoReducer.ts";
 import { useDispatch, useSelector } from "react-redux";
 
 function Form() {
   const { statusItem } = useSelector((state) => state.listTodos);
-
+  const navigate = useNavigate();
   const dispatch = useDispatch();
 
   const [infor, setinfor] = useState({
@@ -14,7 +14,7 @@ function Form() {
     email: statusItem.email,
     address: statusItem.address,
     id: statusItem.id,
-    lastName: statusItem.lastName
+    lastName: statusItem.lastName,
   });
   const onChangeForm = (e) => {
     const { name, value } = e.target;
@@ -25,10 +25,20 @@ function Form() {
   };
 
   const editItemDetail = () => {
-    if(!infor.id) {
-      setinfor({...infor, id : Math.floor(Math.random() * 10000)})
-      dispatch(addItem(infor))
-    } else dispatch(updateItem(infor));
+    if (
+      !infor.address ||
+      !infor.firstName ||
+      !infor.email ||
+      !infor.lastName
+    ) return ;
+    if (!infor?.id) {
+      setinfor({ ...infor, id: Math.floor(Math.random() * 10000) });
+      dispatch(addItem(infor));
+      navigate("/");
+    } else {
+      dispatch(updateItem(infor));
+      navigate("/");
+    }
   };
   return (
     <>
@@ -83,13 +93,17 @@ function Form() {
         </div>
       </div>
       <div className="confirm">
-        <button type="button" className="btn btn-primary" onClick={editItemDetail}>
-          <NavLink to={"/"} style={{ color: "#fff" }}>
-            {statusItem.id && <span>Edit</span>}
-            {!statusItem.id && <span>Add</span>}
-          </NavLink>
+        <button
+          type="button"
+          className="btn btn-primary"
+          onClick={editItemDetail}
+        >
+          {/* <NavLink to={"/"} style={{ color: "#fff" }}> */}
+          {statusItem.id && <span>Edit</span>}
+          {!statusItem.id && <span>Add</span>}
+          {/* </NavLink> */}
         </button>
-        <button type="button" className="btn btn-warning" >
+        <button type="button" className="btn btn-warning">
           <NavLink to={"/"} style={{ color: "black" }}>
             Canel
           </NavLink>
