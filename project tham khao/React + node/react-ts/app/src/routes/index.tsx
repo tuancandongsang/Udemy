@@ -5,7 +5,7 @@ const NotFound = loadable(() => import("../page/notFound/notFound.jsx"));
 const Login = loadable(() => import("../page/login/index.jsx"))
 const CheckLogin = loadable(() => import("../page/login/CheckLogin.jsx"))
 const AppLayout = loadable(() => import("../component/Layout/AppLayout.jsx"))
-const LazyLoadData = loadable(() => import("../page/test.jsx"))
+const LazyLoadData = loadable(() => import("../page/Lazyload.jsx"))
 
 const routes = [
   {
@@ -19,8 +19,8 @@ const routes = [
     element: <Detail />,
   },
   {
-    path: "/test",
-    name: "test",
+    path: "/Lazyload",
+    name: "Lazyload",
     element: <LazyLoadData />,
   },
   {

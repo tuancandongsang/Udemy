@@ -11,7 +11,9 @@ function AppLayout() {
         <div className="container">
           <Header />
           <Outlet />
-          <Logout />
+          <div className="Logout">
+            <Logout />
+          </div>
         </div>
       </div>
     </>

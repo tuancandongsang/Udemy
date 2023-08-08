@@ -17,7 +17,6 @@ class ListUser {
     return requestUnauthorized.post(API_USER.CREATE, data);
   }
   update(data:any) {
-    console.log('chay api ListUser');
     return requestUnauthorized.put(API_USER.UPDATE + `/${data.id}`, data);
   }
   delete(id: any) {

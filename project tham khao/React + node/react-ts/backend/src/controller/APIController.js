@@ -7,6 +7,7 @@ let getAllUsers = async (req, res) => {
   // const [rows, fields] = await pool.execute("SELECT * FROM users WHERE address > 50");
   // const [rows, fields] = await pool.execute("SELECT * FROM users limit 2, 2");
   const { keyword, limit, page } = req.query;
+  console.log('keyword, limit, page', keyword, limit, page);
   const startNumber = (page - 1) * limit;
   let sqlQuery = "SELECT * FROM users";
   if (keyword) {
@@ -16,12 +17,12 @@ let getAllUsers = async (req, res) => {
     sqlQuery += ` LIMIT ${startNumber}, ${limit}`;
   }
   const [rows, fields] = await pool.execute(sqlQuery);
-  const [BinaryRow] = await pool.execute("SELECT COUNT (*) FROM users");
+  const [BinaryRow] = await pool.execute("SELECT COUNT (*) as totalCount FROM users");
 
   return res.json({
     message: "ok",
     data: rows,
-    totalItems: BinaryRow,
+    totalItems: BinaryRow[0].totalCount,
   });
 };
 

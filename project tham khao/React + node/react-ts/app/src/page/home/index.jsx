@@ -4,8 +4,10 @@ import ListTodoList from "./component/ListTodoList.jsx";
 function Home() {
   return (
     <>
-      <AddItemOfListTodo />
-      <ListTodoList />
+      <div className="outlet-home">
+        <AddItemOfListTodo />
+        <ListTodoList />
+      </div>
     </>
   );
 }

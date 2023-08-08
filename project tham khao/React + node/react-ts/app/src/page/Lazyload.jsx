@@ -12,7 +12,7 @@ const LazyLoadData = () => {
 
     setLoading(true);
     const response = await axios.get(
-      `https://jsonplaceholder.typicode.com/posts?_start=${(currentPage - 1) * itemsPerPage}&_limit=${itemsPerPage}`
+      `https://jsonplaceholder.typicode.com/comments?_start=${(currentPage - 1) * itemsPerPage}&_limit=${itemsPerPage}`
     );
     setData(prevData => [...prevData, ...response.data]);
     setLoading(false);
@@ -20,7 +20,7 @@ const LazyLoadData = () => {
 
   const handleScroll = (e) => {
     const { scrollTop, clientHeight, scrollHeight } = e.target;
-    if (scrollTop + clientHeight >= scrollHeight - 500) {
+    if (scrollTop + clientHeight >= scrollHeight - 50) {
       setCurrentPage(prevPage => prevPage + 1);
     }
   };
@@ -42,7 +42,7 @@ const LazyLoadData = () => {
       <ul>
         {data.map(item => (
           <li key={item.id}>
-            <h3>{item.title}</h3>
+            <h3>{item.email}</h3>
             <p>{item.body}</p>
           </li>
         ))}

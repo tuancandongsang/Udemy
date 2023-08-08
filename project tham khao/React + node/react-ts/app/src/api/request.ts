@@ -19,21 +19,21 @@ const requestUnauthorized = axios.create({
 
 requestUnauthorized.interceptors.request.use(
   (request) => {
-    console.log("request", request);
+    // console.log("request", request);
 
     if (
       request.url === "/login" ||
       request.url === "/register" ||
       request.url === "/refresh-token"
     ) {
-      console.log("bo qua url chi dinh", request);
+      // console.log("bo qua url chi dinh", request);
 
       return request;
     }
 
     if (getToken()) {
       request.headers["Authorization"] = `${getToken()}`;
-      console.log("seturl(request?.url)", request.url);
+      // console.log("seturl(request?.url)", request.url);
 
       seturl(request.url);
     }
@@ -46,7 +46,7 @@ requestUnauthorized.interceptors.request.use(
 
 requestUnauthorized.interceptors.response.use(
   (response) => {
-    console.log("response", response);
+    // console.log("response", response);
 
     if (response?.data?.token && response?.data?.refreshToken) {
       const token = response?.data?.token;
@@ -58,11 +58,11 @@ requestUnauthorized.interceptors.response.use(
   },
   async (error) => {
     if (error?.response?.status === 401) {
-      console.log("error?.response?.status === 401");
+      // console.log("error?.response?.status === 401");
 
       try {
         const response = await AuthService.refreshToken();
-        console.log("await AuthService.refreshToken()");
+        // console.log("await AuthService.refreshToken()");
 
         setToken(response.token);
         setRefreshToken(response.refreshToken);

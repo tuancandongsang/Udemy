@@ -6,13 +6,16 @@ import { Notification } from "../utills/notication";
 
 const initialState = {
   listTodosInit: listTodosInit,
+  totalCount: 0,
   statusItem: {},
+  currentPage: 1,
+  itemsPerPage: 10,
 };
 
 export const fetchPosts = createAsyncThunk("get/fetchPosts", async (param) => {
   try {
     const response = await ListUser.get(param);
-    return response.data;
+    return response;
   } catch (error) {}
 });
 export const removeItem = createAsyncThunk(
@@ -27,12 +30,13 @@ export const removeItem = createAsyncThunk(
 );
 export const updateItem = createAsyncThunk(
   "update/fetchPosts",
-  async (item) => {
+  async (item, thunkAPI) => {
     try {
       const response = await ListUser.update(item);
       Notification("success", " Edit!", response.message);
+      // thunkAPI.dispatch(fetchPosts());
     } catch (error) {
-      console.log('update', error);
+      console.log("update", error);
     }
   }
 );
@@ -52,19 +56,28 @@ const todoSlice = createSlice({
         state.statusItem = {};
       } else state.statusItem = action.payload;
     },
+    changeNumberPage:(state, action) => {
+      // console.log('action.payload', action.payload);
+      
+      if (!action.payload.currentPage) {
+        state.currentPage = 1;
+      } else state.currentPage = action.payload.currentPage;
+    }
   },
   extraReducers: {
     [fetchPosts.fulfilled]: (
-      state: { listTodosInit: Todo },
+      state: { listTodosInit: Todo; totalCount: any , currentPage: number},
       action: { payload: any }
     ) => {
-      state.listTodosInit = action?.payload?.map((item: Todo) => ({
-        ...item,
-        done: false,
-      }));
+      const data = action.payload;
+      // console.log("action.payload", action.payload.data);
+      // if(state.currentPage !=)
+
+      state.listTodosInit.push(...data.data);
+      state.totalCount = data.totalItems;
     },
   },
 });
-export const { changeToPageDetail } = todoSlice.actions;
+export const { changeToPageDetail, changeNumberPage } = todoSlice.actions;
 
 export default todoSlice.reducer;

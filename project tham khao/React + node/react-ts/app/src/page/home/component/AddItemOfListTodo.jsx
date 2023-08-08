@@ -21,7 +21,7 @@ function AddItemOfListTodo() {
 
   return (
     <>
-      <div className="marginLeft flex">
+      <div className="marginLeft flex AddItemOfListTodo">
         <input
           type="text"
           className="form-control inputItem"

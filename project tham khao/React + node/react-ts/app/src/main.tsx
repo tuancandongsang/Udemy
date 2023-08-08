@@ -9,7 +9,7 @@ import { ConfigProvider } from "antd";
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
   <StoreProvider store={store}>
-    <React.StrictMode>
+    {/* <React.StrictMode> */}
       <ConfigProvider
         theme={{
           token: {
@@ -21,6 +21,6 @@ ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
           <App />
         </Router>
       </ConfigProvider>
-    </React.StrictMode>
+    {/* </React.StrictMode> */}
   </StoreProvider>
 );
