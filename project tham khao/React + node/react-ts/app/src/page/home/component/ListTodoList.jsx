@@ -25,7 +25,7 @@ function ListTodoList() {
   const handleScroll = (e) => {
     const { scrollTop, clientHeight, scrollHeight } = e.target;
     if (currentPage * itemsPerPage > totalCount) return;
-    if (scrollTop + clientHeight >= scrollHeight - 1) {
+    if (scrollTop + clientHeight >= scrollHeight - 10) {
       // setalo((prevPage) => prevPage + 1);
       dispatch(changeNumberPage({ currentPage: currentPage + 1 }));
     }

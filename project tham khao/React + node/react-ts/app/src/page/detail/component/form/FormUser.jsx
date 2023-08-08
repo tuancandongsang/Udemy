@@ -30,7 +30,7 @@ function Form() {
       !infor.firstName ||
       !infor.email ||
       !infor.lastName
-    ) return ;
+    ) return;
     if (!infor?.id) {
       setinfor({ ...infor, id: Math.floor(Math.random() * 10000) });
       dispatch(addItem(infor));

@@ -56,25 +56,26 @@ const todoSlice = createSlice({
         state.statusItem = {};
       } else state.statusItem = action.payload;
     },
-    changeNumberPage:(state, action) => {
+    changeNumberPage: (state, action) => {
       // console.log('action.payload', action.payload);
-      
+
       if (!action.payload.currentPage) {
         state.currentPage = 1;
       } else state.currentPage = action.payload.currentPage;
-    }
+    },
   },
   extraReducers: {
     [fetchPosts.fulfilled]: (
-      state: { listTodosInit: Todo; totalCount: any , currentPage: number},
+      state: { listTodosInit: Todo; totalCount: any; currentPage: number },
       action: { payload: any }
     ) => {
-      const data = action.payload;
-      // console.log("action.payload", action.payload.data);
+      const data = action.payload.data;
+      console.log("action.payload", action.payload);
       // if(state.currentPage !=)
+      state.listTodosInit.push(...data);
+      // console.log("state.listTodosInit", state.listTodosInit);
 
-      state.listTodosInit.push(...data.data);
-      state.totalCount = data.totalItems;
+      state.totalCount = action.payload.totalItems;
     },
   },
 });
