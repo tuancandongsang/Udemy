@@ -1,3 +1,14 @@
+// Short duration userID (5-10 min)
+export function setUserID(userid: string) {
+  localStorage.setItem("userid", userid);
+}
+export function getUserID() {
+  return localStorage.getItem("userid");
+}
+export function removeUserID() {
+  localStorage.removeItem("userid");
+}
+
 // Short duration JWT token (5-10 min)
 export function setToken(token: string) {
   localStorage.setItem("token", token);

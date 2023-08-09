@@ -5,6 +5,7 @@ import {
   removeToken,
   removeRefreshToken,
   removeUrl,
+  removeUserID,
 } from "../../utills/helpers/localstorage";
 
 function IconLogout() {
@@ -14,6 +15,7 @@ function IconLogout() {
     removeRefreshToken();
     removeUrl();
     navigate("/login");
+    removeUserID();
   };
   return (
     <>

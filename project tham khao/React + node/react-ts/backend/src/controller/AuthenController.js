@@ -3,6 +3,7 @@ import { promisify } from "util";
 import jwtRefreshToken from "jsonwebtoken-refresh";
 import moment from "moment";
 import jwt from "jsonwebtoken";
+import { log } from "console";
 
 const jwtSign = promisify(jwt.sign);
 const secretKey = "tuancandongsang"; // Thay thế bằng khóa bí mật của bạn
@@ -16,8 +17,12 @@ let login = async (req, res) => {
       [username, password]
     );
 
+    console.log('results', results);
+
+
     if (results.length > 0) {
       const user = results[0];
+      console.log('aaaaaaaaa', user.id);
       const tokenExpiryTime = 6*1000; // Thời gian hết hạn mã token ms
       const refreshTokenExpiryTime = 1000*60*1000; // Thời gian hết hạn refresh token ms
 
@@ -34,12 +39,12 @@ let login = async (req, res) => {
         refreshSecretKey,
         moment().add(refreshTokenExpiryTime).unix() // Thời gian hết hạn được tính theo Unix timestamp
       );
-      res.json({ message: "Đăng nhập thành công", token, refreshToken });
+
+      res.json({ id: user.id,  message: "Đăng nhập thành công", token, refreshToken });
     } else {
       res.status(401).json({ message: "Thông tin đăng nhập không hợp lệ" });
     }
   } catch (error) {
-    console.error("Lỗi đăng nhập:", err);
     res.status(500).json({ message: "Lỗi đăng nhập" });
   }
 };

@@ -7,26 +7,22 @@ import Popconfirm from "../../../component/popconfirm.jsx";
 
 function ListTodoList() {
   const dispatch = useDispatch();
-  const { listTodosInit, totalCount, currentPage, itemsPerPage, statusItem } = useSelector(
+  const { listTodosInit, totalCount, currentPage, itemsPerPage } = useSelector(
     (state) => state.listTodos
   );
-  // const { totalCount } = useSelector((state) => state.listTodos);
-  console.log("statusItem", statusItem);
+  // console.log("statusItem", statusItem);
 
-  const [alo, setalo] = useState(1);
-  // const itemsPerPage = 10;
 
   const params = {
     page: currentPage,
     limit: itemsPerPage,
   };
-  console.log("params", params);
+  // console.log("params", params);
 
   const handleScroll = (e) => {
     const { scrollTop, clientHeight, scrollHeight } = e.target;
     if (currentPage * itemsPerPage > totalCount) return;
-    if (scrollTop + clientHeight >= scrollHeight - 10) {
-      // setalo((prevPage) => prevPage + 1);
+    if (scrollTop + clientHeight >= scrollHeight - 1) {
       dispatch(changeNumberPage({ currentPage: currentPage + 1 }));
     }
   };

@@ -7,7 +7,7 @@ let getAllUsers = async (req, res) => {
   // const [rows, fields] = await pool.execute("SELECT * FROM users WHERE address > 50");
   // const [rows, fields] = await pool.execute("SELECT * FROM users limit 2, 2");
   const { keyword, limit, page } = req.query;
-  console.log("keyword, limit, page", keyword, limit, page);
+  // console.log("keyword, limit, page", keyword, limit, page);
   const startNumber = (page - 1) * limit;
   let sqlQuery = "SELECT * FROM users";
   if (keyword) {

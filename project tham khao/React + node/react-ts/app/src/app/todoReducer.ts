@@ -57,8 +57,6 @@ const todoSlice = createSlice({
       } else state.statusItem = action.payload;
     },
     changeNumberPage: (state, action) => {
-      // console.log('action.payload', action.payload);
-
       if (!action.payload.currentPage) {
         state.currentPage = 1;
       } else state.currentPage = action.payload.currentPage;
@@ -69,13 +67,33 @@ const todoSlice = createSlice({
       state: { listTodosInit: Todo; totalCount: any; currentPage: number },
       action: { payload: any }
     ) => {
-      const data = action.payload.data;
-      console.log("action.payload", action.payload);
-      // if(state.currentPage !=)
-      state.listTodosInit.push(...data);
-      // console.log("state.listTodosInit", state.listTodosInit);
-
       state.totalCount = action.payload.totalItems;
+      
+      const dataPayload = action.payload.data;
+      const dataCurrent = JSON.parse(JSON.stringify(state.listTodosInit));
+      const mergedArray = [...dataCurrent];
+
+      dataPayload.forEach(
+        (item: { [x: string]: any; id: any; firstName: any }) => {
+          const existingIndex = mergedArray.findIndex(
+            (elem) => elem.id === item.id
+          );
+          if (existingIndex !== -1) {
+            mergedArray[existingIndex] = {
+              ...mergedArray[existingIndex],
+              firstName: item.firstName,
+              lastName: item.lastName,
+              email: item.email,
+              address: item.address,
+            };
+          } else {
+            mergedArray.push(item);
+          }
+        }
+      );
+      // console.log("mergedArray", mergedArray);
+
+      state.listTodosInit = mergedArray;
     },
   },
 });

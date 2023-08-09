@@ -12,6 +12,8 @@ const pool = mysql.createPool({
   // password: 'password'
 });
 
+const databaseName = "nodejsbasic";
+
 const newDatabaseName = "nodejsbasic";
 
 async function createDatabaseAndTable() {
@@ -72,6 +74,50 @@ async function createDatabaseAndTable() {
 }
 
 // Gọi hàm để tạo cơ sở dữ liệu và bảng ghi mới
-createDatabaseAndTable();
+async function checkDatabaseExists() {
+  try {
+    // Kết nối đến MySQL để kiểm tra cơ sở dữ liệu
+    // const pool = mysql.createPool({
+    //     host: "localhost",
+    //     user: "root",
+    //   //   database: "your_database_name", // đặt tên DB muốn tạo
+    //     // password: 'password'
+    //   });
+
+    // Lấy kết nối từ pool
+    const connection = await pool.getConnection();
+
+    // Kiểm tra xem cơ sở dữ liệu "your_database_name" có tồn tại hay không
+    const [rows, fields] = await connection.query(
+      `SHOW DATABASES LIKE '${databaseName}'`
+    );
+
+    // Giải phóng kết nối
+    connection.release();
+
+    // Nếu rows có phần tử thì cơ sở dữ liệu tồn tại, ngược lại không tồn tại
+    const databaseExists = rows.length > 0;
+    console.log(
+      `Cơ sở dữ liệu "nodejsbasic" tồn tại: ${databaseExists}`
+    );
+    if (databaseExists)
+      return (pool = mysql.createPool({
+        host: "localhost",
+        user: "root",
+        database: databaseName, // đặt tên DB muốn tạo
+        // password: 'password'
+      }));
+    if (!databaseExists) {
+      createDatabaseAndTable();
+    }
+    return databaseExists;
+  } catch (error) {
+    console.error("Lỗi khi kiểm tra cơ sở dữ liệu:", error.message);
+    return false;
+  }
+}
+
+// Gọi hàm để kiểm tra cơ sở dữ liệu "your_database_name"
+checkDatabaseExists();
 
 export default pool;

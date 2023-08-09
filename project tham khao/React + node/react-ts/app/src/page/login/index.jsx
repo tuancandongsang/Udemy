@@ -4,8 +4,8 @@ import { useNavigate, NavLink } from "react-router-dom";
 import { Button, Switch, Form, Input } from "antd";
 import {
   setToken,
-  getToken,
   setRefreshToken,
+  setUserID,
 } from "../../utills/helpers/localstorage";
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
@@ -23,14 +23,21 @@ function Login() {
           " http://localhost:8080/api/v1/login",
           values
         );
-        const { message, refreshToken, token } = response.data;
-        if (message || refreshToken || token) {
+        const { message, refreshToken, token, id } = response.data;
+        if (message || refreshToken || token || id) {
+          setUserID(id);
           setToken(token);
           setRefreshToken(refreshToken);
           Notification("success", message, "Love you 3000....");
           setTimeout(() => navigate("/"), 1000);
         }
-      } catch (error) {}
+      } catch (error) {
+        Notification(
+          "warning",
+          error.response.data.message,
+          "Love you 3000...."
+        );
+      }
     }
     if (stateLogin === "register") {
       try {
