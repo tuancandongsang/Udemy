@@ -17,7 +17,6 @@ class AuthService {
     return requestUnauthorized.post(API_LOGIN.LOGIN, data);
   }
   refreshToken() {
-    console.log("chay refreshToken");
     return requestUnauthorized.post(API_LOGIN.REFRESH_TOKEN, {
       refreshToken: getRefreshToken(),
     });

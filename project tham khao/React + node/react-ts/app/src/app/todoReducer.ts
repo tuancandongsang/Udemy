@@ -3,27 +3,34 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import { listTodosInit } from "./initialSate";
 import ListUser from "../api/ListUser";
 import { Notification } from "../utills/notication";
+import { getUserID } from "../utills/helpers/localstorage";
 
 const initialState = {
   listTodosInit: listTodosInit,
   totalCount: 0,
   statusItem: {},
-  currentPage: 1,
-  itemsPerPage: 10,
+  paramGet: {
+    keyword: "",
+    limit: 10,
+    pageNumber: 1,
+    userid: getUserID(),
+  },
 };
 
 export const fetchPosts = createAsyncThunk("get/fetchPosts", async (param) => {
   try {
     const response = await ListUser.get(param);
+
     return response;
   } catch (error) {}
 });
 export const removeItem = createAsyncThunk(
   "delete/fetchPosts",
-  async (id, thunkAPI) => {
+  async (payload, thunkAPI) => {
     try {
-      const response = await ListUser.delete(id);
-      thunkAPI.dispatch(fetchPosts());
+      const params = { params: { ...payload.paramGet } };
+      const response = await ListUser.delete(payload.id);
+      await thunkAPI.dispatch(fetchPosts(params));
       Notification("success", "Delete!", response.message);
     } catch (error) {}
   }
@@ -34,10 +41,7 @@ export const updateItem = createAsyncThunk(
     try {
       const response = await ListUser.update(item);
       Notification("success", " Edit!", response.message);
-      // thunkAPI.dispatch(fetchPosts());
-    } catch (error) {
-      console.log("update", error);
-    }
+    } catch (error) {}
   }
 );
 export const addItem = createAsyncThunk("create/fetchPosts", async (item) => {
@@ -57,46 +61,53 @@ const todoSlice = createSlice({
       } else state.statusItem = action.payload;
     },
     changeNumberPage: (state, action) => {
-      if (!action.payload.currentPage) {
-        state.currentPage = 1;
-      } else state.currentPage = action.payload.currentPage;
+      if (!action.payload.pageNumber) {
+        state.paramGet.pageNumber = 1;
+      } else state.paramGet.pageNumber = action.payload.pageNumber;
     },
+    cleardataApp: (state, action) => {
+      state.listTodosInit = [];
+    },
+    changeUserId: (state, action) => {
+      state.paramGet.userid = action.payload
+    }
   },
   extraReducers: {
     [fetchPosts.fulfilled]: (
-      state: { listTodosInit: Todo; totalCount: any; currentPage: number },
+      state: { listTodosInit: Todo; totalCount: any },
       action: { payload: any }
     ) => {
-      state.totalCount = action.payload.totalItems;
-      
-      const dataPayload = action.payload.data;
+      state.totalCount = action.payload?.totalItems;
+
+      const dataPayload = action.payload?.data;
       const dataCurrent = JSON.parse(JSON.stringify(state.listTodosInit));
       const mergedArray = [...dataCurrent];
 
-      dataPayload.forEach(
-        (item: { [x: string]: any; id: any; firstName: any }) => {
-          const existingIndex = mergedArray.findIndex(
-            (elem) => elem.id === item.id
-          );
-          if (existingIndex !== -1) {
-            mergedArray[existingIndex] = {
-              ...mergedArray[existingIndex],
-              firstName: item.firstName,
-              lastName: item.lastName,
-              email: item.email,
-              address: item.address,
-            };
-          } else {
-            mergedArray.push(item);
+      if (dataPayload) {
+        dataPayload.forEach(
+          (item: { [x: string]: any; id: any; firstName: any }) => {
+            const existingIndex = mergedArray.findIndex(
+              (elem) => elem.id === item.id
+            );
+            if (existingIndex !== -1) {
+              mergedArray[existingIndex] = {
+                ...mergedArray[existingIndex],
+                firstName: item.firstName,
+                lastName: item.lastName,
+                email: item.email,
+                address: item.address,
+              };
+            } else {
+              mergedArray.push(item);
+            }
           }
-        }
-      );
-      // console.log("mergedArray", mergedArray);
-
+        );
+      }
       state.listTodosInit = mergedArray;
     },
   },
 });
-export const { changeToPageDetail, changeNumberPage } = todoSlice.actions;
+export const { changeToPageDetail, changeNumberPage, cleardataApp, changeUserId } =
+  todoSlice.actions;
 
 export default todoSlice.reducer;

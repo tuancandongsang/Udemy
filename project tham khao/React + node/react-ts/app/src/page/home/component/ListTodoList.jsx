@@ -1,35 +1,39 @@
 import React from "react";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchPosts, changeToPageDetail, changeNumberPage } from "../../../app/todoReducer.ts";
+import {
+  fetchPosts,
+  changeToPageDetail,
+  changeNumberPage,
+} from "../../../app/todoReducer.ts";
 import { NavLink } from "react-router-dom";
 import Popconfirm from "../../../component/popconfirm.jsx";
 
 function ListTodoList() {
   const dispatch = useDispatch();
-  const { listTodosInit, totalCount, currentPage, itemsPerPage } = useSelector(
+  const { listTodosInit, totalCount, paramGet } = useSelector(
     (state) => state.listTodos
   );
-  // console.log("statusItem", statusItem);
-
 
   const params = {
-    page: currentPage,
-    limit: itemsPerPage,
+    pageNumber: paramGet.pageNumber,
+    limit: paramGet.limit,
+    userid: paramGet.userid,
+    keyword: paramGet.keyword,
   };
-  // console.log("params", params);
+  console.log('params', params);
 
   const handleScroll = (e) => {
     const { scrollTop, clientHeight, scrollHeight } = e.target;
-    if (currentPage * itemsPerPage > totalCount) return;
+    if (params.pageNumber * params.limit > totalCount) return;
     if (scrollTop + clientHeight >= scrollHeight - 1) {
-      dispatch(changeNumberPage({ currentPage: currentPage + 1 }));
+      dispatch(changeNumberPage({ pageNumber: paramGet.pageNumber + 1 }));
     }
   };
 
   useEffect(() => {
     dispatch(fetchPosts({ params }));
-  }, [currentPage]);
+  }, [paramGet.pageNumber]);
 
   const editItemId = (item) => {
     dispatch(changeToPageDetail(item));
@@ -50,7 +54,11 @@ function ListTodoList() {
                   Edit
                 </NavLink>
               </button>
-              <Popconfirm id={item.id} firstName={item.firstName} />
+              <Popconfirm
+                id={item.id}
+                firstName={item.firstName}
+                userid={params.userid}
+              />
             </div>
           </li>
         ))}

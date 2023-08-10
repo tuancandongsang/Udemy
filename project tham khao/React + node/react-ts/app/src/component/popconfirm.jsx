@@ -1,14 +1,16 @@
 import { Button, message, Popconfirm } from "antd";
 import React from "react";
-import { useDispatch } from "react-redux";
-import { removeItem } from "../app/todoReducer.ts";
+import { removeItem, cleardataApp } from "../app/todoReducer.ts";
+import { useDispatch, useSelector } from "react-redux";
 
 function Popcon(props) {
-  const { id, firstName } = props;
+  const { id, firstName, userid } = props;
+  const { paramGet } = useSelector((state) => state.listTodos);
   const dispatch = useDispatch();
 
   const deleteItem = (id) => {
-    dispatch(removeItem(id));
+    dispatch(cleardataApp());
+    dispatch(removeItem({ id, paramGet }));
   };
 
   const cancel = () => {
@@ -24,7 +26,9 @@ function Popcon(props) {
         okText="Yes"
         cancelText="No"
       >
-        <Button danger className="button-item">Delete</Button>
+        <Button danger className="button-item">
+          Delete
+        </Button>
       </Popconfirm>
     </>
   );

@@ -10,7 +10,7 @@ const pool = mysql.createPool({
   user: "root",
   database: "nodejsbasic",
   // password: 'password'
-});
+});   
 
 const databaseName = "nodejsbasic";
 
@@ -35,7 +35,8 @@ async function createDatabaseAndTable() {
                   firstName VARCHAR(255) NOT NULL,
                   lastName VARCHAR(255) NOT NULL,
                   email VARCHAR(255) NOT NULL,
-                  address VARCHAR(255) NOT NULL
+                  address VARCHAR(255) NOT NULL,
+                  userid VARCHAR(255) NOT NULL
                 )
               `;
     const createdescriptionTableQuery = `

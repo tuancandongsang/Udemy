@@ -1,35 +1,47 @@
 import pool from "../configs/connectDB";
 
 let getAllUsers = async (req, res) => {
-  //http
-  // 404 501
-  // json/xml => object
-  // const [rows, fields] = await pool.execute("SELECT * FROM users WHERE address > 50");
-  // const [rows, fields] = await pool.execute("SELECT * FROM users limit 2, 2");
-  const { keyword, limit, page } = req.query;
-  // console.log("keyword, limit, page", keyword, limit, page);
-  const startNumber = (page - 1) * limit;
-  let sqlQuery = "SELECT * FROM users";
-  if (keyword) {
-    sqlQuery += ` WHERE firstName LIKE '%${keyword}%'`;
-  }
-  if (limit) {
-    sqlQuery += ` LIMIT ${startNumber}, ${limit}`;
-  }
-  const [rows, fields] = await pool.execute(sqlQuery);
-  const [BinaryRow] = await pool.execute(
-    "SELECT COUNT (*) as totalCount FROM users"
-  );
+  const { keyword , limit, pageNumber, userid } = req.query;
+  // console.log('page', req.query.pageNumber , keyword , limit, pageNumber, userid);
+  const startNumber = (pageNumber - 1) * limit;
 
-  return res.json({
-    message: "ok",
-    data: rows,
-    totalItems: BinaryRow[0].totalCount,
-  });
+  let sqlQuery = `
+    SELECT authen.*, users.*
+    FROM authen
+    INNER JOIN users ON authen.id = users.userid
+    WHERE authen.id = ?`;
+  const queryParams = [userid];
+
+  if (keyword) {
+    sqlQuery += ` AND users.firstName LIKE ?`;
+    queryParams.push(`%${keyword}%`);
+  }
+
+  if (limit && pageNumber) {
+    sqlQuery += ` LIMIT ?, ?`;
+    queryParams.push(startNumber, limit);
+  }
+
+  try {
+    const [rows, fields] = await pool.execute(sqlQuery, queryParams);
+    const [BinaryRow] = await pool.execute(
+      `SELECT COUNT(*) as totalCount FROM users`
+    );
+
+    return res.json({
+      message: "ok",
+      data: rows,
+      totalItems: BinaryRow[0]?.totalCount,
+    });
+  } catch (error) {
+    console.error("Error:", error);
+    return res.status(500).json({ message: "Internal Server Error" });
+  }
 };
 
+
 let createNewUser = async (req, res) => {
-  let { firstName, lastName, email, address } = req.body;
+  let { firstName, lastName, email, address, userid } = req.body;
 
   if (!firstName || !lastName || !email || !address) {
     return res.status(200).json({
@@ -38,8 +50,8 @@ let createNewUser = async (req, res) => {
   }
 
   await pool.execute(
-    "insert into users(firstName, lastName, email, address) values (?, ?, ?, ?)",
-    [firstName, lastName, email, address]
+    "insert into users(firstName, lastName, email, address, userid) values (?, ?, ?, ?, ?)",
+    [firstName, lastName, email, address, userid]
   );
 
   return res.status(200).json({

@@ -1,7 +1,12 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { NavLink } from "react-router-dom";
-import { fetchPosts, changeToPageDetail } from "../../../app/todoReducer.ts";
+import {
+  fetchPosts,
+  changeToPageDetail,
+  cleardataApp,
+} from "../../../app/todoReducer.ts";
+import { getUserID } from "../../../utills/helpers/localstorage.ts";
 
 function AddItemOfListTodo() {
   const dispatch = useDispatch();
@@ -11,8 +16,10 @@ function AddItemOfListTodo() {
   const SearchItemList = () => {
     const params = {
       keyword: search.trim(),
+      userid: getUserID(),
     };
-      dispatch(fetchPosts({params}));
+    dispatch(cleardataApp());
+    dispatch(fetchPosts({ params }));
   };
 
   const addItem = () => {
@@ -38,7 +45,11 @@ function AddItemOfListTodo() {
         >
           Search
         </button>
-        <button type="button" className="btn btn-primary button-item" onClick={addItem}>
+        <button
+          type="button"
+          className="btn btn-primary button-item"
+          onClick={addItem}
+        >
           <NavLink to={"/detail"} style={{ color: "#fff" }}>
             Add Item Todo
           </NavLink>

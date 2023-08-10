@@ -7,15 +7,19 @@ import {
   removeUrl,
   removeUserID,
 } from "../../utills/helpers/localstorage";
+import {cleardataApp} from '../../app/todoReducer'
+import { useDispatch } from "react-redux";
 
 function IconLogout() {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   const logout = () => {
     removeToken();
     removeRefreshToken();
     removeUrl();
     navigate("/login");
     removeUserID();
+    dispatch(cleardataApp())
   };
   return (
     <>
