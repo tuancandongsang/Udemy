@@ -10,7 +10,7 @@ import {
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 import { setStateLogin } from "../../app/loginSlice";
-import {changeUserId} from "../../app/todoReducer.ts"
+import {changeUserId, setUserInit} from "../../app/todoReducer.ts"
 
 function Login() {
   const dispatch = useDispatch();
@@ -26,13 +26,13 @@ function Login() {
         );
         const { message, refreshToken, token, id } = response.data;
         if (message || refreshToken || token || id) {
-          console.log('ssss',id);
           setUserID(id);
           setToken(token);
           setRefreshToken(refreshToken);
-          Notification("success", message, "Love you 3000....");
           setTimeout(() => navigate("/"), 1000);
           dispatch(changeUserId(id));
+          dispatch(setUserInit())
+          Notification("success", message, "Love you 3000....");
         }
       } catch (error) {
         Notification(

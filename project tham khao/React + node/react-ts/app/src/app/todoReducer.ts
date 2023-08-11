@@ -15,12 +15,12 @@ const initialState = {
     pageNumber: 1,
     userid: getUserID(),
   },
+  styleCallApi: "get",
 };
 
 export const fetchPosts = createAsyncThunk("get/fetchPosts", async (param) => {
   try {
     const response = await ListUser.get(param);
-
     return response;
   } catch (error) {}
 });
@@ -65,16 +65,35 @@ const todoSlice = createSlice({
         state.paramGet.pageNumber = 1;
       } else state.paramGet.pageNumber = action.payload.pageNumber;
     },
-    cleardataApp: (state, action) => {
+    cleardataApp: (state) => {
       state.listTodosInit = [];
     },
     changeUserId: (state, action) => {
-      state.paramGet.userid = action.payload
-    }
+      state.paramGet.userid = action.payload;
+    },
+    setUserInit: (state) => {
+      state.paramGet = {
+        keyword: "",
+        limit: 10,
+        pageNumber: 1,
+        userid: getUserID(),
+      };
+    },
+    changeStyleCallApi: (state, action) => {
+      state.styleCallApi = action.payload.style;
+      if (action.payload.style === "delete") {
+        const indexToRemove = state.listTodosInit.findIndex(
+          (item) => item.id === action.payload.id
+        );
+        if (indexToRemove !== -1) {
+          state.listTodosInit.splice(indexToRemove, 1);
+        }
+      }
+    },
   },
   extraReducers: {
     [fetchPosts.fulfilled]: (
-      state: { listTodosInit: Todo; totalCount: any },
+      state: { listTodosInit: Todo; totalCount: any; styleCallApi: string },
       action: { payload: any }
     ) => {
       state.totalCount = action.payload?.totalItems;
@@ -107,7 +126,13 @@ const todoSlice = createSlice({
     },
   },
 });
-export const { changeToPageDetail, changeNumberPage, cleardataApp, changeUserId } =
-  todoSlice.actions;
+export const {
+  changeToPageDetail,
+  changeNumberPage,
+  cleardataApp,
+  changeUserId,
+  setUserInit,
+  changeStyleCallApi,
+} = todoSlice.actions;
 
 export default todoSlice.reducer;

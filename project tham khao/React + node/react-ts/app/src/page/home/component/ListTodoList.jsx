@@ -21,7 +21,7 @@ function ListTodoList() {
     userid: paramGet.userid,
     keyword: paramGet.keyword,
   };
-  console.log('params', params);
+  // console.log('params', params);
 
   const handleScroll = (e) => {
     const { scrollTop, clientHeight, scrollHeight } = e.target;

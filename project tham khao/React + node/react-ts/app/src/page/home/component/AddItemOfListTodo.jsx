@@ -34,9 +34,10 @@ function AddItemOfListTodo() {
           className="form-control inputItem"
           placeholder="Search ...."
           value={search}
-          onChange={(e) => setsearch(e.target.value)}
           aria-label="Username"
           aria-describedby="basic-addon1"
+          onChange={(e) => setsearch(e.target.value)}
+          onBlur={SearchItemList}
         ></input>
         <button
           type="button"

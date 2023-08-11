@@ -34,7 +34,6 @@ let getAllUsers = async (req, res) => {
       totalItems: BinaryRow[0]?.totalCount,
     });
   } catch (error) {
-    console.error("Error:", error);
     return res.status(500).json({ message: "Internal Server Error" });
   }
 };
