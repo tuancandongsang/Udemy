@@ -178,7 +178,7 @@ export default {
       textChat: "",
       faceCurrent: null,
       isShowDialogEmojiPicker: false,
-      socket: new WebSocket(WS_SERVER),
+      socket: 'new WebSocket(WS_SERVER)',
       messageList: [],
     };
   },

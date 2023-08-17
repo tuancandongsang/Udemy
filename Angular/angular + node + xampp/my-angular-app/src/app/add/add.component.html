@@ -1,0 +1,52 @@
+<div class="form-container">
+  <div class="form-group">
+    <label htmlFor="exampleFormControlInput1">Name</label>
+    <input
+      name="firstName"
+      type="text"
+      class="form-control"
+      id="exampleFormControlInput1"
+      placeholder="name@example.com"
+      [(ngModel)]="user.firstName"
+    />
+  </div>
+  <div class="form-group">
+    <label htmlFor="exampleFormControlInput1">Email</label>
+    <input
+      name="email"
+      type="email"
+      class="form-control"
+      id="exampleFormControlInput1"
+      placeholder="name@example.com"
+      [(ngModel)]="user.email"
+    />
+  </div>
+  <div class="form-group">
+    <label htmlFor="exampleFormControlInput1">Address</label>
+    <input
+      name="address"
+      type="text"
+      class="form-control"
+      id="exampleFormControlInput1"
+      placeholder="name@example.com"
+      [(ngModel)]="user.address"
+    />
+  </div>
+  <div class="form-group">
+    <label htmlFor="exampleFormControlInput1">LastName</label>
+    <input
+      name="lastName"
+      type="text"
+      class="form-control"
+      id="exampleFormControlInput1"
+      placeholder="name@example.com"
+      [(ngModel)]="user.lastName"
+    />
+  </div>
+</div>
+<div class="confirm">
+  <button type="button" class="btn btn-primary" (click)="addUser()">
+    add
+  </button>
+  <button type="button" class="btn btn-warning" (click)="canelAddUser()">Canel</button>
+</div>
