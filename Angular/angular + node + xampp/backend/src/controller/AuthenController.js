@@ -46,11 +46,31 @@ let login = async (req, res) => {
 let register = async (req, res) => {
   const { username, email, password } = req.body;
   try {
-    // const connection = await mysql.createConnection(dbConfig);
+    // Kiểm tra xem email hoặc tên đăng nhập đã tồn tại chưa
+    const [emailCheck] = await pool.execute(
+      "SELECT * FROM authen WHERE email = ?",
+      [email]
+    );
+
+    const [usernameCheck] = await pool.execute(
+      "SELECT * FROM authen WHERE username = ?",
+      [username]
+    );
+
+    if (emailCheck.length > 0) {
+      return res.status(400).json({ message: "Email đã tồn tại" });
+    }
+
+    if (usernameCheck.length > 0) {
+      return res.status(400).json({ message: "Tên đăng nhập đã tồn tại" });
+    }
+
+    // Nếu email và tên đăng nhập không trùng, thực hiện đăng ký
     await pool.execute(
       "insert into authen (username, password, email) values (?, ?, ?)",
       [username, password, email]
     );
+    
     return res.json({ message: "Đăng ký thành công" });
   } catch (err) {
     console.error("Lỗi đăng ký người dùng:", err);

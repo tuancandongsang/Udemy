@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import axios from 'axios'
-
+import {getUserID} from "../utills/helpers/localstorage"
 @Component({
   selector: 'app-add',
   templateUrl: './add.component.html',
@@ -13,7 +13,7 @@ export class AddComponent {
 
   async addUser() {
     console.log('User Info:', this.user);
-    this.user = {...this.user, id: 1, userid: 1}
+    this.user = {...this.user, userid: getUserID()}
    try {
     const response = await axios.post("http://localhost:8080/api/v1/create-user", this.user)
 

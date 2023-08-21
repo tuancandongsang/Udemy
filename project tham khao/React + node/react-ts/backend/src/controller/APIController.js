@@ -25,7 +25,7 @@ let getAllUsers = async (req, res) => {
   try {
     const [rows, fields] = await pool.execute(sqlQuery, queryParams);
     const [BinaryRow] = await pool.execute(
-      `SELECT COUNT(*) as totalCount FROM users`
+      `SELECT COUNT(*) as totalCount FROM users WHERE userid = ?`, [userid]
     );
 
     return res.json({

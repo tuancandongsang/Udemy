@@ -1,6 +1,7 @@
 import { Component, HostListener, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import axios from 'axios';
+import { getUserID } from '../utills/helpers/localstorage';
 
 @Component({
   selector: 'app-list',
@@ -14,9 +15,8 @@ export class ListComponent implements OnInit {
     keyword: '',
     limit: 10,
     pageNumber: 1,
-    userid: 1,
+    userid: getUserID(),
   };
-  id: number = 1;
 
   constructor(private router: Router) {}
 
@@ -64,15 +64,18 @@ export class ListComponent implements OnInit {
   }
 
   async deleteUser(item: any) {
-    console.log('item', item);
     const id = item.id;
     try {
-      const response = await axios.delete(`http://localhost:8080/api/v1/delete-user/${id}`
+      const response = await axios.delete(
+        `http://localhost:8080/api/v1/delete-user/${id}`
       );
-      this.loadUsers()
+      console.log('response', response.statusText);
+      if (response.statusText === 'OK') {
+        this.dataList = this.dataList.filter((item) => item.id !== id);
+        this.loadUsers();
+      }
     } catch (error) {
       console.log('error', error);
-      
     }
   }
 }

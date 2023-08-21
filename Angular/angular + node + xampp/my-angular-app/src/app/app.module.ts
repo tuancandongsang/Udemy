@@ -11,7 +11,9 @@ import { LoginComponent } from './login/login.component';
 import { LayoutComponent } from './layout/layout.component';
 import { ListComponent } from './list/list.component';
 import { InforComponent } from './infor/infor.component';
-
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToastModule } from 'primeng/toast';
+import { MessageService } from 'primeng/api';
 @NgModule({
   declarations: [
     AppComponent,
@@ -23,8 +25,14 @@ import { InforComponent } from './infor/infor.component';
     ListComponent,
     InforComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, FormsModule],
-  providers: [],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    FormsModule,
+    BrowserAnimationsModule,
+    ToastModule,
+  ],
+  providers: [MessageService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

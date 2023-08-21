@@ -1,23 +1,38 @@
 <div id="login">
   <div class="background"></div>
   <div class="container">
-    <h1>Login</h1>
+    <h1>
+      <span
+        [ngClass]="{ shadow: typeLogin === 'login' }"
+        (click)="selectLogin('login')"
+        >Login</span
+      > 
+      <b>/</b>
+       <span
+        [ngClass]="{ shadow: typeLogin === 'register' }"
+        (click)="selectLogin('register')"
+        >Register</span
+      >
+    </h1>
     <div class="form">
       <div class="username">
         <label for="">Username:</label>
-        <input type="text"   />
-        <div class="validate-input"> message </div>
+        <input type="text" [(ngModel)]="user.username" />
+        <!-- <div class="validate-input">message</div> -->
+      </div>
+      <div class="username" *ngIf="typeLogin === 'register'">
+        <label for="">Email:</label>
+        <input type="text" [(ngModel)]="user.email" />
+        <!-- <div class="validate-input">Email </div> -->
       </div>
       <div class="password">
         <label for="">Password:</label>
-        <input type="password" v-model="password" />
-        <div class="validate-input">
-          messagePassword 
-        </div>
+        <input type="password" [(ngModel)]="user.password" />
+        <!-- <div class="validate-input">messagePassword</div> -->
       </div>
     </div>
     <div class="submit">
-      <button (click)="login()" >Submit</button>
+      <button (click)="login()">Submit</button>
     </div>
   </div>
 </div>

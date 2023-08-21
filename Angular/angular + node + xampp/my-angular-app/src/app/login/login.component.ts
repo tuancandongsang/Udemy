@@ -1,16 +1,62 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-
-
+import axios from 'axios';
+import {
+  setUserID,
+  setToken,
+  setRefreshToken,
+} from '../utills/helpers/localstorage';
+import { MessageService } from 'primeng/api';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss']
+  styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent {
-  constructor(private router: Router) {}
-  public login () {
-    this.router.navigate(['/list'])
+  user: any = {}; // Đối tượng để lưu thông tin người dùng
+  public typeLogin = 'login';
+  constructor(private router: Router, private messageService: MessageService) {}
+  public selectLogin(type: string) {
+    this.typeLogin = type;
   }
 
+  async login() {
+    this.messageService.clear()
+    this.messageService.add({
+      severity: 'success',
+      summary: 'Success Message',
+      detail: 'This is a success message',
+    });
+    if (this.typeLogin === 'login') {
+      try {
+        const response = await axios.post(
+          ' http://localhost:8080/api/v1/login',
+          this.user
+        );
+        const { message, refreshToken, token, id } = response.data;
+        if (message || refreshToken || token || id) {
+          setUserID(id);
+          setToken(token);
+          setRefreshToken(refreshToken);
+          this.router.navigate(['/list']);
+        }
+      } catch (error) {
+        console.log(error);
+      }
+    }
+    if (this.typeLogin === 'register') {
+     
+      try {
+        const response = await axios.post(
+          ' http://localhost:8080/api/v1/register',
+          this.user
+        );
+        if (response.status === 200) {
+          console.log('response', response);
+          this.router.navigate(['/login']);
+          this.typeLogin = 'login';
+        }
+      } catch (error) {}
+    }
+  }
 }

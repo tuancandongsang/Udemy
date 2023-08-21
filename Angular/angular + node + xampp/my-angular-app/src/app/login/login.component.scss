@@ -5,6 +5,7 @@
   height: 100vh;
   top: 0;
   left: 0;
+  overflow: hidden;
 
   .background {
     position: absolute;
@@ -30,14 +31,24 @@
 
     h1 {
       margin: 0;
-      padding-top: 150px;
+      padding-top: 80px;
       text-align: center;
       font-size: 60px;
-      text-shadow: #fc0 1px 0 10px;
+      color: #999;
+      b{
+        color: white;
+      }
+      span {
+        &:hover {
+          text-shadow: #fc0 1px 0 10px;
+          cursor: pointer;
+          color: white;
+        }
+      }
     }
 
     .form {
-      margin-top: 50px;
+      margin-top: 40px;
       margin-left: 50px;
       width: 100%;
 
@@ -72,7 +83,7 @@
       width: 100%;
       display: flex;
       justify-content: center;
-      margin-top: 40px;
+      margin-top: 20px;
 
       button {
         display: block;
@@ -83,7 +94,7 @@
         border-radius: 50px;
         background-color: rgba($color: #fff, $alpha: 0.2);
         color: #fff;
-        font-size: 1.5rem;
+        font-size: 2rem;
         text-shadow: #fc0 1px 0 10px;
         &:hover {
           opacity: 0.8;
@@ -91,5 +102,9 @@
         }
       }
     }
+  }
+  .shadow {
+    text-shadow: #fc0 1px 0 10px;
+    color: white;
   }
 }
