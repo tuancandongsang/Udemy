@@ -2,6 +2,7 @@ import { Component, HostListener, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import axios from 'axios';
 import { getUserID } from '../utills/helpers/localstorage';
+import { GlobalStateService } from '../reducers/global-state.service';
 
 @Component({
   selector: 'app-list',
@@ -18,7 +19,7 @@ export class ListComponent implements OnInit {
     userid: getUserID(),
   };
 
-  constructor(private router: Router) {}
+  constructor(private router: Router, private globalStateService: GlobalStateService) {}
 
   ngOnInit() {
     this.loadUsers();
@@ -55,7 +56,8 @@ export class ListComponent implements OnInit {
     }
   }
 
-  public editUser() {
+  public editUser(item: any) {
+    this.globalStateService.setSelectedItem(item);
     this.router.navigate(['/list/edit/1']);
   }
 

@@ -5,8 +5,8 @@
     <h1>Angular vs Node + Sql</h1>
     <div class="search">
       <div class="submit">
-        <input type="text" placeholder="Search for name..." />
-        <button>Search</button>
+        <input type="text" placeholder="Search for name..." [(ngModel)]="searchValue"/>
+        <button (click)="searchhandle()"><span>Search</span></button>
       </div>
     </div>
     <div class="list">
