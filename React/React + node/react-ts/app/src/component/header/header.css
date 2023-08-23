@@ -1,0 +1,11 @@
+.box-logo{
+    display: flex;
+    justify-content: center;
+}
+.box-logo a {
+    display: inline-block;
+}
+#header{
+    height: 200px;
+    border-bottom: 1px solid #999
+}
