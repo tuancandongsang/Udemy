@@ -26,7 +26,6 @@ export class EditComponent {
     this.router.navigate(['/']);
    } catch (error) {
     console.log(error);
-    
    }
     
   }

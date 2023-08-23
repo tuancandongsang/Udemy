@@ -19,10 +19,19 @@ export class ListComponent implements OnInit {
     userid: getUserID(),
   };
 
-  constructor(private router: Router, private globalStateService: GlobalStateService) {}
+  constructor(
+    private router: Router,
+    private globalStateService: GlobalStateService
+  ) {}
 
   ngOnInit() {
     this.loadUsers();
+    this.globalStateService.getSearchValue().subscribe(async (searchValue) => {
+      if (searchValue) {
+        this.paramGet.keyword = searchValue;
+        await this.loadUsers();
+      }
+    });
   }
 
   @HostListener('window:scroll', ['$event'])
@@ -48,7 +57,12 @@ export class ListComponent implements OnInit {
         params: this.paramGet,
       });
       const { totalItems, data } = response.data;
-      this.dataList = [...this.dataList, ...data];
+      console.log('this.dataList', response);
+      // if (!this.paramGet.keyword) {
+        this.dataList = [...this.dataList, ...data];
+      // } else {
+      //   this.dataList = data;
+      // }
       this.totalItems = totalItems;
       this.paramGet.pageNumber++;
     } catch (error) {

@@ -39,6 +39,7 @@ let getAllUsers = async (req, res) => {
 };
 
 
+
 let createNewUser = async (req, res) => {
   let { firstName, lastName, email, address, userid } = req.body;
 

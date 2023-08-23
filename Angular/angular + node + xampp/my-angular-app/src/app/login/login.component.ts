@@ -6,7 +6,6 @@ import {
   setToken,
   setRefreshToken,
 } from '../utills/helpers/localstorage';
-import { MessageService } from 'primeng/api';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -15,18 +14,12 @@ import { MessageService } from 'primeng/api';
 export class LoginComponent {
   user: any = {}; // Đối tượng để lưu thông tin người dùng
   public typeLogin = 'login';
-  constructor(private router: Router, private messageService: MessageService) {}
+  constructor(private router: Router) {}
   public selectLogin(type: string) {
     this.typeLogin = type;
   }
 
   async login() {
-    this.messageService.clear()
-    this.messageService.add({
-      severity: 'success',
-      summary: 'Success Message',
-      detail: 'This is a success message',
-    });
     if (this.typeLogin === 'login') {
       try {
         const response = await axios.post(

@@ -10,15 +10,19 @@ export class GlobalStateService {
 
   setSelectedItem(item: any) {
     this.selectedItemSubject.next(item);
-    console.log('this.selectedItemSubject', this.selectedItemSubject);
   }
 
   getSelectedItem(): Observable<any | null> {
-    console.log(
-      'this.selectedItemSubject.asObservable()',
-      this.selectedItemSubject.asObservable()
-    );
-
     return this.selectedItemSubject.asObservable();
+  }
+
+  private searchValue: BehaviorSubject<string | null> = new BehaviorSubject<
+    string | null
+  >(null);
+  setSearchValue(value: string) {
+    this.searchValue.next(value);
+  }
+  getSearchValue(): Observable<string | null> {
+    return this.searchValue.asObservable();
   }
 }
