@@ -1,76 +1,139 @@
 import pool from "../configs/connectDB";
 import { promisify } from "util";
-import jwtRefreshToken from "jsonwebtoken-refresh";
-import moment from "moment";
+// import jwtRefreshToken from "jsonwebtoken-refresh";
+// import moment from "moment";
 import jwt from "jsonwebtoken";
 
 const jwtSign = promisify(jwt.sign);
 const secretKey = "tuancandongsang"; // Thay thế bằng khóa bí mật của bạn
 const refreshSecretKey = "tuancandongsang"; // Thay thế bằng khóa bí mật cho refresh token của bạn
 
-let login = async (req, res) => {
-  const { username, password } = req.body;
+const login = async (req, res) => {
+  const { username, password, roomName, createRoom } = req.body;
   try {
     const [results] = await pool.execute(
-      "SELECT * FROM authen WHERE username = ? AND password = ?",
+      "SELECT * FROM Users WHERE user_name  = ? AND user_password  = ?",
       [username, password]
     );
 
     if (results.length > 0) {
+      let chatrooms = {};
+
+      if (roomName) {
+        const [roomCheck] = await pool.execute(
+          "SELECT * FROM ChatRooms WHERE room_name = ?",
+          [roomName]
+        );
+        if (roomCheck.length === 0) {
+          return res.status(400).json({ message: "Phòng chat không tồn tại" });
+        }
+
+        const roomInfo = roomCheck[0]; // Lấy thông tin phòng
+        const { room_id, room_created_by_user_id  } = roomInfo;
+
+        chatrooms = {
+          room_name: roomName,
+          room_id,
+          room_created_by_user_id ,
+        };
+      }
+      // Kiểm tra xem người dùng muốn tạo phòng mới
+      if (createRoom) {
+        const [existingRoom] = await pool.execute(
+          "SELECT * FROM ChatRooms WHERE room_name = ?",
+          [createRoom]
+        );
+
+        if (existingRoom.length > 0) {
+          return res.status(400).json({ message: "Phòng chat đã tồn tại" });
+        }
+
+        const user = results[0];
+        // Tạo phòng mới và lấy ID của phòng
+        await pool.execute(
+          "INSERT INTO ChatRooms (room_name, room_created_by_user_id ) VALUES (?, ?)",
+          [createRoom, user.user_id]
+        );
+        const [roomCheck] = await pool.execute(
+          "SELECT * FROM ChatRooms WHERE room_name = ?",
+          [createRoom]
+        );
+
+        const roomInfo = roomCheck[0]; // Lấy thông tin phòng
+        const { room_id, room_created_by_user_id } = roomInfo;
+
+        chatrooms = {
+          room_name: createRoom,
+          room_id,
+          room_created_by_user_id,
+        };
+      }
+
       const user = results[0];
-      const tokenExpiryTime = 6*1000; // Thời gian hết hạn mã token ms
-      const refreshTokenExpiryTime = 1000*60*1000; // Thời gian hết hạn refresh token ms
+      const tokenExpiryTime = 10 * 60 * 60; // Thời gian hết hạn mã token (đơn vị: giây)
 
       // Tạo mã token với thời gian hết hạn
-      const token = await jwtSign(
-        { id: user.id, email: user.email },
+      const token = jwt.sign(
+        { id: user.user_id, email: user.user_email },
         secretKey,
-        { expiresIn: `${tokenExpiryTime}` }
+        { expiresIn: tokenExpiryTime }
       );
-
-      // Tạo refresh token với thời gian hết hạn
-      const refreshToken = await jwtRefreshToken.sign(
-        { id: user.id, email: user.email },
+      // Tạo refreshToken (giả sử bạn sử dụng thư viện jsonwebtoken)
+      const refreshToken = jwt.sign(
+        { id: user.user_id, email: user.user_email },
         refreshSecretKey,
-        moment().add(refreshTokenExpiryTime).unix() // Thời gian hết hạn được tính theo Unix timestamp
+        { expiresIn: "7d" } // Ví dụ: hết hạn sau 7 ngày
       );
 
-      res.json({ id: user.id,  message: "Đăng nhập thành công", token, refreshToken });
+      res.json({
+        user: {
+          user_id: user.user_id,
+          user_name: user.user_name,
+          user_email: user.user_email,
+          user_avatar: user.user_avatar,
+        },
+        message: "Đăng nhập thành công",
+        token,
+        refreshToken,
+        chatrooms,
+      });
     } else {
       res.status(401).json({ message: "Thông tin đăng nhập không hợp lệ" });
     }
   } catch (error) {
+    console.error("Lỗi đăng nhập:", error);
     res.status(500).json({ message: "Lỗi đăng nhập" });
   }
 };
-let register = async (req, res) => {
+
+const register = async (req, res) => {
   const { username, email, password } = req.body;
   try {
     // Kiểm tra xem email hoặc tên đăng nhập đã tồn tại chưa
     const [emailCheck] = await pool.execute(
-      "SELECT * FROM authen WHERE email = ?",
+      "SELECT * FROM Users WHERE user_email  = ?",
       [email]
     );
 
     const [usernameCheck] = await pool.execute(
-      "SELECT * FROM authen WHERE username = ?",
+      "SELECT * FROM Users WHERE user_name  = ?",
       [username]
     );
-
-    if (emailCheck.length > 0) {
-      return res.status(400).json({ message: "Email đã tồn tại" });
-    }
 
     if (usernameCheck.length > 0) {
       return res.status(400).json({ message: "Tên đăng nhập đã tồn tại" });
     }
 
+    if (emailCheck.length > 0) {
+      return res.status(400).json({ message: "Email đã tồn tại" });
+    }
+
     // Nếu email và tên đăng nhập không trùng, thực hiện đăng ký
     await pool.execute(
-      "insert into authen (username, password, email) values (?, ?, ?)",
+      "INSERT INTO Users (user_name, user_password, user_email) VALUES (?, ?, ?)",
       [username, password, email]
     );
-    
+
     return res.json({ message: "Đăng ký thành công" });
   } catch (err) {
     console.error("Lỗi đăng ký người dùng:", err);
@@ -78,38 +141,42 @@ let register = async (req, res) => {
   }
 };
 
-let refreshToken = async (req, res) => {
+const refreshToken = (req, res) => {
   const { refreshToken } = req.body;
-  jwtRefreshToken.verify(
-    refreshToken,
-    refreshSecretKey,
-    async (err, decoded) => {
-      if (err) {
-        // Refresh token không hợp lệ
-        res.status(401).json({ message: "Refresh token không hợp lệ" });
-      } else {
-        try {
-          // Tạo mã token mới với thời gian hết hạn
-          const tokenExpiryTime = 6*1000; // Thời gian hết hạn mã token (1 giờ)
-          const newToken = jwt.sign({ email: decoded.email }, secretKey, {
-            expiresIn: tokenExpiryTime,
-          });
 
-          // Tạo refresh token mới với thời gian hết hạn
-          const refreshTokenExpiryTime = 100*60*1000; // Thời gian hết hạn refresh token (7 ngày)
-          const newRefreshToken = await jwtRefreshToken.sign(
-            { email: decoded.email },
-            refreshSecretKey,
-            moment().add(refreshTokenExpiryTime).unix() // Thời gian hết hạn được tính theo Unix timestamp
-          );
-          res.json({ token: newToken, refreshToken: newRefreshToken });
-        } catch (error) {
-          console.error("Lỗi khi tạo mã token mới:", error);
-          res.status(500).json({ message: "Lỗi khi tạo mã token mới" });
-        }
+  jwt.verify(refreshToken, refreshSecretKey, (err, decoded) => {
+    if (err) {
+      // Refresh token không hợp lệ
+      res.status(401).json({ message: "Refresh token không hợp lệ" });
+    } else {
+      try {
+        // Tạo mã token mới với thời gian hết hạn
+        const tokenExpiryTime = 6 * 60 * 60; // Thời gian hết hạn mã token (đơn vị: giây)
+        const newToken = jwt.sign(
+          { id: decoded.user_id, email: decoded.user_email  },
+          secretKey,
+          {
+            expiresIn: tokenExpiryTime,
+          }
+        );
+
+        // Tạo refresh token mới với thời gian hết hạn
+        const refreshTokenExpiryTime = 30 * 24 * 60 * 60; // Thời gian hết hạn refresh token (đơn vị: giây)
+        const newRefreshToken = jwt.sign(
+          { id: decoded.user_id, email: decoded.user_email },
+          refreshSecretKey,
+          {
+            expiresIn: refreshTokenExpiryTime,
+          }
+        );
+
+        res.json({ token: newToken, refreshToken: newRefreshToken });
+      } catch (error) {
+        console.error("Lỗi khi tạo mã token mới:", error);
+        res.status(500).json({ message: "Lỗi khi tạo mã token mới" });
       }
     }
-  );
+  });
 };
 
 module.exports = {

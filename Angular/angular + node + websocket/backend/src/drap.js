@@ -6,48 +6,47 @@ const pool = mysql.createPool({
   database: "roomchatwebsocket",
   // password: 'password'
 });
+// let pool = null; // Khai báo biến pool
 
 const databaseName = "roomchatwebsocket";
+const newDatabaseName = "roomchatwebsocket";
 
-async function createDatabaseAndTable() {
+async function createDatabaseAndTable(connection) {
   try {
     // Tạo mới cơ sở dữ liệu
-    const connectionConfig = {
-      host: "localhost",
-      user: "root",
-      // password: 'your_password'
-    };
-    console.log(" bắt đầu tạo ");
-    const connection = await mysql.createConnection(connectionConfig);
-    console.log("createConnection");
+    console.log("bắt đầu tạo ");
+    const conn = connection || (await pool.getConnection()); // Sử dụng connection nếu được truyền vào
+    console.log("getConnection");
 
-    await connection.query(`CREATE DATABASE IF NOT EXISTS ${databaseName}`);
-    console.log("CREATE DATABASE IF NOT EXISTS databaseName");
+    await conn.query(`CREATE DATABASE IF NOT EXISTS ${newDatabaseName}`);
+    console.log("CREATE DATABASE IF NOT EXISTS");
+
     // Sử dụng cơ sở dữ liệu mới tạo
-    await connection.query(`USE ${databaseName}`);
-    console.log("query(`USE ${databaseName}`");
+    await conn.query(`USE ${newDatabaseName}`);
+    console.log("query(`USE ${newDatabaseName}`");
+
     // Tạo bảng ghi trong cơ sở dữ liệu
     const Users = `
                 CREATE TABLE IF NOT EXISTS Users  (
                   user_id INT PRIMARY KEY AUTO_INCREMENT,
-                  user_name VARCHAR(255) NOT NULL,
-                  user_password VARCHAR(255) NOT NULL,
-                  user_email VARCHAR(255) NOT NULL,
-                  user_avatar VARCHAR(255)
+                  username VARCHAR(255) NOT NULL,
+                  password VARCHAR(255) NOT NULL,
+                  email VARCHAR(255) NOT NULL,
+                  avatar VARCHAR(255)
                 )
               `;
-    await connection.query(Users);
+    await conn.query(Users);
     console.log("create table Users");
 
     const ChatRooms = `
             CREATE TABLE IF NOT EXISTS ChatRooms  (
               room_id INT PRIMARY KEY AUTO_INCREMENT,
               room_name VARCHAR(255) NOT NULL,
-              room_created_by_user_id INT,
-              FOREIGN KEY (room_created_by_user_id) REFERENCES Users(user_id)
+              created_by INT,
+              FOREIGN KEY (created_by) REFERENCES Users(user_id)
             )
           `;
-    await connection.query(ChatRooms);
+    await conn.query(ChatRooms);
     console.log("create table ChatRooms");
 
     const UserChatRooms = `
@@ -60,7 +59,7 @@ async function createDatabaseAndTable() {
             FOREIGN KEY (room_id) REFERENCES ChatRooms(room_id)
           )
         `;
-    await connection.query(UserChatRooms);
+    await conn.query(UserChatRooms);
     console.log("create table UserChatRooms");
 
     const Messages = `
@@ -68,29 +67,36 @@ async function createDatabaseAndTable() {
           message_id INT PRIMARY KEY AUTO_INCREMENT,
           room_id INT,
           user_id INT,
-          message_content TEXT,
-          message_sent_at DATETIME,
+          content TEXT,
+          sent_at DATETIME,
           FOREIGN KEY (room_id) REFERENCES ChatRooms(room_id),
           FOREIGN KEY (user_id) REFERENCES Users(user_id)
         )
       `;
-    await connection.query(Messages);
+    await conn.query(Messages);
     console.log("create table Messages");
-    console.log("DONE create");
+    console.log("Done create DATABASE and TABLE");
 
     // Đóng kết nối
-    // connection.release();
+    if (!connection) {
+      conn.release();
+      return (pool = mysql.createPool({
+        host: "localhost",
+        user: "root",
+        database: newDatabaseName,
+        // password: 'password'
+      }));
+    }
   } catch (error) {
-    console.error(
-      "Đẫ tồn tại or Lỗi khi tạo cơ sở dữ liệu và bảng ghi:",
-      error.message
-    );
+    console.error("Lỗi khi tạo cơ sở dữ liệu và bảng ghi:", error.message);
   } finally {
+    // Đóng pool kết nối
+    // pool.end();
   }
 }
 
 // Gọi hàm để tạo cơ sở dữ liệu và bảng ghi mới
-async function checkDatabaseExists() {
+async function initializeDatabase() {
   try {
     // Lấy kết nối từ pool
     const connection = await pool.getConnection();
@@ -101,22 +107,31 @@ async function checkDatabaseExists() {
     );
 
     // Giải phóng kết nối
-    connection.release();
 
     // Nếu rows có phần tử thì cơ sở dữ liệu tồn tại, ngược lại không tồn tại
     if (rows.length === 0) {
-      console.log(`Cơ sở dữ liệu ${databaseName} chưa tồn tại.`);
+      console.log(`Cơ sở dữ liệu ${newDatabaseName} chưa tồn tại.`);
+      await createDatabaseAndTable(connection);
     } else {
-      console.log(`Cơ sở dữ liệu ${databaseName} đã tồn tại.`);
+      console.log(`Cơ sở dữ liệu ${newDatabaseName} đã tồn tại.`);
     }
+
+    connection.release();
+    return pool
+    // return (pool = mysql.createPool({
+    //   host: "localhost",
+    //   user: "root",
+    //   database: newDatabaseName,
+    //   // password: 'password'
+    // }));
+    // console.log(` ${newDatabaseName} đã tồn tại.`, pool);
   } catch (error) {
-    if (error.errno === 1049) {
-      await createDatabaseAndTable();
-    }
+    console.error("Lỗi khi kiểm tra cơ sở dữ liệu:", error.message);
+    return false;
   }
 }
 
-// Gọi hàm để kiểm tra cơ sở dữ liệu "databaseName"
-checkDatabaseExists();
-
+// Gọi hàm để kiểm tra cơ sở dữ liệu "your_database_name"
+initializeDatabase();
+// console.log(` đã tồn tại.`, pool);
 export default pool;
