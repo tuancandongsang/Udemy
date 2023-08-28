@@ -34,8 +34,6 @@ export class LoginComponent implements DoCheck {
   }
 
   async login() {
-    // this.router.navigate(['/list']);
-
     if (this.user.roomName && this.user.createRoom) {
       this.message_error = 'Chỉ chọn 1 trường room';
       return;
@@ -46,29 +44,35 @@ export class LoginComponent implements DoCheck {
         this.message_error = 'Thông tin đăng nhập chưa đủ';
         return;
       }
-      if (this.user.roomName || this.user.createRoom) {
-        try {
-          const response = await axios.post(
-            ' http://localhost:8080/api/v1/login',
-            this.user
-          );
+      // if (this.user.roomName || this.user.createRoom) {
+      try {
+        const response = await axios.post(
+          ' http://localhost:8080/api/v1/login',
+          this.user
+        );
 
-          const { message, refreshToken, token, user, chatrooms } = response.data;
-          if (message || refreshToken || token || user || chatrooms) {
-            setUser(user);
-            setroomchat(chatrooms);
-            setToken(token);
-            setRefreshToken(refreshToken);
-            this.router.navigate([`/room/${chatrooms.room_name}`]);
-            this.message_error = '';
+        const { message, refreshToken, token, user, chatrooms } = response.data;
+        if (message || refreshToken || token || user || chatrooms) {
+          setUser(user);
+          setroomchat(chatrooms);
+          setToken(token);
+          setRefreshToken(refreshToken);
+          this.message_error = '';
+          if (this.user.roomName || this.user.createRoom) {
+            this.router.navigate([`${user.user_name}/room/${chatrooms.room_name}`]);
+            console.log('this.router', this.router);
+            
+          } else {
+            this.router.navigate([`/selectroomchat/${user.user_name}`]);
           }
-        } catch (error) {
-          const errorResponse = error as {
-            response: { data: { message: string } };
-          };
-          this.message_error = errorResponse.response.data.message;
         }
+      } catch (error) {
+        const errorResponse = error as {
+          response: { data: { message: string } };
+        };
+        this.message_error = errorResponse.response.data.message;
       }
+      // }
     }
     if (this.typeLogin === 'register') {
       if (!this.user.username || !this.user.password || !this.user.email) {

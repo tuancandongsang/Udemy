@@ -1,0 +1,24 @@
+<div id="selectroomchat">
+  <div class="background"></div>
+  <div class="container">
+    <h1>
+      <span> Select your Room</span>
+    </h1>
+
+    <div class="form">
+      <div class="username" *ngFor="let room of rooms">
+        <input
+          type="radio"
+          name="room"
+          [value]="room.room_id"
+          (click)="joinRoom(room)"
+        />
+        <label for=""> {{ room.room_name }}</label>
+      </div>
+    </div>
+    <div class="submit">
+      <button (click)="joinToRoom()">Join Room</button>
+      <!-- <p class="message_error">{{ message_error }}</p> -->
+    </div>
+  </div>
+</div>

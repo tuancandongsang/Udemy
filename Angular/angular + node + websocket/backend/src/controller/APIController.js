@@ -1,118 +1,72 @@
 import pool from "../configs/connectDB";
+const moment = require('moment'); // Import thư viện Moment.js
 
-let getAllUsers = async (req, res) => {
-  const { keyword , limit, pageNumber, userid } = req.query;
-  // console.log('page', req.query.pageNumber , keyword , limit, pageNumber, userid);
-  const startNumber = (pageNumber - 1) * limit;
-
-  let sqlQuery = `
-    SELECT authen.*, users.*
-    FROM authen
-    INNER JOIN users ON authen.id = users.userid
-    WHERE authen.id = ?`;
-  const queryParams = [userid];
-
-  if (keyword) {
-    sqlQuery += ` AND users.firstName LIKE ?`;
-    queryParams.push(`%${keyword}%`);
-  }
-
-  if (limit && pageNumber) {
-    sqlQuery += ` LIMIT ?, ?`;
-    queryParams.push(startNumber, limit);
-  }
-
+const getAllRoomChat = async (req, res) => {
   try {
-    const [rows, fields] = await pool.execute(sqlQuery, queryParams);
-    const [BinaryRow] = await pool.execute(
-      `SELECT COUNT(*) as totalCount FROM users WHERE userid = ?`, [userid]
+    const [results] = await pool.execute("SELECT * FROM ChatRooms");
+
+    // Trả về danh sách các phòng
+    res.json({ rooms: results });
+  } catch (error) {
+    console.error("Lỗi khi lấy danh sách các phòng:", error);
+    res.status(500).json({ message: "Lỗi khi lấy danh sách các phòng" });
+  }
+};
+
+const getMessageInRoom = async (req, res) => {
+  try {
+    const { user_id, room_id } = req.query;
+    // console.log('room_id', room_id);
+
+    // Kiểm tra xem người dùng có quyền truy cập vào phòng chat hay không
+    // ...
+
+    // Lấy toàn bộ tin nhắn của phòng chat từ database
+    const messages = await pool.query(
+      "SELECT * FROM Messages WHERE room_id = ? ORDER BY message_sent_at ASC",
+      [room_id]
+    ); 
+
+        // Chuyển đổi dữ liệu thời gian sang dạng phút:giờ 'HH:mm'
+        const allMessagesInRoom = messages[0].map(message => ({
+          ...message,
+          message_sent_at: moment(message.message_sent_at).format('HH:mm')
+        }));
+
+    // const allMessagesInRoom = messages[0];
+    // console.log('messages', allMessagesInRoom);
+
+      res.status(200).json({ allMessagesInRoom });
+  } catch (error) {
+    console.error("Lỗi khi lấy tin nhắn:", error);
+    res.status(500).json({ message: "Lỗi khi lấy tin nhắn" });
+  }
+};
+
+const postMessageInRoom = async (req, res) => {
+  try {
+    const { room_id, user_id, user_name, message_content, message_sent_at } =
+      req.body;
+
+    // Thực hiện INSERT vào bảng Messages
+    await pool.query(
+      `INSERT INTO Messages (room_id, user_id, user_name, message_content, message_sent_at) 
+       VALUES (?, ?, ?, ?, ?)`,
+      [room_id, user_id, user_name, message_content, message_sent_at]
     );
 
-    return res.json({
-      message: "ok",
-      data: rows,
-      totalItems: BinaryRow[0]?.totalCount,
-    });
+    // Trả về thông báo thành công nếu muốn
+    res
+      .status(200)
+      .json({ success: true, message: "Message sent successfully" });
   } catch (error) {
-    return res.status(500).json({ message: "Internal Server Error" });
+    console.error("Error posting message:", error);
+    res.status(500).json({ success: false, message: "Error posting message" });
   }
-};
-
-
-let createNewUser = async (req, res) => {
-  let { firstName, lastName, email, address, userid } = req.body;
-
-  if (!firstName || !lastName || !email || !address) {
-    return res.status(200).json({
-      message: "Missing required information",
-    });
-  }
-
-  await pool.execute(
-    "insert into users(firstName, lastName, email, address, userid) values (?, ?, ?, ?, ?)",
-    [firstName, lastName, email, address, userid]
-  );
-
-  return res.status(200).json({
-    message: "ok",
-  });
-};
-
-let updateUser = async (req, res) => {
-  let userId = req.params.id;
-  let { firstName, lastName, email, address } = req.body;
-  if (!firstName || !lastName || !email || !address) {
-    return res.status(200).json({
-      message: "Missing required information",
-    });
-  }
-
-  await pool.execute(
-    `update users set firstName= ?, lastName = ? , email = ? , address= ? where id = ${userId}`,
-    [firstName, lastName, email, address]
-  );
-
-  return res.status(200).json({
-    message: "ok",
-  });
-};
-
-let deleteUser = async (req, res) => {
-  let userId = req.params.id;
-  if (!userId) {
-    return res.status(200).json({
-      message: "missing required params",
-    });
-  }
-  await pool.execute("delete from users where id = ?", [userId]);
-  return res.status(200).json({
-    message: "ok",
-  });
-};
-let createDescription = async (req, res) => {
-  const { description } = req.body;
-  await pool.execute(`update description set description= ? where 1`, [
-    description,
-  ]);
-  return res.status(200).json({
-    message: "ok",
-  });
-};
-let getDescription = async (req, res) => {
-  const [rows, fields] = await pool.execute(
-    "SELECT * FROM `description` WHERE 1"
-  );
-  return res.json({
-    message: "ok",
-    data: rows,
-  });
 };
 
 module.exports = {
-  getAllUsers,
-  createNewUser,
-  updateUser,
-  deleteUser,
-  getDescription,
-  createDescription,
+  getAllRoomChat,
+  getMessageInRoom,
+  postMessageInRoom,
 };

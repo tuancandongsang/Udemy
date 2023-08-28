@@ -2,10 +2,11 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './login/login.component';
 import { NotfoundComponentComponent } from './notfound-component/notfound-component.component';
-import {LayoutComponent} from './layout/layout.component'
-import {HomeComponent} from "./home/home.component"
+import { LayoutComponent } from './layout/layout.component';
+import { HomeComponent } from './home/home.component';
+import { SelectroomchatComponent } from './selectroomchat/selectroomchat.component';
 
-
+// selectroomchat
 const routes: Routes = [
   {
     path: 'login',
@@ -17,13 +18,17 @@ const routes: Routes = [
     pathMatch: 'full',
   },
   {
-    path: 'room',
+    path: 'selectroomchat/:username',
+    component: SelectroomchatComponent,
+  },
+  {
+    path: ':username/room',
     component: LayoutComponent,
     children: [
       {
-        path: ':id',
+        path: ':room_name',
         component: HomeComponent,
-      }
+      },
     ],
   },
   {
@@ -34,6 +39,6 @@ const routes: Routes = [
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

@@ -16,17 +16,17 @@
     </h1>
     <div class="form">
       <div class="username">
-        <label for="">Username:</label>
+        <label for="">Username *:</label>
         <input type="text" [(ngModel)]="user.username" />
         <!-- <div class="validate-input">message</div> -->
       </div>
       <div class="username" *ngIf="typeLogin === 'register'">
-        <label for="">Email:</label>
+        <label for="">Email *:</label>
         <input type="text" [(ngModel)]="user.email" />
         <!-- <div class="validate-input">Email </div> -->
       </div>
       <div class="password">
-        <label for="">Password:</label>
+        <label for="">Password *:</label>
         <input type="password" [(ngModel)]="user.password" />
         <!-- <div class="validate-input">messagePassword</div> -->
       </div>

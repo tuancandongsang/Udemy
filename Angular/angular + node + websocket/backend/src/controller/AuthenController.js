@@ -25,7 +25,7 @@ const login = async (req, res) => {
           [roomName]
         );
         if (roomCheck.length === 0) {
-          return res.status(400).json({ message: "Phòng chat không tồn tại" });
+          return res.status(400).json({ message: "Phòng chat này không tồn tại" });
         }
 
         const roomInfo = roomCheck[0]; // Lấy thông tin phòng

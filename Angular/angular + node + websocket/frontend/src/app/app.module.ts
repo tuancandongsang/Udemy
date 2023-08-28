@@ -8,6 +8,7 @@ import { LoginComponent } from './login/login.component';
 import { HomeComponent } from './home/home.component';
 import { NotfoundComponentComponent } from './notfound-component/notfound-component.component';
 import { LayoutComponent } from './layout/layout.component';
+import { SelectroomchatComponent } from './selectroomchat/selectroomchat.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { LayoutComponent } from './layout/layout.component';
     LoginComponent,
     HomeComponent,
     NotfoundComponentComponent,
-    LayoutComponent
+    LayoutComponent,
+    SelectroomchatComponent
   ],
   imports: [
     BrowserModule,

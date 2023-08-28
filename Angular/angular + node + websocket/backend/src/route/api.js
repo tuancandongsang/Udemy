@@ -6,9 +6,11 @@ import {checkTokenMiddleware} from "../middleware"
 let router = express.Router();
 
 const initAPIRoute = (app) => {
-    // router.get('/users', APIController.getAllUsers); // method GET -> READ data
+    router.get('/getAllRoomChat', APIController.getAllRoomChat);
     // router.get('/users', checkTokenMiddleware, APIController.getAllUsers); // method GET -> READ data
-    // router.post('/create-user', APIController.createNewUser); // method POST -> CREATE data
+    router.get('/getMessageInRoom', APIController.getMessageInRoom);
+    router.post('/postMessageInRoom', APIController.postMessageInRoom); 
+
     // router.put('/update-user/:id', APIController.updateUser); //method PUT -> UPDATE data
     // router.delete('/delete-user/:id', APIController.deleteUser); //method DELETE -> DELETE data
     // router.put('/description', APIController.createDescription); // method POST -> CREATE data getDescription

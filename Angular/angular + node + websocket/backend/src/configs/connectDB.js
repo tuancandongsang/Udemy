@@ -70,6 +70,7 @@ async function createDatabaseAndTable() {
           user_id INT,
           message_content TEXT,
           message_sent_at DATETIME,
+          user_name VARCHAR(255),
           FOREIGN KEY (room_id) REFERENCES ChatRooms(room_id),
           FOREIGN KEY (user_id) REFERENCES Users(user_id)
         )
