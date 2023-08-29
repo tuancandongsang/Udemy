@@ -47,7 +47,7 @@ export class LoginComponent implements DoCheck {
       // if (this.user.roomName || this.user.createRoom) {
       try {
         const response = await axios.post(
-          ' http://localhost:8080/api/v1/login',
+          ' http://localhost:9288/api/v1/login',
           this.user
         );
 
@@ -81,7 +81,7 @@ export class LoginComponent implements DoCheck {
       }
       try {
         const response = await axios.post(
-          ' http://localhost:8080/api/v1/register',
+          ' http://localhost:9288/api/v1/register',
           this.user
         );
         this.message_error = '';

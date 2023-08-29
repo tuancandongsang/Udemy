@@ -70,7 +70,7 @@ export class HomeComponent {
 
     try {
       const response = await axios.get(
-        'http://localhost:8080/api/v1/getMessageInRoom',
+        'http://localhost:9288/api/v1/getMessageInRoom',
         {
           params: { room_id: this.roomchat?.room_id },
         }
@@ -98,7 +98,7 @@ export class HomeComponent {
         message_sent_at: new Date().toISOString(),
       };
       const response = await axios.post(
-        'http://localhost:8080/api/v1/postMessageInRoom',
+        'http://localhost:9288/api/v1/postMessageInRoom',
         messageData
       );
       console.log('response', response);

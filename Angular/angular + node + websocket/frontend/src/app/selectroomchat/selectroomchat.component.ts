@@ -40,7 +40,7 @@ export class SelectroomchatComponent implements OnInit {
   async getAllRoomChat() {
     try {
       const response = await axios.get(
-        'http://localhost:8080/api/v1/getAllRoomChat'
+        'http://localhost:9288/api/v1/getAllRoomChat'
       );
       console.log('response', response);
 
