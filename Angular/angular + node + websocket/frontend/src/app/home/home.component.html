@@ -54,7 +54,11 @@
     </header>
     <main class="body-chat-box">
       <ul class="main-chat">
-        <li class="main-liter" *ngFor="let message of allMessagesInRoom">
+        <li
+          class="main-liter"
+          *ngFor="let message of allMessagesInRoom"
+          [class.reverse]="message.user_name === user?.user_name"
+        >
           <!-- v-for="item in messageList"
             :key="item.id"
             :class="item.name == this.userName ? 'reverse' : ''" -->
@@ -87,6 +91,7 @@
           name="w3review"
           rows="2"
           [(ngModel)]="messageContent"
+          (keyup.enter)="sendMessage()"
         ></textarea>
         <!-- v-model="textChat" -->
         <!-- @focus="forcusTextChat" -->
@@ -106,12 +111,12 @@
               />
             </svg>
           </div>
-          <div class="emoji">
+          <!-- <div class="emoji"> -->
             <!-- <EmoJiPicker
                 @emoji_click="getEmojiPicker"
                 @closeDialogEmojiPicker="closeDialogEmojiPicker"
               /> -->
-          </div>
+          <!-- </div> -->
         </div>
       </div>
       <div class="icon" (click)="sendMessage()">

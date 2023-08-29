@@ -104,10 +104,10 @@ export class HomeComponent {
       console.log('response', response);
     } catch (error) {}
   }
-  sendMessage() {
-    console.log('tuancan', this.messageContent);
+  async sendMessage() {
     if (this.messageContent.trim() !== '') {
-      this.postMessageInRoom();
+      await this.postMessageInRoom();
+      this.messageContent = '';
     }
   }
 }
