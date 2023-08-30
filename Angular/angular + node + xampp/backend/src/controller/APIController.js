@@ -1,7 +1,7 @@
 import pool from "../configs/connectDB";
 
 let getAllUsers = async (req, res) => {
-  const { keyword , limit, pageNumber, userid } = req.query;
+  const { keyword, limit, pageNumber, userid } = req.query;
   // console.log('page', req.query.pageNumber , keyword , limit, pageNumber, userid);
   const startNumber = (pageNumber - 1) * limit;
 
@@ -25,7 +25,8 @@ let getAllUsers = async (req, res) => {
   try {
     const [rows, fields] = await pool.execute(sqlQuery, queryParams);
     const [BinaryRow] = await pool.execute(
-      `SELECT COUNT(*) as totalCount FROM users WHERE userid = ?`, [userid]
+      `SELECT COUNT(*) as totalCount FROM users WHERE userid = ?`,
+      [userid]
     );
 
     return res.json({
@@ -37,7 +38,6 @@ let getAllUsers = async (req, res) => {
     return res.status(500).json({ message: "Internal Server Error" });
   }
 };
-
 
 let createNewUser = async (req, res) => {
   let { firstName, lastName, email, address, userid } = req.body;

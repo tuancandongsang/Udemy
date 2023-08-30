@@ -25,16 +25,18 @@ const login = async (req, res) => {
           [roomName]
         );
         if (roomCheck.length === 0) {
-          return res.status(400).json({ message: "Phòng chat này không tồn tại" });
+          return res
+            .status(400)
+            .json({ message: "Phòng chat này không tồn tại" });
         }
 
         const roomInfo = roomCheck[0]; // Lấy thông tin phòng
-        const { room_id, room_created_by_user_id  } = roomInfo;
+        const { room_id, room_created_by_user_id } = roomInfo;
 
         chatrooms = {
           room_name: roomName,
           room_id,
-          room_created_by_user_id ,
+          room_created_by_user_id,
         };
       }
       // Kiểm tra xem người dùng muốn tạo phòng mới
@@ -153,7 +155,7 @@ const refreshToken = (req, res) => {
         // Tạo mã token mới với thời gian hết hạn
         const tokenExpiryTime = 6 * 60 * 60; // Thời gian hết hạn mã token (đơn vị: giây)
         const newToken = jwt.sign(
-          { id: decoded.user_id, email: decoded.user_email  },
+          { id: decoded.user_id, email: decoded.user_email },
           secretKey,
           {
             expiresIn: tokenExpiryTime,

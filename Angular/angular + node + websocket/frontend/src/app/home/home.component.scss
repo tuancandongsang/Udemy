@@ -1,4 +1,4 @@
-#face {
+#home {
   position: relative;
   top: 0;
   left: 0;
@@ -181,6 +181,7 @@
         height: 100%;
         display: flex;
         flex-direction: column;
+        flex-direction: column-reverse;
 
         &::-webkit-scrollbar-track {
           background-color: transparent;
@@ -245,11 +246,49 @@
           //   }
           // }
         }
-
         .reverse {
           flex-direction: row-reverse;
-          p {
-            text-align: end;
+          background-color: transparent;
+          .content-chat {
+            background-color: transparent;
+            position: relative;
+            .content-chat-user {
+              display: block;
+              padding: 8px 16px;
+              border-radius: 8px;
+              margin: 0 8px;
+              background-color: rgba($color: aqua, $alpha: 0.1);
+              word-break: break-all;
+            }
+            p {
+              text-align: end;
+            }
+            .content-edit {
+              width: 100%;
+              position: absolute;
+              left: -80px;
+              bottom: 0;
+              display: none;
+              padding: 16px;
+              
+              background-color: transparent;
+              button {
+                outline: none;
+                display: inline-block;
+                color: #fc0;
+                background-color: transparent;
+                text-shadow: #fc0 1px 0 10px;
+                border: none;
+                &:hover {
+                  text-shadow: #fc0 1px 0 10px;
+                  color: #fff;
+                  cursor: pointer;
+                }
+              }
+            }
+            &:hover .content-edit {
+              display: block;
+            }
           }
         }
       }

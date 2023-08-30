@@ -1,6 +1,6 @@
 <div id="login">
   <div class="background"></div>
-  <div class="container">
+  <div class="container" (keyup.enter)="login()">
     <h1>
       <span
         [ngClass]="{ shadow: typeLogin === 'login' }"
@@ -45,7 +45,7 @@
     </div>
     <div class="submit">
       <button (click)="login()">Confirm</button>
-      <p class="message_error">{{message_error}}</p>
+      <p class="message_error">{{ message_error }}</p>
     </div>
   </div>
 </div>
