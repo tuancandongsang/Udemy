@@ -7,6 +7,7 @@ let router = express.Router();
 
 const initAPIRoute = (app) => {
     router.get('/getAllRoomChat', APIController.getAllRoomChat);
+    router.post('/createRoomChat', APIController.createRoomChat); 
     // router.get('/users', checkTokenMiddleware, APIController.getAllUsers); // method GET -> READ data
     router.get('/getMessageInRoom', APIController.getMessageInRoom);
     router.post('/postMessageInRoom', APIController.postMessageInRoom); 

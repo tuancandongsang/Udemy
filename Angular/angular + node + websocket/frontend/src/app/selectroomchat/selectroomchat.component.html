@@ -1,21 +1,88 @@
 <div id="selectroomchat">
   <div class="background"></div>
   <div class="container">
+    <div class="icon" (click)="backToLogin()">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="20"
+        height="20"
+        fill="currentColor"
+        class="bi bi-arrow-left"
+        viewBox="0 0 16 16"
+      >
+        <path
+          fill-rule="evenodd"
+          d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z"
+        />
+      </svg>
+    </div>
+
     <h1>
-      <span> Select your Room</span>
+      <span
+        [ngClass]="{ shadow: selectCreateroomchat === 'select' }"
+        (click)="selectOrCreateRoom('select')"
+        >Select Room
+      </span>
+      <b>/</b>
+      <br />
+      <span
+        [ngClass]="{ shadow: selectCreateroomchat === 'create' }"
+        (click)="selectOrCreateRoom('create')"
+        >Create Room</span
+      >
     </h1>
 
     <div class="form">
-      <div class="username" *ngFor="let room of rooms">
-        <input
-          type="radio"
-          name="room"
-          [value]="room.room_id"
-          (click)="joinRoom(room)"
-        />
-        <label for=""> {{ room.room_name }}</label>
+      <div *ngIf="selectCreateroomchat === 'select'">
+        <div *ngIf="rooms.length === 0" class="select-room-nodata">
+          <p>Don't have room publish</p>
+        </div>
+        <div *ngFor="let room of rooms">
+          <div class="select-room">
+            <input
+              class="select-room-inputradio"
+              type="radio"
+              name="room"
+              [value]="room.room_id"
+              (click)="joinRoom(room)"
+            />
+            <label for=""> {{ room.room_name }}</label>
+          </div>
+          <div class="select-room" *ngIf="room.room_password">
+            <label> Private Key:</label>
+            <input
+              class="select-room-input-key"
+              type="text"
+              [(ngModel)]="createRoom.room_name"
+            />
+          </div>
+        </div>
+      </div>
+
+      <div *ngIf="selectCreateroomchat === 'create'">
+        <div class="create-room">
+          <label for="">Room Name</label>
+          <input type="text" [(ngModel)]="createRoom.room_name" />
+        </div>
+
+        <div class="create-room-checkbox">
+          <input
+            type="checkbox"
+            name="createRoom"
+            [value]="createRoom.room_private"
+            [(ngModel)]="createRoom.room_private"
+            (click)="selectPrivateRoom()"
+          />
+          <label for=""> Create Private Key Room</label>
+        </div>
+
+        <div class="create-room" *ngIf="createRoom.room_private">
+          <label for="">Password for Room:</label>
+          <input type="text" [(ngModel)]="createRoom.room_password" />
+        </div>
       </div>
     </div>
+
     <div class="submit">
       <button (click)="joinToRoom()">Join Room</button>
       <!-- <p class="message_error">{{ message_error }}</p> -->

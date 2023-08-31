@@ -11,15 +11,14 @@
       <div class="icon" (click)="backToSelectRoom()">
         <svg
           xmlns="http://www.w3.org/2000/svg"
-          width="16"
-          height="16"
+          width="20"
+          height="20"
           fill="currentColor"
-          class="bi bi-arrow-left"
+          class="bi bi-arrow-left-circle-fill"
           viewBox="0 0 16 16"
         >
           <path
-            fill-rule="evenodd"
-            d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z"
+            d="M8 0a8 8 0 1 0 0 16A8 8 0 0 0 8 0zm3.5 7.5a.5.5 0 0 1 0 1H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H11.5z"
           />
         </svg>
       </div>
@@ -41,15 +40,23 @@
         </div>
       </div>
       <div class="header-contact">
-        <!-- <div class="header-phone icon">
-            <phone-outlined />
-          </div>
-          <div class="header-video icon">
-            <video-camera-outlined  />
-          </div>
-          <div class="header-video icon">
-            <info-circle-outlined />
-          </div> -->
+        <div class="icon" (click)="logoutToLogin()">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="20"
+            height="20"
+            fill="currentColor"
+            class="bi bi-escape"
+            viewBox="0 0 16 16"
+          >
+            <path
+              d="M8.538 1.02a.5.5 0 1 0-.076.998 6 6 0 1 1-6.445 6.444.5.5 0 0 0-.997.076A7 7 0 1 0 8.538 1.02Z"
+            />
+            <path
+              d="M7.096 7.828a.5.5 0 0 0 .707-.707L2.707 2.025h2.768a.5.5 0 1 0 0-1H1.5a.5.5 0 0 0-.5.5V5.5a.5.5 0 0 0 1 0V2.732l5.096 5.096Z"
+            />
+          </svg>
+        </div>
       </div>
     </header>
     <main class="body-chat-box">
@@ -86,10 +93,6 @@
       </ul>
     </main>
     <footer class="footer">
-      <!-- <div class="icon"><setting-outlined /></div>
-        <div class="icon"><camera-outlined /></div>
-        <div class="icon"><file-image-outlined /></div>
-        <div class="icon"><audio-outlined /></div> -->
       <div class="text-chat">
         <textarea
           placeholder="..."
@@ -103,7 +106,7 @@
         <!-- @focus="forcusTextChat" -->
         <!-- @keyup.enter="sendMessage" -->
         <div class="box">
-          <div class="icon">
+          <!-- <div class="icon">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="16"
@@ -116,7 +119,7 @@
                 d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zM7 6.5C7 7.328 6.552 8 6 8s-1-.672-1-1.5S5.448 5 6 5s1 .672 1 1.5zM4.285 9.567a.5.5 0 0 1 .683.183A3.498 3.498 0 0 0 8 11.5a3.498 3.498 0 0 0 3.032-1.75.5.5 0 1 1 .866.5A4.498 4.498 0 0 1 8 12.5a4.498 4.498 0 0 1-3.898-2.25.5.5 0 0 1 .183-.683zM10 8c-.552 0-1-.672-1-1.5S9.448 5 10 5s1 .672 1 1.5S10.552 8 10 8z"
               />
             </svg>
-          </div>
+          </div> -->
           <!-- <div class="emoji"> -->
           <!-- <EmoJiPicker
                 @emoji_click="getEmojiPicker"

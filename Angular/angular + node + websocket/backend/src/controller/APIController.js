@@ -16,6 +16,10 @@ const getAllRoomChat = async (req, res) => {
   }
 };
 
+const createRoomChat = async (req, res) => {
+
+}
+
 const getMessageInRoom = async (req, res) => {
   const { user_id, room_id, keyword, limit, pageNumber } = req.query;
   const startNumber = (pageNumber - 1) * limit;
@@ -87,7 +91,6 @@ const postMessageInRoom = async (req, res) => {
   }
 };
 
-
 const deleteMessageUserInRoom = async (req, res) => {
   const { message_id } = req.query;
 
@@ -119,6 +122,7 @@ const deleteMessageUserInRoom = async (req, res) => {
 
 
 module.exports = {
+  createRoomChat,
   getAllRoomChat,
   getMessageInRoom,
   postMessageInRoom,

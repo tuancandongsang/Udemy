@@ -43,6 +43,7 @@ async function createDatabaseAndTable() {
             CREATE TABLE IF NOT EXISTS ChatRooms  (
               room_id INT PRIMARY KEY AUTO_INCREMENT,
               room_name VARCHAR(255) NOT NULL,
+              room_password VARCHAR(255),  -- Thêm trường room_password
               room_created_by_user_id INT,
               FOREIGN KEY (room_created_by_user_id) REFERENCES Users(user_id)
             )

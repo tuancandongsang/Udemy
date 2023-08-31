@@ -1,6 +1,11 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { getUser } from '../utills/localstorage/user';
-import { getroomchat } from '../utills/localstorage/roomchat';
+import {
+  getUser,
+  removeUser,
+  removeToken,
+  removeRefreshToken,
+} from '../utills/localstorage/user';
+import { getroomchat, removeroomchat } from '../utills/localstorage/roomchat';
 import axios from 'axios';
 import { SocketService } from '../socket.service';
 import { Router } from '@angular/router';
@@ -65,7 +70,6 @@ export class HomeComponent implements OnInit {
       // this.allMessagesInRoom.push(message);
     });
   }
-
 
   // // cuộn xuống dưới cùng khi có dũ liệu mới
   @ViewChild('chatContainer')
@@ -148,5 +152,14 @@ export class HomeComponent implements OnInit {
 
   editMessageUserUserInRoom(message: any) {
     console.log('editMessageUser message', message);
+  }
+
+  // đăng xuất
+  logoutToLogin() {
+    removeUser();
+    removeToken();
+    removeRefreshToken();
+    removeroomchat();
+    this.router.navigate([`/`]);
   }
 }
