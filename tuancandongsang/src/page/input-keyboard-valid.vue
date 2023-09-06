@@ -34,11 +34,11 @@
 </template>
 
 <script>
-import { onkeydownPreventNumber } from "../utils/common";
+// import { onkeydownPreventNumber } from "../../utils/common";
 export default {
   data() {
     return {
-      onkeydownPreventNumber: onkeydownPreventNumber,
+      // onkeydownPreventNumber: onkeydownPreventNumber,
       textnumber: "",
     };
   },

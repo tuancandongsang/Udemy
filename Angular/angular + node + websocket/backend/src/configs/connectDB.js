@@ -30,7 +30,7 @@ async function createDatabaseAndTable() {
     const Users = `
                 CREATE TABLE IF NOT EXISTS Users  (
                   user_id INT PRIMARY KEY AUTO_INCREMENT,
-                  user_name VARCHAR(255) NOT NULL,
+                  user_name TEXT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
                   user_password VARCHAR(255) NOT NULL,
                   user_email VARCHAR(255) NOT NULL,
                   user_avatar VARCHAR(255)
@@ -42,7 +42,7 @@ async function createDatabaseAndTable() {
     const ChatRooms = `
             CREATE TABLE IF NOT EXISTS ChatRooms  (
               room_id INT PRIMARY KEY AUTO_INCREMENT,
-              room_name VARCHAR(255) NOT NULL,
+              room_name TEXT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
               room_password VARCHAR(255),  -- Thêm trường room_password
               room_created_by_user_id INT,
               FOREIGN KEY (room_created_by_user_id) REFERENCES Users(user_id)
@@ -69,7 +69,7 @@ async function createDatabaseAndTable() {
           message_id INT PRIMARY KEY AUTO_INCREMENT,
           room_id INT,
           user_id INT,
-          message_content TEXT,
+          message_content TEXT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
           message_sent_at DATETIME,
           user_name VARCHAR(255),
           FOREIGN KEY (room_id) REFERENCES ChatRooms(room_id),

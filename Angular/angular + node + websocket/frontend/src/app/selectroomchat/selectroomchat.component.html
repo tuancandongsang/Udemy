@@ -49,11 +49,12 @@
             <label for=""> {{ room.room_name }}</label>
           </div>
           <div class="select-room" *ngIf="room.room_password">
-            <label> Private Key:</label>
+            <label class="select-room-label-key"> Private Key:</label>
             <input
               class="select-room-input-key"
               type="text"
-              [(ngModel)]="createRoom.room_name"
+              [(ngModel)]="createRoom.room_password"
+              (keyup.enter)="joinToRoom()"
             />
           </div>
         </div>
@@ -85,7 +86,7 @@
 
     <div class="submit">
       <button (click)="joinToRoom()">Join Room</button>
-      <!-- <p class="message_error">{{ message_error }}</p> -->
+      <p class="message_error">{{ message_error }}</p>
     </div>
   </div>
 </div>

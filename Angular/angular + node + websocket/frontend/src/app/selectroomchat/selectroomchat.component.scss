@@ -82,6 +82,9 @@
           padding-left: 20px;
           color: #fc0;
         }
+        .select-room-label-key {
+          font-size: 0.8rem;
+        }
         &-inputradio {
           width: 20px;
           height: 20px;
@@ -134,7 +137,8 @@
     .submit {
       width: 100%;
       display: flex;
-      justify-content: center;
+      flex-direction: column;
+      align-items: center;
       position: absolute;
       bottom: 40px;
 

@@ -34,7 +34,7 @@ export class LoginComponent implements DoCheck {
   }
 
   async login() {
-    if (this.user.roomName && this.user.createRoom) {
+    if (this.user.roomName && this.user.createRoomName) {
       this.message_error = 'Chỉ chọn 1 trường room';
       return;
     }
@@ -44,7 +44,7 @@ export class LoginComponent implements DoCheck {
         this.message_error = 'Thông tin đăng nhập chưa đủ';
         return;
       }
-      // if (this.user.roomName || this.user.createRoom) {
+      // if (this.user.roomName || this.user.createRoomName) {
       try {
         const response = await axios.post(
           ' http://localhost:9288/api/v1/login',
@@ -58,10 +58,11 @@ export class LoginComponent implements DoCheck {
           setToken(token);
           setRefreshToken(refreshToken);
           this.message_error = '';
-          if (this.user.roomName || this.user.createRoom) {
-            this.router.navigate([`${user.user_name}/room/${chatrooms.room_name}`]);
+          if (this.user.roomName || this.user.createRoomName) {
+            this.router.navigate([
+              `${user.user_name}/room/${chatrooms.room_name}`,
+            ]);
             console.log('this.router', this.router);
-            
           } else {
             this.router.navigate([`/selectroomchat/${user.user_name}`]);
           }

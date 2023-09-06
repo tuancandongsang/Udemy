@@ -60,7 +60,13 @@
       </div>
     </header>
     <main class="body-chat-box">
-      <ul class="main-chat" #chatContainer>
+      <!--  appScroll (scroll)="onScroll($event)" -->
+      <ul
+        class="main-chat"
+        #chatContainer
+        appScroll
+        (scroll)="onScroll($event)"
+      >
         <li
           class="main-liter"
           *ngFor="let message of allMessagesInRoom"

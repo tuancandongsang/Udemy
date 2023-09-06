@@ -1,4 +1,10 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import {
+  Component,
+  ElementRef,
+  HostListener,
+  OnInit,
+  ViewChild,
+} from '@angular/core';
 import {
   getUser,
   removeUser,
@@ -41,6 +47,7 @@ export class HomeComponent implements OnInit {
   allMessagesInRoom: any[] = [];
   messageContent: string = ''; // Biến lưu nội dung tin nhắn
   paramGet: ParamGet;
+  totalMessage: number = 0;
 
   constructor(private socketService: SocketService, private router: Router) {
     const userString: string | null = getUser();
@@ -66,20 +73,32 @@ export class HomeComponent implements OnInit {
 
     // Lắng nghe sự kiện 'message' từ máy chủ WebSocket
     this.socketService.listen('message').subscribe((message: string) => {
+      console.log('message constructor', message);
+      
       this.getMessageInRoom();
-      // this.allMessagesInRoom.push(message);
     });
   }
 
-  // // cuộn xuống dưới cùng khi có dũ liệu mới
+  // // thanh cuộn theo vị trí chỉ định
   @ViewChild('chatContainer')
   chatContainer!: ElementRef;
   private scrollChatToBottom() {
+    console.log('deo cjo keo');
     const chatContainerElement = this.chatContainer.nativeElement;
-    chatContainerElement.scrollTop = chatContainerElement.scrollHeight;
+    chatContainerElement.scrollTop = 0;
   }
-  ngAfterViewChecked() {
-    this.scrollChatToBottom();
+
+  // // layzyload
+  @HostListener('window:scroll', ['$event'])
+  onScroll(event: Event) {
+    const element = event.target as HTMLElement;
+    if (this.paramGet.pageNumber * this.paramGet.limit > this.totalMessage) {
+      return;
+    }
+    if (element.scrollTop <= element.clientHeight - element.scrollHeight + 1) {
+      this.paramGet.pageNumber++;
+      this.getMessageInRoom();
+    }
   }
 
   // lấy dữ liệu
@@ -93,7 +112,25 @@ export class HomeComponent implements OnInit {
         }
       );
 
-      this.allMessagesInRoom = response.data.allMessagesInRoom;
+      this.totalMessage = response.data.totalItems;
+      const messageDataAll = [...this.allMessagesInRoom, ...response.data.data];
+
+      // lọc trùng sau khi concat
+      const idMap = new Map();
+      messageDataAll.forEach((item) => {
+        if (
+          !idMap.has(item.message_id) ||
+          item.message_sent_at > idMap.get(item.message_id).message_sent_at
+        ) {
+          idMap.set(item.message_id, item);
+        }
+      });
+      // xắp xếp theo message_sent_at
+      this.allMessagesInRoom = Array.from(idMap.values()).sort((a, b) => {
+        const timeA = a.message_sent_at;
+        const timeB = b.message_sent_at;
+        return timeB.localeCompare(timeA);
+      });
     } catch (error) {}
   }
 
@@ -118,7 +155,7 @@ export class HomeComponent implements OnInit {
         'http://localhost:9288/api/v1/postMessageInRoom',
         messageData
       );
-
+      this.scrollChatToBottom();
       // Gửi tin nhắn đến máy chủ WebSocket
       this.socketService.emit('message', this.messageContent);
     } catch (error) {}
@@ -146,7 +183,11 @@ export class HomeComponent implements OnInit {
         }
       );
       this.getMessageInRoom();
-      this.socketService.emit('message');
+      this.socketService.emit('message',params.message_id );
+      console.log('params', params);
+      this.allMessagesInRoom = this.allMessagesInRoom.filter(
+        (item) => item.message_id != params.message_id
+      );
     } catch (error) {}
   }
 

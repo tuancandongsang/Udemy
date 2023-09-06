@@ -32,14 +32,14 @@
       </div>
 
       <div class="username" *ngIf="typeLogin === 'login'">
-        <label for="">Room Name:</label>
+        <label for="">Room Name (Publish):</label>
         <input type="text" [(ngModel)]="user.roomName" />
         <!-- <div class="validate-input">Email </div> -->
       </div>
 
       <div class="username" *ngIf="typeLogin === 'login'">
-        <label for="">Or Create Room:</label>
-        <input type="text" [(ngModel)]="user.createRoom" />
+        <label for="">Or Create Room (Publish):</label>
+        <input type="text" [(ngModel)]="user.createRoomName" />
         <!-- <div class="validate-input">Email </div> -->
       </div>
     </div>

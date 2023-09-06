@@ -31,6 +31,7 @@ export class SelectroomchatComponent implements OnInit {
   rooms: Room[] = [];
   selectedRoom: any = {};
   user: User | null; // Khai báo biến user
+  public message_error = '';
   public selectCreateroomchat: string = 'select';
   public createRoom = {
     room_name: '',
@@ -61,22 +62,54 @@ export class SelectroomchatComponent implements OnInit {
   joinRoom(room: Room) {
     this.selectedRoom = room;
   }
-  joinToRoom() {
-    setroomchat(this.selectedRoom);
-
-    // if (this.user?.user_name && this.selectedRoom.room_name) {
-    //   this.router.navigate([
-    //     `${this.user?.user_name}/room/${this.selectedRoom.room_name}`,
-    //   ]);
-    // }
-    if(this.selectCreateroomchat === 'create') {
-      console.log(this.user);
-      const param = {
-        room_name: "",
-        room_password:'',
-        room_created_by_user_id: ''
+  async joinToRoom() {
+    const param = {
+      room_created_by_user_id: this.user?.user_id,
+      room_password: this.createRoom.room_password,
+      room_name: this.createRoom.room_name,
+      room_name_select: this.selectedRoom.room_name,
+    };
+    if (this.selectCreateroomchat === 'select') {
+      if (this.user?.user_name && this.selectedRoom.room_name) {
+        try {
+          const response = await axios.post(
+            'http://localhost:9288/api/v1/createOrSelectRoomChat',
+            param
+          );
+          const { roomInfo } = response.data;
+          if (roomInfo) {
+            setroomchat(response.data.roomInfo);
+            this.router.navigate([
+              `${this.user?.user_name}/room/${roomInfo.room_name}`,
+            ]);
+          }
+        } catch (error) {
+          const errorResponse = error as {
+            response: { data: { message: string } };
+          };
+          this.message_error = errorResponse.response.data.message;
+        }
       }
-
+    }
+    if (this.selectCreateroomchat === 'create') {
+      try {
+        const response = await axios.post(
+          'http://localhost:9288/api/v1/createOrSelectRoomChat',
+          param
+        );
+        const { roomInfo } = response.data;
+        if (roomInfo) {
+          setroomchat(response.data.roomInfo);
+          this.router.navigate([
+            `${this.user?.user_name}/room/${roomInfo.room_name}`,
+          ]);
+        }
+      } catch (error) {
+        const errorResponse = error as {
+          response: { data: { message: string } };
+        };
+        this.message_error = errorResponse.response.data.message;
+      }
     }
   }
   backToLogin() {
@@ -88,7 +121,6 @@ export class SelectroomchatComponent implements OnInit {
   }
   public selectOrCreateRoom(selectroomchat: string) {
     this.selectCreateroomchat = selectroomchat;
-    console.log('selectroomchat', this.selectCreateroomchat);
   }
 
   selectPrivateRoom() {

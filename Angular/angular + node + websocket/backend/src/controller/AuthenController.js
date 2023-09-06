@@ -9,7 +9,7 @@ const secretKey = "tuancandongsang"; // Thay thế bằng khóa bí mật của 
 const refreshSecretKey = "tuancandongsang"; // Thay thế bằng khóa bí mật cho refresh token của bạn
 
 const login = async (req, res) => {
-  const { username, password, roomName, createRoom } = req.body;
+  const { username, password, roomName, createRoomName } = req.body;
   try {
     const [results] = await pool.execute(
       "SELECT * FROM Users WHERE user_name  = ? AND user_password  = ?",
@@ -40,10 +40,10 @@ const login = async (req, res) => {
         };
       }
       // Kiểm tra xem người dùng muốn tạo phòng mới
-      if (createRoom) {
+      if (createRoomName) {
         const [existingRoom] = await pool.execute(
           "SELECT * FROM ChatRooms WHERE room_name = ?",
-          [createRoom]
+          [createRoomName]
         );
 
         if (existingRoom.length > 0) {
@@ -54,18 +54,18 @@ const login = async (req, res) => {
         // Tạo phòng mới và lấy ID của phòng
         await pool.execute(
           "INSERT INTO ChatRooms (room_name, room_created_by_user_id ) VALUES (?, ?)",
-          [createRoom, user.user_id]
+          [createRoomName, user.user_id]
         );
         const [roomCheck] = await pool.execute(
           "SELECT * FROM ChatRooms WHERE room_name = ?",
-          [createRoom]
+          [createRoomName]
         );
 
         const roomInfo = roomCheck[0]; // Lấy thông tin phòng
         const { room_id, room_created_by_user_id } = roomInfo;
 
         chatrooms = {
-          room_name: createRoom,
+          room_name: createRoomName,
           room_id,
           room_created_by_user_id,
         };
