@@ -24,7 +24,7 @@
         >Select Room
       </span>
       <b>/</b>
-      <br />
+      <!-- <br /> -->
       <span
         [ngClass]="{ shadow: selectCreateroomchat === 'create' }"
         (click)="selectOrCreateRoom('create')"
@@ -32,30 +32,51 @@
       >
     </h1>
 
+    <div class="search" *ngIf="selectCreateroomchat === 'select'">
+      <div class="search-submit">
+        <input
+          autofocus
+          type="text"
+          (keyup.enter)="searchRoomInSelectRoomChat()"
+          placeholder="Search Room for name..."
+          [(ngModel)]="paramGet.keyword"
+          (blur)="searchRoomInSelectRoomChat()"
+        />
+        <button (click)="searchRoomInSelectRoomChat()">Search</button>
+      </div>
+    </div>
+
     <div class="form">
-      <div *ngIf="selectCreateroomchat === 'select'">
+      <div *ngIf="selectCreateroomchat === 'select'" class="form-box-select">
         <div *ngIf="rooms.length === 0" class="select-room-nodata">
           <p>Don't have room publish</p>
         </div>
-        <div *ngFor="let room of rooms">
-          <div class="select-room">
-            <input
-              class="select-room-inputradio"
-              type="radio"
-              name="room"
-              [value]="room.room_id"
-              (click)="joinRoom(room)"
-            />
-            <label for=""> {{ room.room_name }}</label>
-          </div>
-          <div class="select-room" *ngIf="room.room_password">
-            <label class="select-room-label-key"> Private Key:</label>
-            <input
-              class="select-room-input-key"
-              type="text"
-              [(ngModel)]="createRoom.room_password"
-              (keyup.enter)="joinToRoom()"
-            />
+        <div
+          class="form-box-select-scroll"
+          appScroll
+          (scroll)="onScroll($event)"
+        >
+          <div *ngFor="let room of rooms">
+            <div class="select-room">
+              <input
+                class="select-room-inputradio"
+                type="radio"
+                name="room"
+                [value]="room.room_id"
+                (click)="joinRoom(room)"
+              />
+              <label for=""> {{ room.room_name }}</label>
+            </div>
+            <div class="select-room" *ngIf="room.room_password">
+              <label class="select-room-label-key"> Private Key:</label>
+              <input
+                class="select-room-input-key"
+                type="text"
+                [(ngModel)]="createRoom.room_password"
+                (keyup.enter)="joinToRoom()"
+                [class.disable]="this.selectedRoom.room_id !== room.room_id"
+                />
+            </div>
           </div>
         </div>
       </div>

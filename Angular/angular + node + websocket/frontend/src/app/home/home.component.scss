@@ -212,7 +212,6 @@
           }
 
           .content-chat {
-            display: block;
             padding: 8px 16px;
             border-radius: 8px;
             margin: 0 8px;
@@ -232,6 +231,37 @@
             p {
               padding: 0;
               margin: 0;
+            }
+            .content-chat-user-edit {
+              display: flex;
+              flex-direction: column;
+              textarea {
+                background-color: rgba($color: aqua, $alpha: 0.2);
+                outline: none;
+                display: block;
+                border: none;
+                flex: 1;
+                color: #ffffff;
+                // max-height: 60px;
+                resize: none;
+                border-radius: 8px;
+                &::-webkit-scrollbar {
+                  display: none;
+                  /* for Chrome, Safari, and Opera */
+                }
+              }
+              button{
+                // display: block;
+                align-self: flex-end;
+                width: 50px;
+                color: #fc0;
+                background-color: transparent;
+                border: none;
+                text-shadow: #fc0 1px 0 10px;
+                outline: none;
+                cursor: pointer;
+              }
+
             }
           }
           // .avatar-chat {
@@ -264,13 +294,13 @@
               text-align: end;
             }
             .content-edit {
-              width: 100%;
+              width: 60%;
               position: absolute;
               left: -80px;
               bottom: 0;
               display: none;
-              padding: 16px;
-              
+              padding: 16px 0;
+
               background-color: transparent;
               button {
                 outline: none;
@@ -293,7 +323,6 @@
         }
       }
     }
-    
   }
 
   .icon {
@@ -311,11 +340,4 @@
       padding: 8px 20px !important;
     }
   }
-}
-
-textarea.ant-input {
-  background-color: transparent !important;
-  border-radius: 20px;
-  overflow: auto;
-  color: #ffffff;
 }

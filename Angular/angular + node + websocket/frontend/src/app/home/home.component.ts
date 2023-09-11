@@ -34,7 +34,18 @@ interface ParamGet {
   room_id: number | null;
   user_id: number | null;
 }
-
+interface ParamsEdit {
+  message_id: number;
+  message_content: string;
+}
+interface MessageData {
+  message_id: number;
+  room_id: number;
+  user_name: string;
+  user_id: number;
+  message_content: string;
+  message_sent_at: string;
+}
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -44,10 +55,12 @@ export class HomeComponent implements OnInit {
   [x: string]: any;
   user: User | null; // Khai báo biến user
   roomchat: Roomchat | null;
-  allMessagesInRoom: any[] = [];
+  allMessagesInRoom: MessageData[] = [];
   messageContent: string = ''; // Biến lưu nội dung tin nhắn
   paramGet: ParamGet;
   totalMessage: number = 0;
+  editMessageContentText: string = '';
+  stateOpenEditMessage: number = -1;
 
   constructor(private socketService: SocketService, private router: Router) {
     const userString: string | null = getUser();
@@ -72,10 +85,19 @@ export class HomeComponent implements OnInit {
     };
 
     // Lắng nghe sự kiện 'message' từ máy chủ WebSocket
-    this.socketService.listen('message').subscribe((message: string) => {
-      console.log('message constructor', message);
-      
-      this.getMessageInRoom();
+    this.socketService.listen('message').subscribe((message: MessageData) => {
+      // console.log('socket message', message);
+      this.pustMessageInChatArray(message);
+      // this.getMessageInRoom();
+    });
+    this.socketService.listen('edit').subscribe((message: ParamsEdit) => {
+      // console.log('socket edit', message);
+      this.editMessage(message);
+    });
+    this.socketService.listen('delete').subscribe((message: number) => {
+      // console.log('socket delete', message);
+      this.deleteMessage(message);
+      // this.getMessageInRoom();
     });
   }
 
@@ -83,7 +105,6 @@ export class HomeComponent implements OnInit {
   @ViewChild('chatContainer')
   chatContainer!: ElementRef;
   private scrollChatToBottom() {
-    console.log('deo cjo keo');
     const chatContainerElement = this.chatContainer.nativeElement;
     chatContainerElement.scrollTop = 0;
   }
@@ -141,29 +162,34 @@ export class HomeComponent implements OnInit {
     }
   }
 
-  // gửi tin nhắn lên
-  async postMessageInRoom() {
-    try {
-      const messageData = {
-        room_id: this.roomchat?.room_id,
-        user_name: this.user?.user_name,
-        user_id: this.user?.user_id,
-        message_content: this.messageContent,
-        message_sent_at: new Date().toISOString(),
-      };
-      const response = await axios.post(
-        'http://localhost:9288/api/v1/postMessageInRoom',
-        messageData
-      );
-      this.scrollChatToBottom();
-      // Gửi tin nhắn đến máy chủ WebSocket
-      this.socketService.emit('message', this.messageContent);
-    } catch (error) {}
+  // // gửi tin nhắn mới lên giao diện
+  pustMessageInChatArray(messageData: MessageData) {
+    this.allMessagesInRoom.unshift(messageData);
   }
-  async sendMessage() {
+
+  // gửi tin nhắn lên api
+  async postMessageInRoom() {
     if (this.messageContent.trim() !== '') {
-      await this.postMessageInRoom();
-      this.messageContent = '';
+      try {
+        const oneNewMessageData = {
+          room_id: this.roomchat?.room_id,
+          user_name: this.user?.user_name,
+          user_id: this.user?.user_id,
+          message_content: this.messageContent,
+          message_sent_at: new Date().toISOString(),
+        };
+        const response = await axios.post(
+          'http://localhost:9288/api/v1/postMessageInRoom',
+          oneNewMessageData
+        );
+
+        //  (người gửi) tự scroll xuống dưới cùng
+        this.scrollChatToBottom();
+
+        // Gửi tin nhắn đến máy chủ WebSocket
+        this.socketService.emit('message', response.data.oneNewMessageData);
+        this.messageContent = '';
+      } catch (error) {}
     }
   }
 
@@ -172,8 +198,15 @@ export class HomeComponent implements OnInit {
     this.router.navigate([`/selectroomchat/${this.user?.user_name}`]);
   }
 
-  // // xóa 1 tin nhắn trong room
-  async deleteMessageUserInRoom(message: any) {
+  // delete ở giao diện
+  deleteMessage(message_id: number) {
+    this.allMessagesInRoom = this.allMessagesInRoom.filter(
+      (item) => item.message_id != message_id
+    );
+  }
+
+  // // xóa 1 tin nhắn trong room api
+  async deleteMessageUserInRoomApi(message: any) {
     const params = message;
     try {
       await axios.delete(
@@ -182,17 +215,44 @@ export class HomeComponent implements OnInit {
           params: params,
         }
       );
-      this.getMessageInRoom();
-      this.socketService.emit('message',params.message_id );
-      console.log('params', params);
-      this.allMessagesInRoom = this.allMessagesInRoom.filter(
-        (item) => item.message_id != params.message_id
-      );
+      this.socketService.emit('delete', params.message_id);
     } catch (error) {}
   }
 
-  editMessageUserUserInRoom(message: any) {
-    console.log('editMessageUser message', message);
+  // mở hộp edit tin nhắn
+  openEditMessage(message_id: number) {
+    this.stateOpenEditMessage = message_id;
+  }
+
+  // edit ở api
+  async editMessageUserInRoom(message: any) {
+    if (message.message_content.trim()) {
+      const params = message;
+      try {
+        await axios.put(
+          'http://localhost:9288/api/v1/editMessageUserInRoom',
+          params
+        );
+        this.socketService.emit('edit', params);
+      } catch (error) {
+        console.log('error', error);
+      }
+    }
+    this.stateOpenEditMessage = -1;
+  }
+  onInputBlurEditText(message_content: string) {
+    this.stateOpenEditMessage = -1;
+  }
+
+  // edit ở giao diện
+  editMessage(paramsEdit: ParamsEdit) {
+    if (paramsEdit.message_content.trim()) {
+      const foundIndex = this.allMessagesInRoom.findIndex(
+        (item) => item.message_id === paramsEdit?.message_id
+      );
+      this.allMessagesInRoom[foundIndex].message_content =
+        paramsEdit.message_content;
+    }
   }
 
   // đăng xuất

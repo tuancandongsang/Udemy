@@ -28,11 +28,16 @@
     height: 100%;
     position: relative;
     margin: 0 auto;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
 
     .icon {
-      position: absolute;
-      top: 20px;
-      left: 20px;
+      // position: relative;
+      margin: 20px 0 0 20px;
+      align-self: flex-start;
+      // top: 20px;
+      // left: 20px;
       color: #fc0;
       cursor: pointer;
       z-index: 1;
@@ -42,9 +47,9 @@
     }
     h1 {
       margin: 0;
-      padding-top: 40px;
+      padding-top: 8px;
       text-align: center;
-      font-size: 60px;
+      font-size: 40px;
       color: #999;
       b {
         color: white;
@@ -58,10 +63,87 @@
       }
     }
 
+    .search {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      margin-top: 20px;
+
+      &-submit {
+        width: 60%;
+        background-color: #fff;
+        display: flex;
+        border-radius: 50px;
+        overflow: hidden;
+        height: 50px;
+        input {
+          padding-left: 16px;
+          flex: 3;
+          font-size: 1.2rem;
+          outline: none;
+          border: none;
+          overflow: hidden;
+          background-color: #fff;
+        }
+
+        button {
+          padding: 0.6em 1.2em;
+          background-color: #6e0260;
+          cursor: pointer;
+          border: none;
+          outline: none;
+          margin: 2px;
+          border-radius: 48px;
+          font-size: 1.2rem;
+          overflow: hidden;
+          color: aliceblue;
+          text-shadow: #fc0 1px 0 10px;
+
+          &:hover {
+            opacity: 0.8;
+          }
+        }
+      }
+    }
+
     .form {
       margin-top: 40px;
       margin-left: 50px;
       width: 100%;
+      flex: 1;
+      // overflow: hidden;
+
+      .form-box-select {
+        padding: 0 16px;
+        // position: relative;
+        height: 55vh;
+        overflow: hidden;
+        &-scroll {
+          overflow-y: scroll;
+          color: #ffffff;
+          padding: 0;
+          list-style-type: none;
+          height: 100%;
+          // display: flex;
+          // flex-direction: column;
+          // flex-direction: column-reverse;
+
+          &::-webkit-scrollbar-track {
+            background-color: transparent;
+          }
+
+          &::-webkit-scrollbar {
+            width: 6px;
+            background-color: transparent;
+          }
+
+          &::-webkit-scrollbar-thumb {
+            background-color: transparent;
+            border: 2px solid rgba($color: aqua, $alpha: 0.1);
+          }
+        }
+      }
+
       .select-room-nodata {
         font-size: 1.2rem;
         font-weight: bold;
@@ -99,6 +181,9 @@
           border-radius: 50px;
           background-color: rgba($color: #fff, $alpha: 0.1);
           color: #fc0;
+        }
+        .disable {
+          opacity: 0;
         }
       }
       .create-room {
@@ -139,7 +224,7 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      position: absolute;
+      // position: absolute;
       bottom: 40px;
 
       button {

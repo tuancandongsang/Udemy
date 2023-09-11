@@ -59,7 +59,7 @@
         </div>
       </div>
     </header>
-    <main class="body-chat-box">
+    <main class="body-chat-box" >
       <!--  appScroll (scroll)="onScroll($event)" -->
       <ul
         class="main-chat"
@@ -83,8 +83,10 @@
               class="content-edit"
               *ngIf="message.user_name === user?.user_name"
             >
-              <button (click)="deleteMessageUserInRoom(message)">Delete</button>
-              <button (click)="editMessageUserUserInRoom(message)">Edit</button>
+              <button (click)="deleteMessageUserInRoomApi(message)">
+                Delete
+              </button>
+              <button (click)="openEditMessage(message.message_id)">Edit</button>
             </div>
             <div class="content-chat-user">
               <p class="content-name">
@@ -92,7 +94,16 @@
                 <span>{{ message.message_sent_at }}</span>
               </p>
               <p class="content-message">{{ message.message_content }}</p>
-              <!-- <span class="content-chat">{{ item.name }} </span> -->
+              <div class="content-chat-user-edit"   *ngIf="stateOpenEditMessage === message.message_id">
+                <textarea
+                placeholder="..."
+                rows="3"
+                [(ngModel)]="message.message_content"
+                (keyup.enter)="editMessageUserInRoom(message)"
+                (blur)="onInputBlurEditText(message.message_content)"
+                ></textarea>
+              <button (click)="editMessageUserInRoom(message)">ok</button>
+            </div>
             </div>
           </div>
         </li>
@@ -102,15 +113,10 @@
       <div class="text-chat">
         <textarea
           placeholder="..."
-          id="w3review"
-          name="w3review"
-          rows="2"
+          rows="3"
           [(ngModel)]="messageContent"
-          (keyup.enter)="sendMessage()"
+          (keyup.enter)="postMessageInRoom()"
         ></textarea>
-        <!-- v-model="textChat" -->
-        <!-- @focus="forcusTextChat" -->
-        <!-- @keyup.enter="sendMessage" -->
         <div class="box">
           <!-- <div class="icon">
             <svg
@@ -134,7 +140,7 @@
           <!-- </div> -->
         </div>
       </div>
-      <div class="icon" (click)="sendMessage()">
+      <div class="icon" (click)="postMessageInRoom()">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="16"
