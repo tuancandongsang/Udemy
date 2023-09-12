@@ -53,7 +53,31 @@
       width: 100%;
 
       .username {
+        position: relative;
         width: 80%;
+        &-avatar {
+          position: relative;
+          opacity: 0;
+          z-index: 1;
+          width: 50%;
+          cursor: pointer;
+        }
+        &-button {
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          padding: 20px 30px;
+          width: 50%;
+          font-size: 1.2rem;
+          outline: none;
+          border: none;
+          border-radius: 50px;
+          background-color: rgba($color: #fff, $alpha: 0.1);
+          color: #fc0;
+          text-shadow: #fc0 1px 0 10px;
+          font-weight: 700;
+          cursor: pointer;
+        }
       }
 
       .password {

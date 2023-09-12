@@ -14,6 +14,7 @@ interface Room {
   room_id: number;
   room_name: string;
   room_password: string;
+  room_created_by_user_id: number;
 }
 interface User {
   user_id: number;
@@ -117,8 +118,6 @@ export class SelectroomchatComponent implements OnInit {
 
   joinRoom(room: Room) {
     this.selectedRoom = room;
-    console.log('selectedRoom', this.selectedRoom);
-    
   }
   async joinToRoom() {
     const param = {
@@ -187,5 +186,21 @@ export class SelectroomchatComponent implements OnInit {
 
   async searchRoomInSelectRoomChat() {
     await this.getAllRoomChat();
+  }
+
+  // deleroom o giao dien
+  deleteRoom(room: Room) {
+    this.rooms = this.rooms.filter((item) => item.room_id != room.room_id);
+  }
+
+  // delete room API
+  async deleteRoomAip(room: Room) {
+    const params = room;
+    try {
+      await axios.delete('http://localhost:9288/api/v1/deleteRoomAip', {
+        params,
+      });
+      this.deleteRoom(room);
+    } catch (error) {}
   }
 }

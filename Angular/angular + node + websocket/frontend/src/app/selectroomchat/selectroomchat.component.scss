@@ -153,6 +153,7 @@
       }
 
       .select-room {
+        position: relative;
         width: 80%;
         margin-bottom: 20px;
         display: flex;
@@ -182,8 +183,14 @@
           background-color: rgba($color: #fff, $alpha: 0.1);
           color: #fc0;
         }
-        .disable {
-          opacity: 0;
+        .delete {
+          position: absolute;
+          right: 0;
+          cursor: pointer;
+          color: #fc0;
+          &:hover {
+            opacity: 0.5;
+          }
         }
       }
       .create-room {
@@ -252,5 +259,11 @@
   .shadow {
     text-shadow: #fc0 1px 0 10px;
     color: #fff;
+  }
+  .displayNone {
+    display: none;
+  }
+  .disableOpacity {
+    opacity: 0;
   }
 }

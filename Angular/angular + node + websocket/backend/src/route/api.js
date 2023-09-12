@@ -12,6 +12,7 @@ const initAPIRoute = (app) => {
     router.get('/getMessageInRoom', APIController.getMessageInRoom);
     router.post('/postMessageInRoom', APIController.postMessageInRoom); 
     router.delete('/deleteMessageUserInRoom', APIController.deleteMessageUserInRoom); // method POST -> CREATE data getDescription
+    router.delete('/deleteRoomAip', APIController.deleteRoomAip); 
     router.put('/editMessageUserInRoom', APIController.editMessageUserInRoom);
 
     // router.put('/update-user/:id', APIController.updateUser); //method PUT -> UPDATE data

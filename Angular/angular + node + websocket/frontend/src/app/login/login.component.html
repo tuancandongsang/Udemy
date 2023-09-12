@@ -42,6 +42,12 @@
         <input type="text" [(ngModel)]="user.createRoomName" />
         <!-- <div class="validate-input">Email </div> -->
       </div>
+      <div class="username" *ngIf="typeLogin === 'register'">
+        <label for="">Avatar :</label>
+        <input type="file" class="username-avatar" />
+        <!-- <div class="validate-input">Email </div> -->
+        <button class="username-button">Select Image</button>
+      </div>
     </div>
     <div class="submit">
       <button (click)="login()">Confirm</button>
