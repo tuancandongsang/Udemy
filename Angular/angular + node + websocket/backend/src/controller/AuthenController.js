@@ -3,6 +3,7 @@ import { promisify } from "util";
 // import jwtRefreshToken from "jsonwebtoken-refresh";
 // import moment from "moment";
 import jwt from "jsonwebtoken";
+import {upload} from "../uploads"
 
 const jwtSign = promisify(jwt.sign);
 const secretKey = "tuancandongsang"; // Thay thế bằng khóa bí mật của bạn
@@ -143,6 +144,16 @@ const register = async (req, res) => {
   }
 };
 
+// const uploadAvatar = async (req, res) => {
+//   // const {file} = req
+//   console.log('req.file', req.file);
+//   if (!req.file) {
+//     return res.status(400).send('Không có tệp ảnh được tải lên.');
+//   }
+//   const imagePath = req.file.path; // Đường dẫn đến tệp ảnh đã tải lên
+//   return res.send('Tệp ảnh đã tải lên thành công: ' + imagePath);
+// }
+
 const refreshToken = (req, res) => {
   const { refreshToken } = req.body;
 
@@ -185,4 +196,5 @@ module.exports = {
   login,
   register,
   refreshToken,
+  // uploadAvatar
 };

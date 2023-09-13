@@ -15,9 +15,10 @@ import { setroomchat } from '../utills/localstorage/roomchat';
 })
 export class LoginComponent implements DoCheck {
   user: any = {}; // Đối tượng để lưu thông tin người dùng
-  public typeLogin = 'login';
+  public typeLogin = 'register';
   public message_error = '';
   private previousTypeLogin: string = this.typeLogin;
+  public avatar = '';
 
   constructor(private router: Router) {}
 
@@ -31,6 +32,24 @@ export class LoginComponent implements DoCheck {
 
   public selectLogin(type: string) {
     this.typeLogin = type;
+  }
+
+  async onFileSelected(event: any) {
+    const file = event.target.files[0]; // Lấy tệp ảnh được chọn
+    const formData = new FormData();
+    formData.append('avatar', file); // 'avatar' là tên trường chứa tệp ảnh trên máy chủ
+
+    // Gửi tệp ảnh lên máy chủ
+    try {
+      const response = await axios.post(
+        'http://localhost:9288/api/v1/uploadAvatar',
+        formData
+      );
+
+      this.avatar = 'http://localhost:9288/uploads/' + response.data.imagePath;
+    } catch (error) {
+      console.error('Lỗi khi tải lên ảnh:', error);
+    }
   }
 
   async login() {
@@ -82,14 +101,11 @@ export class LoginComponent implements DoCheck {
       }
       try {
         const response = await axios.post(
-          ' http://localhost:9288/api/v1/register',
+          'http://localhost:9288/api/v1/uploadAvatar',
           this.user
         );
         this.message_error = '';
-        // if (response.status === 200) {
-        //   this.router.navigate(['/login']);
         this.typeLogin = 'login';
-        // }
       } catch (error) {
         const errorResponse = error as {
           response: { data: { message: string } };
