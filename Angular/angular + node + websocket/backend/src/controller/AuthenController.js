@@ -3,14 +3,15 @@ import { promisify } from "util";
 // import jwtRefreshToken from "jsonwebtoken-refresh";
 // import moment from "moment";
 import jwt from "jsonwebtoken";
-import {upload} from "../uploads"
+import { upload } from "./uploadsAvatar";
 
 const jwtSign = promisify(jwt.sign);
 const secretKey = "tuancandongsang"; // Thay thế bằng khóa bí mật của bạn
 const refreshSecretKey = "tuancandongsang"; // Thay thế bằng khóa bí mật cho refresh token của bạn
 
 const login = async (req, res) => {
-  const { username, password, roomName, createRoomName } = req.body;
+  const { username, password, roomName, createRoomName, room_avatar } =
+    req.body;
   try {
     const [results] = await pool.execute(
       "SELECT * FROM Users WHERE user_name  = ? AND user_password  = ?",
@@ -41,35 +42,37 @@ const login = async (req, res) => {
         };
       }
       // Kiểm tra xem người dùng muốn tạo phòng mới
-      if (createRoomName) {
+
+      if (createRoomName && room_avatar) {
         const [existingRoom] = await pool.execute(
           "SELECT * FROM ChatRooms WHERE room_name = ?",
           [createRoomName]
         );
-
         if (existingRoom.length > 0) {
           return res.status(400).json({ message: "Phòng chat đã tồn tại" });
         }
-
         const user = results[0];
         // Tạo phòng mới và lấy ID của phòng
         await pool.execute(
-          "INSERT INTO ChatRooms (room_name, room_created_by_user_id ) VALUES (?, ?)",
-          [createRoomName, user.user_id]
+          "INSERT INTO ChatRooms (room_name, room_created_by_user_id, room_avatar ) VALUES (?, ?, ?)",
+          [createRoomName, user.user_id, room_avatar]
         );
         const [roomCheck] = await pool.execute(
           "SELECT * FROM ChatRooms WHERE room_name = ?",
           [createRoomName]
         );
 
-        const roomInfo = roomCheck[0]; // Lấy thông tin phòng
-        const { room_id, room_created_by_user_id } = roomInfo;
-
-        chatrooms = {
-          room_name: createRoomName,
-          room_id,
-          room_created_by_user_id,
-        };
+        if (roomCheck) {
+          const roomInfo = roomCheck[0]; // Lấy thông tin phòng
+          const { room_id, room_created_by_user_id, room_avatar } = roomInfo;
+  
+          chatrooms = {
+            room_name: createRoomName,
+            room_id,
+            room_created_by_user_id,
+            room_avatar
+          };
+        }
       }
 
       const user = results[0];
@@ -87,7 +90,6 @@ const login = async (req, res) => {
         refreshSecretKey,
         { expiresIn: "7d" } // Ví dụ: hết hạn sau 7 ngày
       );
-
       res.json({
         user: {
           user_id: user.user_id,
@@ -110,7 +112,7 @@ const login = async (req, res) => {
 };
 
 const register = async (req, res) => {
-  const { username, email, password } = req.body;
+  const { username, email, password, user_avatar } = req.body;
   try {
     // Kiểm tra xem email hoặc tên đăng nhập đã tồn tại chưa
     const [emailCheck] = await pool.execute(
@@ -133,8 +135,8 @@ const register = async (req, res) => {
 
     // Nếu email và tên đăng nhập không trùng, thực hiện đăng ký
     await pool.execute(
-      "INSERT INTO Users (user_name, user_password, user_email) VALUES (?, ?, ?)",
-      [username, password, email]
+      "INSERT INTO Users (user_name, user_password, user_email, user_avatar) VALUES (?, ?, ?, ?)",
+      [username, password, email, user_avatar]
     );
 
     return res.json({ message: "Đăng ký thành công" });

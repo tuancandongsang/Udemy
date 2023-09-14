@@ -15,10 +15,9 @@ import { setroomchat } from '../utills/localstorage/roomchat';
 })
 export class LoginComponent implements DoCheck {
   user: any = {}; // Đối tượng để lưu thông tin người dùng
-  public typeLogin = 'register';
+  public typeLogin = 'login';
   public message_error = '';
   private previousTypeLogin: string = this.typeLogin;
-  public avatar = '';
 
   constructor(private router: Router) {}
 
@@ -34,19 +33,40 @@ export class LoginComponent implements DoCheck {
     this.typeLogin = type;
   }
 
-  async onFileSelected(event: any) {
+  async onFileSelectedUserAvatar(event: any) {
     const file = event.target.files[0]; // Lấy tệp ảnh được chọn
     const formData = new FormData();
-    formData.append('avatar', file); // 'avatar' là tên trường chứa tệp ảnh trên máy chủ
+    formData.append('avatarUser', file); // 'avatar' là tên trường chứa tệp ảnh trên máy chủ
 
     // Gửi tệp ảnh lên máy chủ
     try {
-      const response = await axios.post(
-        'http://localhost:9288/api/v1/uploadAvatar',
+      const responseAvatarUserImage = await axios.post(
+        'http://localhost:9288/api/v1/uploadAvatarUser',
         formData
       );
 
-      this.avatar = 'http://localhost:9288/uploads/' + response.data.imagePath;
+      this.user.user_avatar =
+        'http://localhost:9288/uploads/' +
+        responseAvatarUserImage.data.imagePath;
+    } catch (error) {
+      console.error('Lỗi khi tải lên ảnh:', error);
+    }
+  }
+
+  async onFileSelectedRoomAvatar(event: any) {
+    const file = event.target.files[0]; // Lấy tệp ảnh được chọn
+    const formDataRoom = new FormData();
+    formDataRoom.append('avatarRoom', file); // 'avatar' là tên trường chứa tệp ảnh trên máy chủ
+
+    // Gửi tệp ảnh lên máy chủ
+    try {
+      const responseAvatarImage = await axios.post(
+        'http://localhost:9288/api/v1/uploadAvatarRoom',
+        formDataRoom
+      );
+
+      this.user.room_avatar =
+        'http://localhost:9288/uploads/' + responseAvatarImage.data.imagePath;
     } catch (error) {
       console.error('Lỗi khi tải lên ảnh:', error);
     }
@@ -81,7 +101,6 @@ export class LoginComponent implements DoCheck {
             this.router.navigate([
               `${user.user_name}/room/${chatrooms.room_name}`,
             ]);
-            console.log('this.router', this.router);
           } else {
             this.router.navigate([`/selectroomchat/${user.user_name}`]);
           }
@@ -94,14 +113,20 @@ export class LoginComponent implements DoCheck {
       }
       // }
     }
+
     if (this.typeLogin === 'register') {
-      if (!this.user.username || !this.user.password || !this.user.email) {
+      if (
+        !this.user.username ||
+        !this.user.password ||
+        !this.user.email ||
+        !this.user.user_avatar
+      ) {
         this.message_error = 'Thông tin đăng ký chưa đủ';
         return;
       }
       try {
         const response = await axios.post(
-          'http://localhost:9288/api/v1/uploadAvatar',
+          'http://localhost:9288/api/v1/register',
           this.user
         );
         this.message_error = '';

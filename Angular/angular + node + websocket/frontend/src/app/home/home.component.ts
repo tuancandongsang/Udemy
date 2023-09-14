@@ -26,6 +26,7 @@ interface Roomchat {
   room_created_by_user_id: number;
   room_id: number;
   room_name: string;
+  room_avatar:string
 }
 interface ParamGet {
   keyword: string;
@@ -45,6 +46,7 @@ interface MessageData {
   user_id: number;
   message_content: string;
   message_sent_at: string;
+  user_avatar: string
 }
 @Component({
   selector: 'app-home',
@@ -175,6 +177,7 @@ export class HomeComponent implements OnInit {
           room_id: this.roomchat?.room_id,
           user_name: this.user?.user_name,
           user_id: this.user?.user_id,
+          user_avatar: this.user?.user_avatar,
           message_content: this.messageContent,
           message_sent_at: new Date().toISOString(),
         };

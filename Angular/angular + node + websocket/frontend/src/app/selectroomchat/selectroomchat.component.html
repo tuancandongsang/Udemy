@@ -107,6 +107,21 @@
           <input type="text" [(ngModel)]="createRoom.room_name" />
         </div>
 
+        <div class="username" >
+          <label for="">Avatar User:</label>
+          <input
+            type="file"
+            class="username-avatar"
+            (change)="onFileSelectedRoomAvatar($event)"
+            />
+          <!-- <div class="validate-input">Email </div> -->
+          <button class="username-button">Select Image</button>
+  
+          <div class="avatar-img">
+            <img [src]="createRoom.room_avatar" alt="Avatar" />
+          </div>
+        </div>
+
         <div class="create-room-checkbox">
           <input
             type="checkbox"

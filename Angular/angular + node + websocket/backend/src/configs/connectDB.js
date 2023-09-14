@@ -45,6 +45,7 @@ async function createDatabaseAndTable() {
               room_name TEXT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
               room_password VARCHAR(255),  -- Thêm trường room_password
               room_created_by_user_id INT,
+              room_avatar VARCHAR(255),
               FOREIGN KEY (room_created_by_user_id) REFERENCES Users(user_id)
             )
           `;
@@ -72,6 +73,7 @@ async function createDatabaseAndTable() {
           message_content TEXT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
           message_sent_at DATETIME,
           user_name VARCHAR(255),
+          user_avatar VARCHAR(255),
           FOREIGN KEY (room_id) REFERENCES ChatRooms(room_id),
           FOREIGN KEY (user_id) REFERENCES Users(user_id)
         )

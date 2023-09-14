@@ -61,9 +61,10 @@ const getAllRoomChat = async (req, res) => {
 const createOrSelectRoomChat = async (req, res) => {
   const {
     room_created_by_user_id,
-    room_name,
+    room_name_create,
     room_password,
     room_name_select,
+    room_avatar,
   } = req.body;
 
   if (room_name_select) {
@@ -85,10 +86,10 @@ const createOrSelectRoomChat = async (req, res) => {
     });
   }
 
-  if (room_name) {
+  if (room_name_create) {
     const [existingRoom] = await pool.execute(
       "SELECT * FROM ChatRooms WHERE room_name = ?",
-      [room_name]
+      [room_name_create]
     );
 
     if (existingRoom.length > 0) {
@@ -97,19 +98,20 @@ const createOrSelectRoomChat = async (req, res) => {
 
     // Tạo phòng mới và lấy ID của phòng
     await pool.execute(
-      "INSERT INTO ChatRooms (room_name, room_password, room_created_by_user_id ) VALUES (?, ?, ?)",
-      [room_name, room_password, room_created_by_user_id]
+      "INSERT INTO ChatRooms (room_name, room_password, room_created_by_user_id, room_avatar ) VALUES (?, ?, ?, ?)",
+      [room_name_create, room_password, room_created_by_user_id, room_avatar]
     );
     const [roomCheck] = await pool.execute(
       "SELECT * FROM ChatRooms WHERE room_name = ?",
-      [room_name]
+      [room_name_create]
     );
-
-    const roomInfo = roomCheck[0]; // Lấy thông tin phòng
-    res.json({
-      message: "Tạo phòng thành công",
-      roomInfo,
-    });
+    if (roomCheck) {
+      const roomInfo = roomCheck[0]; // Lấy thông tin phòng
+      res.json({
+        message: "Tạo phòng thành công",
+        roomInfo,
+      });
+    }
   }
 };
 
@@ -172,14 +174,27 @@ const getMessageInRoom = async (req, res) => {
 };
 
 const postMessageInRoom = async (req, res) => {
-  const { room_id, user_id, user_name, message_content, message_sent_at } =
-    req.body;
+  const {
+    room_id,
+    user_id,
+    user_name,
+    message_content,
+    message_sent_at,
+    user_avatar,
+  } = req.body;
   try {
     // Thực hiện INSERT vào bảng Messages
     const [result] = await pool.execute(
-      `INSERT INTO Messages (room_id, user_id, user_name, message_content, message_sent_at) 
-       VALUES (?, ?, ?, ?, ?)`,
-      [room_id, user_id, user_name, message_content, message_sent_at]
+      `INSERT INTO Messages (room_id, user_id, user_name, message_content, message_sent_at, user_avatar) 
+       VALUES (?, ?, ?, ?, ?, ?)`,
+      [
+        room_id,
+        user_id,
+        user_name,
+        message_content,
+        message_sent_at,
+        user_avatar,
+      ]
     );
 
     // socket.emit("message", user_id);
@@ -274,14 +289,16 @@ const deleteRoomAip = async (req, res) => {
   try {
     // Xóa tất cả các tin nhắn thuộc phòng chat này
     await pool.query("DELETE FROM Messages WHERE room_id = ?", [room_id]);
-    
+
     // Sau đó, xóa phòng chat
     await pool.query("DELETE FROM ChatRooms WHERE room_id = ?", [room_id]);
 
-    res.status(200).json({ message: 'Phòng chat và tin nhắn đã được xóa thành công' });
+    res
+      .status(200)
+      .json({ message: "Phòng chat và tin nhắn đã được xóa thành công" });
   } catch (error) {
     console.error("Error deleting chatrooms:", error);
-    res.status(500).json({ message: 'Lỗi khi xóa phòng chat và tin nhắn' });
+    res.status(500).json({ message: "Lỗi khi xóa phòng chat và tin nhắn" });
   }
 };
 

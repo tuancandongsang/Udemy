@@ -39,13 +39,14 @@ export class SelectroomchatComponent implements OnInit {
   paramGet: ParamGet;
   user: User | null; // Khai báo biến user
   public message_error = '';
-  public selectCreateroomchat: string = 'select';
+  public selectCreateroomchat: string = 'create';
   public room_search: string = '';
   public totalRoom: number = 0;
   public createRoom = {
     room_name: '',
     room_private: false,
     room_password: '',
+    room_avatar:''
   };
 
   constructor(private router: Router) {
@@ -119,12 +120,33 @@ export class SelectroomchatComponent implements OnInit {
   joinRoom(room: Room) {
     this.selectedRoom = room;
   }
+
+  async onFileSelectedRoomAvatar(event: any) {
+    const file = event.target.files[0]; // Lấy tệp ảnh được chọn
+    const formDataRoom = new FormData();
+    formDataRoom.append('avatarRoom', file); // 'avatar' là tên trường chứa tệp ảnh trên máy chủ
+
+    // Gửi tệp ảnh lên máy chủ
+    try {
+      const responseAvatarImage = await axios.post(
+        'http://localhost:9288/api/v1/uploadAvatarRoom',
+        formDataRoom
+      );
+
+      this.createRoom.room_avatar =
+        'http://localhost:9288/uploads/' + responseAvatarImage.data.imagePath;
+    } catch (error) {
+      console.error('Lỗi khi tải lên ảnh:', error);
+    }
+  }
+
   async joinToRoom() {
     const param = {
       room_created_by_user_id: this.user?.user_id,
       room_password: this.createRoom.room_password,
-      room_name: this.createRoom.room_name,
+      room_name_create: this.createRoom.room_name,
       room_name_select: this.selectedRoom.room_name,
+      room_avatar: this.createRoom.room_avatar
     };
     if (this.selectCreateroomchat === 'select') {
       if (this.user?.user_name && this.selectedRoom.room_name) {
@@ -169,6 +191,7 @@ export class SelectroomchatComponent implements OnInit {
       }
     }
   }
+
   backToLogin() {
     removeUser();
     removeToken();
@@ -176,6 +199,7 @@ export class SelectroomchatComponent implements OnInit {
     removeroomchat();
     this.router.navigate(['/']);
   }
+
   public selectOrCreateRoom(selectroomchat: string) {
     this.selectCreateroomchat = selectroomchat;
   }

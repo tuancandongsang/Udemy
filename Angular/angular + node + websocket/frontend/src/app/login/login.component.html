@@ -32,28 +32,43 @@
       </div>
 
       <div class="username" *ngIf="typeLogin === 'login'">
-        <label for="">Room Name (Publish):</label>
-        <input type="text" [(ngModel)]="user.roomName" />
-        <!-- <div class="validate-input">Email </div> -->
+        <div class="username-room">
+          <label for="">Room Name (Publish):</label>
+          <input type="text" [(ngModel)]="user.roomName" />
+          <!-- <div class="validate-input">Email </div> -->
+        </div>
       </div>
 
-      <div class="username" *ngIf="typeLogin === 'login'">
-        <label for="">Or Create Room (Publish):</label>
-        <input type="text" [(ngModel)]="user.createRoomName" />
-        <!-- <div class="validate-input">Email </div> -->
+      <div class="username room_avatar" *ngIf="typeLogin === 'login'">
+        <div>
+          <label for="">Or Create Room (Publish):</label>
+          <input type="text" [(ngModel)]="user.createRoomName" />
+          <!-- <div class="validate-input">Email </div> -->
+        </div>
+        <div class="room_avatar-img">
+          <label for="">Avatar Room :</label>
+          <input
+            type="file"
+            class="room_avatar-img-input"
+            (change)="onFileSelectedRoomAvatar($event)"
+          />
+          <div class="avatar-img room_avatar-img-div">
+            <img [src]="user.room_avatar" alt="!" />
+          </div>
+        </div>
       </div>
       <div class="username" *ngIf="typeLogin === 'register'">
-        <label for="">Avatar :</label>
+        <label for="">Avatar User:</label>
         <input
           type="file"
           class="username-avatar"
-          (change)="onFileSelected($event)"
+          (change)="onFileSelectedUserAvatar($event)"
         />
         <!-- <div class="validate-input">Email </div> -->
         <button class="username-button">Select Image</button>
 
         <div class="avatar-img">
-          <img [src]="avatar" alt="Avatar">
+          <img [src]="user.user_avatar" alt="Avatar" />
         </div>
       </div>
     </div>
