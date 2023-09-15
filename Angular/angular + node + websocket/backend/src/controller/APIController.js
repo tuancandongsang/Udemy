@@ -1,5 +1,6 @@
 import pool from "../configs/connectDB";
 const moment = require("moment"); // Import thư viện Moment.js
+import fs from "fs";
 // import socketIoClient from "socket.io-client";
 
 // const socket = socketIoClient("http://localhost:4200");
@@ -287,6 +288,21 @@ const editMessageUserInRoom = async (req, res) => {
 const deleteRoomAip = async (req, res) => {
   const { room_id } = req.query;
   try {
+    // Lấy tên tệp ảnh room_avatar của phòng chat
+    const [roomInfo] = await pool.query(
+      "SELECT room_avatar FROM ChatRooms WHERE room_id = ?",
+      [room_id]
+    );
+
+    // Kiểm tra xem có ảnh room_avatar hay không
+    if (roomInfo && roomInfo[0] && roomInfo[0].room_avatar) {
+      const roomAvatarPath = `./src/uploads/${roomInfo[0].room_avatar}`;
+      const cleanedPath = roomAvatarPath.replace('/http://localhost:9288/uploads', '');
+
+      // Xóa tệp ảnh khỏi thư mục uploads
+      fs.unlinkSync(cleanedPath);
+    }
+
     // Xóa tất cả các tin nhắn thuộc phòng chat này
     await pool.query("DELETE FROM Messages WHERE room_id = ?", [room_id]);
 

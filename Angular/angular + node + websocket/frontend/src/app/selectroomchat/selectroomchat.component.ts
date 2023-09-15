@@ -39,7 +39,7 @@ export class SelectroomchatComponent implements OnInit {
   paramGet: ParamGet;
   user: User | null; // Khai báo biến user
   public message_error = '';
-  public selectCreateroomchat: string = 'create';
+  public selectCreateroomchat: string = 'select';
   public room_search: string = '';
   public totalRoom: number = 0;
   public createRoom = {
