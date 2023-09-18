@@ -15,18 +15,25 @@ interface Room {
   room_name: string;
   room_password: string;
   room_created_by_user_id: number;
+  room_avatar: string;
 }
 interface User {
   user_id: number;
   user_name: string;
   user_email: string;
-  user_avatar: string | null;
+  user_avatar: string;
 }
 interface ParamGet {
   keyword: string;
   limit: number;
   pageNumber: number;
 }
+// interface CreateRoom {
+//   room_name: string,
+//   room_private: boolean,
+//   room_password: string,
+//   room_avatar:string
+// }
 
 @Component({
   selector: 'app-selectroomchat',
@@ -38,16 +45,12 @@ export class SelectroomchatComponent implements OnInit {
   selectedRoom: any = {};
   paramGet: ParamGet;
   user: User | null; // Khai báo biến user
+  fileAvatarRoom: any = {};
   public message_error = '';
   public selectCreateroomchat: string = 'select';
   public room_search: string = '';
   public totalRoom: number = 0;
-  public createRoom = {
-    room_name: '',
-    room_private: false,
-    room_password: '',
-    room_avatar:''
-  };
+  createRoom: any = {};
 
   constructor(private router: Router) {
     const userString: string | null = getUser();
@@ -60,6 +63,12 @@ export class SelectroomchatComponent implements OnInit {
       keyword: '',
       limit: 20,
       pageNumber: 1,
+    };
+    this.createRoom = {
+      room_name: '',
+      room_private: false,
+      room_password: '',
+      room_avatar: '',
     };
   }
   // // layzyload
@@ -121,10 +130,10 @@ export class SelectroomchatComponent implements OnInit {
     this.selectedRoom = room;
   }
 
-  async onFileSelectedRoomAvatar(event: any) {
-    const file = event.target.files[0]; // Lấy tệp ảnh được chọn
+  // gửi ảnh giao diện room avatar lên serve
+  async onFileSelectedRoomAvatarAPI(fileAvatarRoom: any) {
     const formDataRoom = new FormData();
-    formDataRoom.append('avatarRoom', file); // 'avatar' là tên trường chứa tệp ảnh trên máy chủ
+    formDataRoom.append('avatarRoom', fileAvatarRoom); // 'avatar' là tên trường chứa tệp ảnh trên máy chủ
 
     // Gửi tệp ảnh lên máy chủ
     try {
@@ -139,6 +148,18 @@ export class SelectroomchatComponent implements OnInit {
       console.error('Lỗi khi tải lên ảnh:', error);
     }
   }
+  onFileSelectedRoomAvatar(event: any) {
+    this.fileAvatarRoom = event.target.files[0];
+
+    if (this.fileAvatarRoom) {
+      const reader = new FileReader();
+      reader.readAsDataURL(this.fileAvatarRoom);
+
+      reader.onload = () => {
+        this.createRoom.room_avatar = reader.result;
+      };
+    }
+  }
 
   async joinToRoom() {
     const param = {
@@ -146,7 +167,7 @@ export class SelectroomchatComponent implements OnInit {
       room_password: this.createRoom.room_password,
       room_name_create: this.createRoom.room_name,
       room_name_select: this.selectedRoom.room_name,
-      room_avatar: this.createRoom.room_avatar
+      room_avatar: this.createRoom.room_avatar,
     };
     if (this.selectCreateroomchat === 'select') {
       if (this.user?.user_name && this.selectedRoom.room_name) {
@@ -170,24 +191,36 @@ export class SelectroomchatComponent implements OnInit {
         }
       }
     }
+
     if (this.selectCreateroomchat === 'create') {
-      try {
-        const response = await axios.post(
-          'http://localhost:9288/api/v1/createOrSelectRoomChat',
-          param
-        );
-        const { roomInfo } = response.data;
-        if (roomInfo) {
-          setroomchat(response.data.roomInfo);
-          this.router.navigate([
-            `${this.user?.user_name}/room/${roomInfo.room_name}`,
-          ]);
+      if (param.room_name_create && param.room_avatar) {
+        try {
+          await this.onFileSelectedRoomAvatarAPI(this.fileAvatarRoom);
+
+          param.room_avatar = this.createRoom.room_avatar;
+
+          const response = await axios.post(
+            'http://localhost:9288/api/v1/createOrSelectRoomChat',
+            param
+          );
+          const { roomInfo } = response.data;
+
+          if (roomInfo) {
+            setroomchat(response.data.roomInfo);
+
+            this.router.navigate([
+              `${this.user?.user_name}/room/${roomInfo.room_name}`,
+            ]);
+          }
+        } catch (error) {
+          const errorResponse = error as {
+            response: { data: { message: string } };
+          };
+          this.message_error = errorResponse.response.data.message;
         }
-      } catch (error) {
-        const errorResponse = error as {
-          response: { data: { message: string } };
-        };
-        this.message_error = errorResponse.response.data.message;
+      } else {
+        this.message_error = 'Tạo phòng yêu cầu tên phòng và ảnh phòng';
+        return;
       }
     }
   }

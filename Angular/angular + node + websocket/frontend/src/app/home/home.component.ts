@@ -26,7 +26,7 @@ interface Roomchat {
   room_created_by_user_id: number;
   room_id: number;
   room_name: string;
-  room_avatar:string
+  room_avatar: string;
 }
 interface ParamGet {
   keyword: string;
@@ -46,7 +46,7 @@ interface MessageData {
   user_id: number;
   message_content: string;
   message_sent_at: string;
-  user_avatar: string
+  user_avatar: string;
 }
 @Component({
   selector: 'app-home',
@@ -88,8 +88,10 @@ export class HomeComponent implements OnInit {
 
     // Lắng nghe sự kiện 'message' từ máy chủ WebSocket
     this.socketService.listen('message').subscribe((message: MessageData) => {
-      // console.log('socket message', message);
-      this.pustMessageInChatArray(message);
+      console.log('socket message', message.room_id);
+      if (message.room_id === this.roomchat?.room_id) {
+        this.pustMessageInChatArray(message);
+      }
       // this.getMessageInRoom();
     });
     this.socketService.listen('edit').subscribe((message: ParamsEdit) => {

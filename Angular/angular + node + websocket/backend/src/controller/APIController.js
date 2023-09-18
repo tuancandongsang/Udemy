@@ -1,3 +1,4 @@
+import { log } from "console";
 import pool from "../configs/connectDB";
 const moment = require("moment"); // Import thư viện Moment.js
 import fs from "fs";
@@ -300,7 +301,11 @@ const deleteRoomAip = async (req, res) => {
       const cleanedPath = roomAvatarPath.replace('/http://localhost:9288/uploads', '');
 
       // Xóa tệp ảnh khỏi thư mục uploads
-      fs.unlinkSync(cleanedPath);
+      try {
+        fs.unlinkSync(cleanedPath);
+      } catch (error) {
+        console.log('không có file ảnh nhưng có đường dẫn');
+      }
     }
 
     // Xóa tất cả các tin nhắn thuộc phòng chat này

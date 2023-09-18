@@ -51,7 +51,8 @@
             type="file"
             class="room_avatar-img-input"
             (change)="onFileSelectedRoomAvatar($event)"
-          />
+            />
+            <!-- (change)="onFileSelectedRoomAvatar($event)" -->
           <div class="avatar-img room_avatar-img-div">
             <img [src]="user.room_avatar" alt="!" />
           </div>
@@ -62,7 +63,7 @@
         <input
           type="file"
           class="username-avatar"
-          (change)="onFileSelectedUserAvatar($event)"
+          (change)="onFileSelectedUserAvata($event)"
         />
         <!-- <div class="validate-input">Email </div> -->
         <button class="username-button">Select Image</button>

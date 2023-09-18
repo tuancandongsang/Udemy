@@ -15,6 +15,8 @@ import { setroomchat } from '../utills/localstorage/roomchat';
 })
 export class LoginComponent implements DoCheck {
   user: any = {}; // Đối tượng để lưu thông tin người dùng
+  fileAvatarRoom: any = {};
+  fileAvatarUser: any ={}
   public typeLogin = 'login';
   public message_error = '';
   private previousTypeLogin: string = this.typeLogin;
@@ -33,10 +35,42 @@ export class LoginComponent implements DoCheck {
     this.typeLogin = type;
   }
 
-  async onFileSelectedUserAvatar(event: any) {
-    const file = event.target.files[0]; // Lấy tệp ảnh được chọn
+  // gửi ảnh giao diện room avatar lên serve
+  async onFileSelectedRoomAvatarAPI(fileAvatarRoom: any) {
+    const formDataRoom = new FormData();
+    formDataRoom.append('avatarRoom', fileAvatarRoom); // 'avatar' là tên trường chứa tệp ảnh trên máy chủ
+
+    // Gửi tệp ảnh lên máy chủ
+    try {
+      const responseAvatarImage = await axios.post(
+        'http://localhost:9288/api/v1/uploadAvatarRoom',
+        formDataRoom
+      );
+
+      this.user.room_avatar =
+        'http://localhost:9288/uploads/' + responseAvatarImage.data.imagePath;
+    } catch (error) {
+      console.error('Lỗi khi tải lên ảnh:', error);
+    }
+  }
+
+  // hiển thị ảnh giao diện trước rồi gửi serve sau user avatar
+  onFileSelectedRoomAvatar(event: any) {
+    this.fileAvatarRoom = event.target.files[0];
+
+    if (this.fileAvatarRoom) {
+      const reader = new FileReader();
+      reader.readAsDataURL(this.fileAvatarRoom);
+
+      reader.onload = () => {
+        this.user.room_avatar = reader.result;
+      };
+    }
+  }
+
+  async onFileSelectedUserAvatarAPI(fileAvatarUser: any) {
     const formData = new FormData();
-    formData.append('avatarUser', file); // 'avatar' là tên trường chứa tệp ảnh trên máy chủ
+    formData.append('avatarUser', fileAvatarUser); // 'avatar' là tên trường chứa tệp ảnh trên máy chủ
 
     // Gửi tệp ảnh lên máy chủ
     try {
@@ -53,22 +87,14 @@ export class LoginComponent implements DoCheck {
     }
   }
 
-  async onFileSelectedRoomAvatar(event: any) {
-    const file = event.target.files[0]; // Lấy tệp ảnh được chọn
-    const formDataRoom = new FormData();
-    formDataRoom.append('avatarRoom', file); // 'avatar' là tên trường chứa tệp ảnh trên máy chủ
-
-    // Gửi tệp ảnh lên máy chủ
-    try {
-      const responseAvatarImage = await axios.post(
-        'http://localhost:9288/api/v1/uploadAvatarRoom',
-        formDataRoom
-      );
-
-      this.user.room_avatar =
-        'http://localhost:9288/uploads/' + responseAvatarImage.data.imagePath;
-    } catch (error) {
-      console.error('Lỗi khi tải lên ảnh:', error);
+  onFileSelectedUserAvata (event: any) {
+    this.fileAvatarUser = event.target.files[0];
+    if (this.fileAvatarUser) {
+      const reader = new FileReader();
+      reader.readAsDataURL(this.fileAvatarUser);
+      reader.onload = () => {
+        this.user.user_avatar = reader.result;
+      };
     }
   }
 
@@ -83,8 +109,19 @@ export class LoginComponent implements DoCheck {
         this.message_error = 'Thông tin đăng nhập chưa đủ';
         return;
       }
-      // if (this.user.roomName || this.user.createRoomName) {
       try {
+        if (this.user.createRoomName && !this.user.room_avatar) {
+          this.message_error = 'Create Room Avarat required';
+          return;
+        }
+        if (!this.user.createRoomName && this.user.room_avatar) {
+          this.message_error = 'Create Room Name required';
+          return;
+        }
+        if (this.user.createRoomName && this.user.room_avatar) {
+          await this.onFileSelectedRoomAvatarAPI(this.fileAvatarRoom);
+        }
+
         const response = await axios.post(
           ' http://localhost:9288/api/v1/login',
           this.user
@@ -111,7 +148,6 @@ export class LoginComponent implements DoCheck {
         };
         this.message_error = errorResponse.response.data.message;
       }
-      // }
     }
 
     if (this.typeLogin === 'register') {
@@ -125,6 +161,7 @@ export class LoginComponent implements DoCheck {
         return;
       }
       try {
+        await this.onFileSelectedUserAvatarAPI (this.fileAvatarUser)
         const response = await axios.post(
           'http://localhost:9288/api/v1/register',
           this.user
@@ -139,4 +176,5 @@ export class LoginComponent implements DoCheck {
       }
     }
   }
+
 }
