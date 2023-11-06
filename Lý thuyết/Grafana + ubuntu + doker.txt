@@ -1,0 +1,21 @@
+cài đặt ubuntu ( stort microsoft ) vè máy
+
+cài đặt docker trong ubuntu
+https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-on-ubuntu-22-04
+
+sudo service docker status : kiểm tran xem docker đã active chưa
+sudo docker ps -a : kiểm tra docker 
+
+
+cài đặt nvm ( node, npm)
+chạy lệnh 
+	npm @grafana/create-plugin@lastest
+
+nếu không có quyền truy cập để chỉnh sửa vào project
+cd ta ngoài cùng của project
+sudo chmod -R 777 demo-grafana-panel/ : ( như vậy là có toàn quyền với forder demo-grafana-panel)
+
+hoặc cd vào file của project muốn chỉnh sửa
+sudo mkdir dashboard ( tạo tư mục dashboar trong thư mục muốn chỉnh sửa )
+nếu chạy npm run serve không được  thì vào file package xem lệnh server là gì
+rồi nhấn sudo " lênh " vd sudo docker-compose up --build

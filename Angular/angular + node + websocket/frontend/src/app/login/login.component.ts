@@ -126,6 +126,8 @@ export class LoginComponent implements DoCheck {
           ' http://localhost:9288/api/v1/login',
           this.user
         );
+        console.log('response', response);
+        
 
         const { message, refreshToken, token, user, chatrooms } = response.data;
         if (message || refreshToken || token || user || chatrooms) {
