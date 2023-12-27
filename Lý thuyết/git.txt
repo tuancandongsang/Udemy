@@ -14,7 +14,7 @@ git reset -- _fileName // hủy _fileName của git add trước đó
 git reset HEAD test.html // đưa file test.html quay trở lại ban đầu sau khi add .
 
 GIT STATUS
-git status // xem trạng thái đầu đủ của các commit
+git status // xem trạng thái đầu đủ của các file
 git status -s // xem thông tin ngắn gọn 
 
 GIT COMMIT 
@@ -119,3 +119,6 @@ vào nhánh chính (master) pull code về
 tạo nhánh mới cần phát triển
 code xong đẩy push lên nhánh đó
 tạo merge code vào nhánh master
+
+
+git cherry-pick <commit-hash> : hợp 1 commit của nhánh khác vào nhánh hiện tại mà không cần merge toàn bộ nhánh đó
