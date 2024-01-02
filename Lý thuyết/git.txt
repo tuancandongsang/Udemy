@@ -122,3 +122,10 @@ tạo merge code vào nhánh master
 
 
 git cherry-pick <commit-hash> : hợp 1 commit của nhánh khác vào nhánh hiện tại mà không cần merge toàn bộ nhánh đó
+
+git reset HEAD~1 // quay về 1 commit phóa trước
+
+git rebase -i HEAD~4 //
+
+
+

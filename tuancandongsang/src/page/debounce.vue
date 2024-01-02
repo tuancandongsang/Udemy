@@ -1,7 +1,7 @@
 <template>
   <div style="display: flex; gap: 50px">
     <div>
-      <h1>debounce</h1>
+      <h2>debounce</h2>
       <span>bấm nhiều lần chỉ nhận lần cuối</span>
       <div>
         <button @click="refresh" :class="hinden ? 'hinden' : ''">
@@ -15,7 +15,7 @@
       </div>
     </div>
     <div>
-      <h1>throttle</h1>
+      <h2>throttle</h2>
       <span>2s sau tự động lưu</span>
       <div>
         <label for="throttle">throttle</label>

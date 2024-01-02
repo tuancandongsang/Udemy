@@ -5,11 +5,76 @@ Sử dụng Lodash có thể cải thiện đáng kể hiệu quả phát triể
 
 cài đặt : npm i --save lodash
 
+các hàm hay sử dụng
 
+- orderBy
+Hàm này có chức năng sắp xếp các phần tử trong mảng theo tiêu chí nào đó.
+const items = [
+  { name: 'Item A', price: 2 },
+  { name: 'Item B', price: 8 },
+  { name: 'Item C', price: 5 },
+  { name: 'Item D', price: 4 }
+];
 
+const result = _.orderBy(items, ['price'], ['asc']);
+console.log(result)
 
+- chunk
+Cắt một mảng thành nhiều mảng con với kích thước tùy ý.
+const array = [ 1, 2, 3, 4 ];
+const result = _.chunk(array, 2);
+console.log(result)
+// KQ => [[1, 2], [3, 4]]
 
+- flatten
+Làm phẳng một mảng có nhiều mảng con lồng trong đó. 1 lần
+const array = [1, [2, [3, [4]], 5]];
+const result = _.flatten(array);
+console.log(result)
+// => [1, 2, [3, [4]], 5]
+làm phẳng nhiều lần flattenDeep
+const array = [1, [2, [3, [4]], 5]];
+const result = _.flattenDeep(array);
+console.log(result)
+// => [1, 2, 3, 4, 5]
 
+- take
+Tạo một mảng mới được trích xuất từ một mảng với kích thước tùy ý.
+const array = [1, 2, 3];
+const result = _.take(array, 2);
+console.log(result)
+// result => [1, 2]
+
+-difference
+Tạo một mảng gồm các phần tử không xuất hiện trong các mảng đã cho (được truyền thông qua tham số).
+const result = _.difference([1, 2, 3], [2, 3, 4]);
+console.log(result)
+// result => [1]
+
+- merge
+Có tác dụng mà gộp nhiều object vào làm một.
+const firstObject = { 'A': [{ 'B': 1 }, { 'C': 2 }] };
+const secondObject = { 'A': [{ 'B': 3 }, { 'D': 4 }] };
+const result = _.merge(firstObject, secondObject);
+console.log(result)
+// result => { A: [{ B: 3 }, { C: 2, D: 4 }] }
+
+- debounce trong react:
+  React.useEffect(() => {
+    const fetchData = async () => {
+      const responsive = await ParserEditorService.callApi(payload_regex);
+    };
+
+    const debouncedFetchData = _.debounce(fetchData, 2000, { leading: false, trailing: true });
+
+    if (validate.isRegex(payload_regex)) {
+      debouncedFetchData();
+    }
+    return () => {
+      debouncedFetchData.cancel();
+    };
+  }, [payload_regex, dispatch]);
+2s sau khi dừng nhập dữ liệu vào payload_regex, thì callApi bắt đầu mới được gọi. chỉ gọi 1 cái cuối
 
 
 
