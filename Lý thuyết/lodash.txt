@@ -1,7 +1,5 @@
 	Lodash là gì?
-Lodash là một thư viện tiện ích JavaScript nhất quán, các modules có hiệu suất cao,
-và quan trọng rất mạnh mẽ bao gồm hầu hết các điểm chức năng logic có thể gặp trong quá trình phát triển front-end. 
-Sử dụng Lodash có thể cải thiện đáng kể hiệu quả phát triển của mỗi dự án. 
+_.assignIn, _.before, _.bind, _.chain, _.clone, _.compact, _.concat, _.create, _.defaults, _.defer, _.delay, _.each, _.escape, _.every, _.filter, _.find, _.flatten, _.flattenDeep, _.forEach, _.has, _.head, _.identity, _.indexOf, _.isArguments, _.isArray, _.isBoolean, _.isDate, _.isEmpty, _.isEqual, _.isFinite, _.isFunction, _.isNaN, _.isNull, _.isNumber, _.isObject, _.isRegExp, _.isString, _.isUndefined, _.iteratee, _.keys, _.last, _.map, _.matches, _.max, _.min, _.mixin, _.negate, _.noConflict, _.noop, _.once, _.pick, _.reduce, _.result, _.size, _.slice, _.some, _.sortBy, _.tap, _.thru, _.toArray, _.uniqueId, _.value, & _.values
 
 cài đặt : npm i --save lodash
 
@@ -21,10 +19,10 @@ console.log(result)
 
 - chunk
 Cắt một mảng thành nhiều mảng con với kích thước tùy ý.
-const array = [ 1, 2, 3, 4 ];
-const result = _.chunk(array, 2);
-console.log(result)
-// KQ => [[1, 2], [3, 4]]
+_.chunk(['a', 'b', 'c', 'd'], 2);
+// => [['a', 'b'], ['c', 'd']]
+_.chunk(['a', 'b', 'c', 'd'], 3);
+// => [['a', 'b', 'c'], ['d']]
 
 - flatten
 Làm phẳng một mảng có nhiều mảng con lồng trong đó. 1 lần
@@ -46,7 +44,7 @@ console.log(result)
 // result => [1, 2]
 
 -difference
-Tạo một mảng gồm các phần tử không xuất hiện trong các mảng đã cho (được truyền thông qua tham số).
+lọc ra những phần tử có mặt trong array mà không có mặt trong các element còn lại (values).
 const result = _.difference([1, 2, 3], [2, 3, 4]);
 console.log(result)
 // result => [1]
@@ -58,6 +56,8 @@ const secondObject = { 'A': [{ 'B': 3 }, { 'D': 4 }] };
 const result = _.merge(firstObject, secondObject);
 console.log(result)
 // result => { A: [{ B: 3 }, { C: 2, D: 4 }] }
+
+- _.debounce(func, [wait=0], [options={}])
 
 - debounce trong react:
   React.useEffect(() => {
@@ -76,14 +76,57 @@ console.log(result)
   }, [payload_regex, dispatch]);
 2s sau khi dừng nhập dữ liệu vào payload_regex, thì callApi bắt đầu mới được gọi. chỉ gọi 1 cái cuối
 
+_.keys: lấy toàn bộ tên thuộc tính vào đưa vào một mảng
+_.valueslấy toàn bộ giá trị của thuộc tính và đưa vào một mảng
+var object = { 'user': 'user1', 'age': 20 };
+_.keys(object);
+// => ["user", "age"]
+_.values(object);
+// => ["user1", 20]
 
+_.pick: Chỉ lấy 1 thuộc tính của object.
+_.omit: Bỏ 1 thuộc tính của object, lấy toàn bộ những thuộc tính còn lại.
+var object = { 'user': 'user1', 'age': 40 };
+_.pick(object, 'user');
+// => { 'user': 'user1' }
+_.omit(object, 'age');
+// => { 'user': 'user1' }
 
+_.invert: Đảo ngược key-value của 1 object
+var object = { 'a': 1, 'b': 2 };
+_.invert(object, 'user');
+// => { 1: "a", 2: "b" }
 
+_.sortedUniq(array) : lọc ra các item của array, lọc bỏ các giá trị trùng lặp và lấy 1 lần duy nhất
+const sortedArray = [1, 1, 2, 3, 3, 3, 4, 5, 5, 6, 6];
+const uniqueValues = _.sortedUniq(sortedArray);
+console.log(uniqueValues); // Kết quả: [1, 2, 3, 4, 5, 6]
 
+_.isEqual(value, other) : so sánh sâu 2 array hoặc object
+var object = { 'user': 'fred' };
+var other = { 'user': 'fred' };
+object == other;// → false
+_.isEqual(object, other);// → true
 
+_.camelCase('Foo Bar'); Biến string thành chuỗi camel case
+// => 'fooBar'
+ 
+_.capitalize('FRED');  Viết hoa kí tự đầu của string
+// => 'Fred'
 
+_.startCase('--foo-bar--'); Viết hoa các chữ cái đầu mỗi từ trong string
+// => 'Foo Bar'
 
+_.truncate('hi-diddly-ho there, neighborino', 24); Cắt string và thêm … vào cuối string nếu string quá dài
+// → 'hi-diddly-ho there, n…'
 
+_.words('fred, barney, & pebbles 123', /[^, ]+/g); Cắt các từ trong string, bỏ vào 1 mảng
+// => ['fred', 'barney', '&', 'pebbles']
+
+_.isNull(null);
+_.isNumber(8.4);
+_.isObject({});
+_.isEmpty(null);
 
 
 

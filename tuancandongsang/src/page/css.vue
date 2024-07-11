@@ -5,7 +5,7 @@
       <img
         src="https://pinia.vuejs.org/logo.svg"
         alt="pinia logo"
-        style="width: 100px; transform: rotate(-5deg)"
+        style="transform: rotate(-5deg)"
       />
       <h1 style="transform: rotate(5deg)">Pinia Tasks</h1>
       <input
@@ -21,7 +21,7 @@
       <svg
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 749.28 9.3"
-        style="height: 30px"
+        style="height: 30px; width: 80%"
       >
         <path
           fill="#e4bf6d"
@@ -53,6 +53,15 @@
         </div>
       </div>
     </div>
+
+    <h2>pháo hoa</h2>
+    <p>
+      sửa các file html => tạo canvas . tạo file canvascss.css tạo file
+      canvasscript.js
+      <br />
+      nếu bỏ đi fireworks-overlay bọc bên ngoài mà chỉ có canvas thì sẽ bấm tới
+      đâu nổ pháo tới đó, tuy nhiên sẽ không thực hiện các tác cụ của #app
+    </p>
   </div>
 </template>
 
@@ -60,7 +69,7 @@
 export default {};
 </script>
 
-<style>
+<style scoped>
 .hero-img {
   -webkit-animation: morph 8s ease-in-out infinite;
   animation: morph 8s ease-in-out infinite;

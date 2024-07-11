@@ -14,10 +14,11 @@ export default {
 };
 </script>
 <style scoped>
-.layout{
+.layout {
   display: flex;
+  align-items: flex-start;
 }
-.container{
-    padding: 20px 0;
+.container {
+  padding: 20px 0;
 }
 </style>

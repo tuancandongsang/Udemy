@@ -1,0 +1,16 @@
+#fireworks-overlay {
+  pointer-events: none; /* Allow pointer events to propagate through the overlay */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 100; /* Ensure it's above the root content */
+}
+
+canvas {
+  cursor: crosshair;
+  display: block;
+  position: fixed;
+  top: 0;
+}

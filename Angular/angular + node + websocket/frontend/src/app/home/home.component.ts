@@ -89,9 +89,9 @@ export class HomeComponent implements OnInit {
     // Lắng nghe sự kiện 'message' từ máy chủ WebSocket
     this.socketService.listen('message').subscribe((message: MessageData) => {
       console.log('socket message', message.room_id);
-      if (message.room_id === this.roomchat?.room_id) {
-        this.pustMessageInChatArray(message);
-      }
+      // if (message.room_id === this.roomchat?.room_id) {
+      this.pustMessageInChatArray(message);
+      // }
       // this.getMessageInRoom();
     });
     this.socketService.listen('edit').subscribe((message: ParamsEdit) => {
@@ -193,8 +193,13 @@ export class HomeComponent implements OnInit {
 
         // Gửi tin nhắn đến máy chủ WebSocket
         this.socketService.emit('message', response.data.oneNewMessageData);
+        // this.socketService.emit('sendMessage', {
+        //   room: this.roomchat?.room_id,
+        //   message: response.data.oneNewMessageData,
+        // });
+
         this.messageContent = '';
-      } catch (error) {}
+      } catch (error) { }
     }
   }
 
@@ -221,7 +226,7 @@ export class HomeComponent implements OnInit {
         }
       );
       this.socketService.emit('delete', params.message_id);
-    } catch (error) {}
+    } catch (error) { }
   }
 
   // mở hộp edit tin nhắn
