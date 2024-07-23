@@ -89,9 +89,9 @@ export class HomeComponent implements OnInit {
     // Lắng nghe sự kiện 'message' từ máy chủ WebSocket
     this.socketService.listen('message').subscribe((message: MessageData) => {
       console.log('socket message', message.room_id);
-      // if (message.room_id === this.roomchat?.room_id) {
-      this.pustMessageInChatArray(message);
-      // }
+      if (message.room_id === this.roomchat?.room_id) {
+        this.pustMessageInChatArray(message);
+      }
       // this.getMessageInRoom();
     });
     this.socketService.listen('edit').subscribe((message: ParamsEdit) => {

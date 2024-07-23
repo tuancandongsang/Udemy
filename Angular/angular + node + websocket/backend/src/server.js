@@ -37,18 +37,9 @@ app.use(express.json());
 io.on("connection", (socket) => {
   console.log("connected socket OK");
 
-  socket.on("joinRoom", (room) => {
-    socket.join(room); // Người dùng tham gia phòng chat
-  });
-
-  // // // // Lắng nghe sự kiện từ client và gửi lại cho tất cả client khác
-  // socket.on("message", ({ room, message }) => {
-  //   io.to(room).emit("message", message);
-  // });
-
-  socket.on("message", (message) => {
-    console.log('message', message);
-    io.to(message?.room_id).emit("message", message);
+  // // // Lắng nghe sự kiện từ client và gửi lại cho tất cả client khác
+  socket.on("message", ( message ) => {
+    io.emit("message", message);
   });
 
   socket.on("edit", (message) => {
